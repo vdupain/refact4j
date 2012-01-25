@@ -1,0 +1,72 @@
+package org.refact4j.eom;
+
+import org.junit.Assert;
+import org.refact4j.collection.AbstractChangeSetTest;
+import org.refact4j.collection.ChangeSetDelta;
+import org.refact4j.collection.Collection;
+import org.refact4j.collection.impl.ChangeSetImpl;
+import org.refact4j.eom.impl.ChangeSetEntityObjectListener;
+import org.refact4j.eom.model.KeyBuilder;
+import org.refact4j.eom.xml.reader.EntityXmlReaderHelper;
+import org.refact4j.evt.EventLogger;
+import org.refact4j.model.DummyRepository;
+import org.refact4j.model.FooDesc;
+
+public class EntityChangeSetTest extends AbstractChangeSetTest {
+    EntityObject foo, foo3;
+    EventLogger eventLogger = new EventLogger();
+
+    protected Collection populateInitial() {
+        return EntitySetTest.createSampleEntitySet();
+    }
+
+    protected void generateDelta() {
+        EntitySet entitySet = (EntitySet) collectionDecorator.getCollection();
+        for (EntityObject e : entitySet) {
+            e.registerListener(new ChangeSetEntityObjectListener((ChangeSetImpl<EntityObject>) changeSet));
+            e.registerListener(new EntityObjectListener() {
+
+                public void notifyEntityObjectChange(EntityObjectEvent event, ChangeSetDelta<EntityObject> delta) {
+                    eventLogger.log("delta").add("source", event.getSource().getId()).add("property",
+                            delta.getProperty()).add("old", delta.getOldValue()).add("new", delta.getNewValue());
+                }
+
+                public void notifyEvent(EntityObjectEvent event) {
+                }
+            });
+        }
+
+        foo3 = entitySet.findByIdentifier(KeyBuilder.init(FooDesc.INSTANCE).set(FooDesc.ID, 3).getKey());
+        // update
+        foo3.set(FooDesc.VALUE, 1.2345);
+        foo3.set(FooDesc.FLAG, true);
+        foo3.set(FooDesc.VALUE, 0);
+        // delete
+        collectionDecorator.delete(foo3);
+        // create
+        String xmlData = "<Foo name='foo5' id='5' value='55'/>";
+        foo = EntityXmlReaderHelper.parse(DummyRepository.get(), xmlData).get(0);
+        collectionDecorator.create(foo);
+    }
+
+    protected void assertDelta() {
+        final EventLogger actualEventLogger = new EventLogger();
+        java.util.List<EntityObject> updated = changeSet.getUpdatedObjects();
+        String log = "<log>";
+        for (EntityObject entityObject : updated) {
+            for (Object o : changeSet.getDeltas(entityObject)) {
+                ChangeSetDelta<EntityObject> delta = (ChangeSetDelta<EntityObject>) o;
+                actualEventLogger.log("delta").add("source", delta.getSource().getId()).add("property",
+                        delta.getProperty()).add("old", delta.getOldValue()).add("new", delta.getNewValue());
+            }
+        }
+
+        actualEventLogger.assertEquals(eventLogger);
+        java.util.Collection<EntityObject> deleted = changeSet.getDeletedObjects();
+        Assert.assertEquals(foo3, deleted.iterator().next());
+
+        java.util.Collection<EntityObject> created = changeSet.getCreatedObjects();
+        Assert.assertEquals(foo.toXmlString(), created.iterator().next().toXmlString());
+
+    }
+}

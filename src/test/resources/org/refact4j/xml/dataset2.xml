@@ -1,0 +1,28 @@
+<dataset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="src/test/resources/org/refact4j/xml/dataset2.xsd">
+
+    <Bar name='bar2' id='2'>
+        <Foo name='foo3' id='3'/>
+    </Bar>
+    <Bar name='bar1' id='1'>
+        <Foo name='foo2' id='2'/>
+        <Foo name='foo1' id='1'/>
+    </Bar>
+    <Foo name='foo4' id='4'/>
+    <Foo name='foo5' id='5'/>
+
+    <Employee id='20' info='30'>
+        <EmployeeInfo id='30' firstName='bart' lastName='simpson' employee='20'/>
+    </Employee>
+
+    <fooBars>
+        <bars>
+            <bar id='10' name='a10'/>
+        </bars>
+        <foos>
+            <foo id='10' name='d10'/>
+            <foo id='11' name='d11' parent='a10'/>
+        </foos>
+    </fooBars>
+
+</dataset>

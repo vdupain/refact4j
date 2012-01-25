@@ -1,0 +1,52 @@
+package org.refact4j.eom.metamodel.xml.writer;
+
+import org.refact4j.eom.EntityObject;
+import org.refact4j.eom.EntityPredicate;
+import org.refact4j.eom.metamodel.DataTypeType;
+import org.refact4j.eom.metamodel.EntityDescriptorDesc;
+import org.refact4j.eom.metamodel.FieldDesc;
+import org.refact4j.eom.metamodel.PropertyDesc;
+import org.refact4j.eom.model.EntityDescriptorRepository;
+import org.refact4j.eom.model.Key;
+import org.refact4j.eom.model.KeyBuilder;
+import org.refact4j.xml.DatasetConverterHolder;
+import org.refact4j.xml.XmlElementHandler;
+import org.refact4j.xml.XmlWriter;
+import org.refact4j.xml.writer.AbstractXmlElementWriter;
+
+class PropertyXmlNodeWriter extends AbstractXmlElementWriter {
+
+    public PropertyXmlNodeWriter(DatasetConverterHolder holder, EntityObject entityDescEntity,
+                                 EntityDescriptorRepository repository) {
+        super(PropertyDesc.INSTANCE.getName(), holder.getDataSet().getAll(
+                PropertyDesc.INSTANCE,
+                PropertyDesc.getPropertiesForEntityDescriptor(repository.getEntityDescriptor(entityDescEntity
+                        .get(EntityDescriptorDesc.NAME)))), holder);
+    }
+
+    public PropertyXmlNodeWriter(DatasetConverterHolder holder, EntityObject fieldEntity) {
+        super(PropertyDesc.INSTANCE.getName(), holder.getDataSet().getAll(PropertyDesc.INSTANCE,
+                getPropertiesForField(fieldEntity)), holder);
+    }
+
+    public XmlElementHandler[] handleNext(XmlWriter xmlWriter) throws Exception {
+        EntityObject property = (EntityObject) next();
+        xmlWriter.writeAttribute(PropertyDesc.KEY.getName(), property.get(PropertyDesc.KEY));
+        xmlWriter.writeAttribute(PropertyDesc.VALUE.getName(), property.get(PropertyDesc.VALUE));
+        xmlWriter.writeAttribute(PropertyDesc.DATA_TYPE.getName(), property.get(PropertyDesc.DATA_TYPE).getFieldValue(
+                DataTypeType.NAME).toString());
+
+        return new XmlElementHandler[0];
+    }
+
+    private static EntityPredicate getPropertiesForField(final EntityObject fieldEntity) {
+        return new EntityPredicate() {
+            public Boolean eval(EntityObject arg) {
+                Key key = KeyBuilder.init(FieldDesc.INSTANCE).set(FieldDesc.NAME, fieldEntity.get(FieldDesc.NAME)).set(
+                        FieldDesc.ENTITY_DESC, fieldEntity.get(FieldDesc.ENTITY_DESC)).getKey();
+                return key.equals(arg.get(PropertyDesc.FIELD_TYPE));
+            }
+        };
+    }
+
+}

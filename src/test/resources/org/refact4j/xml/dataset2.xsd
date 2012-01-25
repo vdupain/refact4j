@@ -1,0 +1,104 @@
+<?xml version="1.0"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+    <xs:element name="Foo">
+        <xs:complexType>
+            <xs:attribute name="id" type="xs:integer" use="required"/>
+            <xs:attribute name="name" type="xs:string" use="required"/>
+            <xs:attribute name="bar" type="xs:string" use="optional"/>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="Bar">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="Foo" maxOccurs="unbounded"/>
+            </xs:sequence>
+            <xs:attribute name="id" type="xs:integer"
+                          use="required"/>
+            <xs:attribute name="name" type="xs:string"
+                          use="required"/>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="bar">
+        <xs:complexType>
+            <xs:attribute name="id" type="xs:integer" use="required"/>
+            <xs:attribute name="name" type="xs:string" use="required"/>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="foo">
+        <xs:complexType>
+            <xs:attribute name="id" type="xs:integer" use="required"/>
+            <xs:attribute name="name" type="xs:string" use="required"/>
+            <xs:attribute name="parent" type="xs:string" use="optional"/>
+        </xs:complexType>
+    </xs:element>
+
+
+    <xs:element name="Employee">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="EmployeeInfo" maxOccurs="unbounded"/>
+            </xs:sequence>
+            <xs:attribute name="id" type="xs:integer"
+                          use="required"/>
+            <xs:attribute name="info" type="xs:integer"
+                          use="required"/>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="EmployeeInfo">
+        <xs:complexType>
+            <xs:attribute name="id" type="xs:integer"
+                          use="required"/>
+            <xs:attribute name="firstName" type="xs:string" use="required"/>
+            <xs:attribute name="lastName" type="xs:string" use="required"/>
+            <xs:attribute name="employee" type="xs:string" use="required"/>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="fooBars">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="bars" maxOccurs="unbounded"/>
+                <xs:element ref="foos" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="bars">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="bar" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="foos">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="foo" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="dataset">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="Bar" minOccurs="0"
+                            maxOccurs="unbounded"/>
+                <xs:element ref="Foo" minOccurs="0"
+                            maxOccurs="unbounded"/>
+                <xs:element ref="Employee" minOccurs="0"
+                            maxOccurs="unbounded"/>
+                <xs:element ref="EmployeeInfo" minOccurs="0"
+                            maxOccurs="unbounded"/>
+                <xs:element ref="fooBars" minOccurs="0"
+                            maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+</xs:schema>

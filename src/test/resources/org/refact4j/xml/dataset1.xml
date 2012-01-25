@@ -1,0 +1,17 @@
+<dataset>
+    <Bar name='bar1' id='1'/>
+    <Foo name='foo2' id='2' bar='1'/>
+    <Foo name='foo1' id='1' bar='1'/>
+    <Bar name='bar2' id='2'/>
+    <Foo name='foo3' id='3' bar='2'/>
+    <Foo name='foo4' id='4'/>
+    <Foo name='foo5' id='5'/>
+    <Foo id='10' name='d10'/>
+    <Bar id='10' name='a10'/>
+    <Foo id='11' name='d11' bar='10'/>
+    <Employee id='20' info='30'>
+        <EmployeeInfo id='30' firstName='bart' lastName='simpson' employee='20'/>
+    </Employee>
+</dataset>
+
+

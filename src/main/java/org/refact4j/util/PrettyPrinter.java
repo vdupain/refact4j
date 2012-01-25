@@ -1,0 +1,230 @@
+package org.refact4j.util;
+
+import org.refact4j.eom.EntityFieldComparator;
+import org.refact4j.eom.EntityFieldComparator.EntityFieldComparatorVisitor;
+import org.refact4j.eom.GetEntityFieldFunctor;
+import org.refact4j.eom.GetEntityFieldFunctor.GetEntityFieldFunctorVisitor;
+import org.refact4j.eom.model.Field;
+import org.refact4j.eom.model.impl.AbstractFieldStringifierFunctor;
+import org.refact4j.expr.Expression;
+import org.refact4j.expr.Expression.ExpressionVisitor;
+import org.refact4j.functor.BinaryCompose;
+import org.refact4j.functor.BinaryCompose.BinaryComposeVisitor;
+import org.refact4j.functor.CompositeUnaryPredicate;
+import org.refact4j.functor.CompositeUnaryPredicate.CompositeUnaryPredicateVisitor;
+import org.refact4j.functor.GetFieldFunctor;
+import org.refact4j.functor.GetFieldFunctor.GetFieldFunctorVisitor;
+import org.refact4j.functor.UnaryCompose;
+import org.refact4j.functor.UnaryCompose.UnaryComposeVisitor;
+import org.refact4j.functor.UnaryFunctor;
+import org.refact4j.functor.commons.Between;
+import org.refact4j.functor.commons.InstanceOf;
+import org.refact4j.functor.commons.Between.BetweenVisitor;
+import org.refact4j.functor.commons.In;
+import org.refact4j.functor.commons.In.InVisitor;
+import org.refact4j.functor.commons.InstanceOf.InstanceOfVisitor;
+import org.refact4j.functor.commons.Like;
+import org.refact4j.functor.commons.Like.LikeVisitor;
+import org.refact4j.functor.commons.NotIn;
+import org.refact4j.functor.commons.NotIn.NotInVisitor;
+import org.refact4j.functor.commons.StringLength;
+import org.refact4j.functor.commons.StringLength.StringLengthVisitor;
+import org.refact4j.functor.comparison.*;
+import org.refact4j.functor.comparison.NotNull.NotNullVisitor;
+import org.refact4j.functor.comparison.Null.NullVisitor;
+import org.refact4j.functor.identity.Identity;
+import org.refact4j.functor.identity.Identity.IdentityVisitor;
+import org.refact4j.functor.logical.And;
+import org.refact4j.functor.logical.LogicalVisitor;
+import org.refact4j.functor.logical.Not;
+import org.refact4j.functor.logical.Or;
+import org.refact4j.visitor.Visitable;
+import org.refact4j.visitor.VisitableImpl;
+
+public class PrettyPrinter implements ExpressionVisitor, BinaryComposeVisitor, UnaryComposeVisitor,
+        CompositeUnaryPredicateVisitor, EntityFieldComparatorVisitor, ComparisonVisitor, LogicalVisitor,
+        BetweenVisitor, NullVisitor, NotNullVisitor, InVisitor, NotInVisitor, LikeVisitor, InstanceOfVisitor,
+        GetEntityFieldFunctorVisitor, GetFieldFunctorVisitor, StringLengthVisitor, IdentityVisitor {
+
+	private StringBuffer buf;
+    private Expression expression;
+
+    private final AbstractFieldStringifierFunctor abstractFieldStringifierFunctor = new AbstractFieldStringifierFunctor() {
+
+        @Override
+        public String stringify(Field field) {
+            return field.getFullName();
+        }
+
+    };
+
+    public PrettyPrinter() {
+        this.buf = null;
+    }
+
+    public String toString(Object object) {
+        if (object instanceof Visitable) {
+            return toString((Visitable) object);
+        }
+        return toString(new VisitableImpl<Object>(object));
+    }
+
+    public String toString(Visitable visitable) {
+        buf = new StringBuffer(256);
+        visitable.accept(this);
+        return buf.toString();
+    }
+
+    public void visitEntityFieldComparator(EntityFieldComparator fieldComparator) {
+        buf.append('(');
+        buf.append(this.abstractFieldStringifierFunctor.stringify(fieldComparator.getField()));
+        ((Visitable) fieldComparator.getBinaryFunctor()).accept(this);
+        buf.append(fieldComparator.getValue());
+        buf.append(')');
+    }
+
+    public void visitCompositeUnaryPredicate(CompositeUnaryPredicate<?> compositeUnaryPredicate) {
+        buf.append('(');
+        UnaryFunctor<?, ?> unaryFunctor = compositeUnaryPredicate.getUnaryFunctor();
+        ((Visitable) unaryFunctor).accept(this);
+        ((Visitable) compositeUnaryPredicate.getBinaryFunctor()).accept(this);
+        buf.append(compositeUnaryPredicate.getConstantUnaryFunctor().getConstant());
+        buf.append(')');
+    }
+
+    public void visitGetEntityFieldFunctor(GetEntityFieldFunctor getEntityFieldFunctor) {
+        buf.append(this.abstractFieldStringifierFunctor.stringify(getEntityFieldFunctor.getField()));
+    }
+
+    public void visitGetFieldFunctor(GetFieldFunctor getFieldFunctor) {
+        buf.append(getFieldFunctor.getFieldName());
+    }
+
+    public void visitBinaryCompose(BinaryCompose binaryCompose) {
+        buf.append('(');
+        ((Visitable) binaryCompose.getFirstUnaryFunctor()).accept(this);
+        ((Visitable) binaryCompose.getBinaryFunctor()).accept(this);
+        ((Visitable) binaryCompose.getSecondUnaryFunctor()).accept(this);
+        buf.append(')');
+    }
+
+    public void visitUnaryCompose(UnaryCompose unaryCompose) {
+        buf.append('(');
+        UnaryFunctor secondUnaryFunctor = unaryCompose.getSecondUnaryFunctor();
+        UnaryFunctor firstUnaryFunctor = unaryCompose.getFirstUnaryFunctor();
+        if (firstUnaryFunctor instanceof Between || firstUnaryFunctor instanceof In
+                || firstUnaryFunctor instanceof NotIn) {
+            ((Visitable) secondUnaryFunctor).accept(this);
+            ((Visitable) firstUnaryFunctor).accept(this);
+        } else {
+            ((Visitable) firstUnaryFunctor).accept(this);
+            ((Visitable) secondUnaryFunctor).accept(this);
+        }
+        buf.append(')');
+    }
+
+    public void visitEqual(Equal equal) {
+        buf.append('=');
+    }
+
+    public void visitGreater(Greater greater) {
+        buf.append('>');
+    }
+
+    public void visitGreaterEqual(GreaterEqual greaterEqual) {
+        buf.append(">=");
+    }
+
+    public void visitNotEqual(NotEqual notEqual) {
+        buf.append("!=");
+    }
+
+    public void visitLess(Less less) {
+        buf.append("<");
+    }
+
+    public void visitLessEqual(LessEqual lessEqual) {
+        buf.append("<=");
+    }
+
+    public void visitMin(Min min) {
+        buf.append("MIN");
+    }
+
+    public void visitMax(Max max) {
+        buf.append("MAX");
+    }
+
+    public void visitAnd(And and) {
+        buf.append(" AND ");
+    }
+
+    public void visitOr(Or or) {
+        buf.append(" OR ");
+    }
+
+    public void visitNot(Not not) {
+        buf.append(" NOT ");
+    }
+
+    public void visitLike(Like like) {
+        buf.append(" LIKE ");
+    }
+
+    public void visitInstanceOf(InstanceOf instanceOf) {
+        buf.append(" INSTANCEOF ");
+	}
+
+    public void visitExpression(Expression expression) {
+        this.expression = expression;
+        ((Visitable) expression.getFunctor()).accept(this);
+    }
+
+    public void visitBetween(Between<?> between) {
+        buf.append(" BETWEEN ");
+        buf.append(between.getInfValue());
+        buf.append(" AND ");
+        buf.append(between.getSupValue());
+    }
+
+    public void visitNull(Null<?> nul) {
+        buf.append(" IS NULL ");
+    }
+
+    public void visitNotNull(NotNull<?> notNull) {
+        buf.append(" IS NOT NULL ");
+    }
+
+    public void visitIn(In<?> in) {
+        buf.append(" IN ");
+        appendValues(in.getValues());
+    }
+
+    public void visitNotIn(NotIn<?> notIn) {
+        buf.append(" NOT IN ");
+        appendValues(notIn.getValues());
+    }
+
+    public void visitStringLength(StringLength stringLength) {
+        buf.append(this.expression.getPropertyName()).append(".length");
+    }
+
+    public void visitIdentity(Identity identityFunctor) {
+        buf.append(this.expression.getPropertyName());
+    }
+
+    private void appendValues(Object[] values) {
+        buf.append("(");
+        for (int i = 0; i < values.length; i++) {
+            buf.append(values[i]);
+            if (i < values.length - 1) {
+                buf.append(", ");
+            }
+        }
+        buf.append(")");
+    }
+
+    public void visit(Visitable visitable) {
+    }
+
+}

@@ -1,0 +1,6 @@
+<dataset>
+    <entities>
+        <bar id='11' name='bar1'/>
+        <bar id='22' name='bar2'/>
+    </entities>
+</dataset>
