@@ -6,7 +6,7 @@ import org.refact4j.visitor.Visitor;
 public class InstanceOf extends AbstractBinaryPredicate<Object, Class<?>> {
 
 	@Override
-	protected Boolean evaluate(Object firstArg, Class<?> secondArg) {
+	protected boolean evaluate(Object firstArg, Class<?> secondArg) {
 		return firstArg != null && firstArg.getClass().isAssignableFrom(secondArg);
 	}
 

@@ -16,9 +16,9 @@ public abstract class AbstractBinaryPredicate<T1, T2> implements BinaryPredicate
 
     private T2 secondArg;
 
-    private Boolean result;
+    private boolean result;
 
-    protected abstract Boolean evaluate(T1 firstArg, T2 secondArg);
+    protected abstract boolean evaluate(T1 firstArg, T2 secondArg);
 
     public Boolean apply(T1 firstArg, T2 secondArg) {
         this.firstArg = firstArg;
@@ -35,7 +35,7 @@ public abstract class AbstractBinaryPredicate<T1, T2> implements BinaryPredicate
         return secondArg;
     }
 
-    public Boolean getResult() {
+    public boolean getResult() {
         return result;
     }
 

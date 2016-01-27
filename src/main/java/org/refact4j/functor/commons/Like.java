@@ -8,7 +8,7 @@ public class Like extends AbstractBinaryPredicate<String, String> {
     private final MatchRegEx matchRegEx = new MatchRegEx();
 
     @Override
-    protected Boolean evaluate(String firstArg, String secondArg) {
+    protected boolean evaluate(String firstArg, String secondArg) {
         return matchRegEx.apply(firstArg, secondArg);
     }
 
