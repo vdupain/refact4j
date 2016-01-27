@@ -1,10 +1,8 @@
 package org.refact4j.eom.model.impl;
 
-import org.refact4j.collection.FilterIterator;
 import org.refact4j.eom.*;
 import org.refact4j.eom.metamodel.EntityDescriptorDesc;
 import org.refact4j.eom.model.*;
-import org.refact4j.functor.UnaryPredicate;
 import org.refact4j.visitor.Visitor;
 
 import java.io.IOException;
