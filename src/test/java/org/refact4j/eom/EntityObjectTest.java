@@ -7,7 +7,6 @@ import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 import org.junit.Before;
 import org.junit.Test;
-import org.refact4j.eom.impl.EntityHolder;
 import org.refact4j.eom.impl.EntityObjectDecorator;
 import org.refact4j.eom.impl.EntityObjectImpl;
 import org.refact4j.eom.model.*;
@@ -248,12 +247,6 @@ public class EntityObjectTest {
         fooDecorated.checkValues();
         assertEquals(fooDecorated.get(FooDesc.ID), foo.get(FooDesc.ID));
         assertEquals(fooDecorated.get(FooDesc.NAME), foo.get(FooDesc.NAME));
-    }
-
-    @Test
-    public void testEntityHolder() {
-        EntityHolder holder = new EntityHolder(foo);
-        assertEquals(foo, holder.get());
     }
 
 }
