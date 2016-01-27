@@ -14,9 +14,9 @@ public abstract class AbstractUnaryPredicate<T> implements UnaryPredicate<T>, Vi
 
     private T arg;
 
-    private Boolean result;
+    private boolean result;
 
-    public abstract Boolean evaluate(T arg);
+    public abstract boolean evaluate(T arg);
 
     public Boolean apply(T arg) {
         this.arg = arg;
@@ -28,7 +28,7 @@ public abstract class AbstractUnaryPredicate<T> implements UnaryPredicate<T>, Vi
         return arg;
     }
 
-    public Boolean getResult() {
+    public boolean getResult() {
         return result;
     }
 

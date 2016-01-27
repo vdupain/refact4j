@@ -9,7 +9,7 @@ import org.refact4j.visitor.Visitor;
  */
 public class Not extends AbstractUnaryPredicate<Boolean> {
 
-    public Boolean evaluate(Boolean arg) {
+    public boolean evaluate(Boolean arg) {
         return !arg;
     }
 

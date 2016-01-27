@@ -22,7 +22,7 @@ public class Null<T> extends AbstractUnaryPredicate<T> {
     }
 
     @Override
-    public Boolean evaluate(T arg) {
+    public boolean evaluate(T arg) {
         return equal.apply(arg, null);
     }
 

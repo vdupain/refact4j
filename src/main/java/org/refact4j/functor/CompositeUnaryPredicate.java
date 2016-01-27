@@ -32,7 +32,7 @@ public class CompositeUnaryPredicate<T> extends AbstractUnaryPredicate<T> {
         this.compositeFunctor = new BinaryCompose(biFunction, function, constantUnaryFunctor);
     }
 
-    public Boolean evaluate(T arg) {
+    public boolean evaluate(T arg) {
         return this.compositeFunctor.apply(arg);
     }
 
