@@ -35,7 +35,6 @@ import org.refact4j.functor.logical.LogicalVisitor;
 import org.refact4j.functor.logical.Not;
 import org.refact4j.functor.logical.Or;
 import org.refact4j.visitor.Visitable;
-import org.refact4j.visitor.VisitableImpl;
 
 public class PrettyPrinter implements ExpressionVisitor, BinaryComposeVisitor, UnaryComposeVisitor,
         CompositeUnaryPredicateVisitor, EntityFieldComparatorVisitor, ComparisonVisitor, LogicalVisitor,
@@ -62,7 +61,7 @@ public class PrettyPrinter implements ExpressionVisitor, BinaryComposeVisitor, U
         if (object instanceof Visitable) {
             return toString((Visitable) object);
         }
-        return toString(new VisitableImpl<Object>(object));
+        return  toString(object.toString());
     }
 
     public String toString(Visitable visitable) {

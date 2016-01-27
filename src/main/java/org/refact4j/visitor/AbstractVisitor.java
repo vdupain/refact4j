@@ -28,11 +28,6 @@ public abstract class AbstractVisitor implements Visitor {
             // System.out.println("interface:" + interfaces[i]);
             try {
                 String visitMethod = "visit";
-                if (visitMethodName.startsWith("preVisit")) {
-                    visitMethod = "preVisit";
-                } else if (visitMethodName.startsWith("postVisit")) {
-                    visitMethod = "postVisit";
-                }
                 return this.getMethod(visitMethod + anInterface.getSimpleName(), anInterface);
             } catch (Exception ex) {
                 throw new RuntimeException(ex);
