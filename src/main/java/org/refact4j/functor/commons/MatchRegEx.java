@@ -8,7 +8,7 @@ import java.util.regex.Pattern;
 public class MatchRegEx extends AbstractBinaryPredicate<String, String> {
 
     @Override
-    protected boolean evaluate(String arg, String pattern) {
+    public boolean test(String arg, String pattern) {
         String regEx = (arg != null) ? arg : "";
         Pattern p = Pattern.compile(regEx);
         return p.matcher(regEx).find();

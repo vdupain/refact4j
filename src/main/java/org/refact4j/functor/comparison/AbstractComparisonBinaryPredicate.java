@@ -13,7 +13,7 @@ abstract class AbstractComparisonBinaryPredicate<T> extends AbstractBinaryPredic
         }
     }
 
-    protected boolean evaluate(T arg1, T arg2) {
+    public boolean test(T arg1, T arg2) {
         this.accept(this.visitor);
         return visitor.getResult();
     }

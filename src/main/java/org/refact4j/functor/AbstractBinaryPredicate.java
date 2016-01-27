@@ -2,6 +2,8 @@ package org.refact4j.functor;
 
 import org.refact4j.visitor.Visitable;
 
+import java.util.function.BiPredicate;
+
 /**
  * This abstract class provides a skeletal implementation of the BinaryPredicate
  * interface, to minimize the effort required to implement this interface. To
@@ -11,20 +13,15 @@ import org.refact4j.visitor.Visitable;
  * @param <T1>
  * @param <T2>
  */
-public abstract class AbstractBinaryPredicate<T1, T2> implements BinaryPredicate<T1, T2>, Visitable {
+public abstract class AbstractBinaryPredicate<T1, T2> implements BiPredicate<T1,T2>, BinaryPredicate<T1, T2>, Visitable {
     private T1 firstArg;
 
     private T2 secondArg;
 
-    private boolean result;
-
-    protected abstract boolean evaluate(T1 firstArg, T2 secondArg);
-
     public Boolean apply(T1 firstArg, T2 secondArg) {
         this.firstArg = firstArg;
         this.secondArg = secondArg;
-        result = evaluate(firstArg, secondArg);
-        return result;
+        return test(firstArg, secondArg);
     }
 
     public T1 getFirstArg() {
@@ -33,10 +30,6 @@ public abstract class AbstractBinaryPredicate<T1, T2> implements BinaryPredicate
 
     public T2 getSecondArg() {
         return secondArg;
-    }
-
-    public boolean getResult() {
-        return result;
     }
 
 }

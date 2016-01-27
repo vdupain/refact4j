@@ -9,7 +9,7 @@ import org.refact4j.visitor.Visitor;
  */
 public class Or extends AbstractBinaryPredicate<Boolean, Boolean> {
 
-    public boolean evaluate(Boolean arg1, Boolean arg2) {
+    public boolean test(Boolean arg1, Boolean arg2) {
         return arg1 || arg2;
     }
 

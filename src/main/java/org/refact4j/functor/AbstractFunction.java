@@ -5,8 +5,8 @@ import org.refact4j.visitor.Visitable;
 /**
  * This abstract class provides a skeletal implementation of the Function
  * interface, to minimize the effort required to implement this interface. To
- * implement a unary functor, the programmer needs only to extend this class and
- * provide implementation for the test method.
+ * implement a unary function, the programmer needs only to extend this class and
+ * provide implementation for the apply method.
  *
  * @param <T>
  */
