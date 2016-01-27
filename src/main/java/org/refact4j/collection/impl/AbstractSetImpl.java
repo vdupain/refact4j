@@ -1,13 +1,13 @@
 package org.refact4j.collection.impl;
 
 import org.refact4j.collection.ChangeSet;
-import org.refact4j.collection.CollectionHelper;
 import org.refact4j.collection.Set;
 import org.refact4j.functor.UnaryPredicate;
 
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public abstract class AbstractSetImpl<T, ID extends Serializable, TYPE> extends HashSet<T> implements Set<T, ID, TYPE> {
 
@@ -44,7 +44,7 @@ public abstract class AbstractSetImpl<T, ID extends Serializable, TYPE> extends 
     }
 
     public void apply(TYPE type, java.util.function.Function<T,?> functor) {
-        CollectionHelper.foreach(this.getAll(type).iterator(), functor);
+        this.getAll(type).stream().map(e -> functor.apply(e)).collect(Collectors.toList());
     }
 
     public ChangeSet<T> getChangeSet() {

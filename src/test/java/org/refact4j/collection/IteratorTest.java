@@ -13,10 +13,10 @@ import org.refact4j.expr.ExpressionBuilder;
 import org.refact4j.functor.UnaryPredicate;
 import org.refact4j.model.FooDesc;
 
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.NoSuchElementException;
+import java.util.*;
 import java.util.function.Function;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
 
 public class IteratorTest {
@@ -50,8 +50,13 @@ public class IteratorTest {
 
         FilterIterator<EntityObject> filteredIterator = new FilterIterator<EntityObject>(i, expression);
         Summer summer = new Summer();
-        CollectionHelper.foreach(filteredIterator, summer);
+        toList(filteredIterator).forEach(s -> summer.apply(s));
         assertEquals(505, summer.getSum());
+    }
+
+    public static <T> java.util.List<T> toList(final Iterable<T> iterable) {
+        return StreamSupport.stream(iterable.spliterator(), false)
+                .collect(Collectors.toList());
     }
 
     @Test
@@ -62,13 +67,6 @@ public class IteratorTest {
                         return Boolean.TRUE;
                     }
                 });
-        CollectionHelper.foreach(filteredIterator, new Function<Object, Object>() {
-
-            public Object apply(Object arg) {
-                return null;
-            }
-
-        });
         try {
             filteredIterator.remove();
             fail("Expected UnsupportedOperationException");

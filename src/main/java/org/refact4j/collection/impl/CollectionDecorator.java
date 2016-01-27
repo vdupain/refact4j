@@ -1,7 +1,6 @@
 package org.refact4j.collection.impl;
 
 import org.refact4j.collection.ChangeSet;
-import org.refact4j.collection.CollectionHelper;
 import org.refact4j.core.EqualityResolver;
 import org.refact4j.core.Finder;
 import org.refact4j.core.IdResolver;
@@ -9,10 +8,10 @@ import org.refact4j.core.TypeResolver;
 import org.refact4j.functor.UnaryPredicate;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class CollectionDecorator<T, ID extends Serializable, TYPE> implements Collection<T>, Finder<T, ID, TYPE> {
 
@@ -61,7 +60,7 @@ public class CollectionDecorator<T, ID extends Serializable, TYPE> implements Co
     }
 
     public List<T> findByPredicate(UnaryPredicate<T> predicate) {
-        return new ArrayList<T>(CollectionHelper.filter(this.collection, predicate));
+        return this.collection.stream().filter(t -> predicate.apply(t)).collect(Collectors.toList());
     }
 
     public T findUnique(TYPE type, UnaryPredicate<T> predicate) {
@@ -73,16 +72,11 @@ public class CollectionDecorator<T, ID extends Serializable, TYPE> implements Co
     }
 
     public List<T> getAll(final TYPE type) {
-        UnaryPredicate<T> predicate = new UnaryPredicate<T>() {
-            public Boolean apply(T arg) {
-                return typeResolver.isSameType(type, typeResolver.getTypeOf(arg));
-            }
-        };
-        return new ArrayList<T>(CollectionHelper.filter(this.collection, predicate));
+        return this.collection.stream().filter(t -> typeResolver.isSameType(type, typeResolver.getTypeOf(t))).collect(Collectors.toList());
     }
 
     public List<T> getAll(TYPE type, UnaryPredicate<T> predicate) {
-        return new ArrayList<T>(CollectionHelper.filter(this.getAll(type), predicate));
+        return this.getAll(type).stream().filter(t -> predicate.apply(t)).collect(Collectors.toList());
     }
 
     public void setTypeResolver(TypeResolver<T, TYPE> typeResolver) {

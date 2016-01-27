@@ -3,7 +3,6 @@ package org.refact4j.eom.annotations;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import org.refact4j.collection.CollectionHelper;
 import org.refact4j.eom.EOMContext;
 import org.refact4j.eom.EntityFinder;
 import org.refact4j.eom.EntityObject;

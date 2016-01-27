@@ -1,6 +1,5 @@
 package org.refact4j.eom.impl;
 
-import org.refact4j.collection.CollectionHelper;
 import org.refact4j.collection.impl.AbstractListImpl;
 import org.refact4j.core.IdResolver;
 import org.refact4j.core.TypeResolver;
@@ -12,7 +11,6 @@ import org.refact4j.eom.model.Key;
 
 import java.util.Collection;
 import java.util.List;
-import java.util.function.Function;
 import java.util.stream.Collectors;
 
 public class EntityListImpl extends AbstractListImpl<EntityObject, Key, EntityDescriptor> implements EntityList {
