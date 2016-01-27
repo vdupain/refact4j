@@ -1,28 +1,16 @@
 package org.refact4j.eom.model.impl;
 
 import org.refact4j.collection.FilterIterator;
-import org.refact4j.eom.EOMContext;
-import org.refact4j.eom.EntityExpression;
-import org.refact4j.eom.EntityObject;
-import org.refact4j.eom.EntityObjectBuilder;
-import org.refact4j.eom.EntityStringifier;
+import org.refact4j.eom.*;
 import org.refact4j.eom.metamodel.EntityDescriptorDesc;
-import org.refact4j.eom.model.DataField;
-import org.refact4j.eom.model.EntityDescriptor;
-import org.refact4j.eom.model.Field;
-import org.refact4j.eom.model.Property;
-import org.refact4j.eom.model.RelationField;
+import org.refact4j.eom.model.*;
 import org.refact4j.functor.UnaryPredicate;
 import org.refact4j.visitor.Visitor;
 
 import java.io.IOException;
 import java.io.ObjectInput;
 import java.io.ObjectOutput;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
-import java.util.TreeMap;
+import java.util.*;
 
 public class EntityDescriptorImpl implements EntityDescriptor {
     private String name;

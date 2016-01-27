@@ -1,11 +1,7 @@
 package org.refact4j.test;
 
 import org.refact4j.test.reader.TestSuiteXmlElementReader;
-import org.refact4j.xml.DatasetConverterHolder;
-import org.refact4j.xml.XmlDescriptor;
-import org.refact4j.xml.XmlElement;
-import org.refact4j.xml.XmlElementFactory;
-import org.refact4j.xml.XmlElementHandler;
+import org.refact4j.xml.*;
 import org.refact4j.xml.reader.DefaultXmlElementReader;
 
 import java.util.Arrays;

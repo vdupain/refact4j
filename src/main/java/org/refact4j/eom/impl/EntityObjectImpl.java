@@ -1,10 +1,6 @@
 package org.refact4j.eom.impl;
 
-import org.refact4j.eom.EntityObject;
-import org.refact4j.eom.EntityObjectChangeSetDeltaPropertyChangeListener;
-import org.refact4j.eom.EntityObjectEventSupport;
-import org.refact4j.eom.EntityObjectListener;
-import org.refact4j.eom.EntityStringifier;
+import org.refact4j.eom.*;
 import org.refact4j.eom.model.*;
 import org.refact4j.expr.Expression;
 import org.refact4j.xml.AbstractXMLizer;
@@ -14,14 +10,7 @@ import java.beans.PropertyChangeSupport;
 import java.io.IOException;
 import java.io.ObjectInput;
 import java.io.ObjectOutput;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Default implementation of EntityObject interface.

@@ -2,15 +2,7 @@ package org.refact4j.eom.metamodel;
 
 import org.refact4j.eom.EntityObject;
 import org.refact4j.eom.EntityPredicate;
-import org.refact4j.eom.model.DataTypeEntity;
-import org.refact4j.eom.model.EntityDescriptor;
-import org.refact4j.eom.model.EntityDescriptorBuilder;
-import org.refact4j.eom.model.Field;
-import org.refact4j.eom.model.FieldFactory;
-import org.refact4j.eom.model.Key;
-import org.refact4j.eom.model.KeyBuilder;
-import org.refact4j.eom.model.ManyToOneRelationField;
-import org.refact4j.eom.model.StringField;
+import org.refact4j.eom.model.*;
 import org.refact4j.visitor.AbstractVisitor;
 
 import java.util.Date;

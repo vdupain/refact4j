@@ -4,6 +4,7 @@ import org.refact4j.visitor.Visitable;
 import org.refact4j.visitor.Visitor;
 
 import java.util.function.BiFunction;
+import java.util.function.BinaryOperator;
 
 /**
  * BinaryCompose is a Unary Functor that passes the results of two Unary
@@ -18,7 +19,7 @@ import java.util.function.BiFunction;
  * @param <R>
  */
 public class BinaryCompose<F1, F2, T, R> implements Visitable, java.util.function.Function<T, R> {
-
+BinaryOperator xx;
     private final java.util.function.Function<T,F1> firstFunction;
 
     private final java.util.function.Function<T,F2> secondFunction;

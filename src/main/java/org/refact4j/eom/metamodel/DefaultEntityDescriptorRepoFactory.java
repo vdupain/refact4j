@@ -1,11 +1,7 @@
 package org.refact4j.eom.metamodel;
 
 import org.refact4j.collection.DataSet;
-import org.refact4j.eom.ConverterHelper;
-import org.refact4j.eom.EntityObject;
-import org.refact4j.eom.EntitySet;
-import org.refact4j.eom.EntitySetBuilder;
-import org.refact4j.eom.EntityUtils;
+import org.refact4j.eom.*;
 import org.refact4j.eom.impl.EntityDataSetImpl;
 import org.refact4j.eom.impl.EntityListImpl;
 import org.refact4j.eom.metamodel.xml.EOMXmlDescriptor;

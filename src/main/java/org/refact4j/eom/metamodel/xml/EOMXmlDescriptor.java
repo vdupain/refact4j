@@ -3,11 +3,7 @@ package org.refact4j.eom.metamodel.xml;
 import org.refact4j.eom.metamodel.xml.reader.EntityDescriptorRepoXmlElementReader;
 import org.refact4j.eom.metamodel.xml.writer.EntityDescriptorXmlNodeWriter;
 import org.refact4j.eom.model.EntityDescriptorRepository;
-import org.refact4j.xml.DatasetConverterHolder;
-import org.refact4j.xml.XmlDescriptor;
-import org.refact4j.xml.XmlElement;
-import org.refact4j.xml.XmlElementFactory;
-import org.refact4j.xml.XmlElementHandler;
+import org.refact4j.xml.*;
 import org.refact4j.xml.impl.DefaultXmlElementHandler;
 import org.refact4j.xml.reader.DefaultXmlElementReader;
 

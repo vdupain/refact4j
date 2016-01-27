@@ -8,11 +8,7 @@ import org.refact4j.eom.model.EntityDescriptorRepository;
 import org.refact4j.eom.model.EntityDescriptorRepositoryHolder;
 import org.refact4j.eom.xml.EntityXmlDescriptor;
 import org.refact4j.eom.xml.reader.EntityXmlElementReader;
-import org.refact4j.xml.DataSet2XmlConverter;
-import org.refact4j.xml.DatasetConverterHolder;
-import org.refact4j.xml.XmlAttributes;
-import org.refact4j.xml.XmlElement;
-import org.refact4j.xml.XmlElementFactory;
+import org.refact4j.xml.*;
 import org.refact4j.xml.impl.Dataset2XmlConverterImpl;
 
 public class DatasetXmlElementReader extends DefaultXmlElementReader {

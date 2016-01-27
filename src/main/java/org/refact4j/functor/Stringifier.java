@@ -17,4 +17,25 @@ package org.refact4j.functor;
  * @param <T>
  */
 public interface Stringifier<T> extends java.util.function.Function<T, String> {
+
+    /**
+     * Default implementation of a Stringifier calls the toString method of the
+     * object or null if the object is null.
+     */
+    Stringifier<Object> DEFAULT = new Stringifier<Object>() {};
+
+    /**
+     * Produce a String representation of an object.
+     *
+     * @param arg the Object for which a String should be produced
+     * @return
+     */
+    default String stringify(T arg) {
+        return arg != null ? arg.toString() : "null";
+    }
+
+    default String apply(T arg) {
+        return this.stringify(arg);
+    }
+
 }

@@ -1,12 +1,7 @@
 package org.refact4j.eom.xml.reader;
 
 import org.refact4j.collection.DataSet;
-import org.refact4j.eom.EntityCollection;
-import org.refact4j.eom.EntityFinder;
-import org.refact4j.eom.EntityList;
-import org.refact4j.eom.EntityObject;
-import org.refact4j.eom.EntityObjectBuilder;
-import org.refact4j.eom.String2ValueFieldConverter;
+import org.refact4j.eom.*;
 import org.refact4j.eom.impl.EntityDataSetImpl;
 import org.refact4j.eom.impl.EntityListImpl;
 import org.refact4j.eom.model.DefaultFieldVisitor;

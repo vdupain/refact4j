@@ -1,10 +1,10 @@
 package org.refact4j.eom.model.impl;
 
 import org.refact4j.eom.model.Field;
-import org.refact4j.functor.AbstractStringifier;
+import org.refact4j.functor.Stringifier;
 import org.refact4j.util.NotImplementedException;
 
-public abstract class AbstractFieldStringifierFunctor extends AbstractStringifier<Field> {
+public abstract class AbstractFieldStringifierFunctor implements Stringifier<Field> {
 
     public static final AbstractFieldStringifierFunctor PRETTY = new AbstractFieldStringifierFunctor() {
 

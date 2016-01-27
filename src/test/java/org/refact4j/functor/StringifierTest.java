@@ -30,11 +30,11 @@ public class StringifierTest {
 
     @Test
     public void testDefaultStringifier() {
-        assertEquals(Integer.toString(1), AbstractStringifier.DEFAULT.stringify(1));
-        assertEquals("abcdef", AbstractStringifier.DEFAULT.stringify("abcdef"));
-        assertEquals("abcdef", AbstractStringifier.DEFAULT.apply("abcdef"));
-        assertEquals("null", AbstractStringifier.DEFAULT.stringify(null));
-        assertEquals(StringHelper.FILE_SEPARATOR, AbstractStringifier.DEFAULT
+        assertEquals(Integer.toString(1), Stringifier.DEFAULT.stringify(1));
+        assertEquals("abcdef", Stringifier.DEFAULT.stringify("abcdef"));
+        assertEquals("abcdef", Stringifier.DEFAULT.apply("abcdef"));
+        assertEquals("null", Stringifier.DEFAULT.stringify(null));
+        assertEquals(StringHelper.FILE_SEPARATOR, Stringifier.DEFAULT
                 .stringify(StringHelper.FILE_SEPARATOR));
         assertEquals(FooDesc.INSTANCE.getName(), FooDesc.INSTANCE.toString());
     }

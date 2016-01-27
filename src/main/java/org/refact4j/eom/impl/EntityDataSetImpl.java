@@ -1,13 +1,7 @@
 package org.refact4j.eom.impl;
 
 import org.refact4j.collection.DataSet;
-import org.refact4j.eom.EntityCollection;
-import org.refact4j.eom.EntityFunctor;
-import org.refact4j.eom.EntityList;
-import org.refact4j.eom.EntityObject;
-import org.refact4j.eom.EntityPredicate;
-import org.refact4j.eom.EntitySet;
-import org.refact4j.eom.EntitySetBuilder;
+import org.refact4j.eom.*;
 import org.refact4j.eom.model.EntityDescriptor;
 import org.refact4j.eom.model.Field;
 import org.refact4j.eom.model.Key;

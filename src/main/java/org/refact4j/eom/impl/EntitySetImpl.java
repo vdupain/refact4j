@@ -1,8 +1,5 @@
 package org.refact4j.eom.impl;
 
-import java.util.Collection;
-import java.util.List;
-
 import org.refact4j.collection.impl.AbstractSetImpl;
 import org.refact4j.core.IdResolver;
 import org.refact4j.core.TypeResolver;
@@ -14,6 +11,9 @@ import org.refact4j.eom.model.EntityDescriptor;
 import org.refact4j.eom.model.Field;
 import org.refact4j.eom.model.Key;
 import org.refact4j.util.EqualsHelper;
+
+import java.util.Collection;
+import java.util.List;
 
 public class EntitySetImpl extends AbstractSetImpl<EntityObject, Key, EntityDescriptor> implements EntitySet {
 

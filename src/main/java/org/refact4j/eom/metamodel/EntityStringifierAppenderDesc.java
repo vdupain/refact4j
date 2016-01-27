@@ -1,11 +1,6 @@
 package org.refact4j.eom.metamodel;
 
-import org.refact4j.eom.model.EntityDescriptor;
-import org.refact4j.eom.model.EntityDescriptorBuilder;
-import org.refact4j.eom.model.FieldFactory;
-import org.refact4j.eom.model.IntegerField;
-import org.refact4j.eom.model.ManyToOneRelationField;
-import org.refact4j.eom.model.StringField;
+import org.refact4j.eom.model.*;
 
 public class EntityStringifierAppenderDesc {
 

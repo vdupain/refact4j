@@ -1,9 +1,5 @@
 package org.refact4j.eom.annotations;
 
-import java.lang.reflect.InvocationHandler;
-import java.lang.reflect.Method;
-import java.lang.reflect.Proxy;
-
 import org.refact4j.eom.EntityFinder;
 import org.refact4j.eom.EntityObject;
 import org.refact4j.eom.EntityObjectBuilder;
@@ -12,6 +8,10 @@ import org.refact4j.eom.model.Field;
 import org.refact4j.eom.model.Key;
 import org.refact4j.eom.model.ManyToOneRelationField;
 import org.refact4j.util.MethodHelper;
+
+import java.lang.reflect.InvocationHandler;
+import java.lang.reflect.Method;
+import java.lang.reflect.Proxy;
 
 public class AnnotedEntityBindableBeanConverter<T> extends AbstractBeanConverter<T> {
 

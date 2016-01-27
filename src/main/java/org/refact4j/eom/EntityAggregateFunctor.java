@@ -1,10 +1,8 @@
 package org.refact4j.eom;
 
-import org.refact4j.collection.FilterIterator;
 import org.refact4j.eom.impl.EntityListImpl;
 import org.refact4j.eom.model.EntityDescriptor;
 import org.refact4j.eom.model.Field;
-import org.refact4j.functor.UnaryPredicate;
 import org.refact4j.functor.aggregate.AbstractAggregateFunctor;
 import org.refact4j.functor.aggregate.AggregateFunctor;
 import org.refact4j.functor.aggregate.MaxValue;

@@ -1,14 +1,6 @@
 package org.refact4j.eom;
 
-import org.refact4j.eom.model.BooleanField;
-import org.refact4j.eom.model.DateField;
-import org.refact4j.eom.model.DefaultFieldVisitor;
-import org.refact4j.eom.model.DoubleField;
-import org.refact4j.eom.model.IntegerField;
-import org.refact4j.eom.model.Key;
-import org.refact4j.eom.model.ManyToOneRelationField;
-import org.refact4j.eom.model.OneToOneRelationField;
-import org.refact4j.eom.model.StringField;
+import org.refact4j.eom.model.*;
 
 import java.util.Date;
 import java.util.function.Function;

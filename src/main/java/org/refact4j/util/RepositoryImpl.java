@@ -1,10 +1,6 @@
 package org.refact4j.util;
 
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 public class RepositoryImpl<K, T> implements Repository<K, T> {
 

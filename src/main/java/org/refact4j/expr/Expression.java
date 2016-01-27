@@ -1,24 +1,13 @@
 package org.refact4j.expr;
 
 import org.refact4j.functor.*;
-import org.refact4j.functor.commons.Between;
-import org.refact4j.functor.commons.In;
-import org.refact4j.functor.commons.InstanceOf;
-import org.refact4j.functor.commons.Like;
-import org.refact4j.functor.commons.NotIn;
-import org.refact4j.functor.commons.StringLength;
-import org.refact4j.functor.comparison.Equal;
-import org.refact4j.functor.comparison.Greater;
-import org.refact4j.functor.comparison.GreaterEqual;
-import org.refact4j.functor.comparison.Less;
-import org.refact4j.functor.comparison.LessEqual;
-import org.refact4j.functor.comparison.NotEqual;
-import org.refact4j.functor.comparison.NotNull;
-import org.refact4j.functor.comparison.Null;
+import org.refact4j.functor.commons.*;
+import org.refact4j.functor.comparison.*;
 import org.refact4j.functor.identity.Identity;
 import org.refact4j.functor.logical.And;
 import org.refact4j.functor.logical.Not;
 import org.refact4j.functor.logical.Or;
+import org.refact4j.util.PrettyPrinter;
 import org.refact4j.visitor.Visitable;
 import org.refact4j.visitor.Visitor;
 
@@ -175,7 +164,7 @@ public class Expression<T> implements Predicate<T>, UnaryPredicate<T>, Visitable
 
     @Override
     public String toString() {
-        return ExpressionStringifier.DEFAULT.stringify(this);
+        return new PrettyPrinter().toString(this);
     }
 
 }

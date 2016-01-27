@@ -1,13 +1,13 @@
 package org.refact4j.collection.impl;
 
+import org.refact4j.collection.ChangeSet;
+import org.refact4j.collection.ChangeSetDelta;
+import org.refact4j.collection.ChangeSetListener;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import org.refact4j.collection.ChangeSet;
-import org.refact4j.collection.ChangeSetDelta;
-import org.refact4j.collection.ChangeSetListener;
 
 public class ChangeSetImpl<T> implements ChangeSet<T> {
 

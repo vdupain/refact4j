@@ -5,11 +5,7 @@ import org.refact4j.eom.model.EntityDescriptorRepository;
 import org.refact4j.eom.model.EntityDescriptorRepositoryHolder;
 import org.refact4j.eom.xml.reader.EntitiesXmlElementReader;
 import org.refact4j.eom.xml.writer.EntityXmlNodeWriter;
-import org.refact4j.xml.DatasetConverterHolder;
-import org.refact4j.xml.XmlDescriptor;
-import org.refact4j.xml.XmlElement;
-import org.refact4j.xml.XmlElementFactory;
-import org.refact4j.xml.XmlElementHandler;
+import org.refact4j.xml.*;
 import org.refact4j.xml.impl.DefaultXmlElementHandler;
 import org.refact4j.xml.reader.DefaultXmlElementReader;
 

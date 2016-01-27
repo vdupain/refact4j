@@ -1,15 +1,7 @@
 package org.refact4j.eom.model;
 
 import org.refact4j.eom.EntityCollection;
-import org.refact4j.eom.model.impl.BooleanFieldImpl;
-import org.refact4j.eom.model.impl.DateFieldImpl;
-import org.refact4j.eom.model.impl.DoubleFieldImpl;
-import org.refact4j.eom.model.impl.IntegerFieldImpl;
-import org.refact4j.eom.model.impl.ManyToOneRelationFieldImpl;
-import org.refact4j.eom.model.impl.OneToManyRelationFieldImpl;
-import org.refact4j.eom.model.impl.OneToOneRelationFieldImpl;
-import org.refact4j.eom.model.impl.PropertyImpl;
-import org.refact4j.eom.model.impl.StringFieldImpl;
+import org.refact4j.eom.model.impl.*;
 import org.refact4j.expr.Expression;
 
 import java.util.Date;

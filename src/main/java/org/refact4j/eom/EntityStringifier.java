@@ -5,7 +5,7 @@ import org.refact4j.eom.model.EntityDescriptor;
 import org.refact4j.eom.model.Field;
 import org.refact4j.eom.model.Key;
 import org.refact4j.eom.xml.writer.EntityXmlWriterHelper;
-import org.refact4j.functor.AbstractStringifier;
+import org.refact4j.functor.Stringifier;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -14,7 +14,7 @@ import java.util.List;
 /**
  * EntityStringifier is the default implementation of EntityObject Stringifier.
  */
-public class EntityStringifier extends AbstractStringifier<EntityObject> implements EntityFunctor<String>, ToEntity {
+public class EntityStringifier implements Stringifier<EntityObject>, EntityFunctor<String>, ToEntity {
 
     public static final EntityStringifier DEFAULT = new EntityStringifier() {
         public String stringify(EntityObject entityObject) {
