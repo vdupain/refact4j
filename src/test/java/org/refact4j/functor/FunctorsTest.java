@@ -85,11 +85,11 @@ public class FunctorsTest {
                 100.);
         EntityObject dummyEntity = EntityObjectBuilder.init(FooDesc.INSTANCE).setFieldValue(FooDesc.VALUE,
                 99.).getEntity();
-        assertFalse(fieldComparator.evaluate(dummyEntity));
+        assertFalse(fieldComparator.test(dummyEntity));
 
         fieldComparator = new EntityFieldComparator<Double>(new GreaterEqual(), FooDesc.VALUE, 12.);
         dummyEntity = EntityObjectBuilder.init(FooDesc.INSTANCE).setFieldValue(FooDesc.VALUE, 12.).getEntity();
-        assertTrue(fieldComparator.evaluate(dummyEntity));
+        assertTrue(fieldComparator.test(dummyEntity));
 
         UnaryPredicate<EntityObject> dummyWith100AsValue = new FieldValuePredicate<Double>(FooDesc.VALUE, 100.);
         dummyEntity = EntityObjectBuilder.init(FooDesc.INSTANCE).setFieldValue(FooDesc.VALUE, 100.)

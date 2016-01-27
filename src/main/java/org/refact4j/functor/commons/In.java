@@ -27,7 +27,7 @@ public class In<T> extends AbstractUnaryPredicate<T> {
     }
 
     @Override
-    public boolean evaluate(T arg) {
+    public boolean test(T arg) {
         return pred.apply(arg);
     }
 

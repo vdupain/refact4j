@@ -24,7 +24,7 @@ public class NotNull<T> extends AbstractUnaryPredicate<T> {
     }
 
     @Override
-    public boolean evaluate(T arg) {
+    public boolean test(T arg) {
         return notEqual.apply(arg, null);
     }
 

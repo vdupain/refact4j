@@ -156,7 +156,7 @@ public class Expression<T> extends AbstractUnaryPredicate<T> {
         return name;
     }
 
-    public boolean evaluate(T arg) {
+    public boolean test(T arg) {
         return this.apply(arg);
     }
 

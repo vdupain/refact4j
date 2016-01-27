@@ -10,7 +10,7 @@ import java.util.Comparator;
  * This abstract class provides a skeletal implementation of the
  * AggregateFunctor interface, to minimize the effort required to implement this
  * interface. To implement an aggregate functor, the programmer needs only to
- * extend this class and provide implementation for the evaluate method.
+ * extend this class and provide implementation for the test method.
  *
  * @param <T>
  */

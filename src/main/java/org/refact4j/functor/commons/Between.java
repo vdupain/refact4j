@@ -39,7 +39,7 @@ public class Between<T> extends AbstractUnaryPredicate<T> {
     }
 
     @Override
-    public boolean evaluate(T arg) {
+    public boolean test(T arg) {
         return greaterEqual.apply(arg, infValue) && lessEqual.apply(arg, supValue);
     }
 

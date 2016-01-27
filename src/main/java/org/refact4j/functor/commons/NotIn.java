@@ -27,7 +27,7 @@ public class NotIn<T> extends AbstractUnaryPredicate<T> {
     }
 
     @Override
-    public boolean evaluate(T arg) {
+    public boolean test(T arg) {
         return notIn.apply(arg);
     }
 
