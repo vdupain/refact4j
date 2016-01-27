@@ -10,7 +10,7 @@ import java.util.Comparator;
  * comparator supplied at construction time, although a default comparator will
  * be used if the nested Comparable class' default constructor is used.
  */
-public class Max<T> extends AbstractComparisonBinaryFunctor<T> {
+public class Max<T> extends AbstractComparisonBiFunction<T> {
 
     public Max() {
         this(null);

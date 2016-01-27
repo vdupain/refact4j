@@ -9,7 +9,7 @@ public class Like extends AbstractBinaryPredicate<String, String> {
 
     @Override
     protected Boolean evaluate(String firstArg, String secondArg) {
-        return matchRegEx.eval(firstArg, secondArg);
+        return matchRegEx.apply(firstArg, secondArg);
     }
 
     public void accept(Visitor visitor) {

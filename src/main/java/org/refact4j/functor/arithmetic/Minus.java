@@ -6,7 +6,7 @@ package org.refact4j.functor.arithmetic;
  *
  * @param <T>
  */
-public class Minus<T extends Number> extends AbstractArithmeticBinaryFunctor<T> {
+public class Minus<T extends Number> extends AbstractArithmeticBiFunction<T> {
 
     @Override
     protected T evaluate(T firstArg, T secondArg) {

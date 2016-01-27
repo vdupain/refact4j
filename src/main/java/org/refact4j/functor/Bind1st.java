@@ -3,7 +3,7 @@ package org.refact4j.functor;
 import org.refact4j.visitor.Visitor;
 
 /**
- * Bind1st is a unary functor that wraps a given BinaryFunctor, passing a
+ * Bind1st is a unary functor that wraps a given BiFunction, passing a
  * constant value as the first argument of the child functor. The runtime
  * argument is passed as the second argument of the child functor.
  *
@@ -14,12 +14,12 @@ import org.refact4j.visitor.Visitor;
 
 public class Bind1st<C, T, R> extends AbstractFunction<T, R> {
 
-    private final BinaryFunctor<C, T, R> binaryFunctor;
+    private final BiFunction<C, T, R> biFunction;
     private final C constant;
 
-    public Bind1st(BinaryFunctor<C, T, R> functor, C constant) {
+    public Bind1st(BiFunction<C, T, R> functor, C constant) {
         this.constant = constant;
-        binaryFunctor = functor;
+        biFunction = functor;
     }
 
     /**
@@ -29,7 +29,7 @@ public class Bind1st<C, T, R> extends AbstractFunction<T, R> {
      * @return The result of the evaluation.
      */
     public R evaluate(T arg) {
-        return binaryFunctor.eval(constant, arg);
+        return biFunction.apply(constant, arg);
     }
 
     /**

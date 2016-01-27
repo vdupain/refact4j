@@ -21,11 +21,11 @@ public class BinaryCompose<F1, F2, T, R> implements Visitable, java.util.functio
 
     private final java.util.function.Function<T,F2> secondFunction;
 
-    private final BinaryFunctor<F1, F2, R> binaryFunctor;
+    private final BiFunction<F1, F2, R> biFunction;
 
-    public BinaryCompose(BinaryFunctor<F1, F2, R> binaryFunctor, java.util.function.Function<T,F1> firstFunction,
+    public BinaryCompose(BiFunction<F1, F2, R> biFunction, java.util.function.Function<T,F1> firstFunction,
                          java.util.function.Function<T,F2> secondFunction) {
-        this.binaryFunctor = binaryFunctor;
+        this.biFunction = biFunction;
         this.firstFunction = firstFunction;
         this.secondFunction = secondFunction;
     }
@@ -34,11 +34,11 @@ public class BinaryCompose<F1, F2, T, R> implements Visitable, java.util.functio
      * f(g(x),h(x))
      */
     public R apply(T arg) {
-        return binaryFunctor.eval(firstFunction.apply(arg), secondFunction.apply(arg));
+        return biFunction.apply(firstFunction.apply(arg), secondFunction.apply(arg));
     }
 
-    public BinaryFunctor<F1, F2, R> getBinaryFunctor() {
-        return binaryFunctor;
+    public BiFunction<F1, F2, R> getBiFunction() {
+        return biFunction;
     }
 
     public java.util.function.Function<T,F1> getFirstFunction() {

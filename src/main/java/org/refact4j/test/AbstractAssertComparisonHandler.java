@@ -18,13 +18,13 @@ public abstract class AbstractAssertComparisonHandler<T> implements AssertCompar
 
     protected abstract void assertion(T expected, T actual);
 
-    public Boolean eval(T expected, T actual) {
+    public Boolean apply(T expected, T actual) {
         assertion(expected, actual);
         return true;
     }
 
     public void assertion() {
-        this.eval(expected, actual);
+        this.apply(expected, actual);
     }
 
     public Object getExpected() {

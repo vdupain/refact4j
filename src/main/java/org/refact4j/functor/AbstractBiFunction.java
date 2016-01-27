@@ -3,7 +3,7 @@ package org.refact4j.functor;
 import org.refact4j.visitor.Visitable;
 
 /**
- * This abstract class provides a skeletal implementation of the BinaryFunctor
+ * This abstract class provides a skeletal implementation of the BiFunction
  * interface, to minimize the effort required to implement this interface. To
  * implement a binary functor, the programmer needs only to extend this class
  * and provide implementation for the evaluate method.
@@ -12,7 +12,7 @@ import org.refact4j.visitor.Visitable;
  * @param <T2>
  * @param <R>
  */
-public abstract class AbstractBinaryFunctor<T1, T2, R> implements BinaryFunctor<T1, T2, R>, Visitable {
+public abstract class AbstractBiFunction<T1, T2, R> implements BiFunction<T1, T2, R>, Visitable {
     private T1 firstArg;
 
     private T2 secondArg;
@@ -21,7 +21,7 @@ public abstract class AbstractBinaryFunctor<T1, T2, R> implements BinaryFunctor<
 
     protected abstract R evaluate(T1 firstArg, T2 secondArg);
 
-    public R eval(T1 firstArg, T2 secondArg) {
+    public R apply(T1 firstArg, T2 secondArg) {
         this.firstArg = firstArg;
         this.secondArg = secondArg;
         result = evaluate(firstArg, secondArg);

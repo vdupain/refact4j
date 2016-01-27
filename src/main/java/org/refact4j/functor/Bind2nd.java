@@ -3,7 +3,7 @@ package org.refact4j.functor;
 import org.refact4j.visitor.Visitor;
 
 /**
- * Bind2nd is a unary functor that wraps a given BinaryFunctor, passing a
+ * Bind2nd is a unary functor that wraps a given BiFunction, passing a
  * constant value as the second argument of the child functor. The runtime
  * argument is passed as the first argument of the child functor.
  *
@@ -13,12 +13,12 @@ import org.refact4j.visitor.Visitor;
  */
 public class Bind2nd<C, T, R> extends AbstractFunction<T, R> {
 
-    private final BinaryFunctor<T, C, R> binaryFunctor;
+    private final BiFunction<T, C, R> biFunction;
     private final C constant;
 
-    public Bind2nd(BinaryFunctor<T, C, R> functor, C constant) {
+    public Bind2nd(BiFunction<T, C, R> functor, C constant) {
         this.constant = constant;
-        binaryFunctor = functor;
+        biFunction = functor;
     }
 
     /**
@@ -29,7 +29,7 @@ public class Bind2nd<C, T, R> extends AbstractFunction<T, R> {
      */
     @Override
     protected R evaluate(T arg) {
-        return binaryFunctor.eval(arg, constant);
+        return biFunction.apply(arg, constant);
     }
 
     /**

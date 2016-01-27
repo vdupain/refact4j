@@ -19,19 +19,19 @@ public class LogicalPredicateTest {
     @Test
     public void testLogicalAnd() {
         BinaryPredicate<Boolean, Boolean> and = new And();
-        assertTrue(and.eval(true, true));
-        assertFalse(and.eval(true, false));
-        assertFalse(and.eval(false, true));
-        assertFalse(and.eval(false, false));
+        assertTrue(and.apply(true, true));
+        assertFalse(and.apply(true, false));
+        assertFalse(and.apply(false, true));
+        assertFalse(and.apply(false, false));
     }
 
     @Test
     public void testLogicalOr() {
         BinaryPredicate<Boolean, Boolean> or = new Or();
-        assertTrue(or.eval(true, true));
-        assertTrue(or.eval(true, false));
-        assertTrue(or.eval(false, true));
-        assertFalse(or.eval(false, false));
+        assertTrue(or.apply(true, true));
+        assertTrue(or.apply(true, false));
+        assertTrue(or.apply(false, true));
+        assertFalse(or.apply(false, false));
     }
 
     @Test
@@ -50,16 +50,16 @@ public class LogicalPredicateTest {
             "<testSuite>" +
                     "   <testCase name='LogicalPredicateTest'>" +
                     "       <test name='testLogicalAnd'>" +
-                    "           <assertTrue condition='" + and.eval(true, true) + "' />" +
-                    "           <assertFalse condition='" + and.eval(true, false) + "' />" +
-                    "           <assertFalse condition='" + and.eval(false, true) + "' />" +
-                    "           <assertFalse condition='" + and.eval(false, false) + "' />" +
+                    "           <assertTrue condition='" + and.apply(true, true) + "' />" +
+                    "           <assertFalse condition='" + and.apply(true, false) + "' />" +
+                    "           <assertFalse condition='" + and.apply(false, true) + "' />" +
+                    "           <assertFalse condition='" + and.apply(false, false) + "' />" +
                     "       </test>" +
                     "       <test name='testLogicalOr'>" +
-                    "           <assertTrue condition='" + or.eval(true, true) + "' />" +
-                    "           <assertTrue condition='" + or.eval(true, false) + "' />" +
-                    "           <assertTrue condition='" + or.eval(false, true) + "' />" +
-                    "           <assertFalse condition='" + or.eval(false, false) + "' />" +
+                    "           <assertTrue condition='" + or.apply(true, true) + "' />" +
+                    "           <assertTrue condition='" + or.apply(true, false) + "' />" +
+                    "           <assertTrue condition='" + or.apply(false, true) + "' />" +
+                    "           <assertFalse condition='" + or.apply(false, false) + "' />" +
                     "       </test>" +
                     "       <test name='testLogicalNot'>" +
                     "           <assertTrue condition='" + not.apply(false) + "' />" +

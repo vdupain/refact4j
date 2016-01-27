@@ -20,7 +20,7 @@ public abstract class AbstractBinaryPredicate<T1, T2> implements BinaryPredicate
 
     protected abstract Boolean evaluate(T1 firstArg, T2 secondArg);
 
-    public Boolean eval(T1 firstArg, T2 secondArg) {
+    public Boolean apply(T1 firstArg, T2 secondArg) {
         this.firstArg = firstArg;
         this.secondArg = secondArg;
         result = evaluate(firstArg, secondArg);

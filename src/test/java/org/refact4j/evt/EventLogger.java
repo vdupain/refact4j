@@ -18,7 +18,7 @@ public class EventLogger {
 
     public void assertEquals(String expected) {
         checkXml(expected, new BinaryPredicate<String, String>() {
-            public Boolean eval(String expected, String actual) {
+            public Boolean apply(String expected, String actual) {
                 try {
                     XmlAssert.assertXmlEquals(expected, actual);
                     return true;
@@ -31,7 +31,7 @@ public class EventLogger {
 
     public void assertEquivalent(String expected) {
         checkXml(expected, new BinaryPredicate<String, String>() {
-            public Boolean eval(String expected, String actual) {
+            public Boolean apply(String expected, String actual) {
                 try {
                     XmlAssert.assertXmlEquivalent(expected, actual);
                     return true;
@@ -47,7 +47,7 @@ public class EventLogger {
         if (expected.length() == 0) {
             fail(expected, actual);
         }
-        if (!predicate.eval(expected, actual)) {
+        if (!predicate.apply(expected, actual)) {
             fail(expected, actual);
         }
         reset();

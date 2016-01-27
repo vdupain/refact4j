@@ -16,27 +16,27 @@ public class ArithmeticFunctorsTest {
 
 	@Test
 	public void testMultiplies() {
-		assertEquals((Double) (d1 * d2), new Multiplies<Double>().eval(d1, d2));
+		assertEquals((Double) (d1 * d2), new Multiplies<Double>().apply(d1, d2));
 		assertEquals((Integer) (i1 * i2),
-				new Multiplies<Integer>().eval(i1, i2));
+				new Multiplies<Integer>().apply(i1, i2));
 	}
 
 	@Test
 	public void testDivides() {
-		assertEquals((Double) (d1 / d2), new Divides<Double>().eval(d1, d2));
-		assertEquals((Integer) (i1 / i2), new Divides<Integer>().eval(i1, i2));
+		assertEquals((Double) (d1 / d2), new Divides<Double>().apply(d1, d2));
+		assertEquals((Integer) (i1 / i2), new Divides<Integer>().apply(i1, i2));
 	}
 
 	@Test
 	public void testMinus() {
-		assertEquals((Double) (d1 - d2), new Minus<Double>().eval(d1, d2));
-		assertEquals((Integer) (i1 - i2), new Minus<Integer>().eval(i1, i2));
+		assertEquals((Double) (d1 - d2), new Minus<Double>().apply(d1, d2));
+		assertEquals((Integer) (i1 - i2), new Minus<Integer>().apply(i1, i2));
 	}
 
 	@Test
 	public void testPlus() {
-		assertEquals((Double) (d1 + d2), new Plus<Double>().eval(d1, d2));
-		assertEquals((Integer) (i1 + i2), new Plus<Integer>().eval(i1, i2));
+		assertEquals((Double) (d1 + d2), new Plus<Double>().apply(d1, d2));
+		assertEquals((Integer) (i1 + i2), new Plus<Integer>().apply(i1, i2));
 	}
 
 	@Test

@@ -1,10 +1,10 @@
 package org.refact4j.functor.comparison;
 
-import org.refact4j.functor.AbstractBinaryFunctor;
+import org.refact4j.functor.AbstractBiFunction;
 
 import java.util.Comparator;
 
-abstract class AbstractComparisonBinaryFunctor<T> extends AbstractBinaryFunctor<T, T, T> {
+abstract class AbstractComparisonBiFunction<T> extends AbstractBiFunction<T, T, T> {
     private AbstractComparisonVisitor<? super T> visitor = new ComparableComparisonVisitor();
 
     void setComparator(Comparator<T> comparator) {

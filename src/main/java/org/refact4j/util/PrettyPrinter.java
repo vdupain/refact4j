@@ -74,7 +74,7 @@ public class PrettyPrinter implements ExpressionVisitor, BinaryComposeVisitor, U
     public void visitEntityFieldComparator(EntityFieldComparator fieldComparator) {
         buf.append('(');
         buf.append(this.abstractFieldStringifierFunctor.stringify(fieldComparator.getField()));
-        ((Visitable) fieldComparator.getBinaryFunctor()).accept(this);
+        ((Visitable) fieldComparator.getBiFunction()).accept(this);
         buf.append(fieldComparator.getValue());
         buf.append(')');
     }
@@ -83,7 +83,7 @@ public class PrettyPrinter implements ExpressionVisitor, BinaryComposeVisitor, U
         buf.append('(');
         java.util.function.Function<?,?> function = compositeUnaryPredicate.getFunction();
         ((Visitable) function).accept(this);
-        ((Visitable) compositeUnaryPredicate.getBinaryFunctor()).accept(this);
+        ((Visitable) compositeUnaryPredicate.getBiFunction()).accept(this);
         buf.append(compositeUnaryPredicate.getConstantUnaryFunctor().getConstant());
         buf.append(')');
     }
@@ -99,7 +99,7 @@ public class PrettyPrinter implements ExpressionVisitor, BinaryComposeVisitor, U
     public void visitBinaryCompose(BinaryCompose binaryCompose) {
         buf.append('(');
         ((Visitable) binaryCompose.getFirstFunction()).accept(this);
-        ((Visitable) binaryCompose.getBinaryFunctor()).accept(this);
+        ((Visitable) binaryCompose.getBiFunction()).accept(this);
         ((Visitable) binaryCompose.getSecondFunction()).accept(this);
         buf.append(')');
     }

@@ -5,37 +5,37 @@ import org.refact4j.visitor.Visitor;
 public class CompositeUnaryPredicate<T> extends AbstractUnaryPredicate<T> {
     private BinaryCompose<?, ?, T, Boolean> compositeFunctor;
 
-    private BinaryFunctor<?, ?, Boolean> binaryFunctor;
+    private BiFunction<?, ?, Boolean> biFunction;
 
     private java.util.function.Function<T,?> function;
 
     private ConstantFunction<?> constantUnaryFunctor;
 
-    public CompositeUnaryPredicate(BinaryFunctor<?, ?, Boolean> binaryFunctor, java.util.function.Function<T,?> function,
+    public CompositeUnaryPredicate(BiFunction<?, ?, Boolean> biFunction, java.util.function.Function<T,?> function,
                                    Object constant) {
-        init(binaryFunctor, function, new ConstantFunction<Object>(constant));
+        init(biFunction, function, new ConstantFunction<Object>(constant));
 
     }
 
-    public CompositeUnaryPredicate(BinaryFunctor<?, ?, Boolean> binaryFunctor, java.util.function.Function<T,?> function,
+    public CompositeUnaryPredicate(BiFunction<?, ?, Boolean> biFunction, java.util.function.Function<T,?> function,
                                    ConstantFunction<?> constantUnaryFunctor) {
-        init(binaryFunctor, function, constantUnaryFunctor);
+        init(biFunction, function, constantUnaryFunctor);
     }
 
-    private void init(BinaryFunctor<?, ?, Boolean> binaryFunctor, java.util.function.Function<T,?> function,
+    private void init(BiFunction<?, ?, Boolean> biFunction, java.util.function.Function<T,?> function,
                       ConstantFunction<?> constantUnaryFunctor) {
-        this.binaryFunctor = binaryFunctor;
+        this.biFunction = biFunction;
         this.function = function;
         this.constantUnaryFunctor = constantUnaryFunctor;
-        this.compositeFunctor = new BinaryCompose(binaryFunctor, function, constantUnaryFunctor);
+        this.compositeFunctor = new BinaryCompose(biFunction, function, constantUnaryFunctor);
     }
 
     public Boolean evaluate(T arg) {
         return this.compositeFunctor.apply(arg);
     }
 
-    public BinaryFunctor<?, ?, Boolean> getBinaryFunctor() {
-        return binaryFunctor;
+    public BiFunction<?, ?, Boolean> getBiFunction() {
+        return biFunction;
     }
 
     public ConstantFunction<?> getConstantUnaryFunctor() {

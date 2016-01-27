@@ -2,14 +2,14 @@ package org.refact4j.functor.arithmetic;
 
 /**
  * This abstract class provides a skeletal implementation of the
- * AbstractArithmeticBinaryFunctor interface, to minimize the effort required to
+ * AbstractArithmeticBiFunction interface, to minimize the effort required to
  * implement this interface. To implement an arithmetic binary functor, the
  * programmer needs only to extend this class and provide implementation for the
  * apply method.
  *
  * @param <T>
  */
-public abstract class AbstractArithmeticBinaryFunctor<T extends Number> implements ArithmeticBinaryFunctor<T> {
+public abstract class AbstractArithmeticBiFunction<T extends Number> implements ArithmeticBiFunction<T> {
 
     private final ArithmeticMathHolder<T> arithmeticMathHolder = new ArithmeticMathHolder<T>();
 
@@ -20,7 +20,7 @@ public abstract class AbstractArithmeticBinaryFunctor<T extends Number> implemen
     }
 
     @SuppressWarnings("unchecked")
-    public T eval(T firstArg, T secondArg) {
+    public T apply(T firstArg, T secondArg) {
         this.arithmeticMathHolder.setClazz((Class<T>) (firstArg != null ? firstArg.getClass() : null));
         if (arithmeticMathHolder.getClazz() == null) {
             this.arithmeticMathHolder.setClazz((Class<T>) (secondArg != null ? secondArg.getClass() : null));
