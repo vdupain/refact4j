@@ -19,7 +19,7 @@ public interface XmlAttributes {
     /**
      * @return
      */
-    public int getLength();
+    int getLength();
 
     /**
      * Look up an attribute's Namespace URI by index.
@@ -29,7 +29,7 @@ public interface XmlAttributes {
      *         null if the index is out of range.
      * @see #getLength
      */
-    public String getURI(int index);
+    String getURI(int index);
 
     /**
      * Look up an attribute's local name by index.
@@ -39,7 +39,7 @@ public interface XmlAttributes {
      *         not being performed, or null if the index is out of range.
      * @see #getLength
      */
-    public String getLocalName(int index);
+    String getLocalName(int index);
 
     /**
      * Look up an attribute's XML qualified (prefixed) name by index.
@@ -49,7 +49,7 @@ public interface XmlAttributes {
      *         or null if the index is out of range.
      * @see #getLength
      */
-    public String getQName(int index);
+    String getQName(int index);
 
     /**
      * Look up an attribute's type by index.
@@ -77,7 +77,7 @@ public interface XmlAttributes {
      *         range.
      * @see #getLength
      */
-    public String getType(int index);
+    String getType(int index);
 
     /**
      * Look up an attribute's value by index.
@@ -93,7 +93,7 @@ public interface XmlAttributes {
      *         range.
      * @see #getLength
      */
-    public String getValue(int index);
+    String getValue(int index);
 
     // //////////////////////////////////////////////////////////////////
     // Name-based query.
@@ -108,7 +108,7 @@ public interface XmlAttributes {
      * @return The index of the attribute, or -1 if it does not appear in the
      *         list.
      */
-    public int getIndex(String uri, String localName);
+    int getIndex(String uri, String localName);
 
     /**
      * Look up the index of an attribute by XML qualified (prefixed) name.
@@ -117,7 +117,7 @@ public interface XmlAttributes {
      * @return The index of the attribute, or -1 if it does not appear in the
      *         list.
      */
-    public int getIndex(String qName);
+    int getIndex(String qName);
 
     /**
      * Look up an attribute's type by Namespace name.
@@ -133,7 +133,7 @@ public interface XmlAttributes {
      * @return The attribute type as a string, or null if the attribute is not
      *         in the list or if Namespace processing is not being performed.
      */
-    public String getType(String uri, String localName);
+    String getType(String uri, String localName);
 
     /**
      * Look up an attribute's type by XML qualified (prefixed) name.
@@ -147,7 +147,7 @@ public interface XmlAttributes {
      * @return The attribute type as a string, or null if the attribute is not
      *         in the list or if qualified names are not available.
      */
-    public String getType(String qName);
+    String getType(String qName);
 
     /**
      * Look up an attribute's value by Namespace name.
@@ -163,7 +163,7 @@ public interface XmlAttributes {
      * @return The attribute value as a string, or null if the attribute is not
      *         in the list.
      */
-    public String getValue(String uri, String localName);
+    String getValue(String uri, String localName);
 
     /**
      * Look up an attribute's value by XML qualified (prefixed) name.
@@ -177,6 +177,6 @@ public interface XmlAttributes {
      * @return The attribute value as a string, or null if the attribute is not
      *         in the list or if qualified names are not available.
      */
-    public String getValue(String qName);
+    String getValue(String qName);
 
 }

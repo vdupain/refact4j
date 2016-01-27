@@ -8,7 +8,7 @@ import org.refact4j.visitor.Visitor;
  */
 public interface EntityPredicate extends UnaryPredicate<EntityObject> {
 
-    public interface EntityPredicateVisitor extends Visitor {
+    interface EntityPredicateVisitor extends Visitor {
         void visitEntityPredicate(EntityPredicate entityObjectPredicate);
     }
 

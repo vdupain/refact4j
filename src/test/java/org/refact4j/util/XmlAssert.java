@@ -13,13 +13,9 @@ public class XmlAssert extends Assert {
 		XMLUnit.setIgnoreWhitespace(true);
 		XMLUnit.setNormalizeWhitespace(true);
 	}
-
-	public static void assertXmlEquals(XML expected, XML actual) {
-		assertXmlEquals((ToXmlString) expected, (ToXmlString) actual);
-	}
-
+	
 	public static void assertXmlEquivalent(XML expected, XML actual) {
-		assertXmlEquivalent((ToXmlString) expected, (ToXmlString) actual);
+		assertXmlEquivalent(expected, actual);
 	}
 
 	public static void assertXmlEquals(ToXmlString expected, ToXmlString actual) {

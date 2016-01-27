@@ -37,7 +37,7 @@ public class EventManager<T extends EventListener<E>, E extends Event<?>> implem
         listenerList.remove(listener);
     }
 
-    public static interface NotifyEventFunctor<T extends EventListener<E>, E extends Event<?>> {
+    public interface NotifyEventFunctor<T extends EventListener<E>, E extends Event<?>> {
         void notifyEvent(T listener, E event);
 
     }

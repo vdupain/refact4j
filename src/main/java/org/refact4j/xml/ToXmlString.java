@@ -6,7 +6,7 @@ package org.refact4j.xml;
  */
 public interface ToXmlString {
 
-    public static final ToXmlString EMPTY_TO_XML = new ToXmlString() {
+    ToXmlString EMPTY_TO_XML = new ToXmlString() {
         public String toXmlString() {
             return XML.HEADER + "<root/>";
         }

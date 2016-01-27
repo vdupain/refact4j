@@ -59,11 +59,8 @@ public class XmlWriterTest {
         }
 
         public boolean hasNext() {
-            if (!wasProcessed) {
-                return true;
-            }
+            return !wasProcessed;
 
-            return false;
         }
 
         public XmlElementHandler[] handleNext(XmlWriter xmlWriter) throws Exception {

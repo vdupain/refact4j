@@ -6,9 +6,9 @@ import java.io.Serializable;
 
 public interface XML extends ToXmlString, Serializable {
 
-    public static final XML EMPTY_XML = new XMLImpl(ToXmlString.EMPTY_TO_XML);
+    XML EMPTY_XML = new XMLImpl(ToXmlString.EMPTY_TO_XML);
 
-    public static final String HEADER = "<?xml version='1.0' encoding='utf-8'?>";
+    String HEADER = "<?xml version='1.0' encoding='utf-8'?>";
 
     String toString();
 }

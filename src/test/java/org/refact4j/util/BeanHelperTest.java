@@ -9,9 +9,9 @@ public class BeanHelperTest {
 
     @Test
     public void testGetMutator() throws Exception {
-        Method valueMutator = BeanHelper.getMutator(Dummy.class, "value", new Class[]{String.class});
-        Method enableMutator = BeanHelper.getMutator(Dummy.class, "enabled", new Class[]{boolean.class});
-        Method dummyMutator = BeanHelper.getMutator(Dummy.class, "dummy", new Class[]{double.class});
+        Method valueMutator = BeanHelper.getMutator(Dummy.class, "value", String.class);
+        Method enableMutator = BeanHelper.getMutator(Dummy.class, "enabled", boolean.class);
+        Method dummyMutator = BeanHelper.getMutator(Dummy.class, "dummy", double.class);
 
         Assert.assertEquals("setValue", valueMutator.getName());
         Assert.assertEquals(Void.TYPE, valueMutator.getReturnType());
@@ -28,7 +28,7 @@ public class BeanHelperTest {
         Assert.assertFalse(BeanHelper.isAccessor(enableMutator));
 
         Assert.assertNull(dummyMutator);
-        dummyMutator = Dummy.class.getDeclaredMethod("dummy", new Class[]{double.class});
+        dummyMutator = Dummy.class.getDeclaredMethod("dummy", double.class);
         Assert.assertFalse(BeanHelper.isMutator(dummyMutator));
         Assert.assertFalse(BeanHelper.isAccessor(dummyMutator));
     }

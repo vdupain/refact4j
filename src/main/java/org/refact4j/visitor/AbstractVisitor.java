@@ -24,7 +24,7 @@ public abstract class AbstractVisitor implements Visitor {
             }
         }
         // Check through interfaces for matching method;
-        for (Class<?> anInterface : (Class<?>[]) clazz.getInterfaces()) {
+        for (Class<?> anInterface : clazz.getInterfaces()) {
             // System.out.println("interface:" + interfaces[i]);
             try {
                 String visitMethod = "visit";
