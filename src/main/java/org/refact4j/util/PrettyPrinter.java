@@ -8,15 +8,11 @@ import org.refact4j.eom.model.Field;
 import org.refact4j.eom.model.impl.AbstractFieldStringifierFunctor;
 import org.refact4j.expr.Expression;
 import org.refact4j.expr.Expression.ExpressionVisitor;
-import org.refact4j.functor.BinaryCompose;
+import org.refact4j.functor.*;
 import org.refact4j.functor.BinaryCompose.BinaryComposeVisitor;
-import org.refact4j.functor.CompositeUnaryPredicate;
 import org.refact4j.functor.CompositeUnaryPredicate.CompositeUnaryPredicateVisitor;
-import org.refact4j.functor.GetFieldFunctor;
 import org.refact4j.functor.GetFieldFunctor.GetFieldFunctorVisitor;
-import org.refact4j.functor.UnaryCompose;
 import org.refact4j.functor.UnaryCompose.UnaryComposeVisitor;
-import org.refact4j.functor.UnaryFunctor;
 import org.refact4j.functor.commons.Between;
 import org.refact4j.functor.commons.InstanceOf;
 import org.refact4j.functor.commons.Between.BetweenVisitor;
@@ -85,8 +81,8 @@ public class PrettyPrinter implements ExpressionVisitor, BinaryComposeVisitor, U
 
     public void visitCompositeUnaryPredicate(CompositeUnaryPredicate<?> compositeUnaryPredicate) {
         buf.append('(');
-        UnaryFunctor<?, ?> unaryFunctor = compositeUnaryPredicate.getUnaryFunctor();
-        ((Visitable) unaryFunctor).accept(this);
+        java.util.function.Function<?,?> function = compositeUnaryPredicate.getFunction();
+        ((Visitable) function).accept(this);
         ((Visitable) compositeUnaryPredicate.getBinaryFunctor()).accept(this);
         buf.append(compositeUnaryPredicate.getConstantUnaryFunctor().getConstant());
         buf.append(')');
@@ -102,23 +98,23 @@ public class PrettyPrinter implements ExpressionVisitor, BinaryComposeVisitor, U
 
     public void visitBinaryCompose(BinaryCompose binaryCompose) {
         buf.append('(');
-        ((Visitable) binaryCompose.getFirstUnaryFunctor()).accept(this);
+        ((Visitable) binaryCompose.getFirstFunction()).accept(this);
         ((Visitable) binaryCompose.getBinaryFunctor()).accept(this);
-        ((Visitable) binaryCompose.getSecondUnaryFunctor()).accept(this);
+        ((Visitable) binaryCompose.getSecondFunction()).accept(this);
         buf.append(')');
     }
 
     public void visitUnaryCompose(UnaryCompose unaryCompose) {
         buf.append('(');
-        UnaryFunctor secondUnaryFunctor = unaryCompose.getSecondUnaryFunctor();
-        UnaryFunctor firstUnaryFunctor = unaryCompose.getFirstUnaryFunctor();
-        if (firstUnaryFunctor instanceof Between || firstUnaryFunctor instanceof In
-                || firstUnaryFunctor instanceof NotIn) {
-            ((Visitable) secondUnaryFunctor).accept(this);
-            ((Visitable) firstUnaryFunctor).accept(this);
+        java.util.function.Function secondFunction = unaryCompose.getSecondFunction();
+        java.util.function.Function firstFunction = unaryCompose.getFirstFunction();
+        if (firstFunction instanceof Between || firstFunction instanceof In
+                || firstFunction instanceof NotIn) {
+            ((Visitable) secondFunction).accept(this);
+            ((Visitable) firstFunction).accept(this);
         } else {
-            ((Visitable) firstUnaryFunctor).accept(this);
-            ((Visitable) secondUnaryFunctor).accept(this);
+            ((Visitable) firstFunction).accept(this);
+            ((Visitable) secondFunction).accept(this);
         }
         buf.append(')');
     }

@@ -13,30 +13,30 @@ import org.refact4j.visitor.Visitor;
  * @param <T>
  * @param <R>
  */
-public class UnaryCompose<F1, T, R> implements UnaryFunctor<T, R>, Visitable {
+public class UnaryCompose<F1, T, R> implements Visitable, java.util.function.Function<T, R> {
 
-    private final UnaryFunctor<F1, R> firstUnaryFunctor;
+    private final java.util.function.Function<F1,R> firstFunction;
 
-    private final UnaryFunctor<T, F1> secondUnaryFunctor;
+    private final java.util.function.Function<T,F1> secondFunction;
 
-    public UnaryCompose(UnaryFunctor<F1, R> unaryFunctor1, UnaryFunctor<T, F1> unaryFunctor2) {
-        this.firstUnaryFunctor = unaryFunctor1;
-        this.secondUnaryFunctor = unaryFunctor2;
+    public UnaryCompose(java.util.function.Function<F1,R> function1, java.util.function.Function<T,F1> function2) {
+        this.firstFunction = function1;
+        this.secondFunction = function2;
     }
 
     /**
      * f(g(x))
      */
-    public R eval(T arg) {
-        return firstUnaryFunctor.eval(secondUnaryFunctor.eval(arg));
+    public R apply(T arg) {
+        return firstFunction.apply(secondFunction.apply(arg));
     }
 
-    public UnaryFunctor<F1, R> getFirstUnaryFunctor() {
-        return firstUnaryFunctor;
+    public java.util.function.Function<F1,R> getFirstFunction() {
+        return firstFunction;
     }
 
-    public UnaryFunctor<T, F1> getSecondUnaryFunctor() {
-        return secondUnaryFunctor;
+    public java.util.function.Function<T,F1> getSecondFunction() {
+        return secondFunction;
     }
 
     public void accept(Visitor visitor) {

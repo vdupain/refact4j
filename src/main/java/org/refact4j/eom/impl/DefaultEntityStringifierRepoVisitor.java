@@ -32,7 +32,7 @@ public class DefaultEntityStringifierRepoVisitor implements EntityStringifierRep
         List<EntityObject> entityObjects = dataSet.getAll(EntityStringifierDesc.INSTANCE,
                 new UnaryPredicate<EntityObject>() {
 
-                    public Boolean eval(EntityObject arg) {
+                    public Boolean apply(EntityObject arg) {
                         return arg.get(EntityStringifierDesc.OBJECT_TYPE) == null
                                 && arg.get(EntityStringifierDesc.NAME) == null;
                     }

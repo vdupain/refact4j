@@ -69,7 +69,7 @@ public abstract class AbstractEntityStringifierRepoFactory implements EntityStri
     private EntityStringifier createStringifier(final EntityObject stringifier, EntityDescriptor entityDescriptor) {
         final List<EntityObject> appenders = entityObjectSet.getAll(EntityStringifierAppenderDesc.INSTANCE,
                 new EntityPredicate() {
-                    public Boolean eval(EntityObject arg) {
+                    public Boolean apply(EntityObject arg) {
                         return arg.get(EntityStringifierAppenderDesc.STRINGIFIER).equals(stringifier.getKey());
                     }
 

@@ -46,7 +46,7 @@ public class EntityDataSetImpl extends EntityListImpl implements EntitySet,
     public EntityObject getEntityByName(EntityDescriptor entityDescriptor, final StringField stringField,
                                         final String value) {
         List<EntityObject> list = getAll(entityDescriptor, new EntityPredicate() {
-            public Boolean eval(EntityObject arg) {
+            public Boolean apply(EntityObject arg) {
                 return EqualsHelper.equals(arg.get(stringField), value);
             }
         });

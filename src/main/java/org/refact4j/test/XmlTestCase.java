@@ -13,14 +13,14 @@ public class XmlTestCase extends TestCase {
     @Override
     protected void setUp() throws Exception {
         if (beforeTestFunctor != null) {
-            beforeTestFunctor.eval(this);
+            beforeTestFunctor.apply(this);
         }
     }
 
     @Override
     protected void tearDown() throws Exception {
         if (afterTestFunctor != null) {
-            afterTestFunctor.eval(this);
+            afterTestFunctor.apply(this);
         }
     }
 
@@ -35,7 +35,7 @@ public class XmlTestCase extends TestCase {
     private void _runTest() throws Throwable {
         for (TestMethod testMethod : tests) {
             this.setUp();
-            testMethod.getTestMethodHandler().eval(this);
+            testMethod.getTestMethodHandler().apply(this);
             testMethod.checkAssertions();
             this.tearDown();
         }

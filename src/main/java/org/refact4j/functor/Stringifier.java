@@ -16,5 +16,5 @@ package org.refact4j.functor;
  *
  * @param <T>
  */
-public interface Stringifier<T> extends UnaryFunctor<T, String> {
+public interface Stringifier<T> extends java.util.function.Function<T, String> {
 }

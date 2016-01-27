@@ -1,6 +1,6 @@
 package org.refact4j.expr;
 
-import org.refact4j.functor.ConstantUnaryFunctor;
+import org.refact4j.functor.ConstantFunction;
 
 public final class BeanExpressionBuilder {
 	private final BeanExpression expression;
@@ -81,18 +81,18 @@ public final class BeanExpressionBuilder {
 		return this;
 	}
 
-	BeanExpressionBuilder equalTo(ConstantUnaryFunctor constantFunctor) {
+	BeanExpressionBuilder equalTo(ConstantFunction constantFunctor) {
 		this.expression.equalTo(constantFunctor);
 		return this;
 	}
 
 	public BeanExpressionBuilder equalTo(Object object) {
-		this.expression.equalTo(new ConstantUnaryFunctor<Object>(object));
+		this.expression.equalTo(new ConstantFunction<Object>(object));
 		return this;
 	}
 
 	public BeanExpressionBuilder notEqualTo(Object object) {
-		this.expression.not(equalTo(new ConstantUnaryFunctor<Object>(object)).getExpression());
+		this.expression.not(equalTo(new ConstantFunction<Object>(object)).getExpression());
 		return this;
 	}
 

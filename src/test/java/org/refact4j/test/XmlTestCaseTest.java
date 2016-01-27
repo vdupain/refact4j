@@ -73,27 +73,27 @@ public class XmlTestCaseTest {
     }
 
     public static class PrinterBeforeTestHandler implements BeforeTestHandler {
-        public Object eval(XmlTestCase arg) {
-            System.out.println("PrinterBeforeTestFunctor.eval()=" + arg.getName());
+        public Object apply(XmlTestCase arg) {
+            System.out.println("PrinterBeforeTestFunctor.apply()=" + arg.getName());
             return null;
         }
     }
 
     public static class DummyBeforeTestHandler implements BeforeTestHandler {
-        public Object eval(XmlTestCase arg) {
+        public Object apply(XmlTestCase arg) {
             return null;
         }
     }
 
     public static class PrinterAfterTestHandler implements AfterTestHandler {
-        public Object eval(XmlTestCase arg) {
-            System.out.println("PrinterAfterTestHandler.eval()=" + arg.getName());
+        public Object apply(XmlTestCase arg) {
+            System.out.println("PrinterAfterTestHandler.apply()=" + arg.getName());
             return null;
         }
     }
 
     public static class DummyAfterTestHandler implements AfterTestHandler {
-        public Object eval(XmlTestCase arg) {
+        public Object apply(XmlTestCase arg) {
             return null;
         }
     }

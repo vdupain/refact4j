@@ -42,7 +42,7 @@ public final class PropertyDesc {
 
     public static EntityPredicate getPropertiesForField(final Field field) {
         return new EntityPredicate() {
-            public Boolean eval(EntityObject arg) {
+            public Boolean apply(EntityObject arg) {
                 Key key = KeyBuilder.init(FieldDesc.INSTANCE).set(FieldDesc.NAME, field.getName()).set(
                         FieldDesc.ENTITY_DESC, field.getEntityDescriptor().toEntity().getKey()).getKey();
                 return key.equals(arg.get(PropertyDesc.FIELD_TYPE));
@@ -52,7 +52,7 @@ public final class PropertyDesc {
 
     public static EntityPredicate getPropertiesForEntityDescriptor(final EntityDescriptor entityDescriptor) {
         return new EntityPredicate() {
-            public Boolean eval(EntityObject arg) {
+            public Boolean apply(EntityObject arg) {
                 return entityDescriptor.toEntity().getKey().equals(arg.get(PropertyDesc.ENTITY_DESC_DESC));
             }
         };

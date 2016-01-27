@@ -1,7 +1,6 @@
 package org.refact4j.expr;
 
-import org.refact4j.functor.ConstantUnaryFunctor;
-import org.refact4j.functor.UnaryFunctor;
+import org.refact4j.functor.ConstantFunction;
 
 public final class ExpressionBuilder {
 	private final Expression expression;
@@ -10,8 +9,8 @@ public final class ExpressionBuilder {
 		expression = new Expression();
 	}
 
-	private ExpressionBuilder(UnaryFunctor unaryFunctor) {
-		expression = new Expression(unaryFunctor);
+	private ExpressionBuilder(java.util.function.Function function) {
+		expression = new Expression(function);
 	}
 
 	private ExpressionBuilder(String property) {
@@ -22,8 +21,8 @@ public final class ExpressionBuilder {
 		return new ExpressionBuilder();
 	}
 
-	public static ExpressionBuilder init(UnaryFunctor unaryFunctor) {
-		return new ExpressionBuilder(unaryFunctor);
+	public static ExpressionBuilder init(java.util.function.Function function) {
+		return new ExpressionBuilder(function);
 	}
 
 	public static ExpressionBuilder init(String property) {
@@ -90,18 +89,18 @@ public final class ExpressionBuilder {
 		return this;
 	}
 
-	ExpressionBuilder equalTo(ConstantUnaryFunctor constantFunctor) {
+	ExpressionBuilder equalTo(ConstantFunction constantFunctor) {
 		this.expression.equalTo(constantFunctor);
 		return this;
 	}
 
 	public ExpressionBuilder equalTo(Object object) {
-		this.expression.equalTo(new ConstantUnaryFunctor<Object>(object));
+		this.expression.equalTo(new ConstantFunction<Object>(object));
 		return this;
 	}
 
 	public ExpressionBuilder notEqualTo(Object object) {
-		this.expression.not(equalTo(new ConstantUnaryFunctor<Object>(object)).getExpression());
+		this.expression.not(equalTo(new ConstantFunction<Object>(object)).getExpression());
 		return this;
 	}
 

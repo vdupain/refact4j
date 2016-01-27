@@ -1,7 +1,5 @@
 package org.refact4j.functor.aggregate;
 
-import org.refact4j.functor.UnaryFunctor;
-
 import java.util.Collection;
 
 /**
@@ -10,6 +8,6 @@ import java.util.Collection;
  *
  * @param <T>
  */
-public interface AggregateFunctor<T> extends UnaryFunctor<Collection<? extends T>, T> {
+public interface AggregateFunctor<T> extends java.util.function.Function<Collection<? extends T>, T> {
 
 }

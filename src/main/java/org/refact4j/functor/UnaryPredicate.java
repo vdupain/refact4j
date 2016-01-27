@@ -7,5 +7,5 @@ package org.refact4j.functor;
  *
  * @param <T>
  */
-public interface UnaryPredicate<T> extends UnaryFunctor<T, Boolean> {
+public interface UnaryPredicate<T> extends java.util.function.Function<T, Boolean> {
 }

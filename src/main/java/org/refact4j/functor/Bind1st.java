@@ -12,7 +12,7 @@ import org.refact4j.visitor.Visitor;
  * @param <R>
  */
 
-public class Bind1st<C, T, R> extends AbstractUnaryFunctor<T, R> {
+public class Bind1st<C, T, R> extends AbstractFunction<T, R> {
 
     private final BinaryFunctor<C, T, R> binaryFunctor;
     private final C constant;

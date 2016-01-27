@@ -37,8 +37,8 @@ public class LogicalPredicateTest {
     @Test
     public void testLogicalNot() {
         UnaryPredicate<Boolean> not = new Not();
-        assertTrue(not.eval(false));
-        assertFalse(not.eval(true));
+        assertTrue(not.apply(false));
+        assertFalse(not.apply(true));
 
     }
 
@@ -62,8 +62,8 @@ public class LogicalPredicateTest {
                     "           <assertFalse condition='" + or.eval(false, false) + "' />" +
                     "       </test>" +
                     "       <test name='testLogicalNot'>" +
-                    "           <assertTrue condition='" + not.eval(false) + "' />" +
-                    "           <assertFalse condition='" + not.eval(true) + "' />" +
+                    "           <assertTrue condition='" + not.apply(false) + "' />" +
+                    "           <assertFalse condition='" + not.apply(true) + "' />" +
                     "       </test>" +
                     "   </testCase>" +
                     "</testSuite>";

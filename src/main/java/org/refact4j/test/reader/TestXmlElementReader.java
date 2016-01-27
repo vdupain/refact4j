@@ -20,8 +20,8 @@ public class TestXmlElementReader extends DefaultXmlElementReader {
 
         TestMethodHandler testMethodHandler = new TestMethodHandler() {
 
-            public Object eval(XmlTestCase arg) {
-                System.out.println("TestMethodHandler.eval()=" + testName);
+            public Object apply(XmlTestCase arg) {
+                System.out.println("TestMethodHandler.apply()=" + testName);
                 return null;
             }
         };

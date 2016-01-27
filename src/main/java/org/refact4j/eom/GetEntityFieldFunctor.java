@@ -19,7 +19,7 @@ public class GetEntityFieldFunctor implements EntityFunctor<Object>, Visitable {
         this.fieldName = fieldName;
     }
 
-    public Object eval(EntityObject entityObject) {
+    public Object apply(EntityObject entityObject) {
         return entityObject.get(fieldName);
     }
 

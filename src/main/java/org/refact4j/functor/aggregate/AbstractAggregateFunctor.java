@@ -1,6 +1,6 @@
 package org.refact4j.functor.aggregate;
 
-import org.refact4j.functor.AbstractUnaryFunctor;
+import org.refact4j.functor.AbstractFunction;
 import org.refact4j.visitor.Visitor;
 
 import java.util.Collection;
@@ -14,7 +14,7 @@ import java.util.Comparator;
  *
  * @param <T>
  */
-public abstract class AbstractAggregateFunctor<T> extends AbstractUnaryFunctor<Collection<? extends T>, T> implements
+public abstract class AbstractAggregateFunctor<T> extends AbstractFunction<Collection<? extends T>, T> implements
         AggregateFunctor<T> {
     private AggregateVisitor<T> visitor;
 

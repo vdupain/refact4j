@@ -3,7 +3,6 @@ package org.refact4j.functor.commons;
 import org.refact4j.functor.AbstractUnaryPredicate;
 import org.refact4j.functor.BinaryCompose;
 import org.refact4j.functor.Bind2nd;
-import org.refact4j.functor.UnaryFunctor;
 import org.refact4j.functor.comparison.Equal;
 import org.refact4j.functor.logical.Or;
 import org.refact4j.visitor.Visitor;
@@ -17,7 +16,7 @@ import org.refact4j.visitor.Visitor;
 public class In<T> extends AbstractUnaryPredicate<T> {
 
     private final Object[] values;
-    private UnaryFunctor<T, Boolean> pred;
+    private java.util.function.Function<T,Boolean> pred;
 
     public In(Object[] values) {
         this.values = values;
@@ -29,7 +28,7 @@ public class In<T> extends AbstractUnaryPredicate<T> {
 
     @Override
     public Boolean evaluate(T arg) {
-        return pred.eval(arg);
+        return pred.apply(arg);
     }
 
     public Object[] getValues() {

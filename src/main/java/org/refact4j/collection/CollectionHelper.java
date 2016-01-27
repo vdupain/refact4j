@@ -1,7 +1,6 @@
 package org.refact4j.collection;
 
 import org.refact4j.functor.ForEach;
-import org.refact4j.functor.UnaryFunctor;
 import org.refact4j.functor.UnaryPredicate;
 
 import java.util.ArrayList;
@@ -18,16 +17,16 @@ public final class CollectionHelper {
     }
 
     /**
-     * Applies the given UnaryFunctor to every element over the iterator.
+     * Applies the given Function to every element over the iterator.
      *
      * @param <T>
      * @param <R>
      * @param iterator     The iterator
-     * @param unaryFunctor The unary functor
+     * @param function The unary functor
      * @return
      */
-    public static <T, R> R foreach(Iterator<? extends T> iterator, UnaryFunctor<T, R> unaryFunctor) {
-        return new ForEach<T, R>(unaryFunctor).eval(iterator);
+    public static <T, R> R foreach(Iterator<? extends T> iterator, java.util.function.Function<T,R> function) {
+        return new ForEach<T, R>(function).apply(iterator);
     }
 
     /**
@@ -48,10 +47,10 @@ public final class CollectionHelper {
     }
 
     public static <T1, T2> Collection<T2> transform(Collection<? extends T1> collection,
-                                                    UnaryFunctor<T1, T2> unaryFunctor) {
+                                                    java.util.function.Function<T1,T2> function) {
         Collection<T2> result = new ArrayList<T2>();
         for (T1 t1 : collection) {
-            result.add(unaryFunctor.eval(t1));
+            result.add(function.apply(t1));
         }
         return result;
     }

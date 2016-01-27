@@ -1,6 +1,5 @@
 package org.refact4j.eom;
 
-import org.refact4j.functor.UnaryFunctor;
 import org.refact4j.visitor.Visitor;
 
 /**
@@ -8,7 +7,7 @@ import org.refact4j.visitor.Visitor;
  *
  * @param <T>
  */
-public interface EntityFunctor<T> extends UnaryFunctor<EntityObject, T> {
+public interface EntityFunctor<T> extends java.util.function.Function<EntityObject, T> {
 
     public interface EntityFunctorVisitor extends Visitor {
         void visitEntityFunctor(EntityFunctor<?> entityFunctor);

@@ -104,7 +104,7 @@ public abstract class AbstractField implements Field {
         if (constraint == null) {
             return;
         }
-        if (!constraint.eval(value)) {
+        if (!constraint.apply(value)) {
             throw new InvalidFieldValueException(this, constraint.toString());
         }
     }

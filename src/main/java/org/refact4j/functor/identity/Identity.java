@@ -1,6 +1,6 @@
 package org.refact4j.functor.identity;
 
-import org.refact4j.functor.AbstractUnaryFunctor;
+import org.refact4j.functor.AbstractFunction;
 import org.refact4j.visitor.Visitor;
 
 /**
@@ -9,7 +9,7 @@ import org.refact4j.visitor.Visitor;
  *
  * @param <T>
  */
-public class Identity<T> extends AbstractUnaryFunctor<T, T> {
+public class Identity<T> extends AbstractFunction<T, T> {
 
     /**
      * Returns the given argument.

@@ -20,7 +20,7 @@ class EntityStringifierAppenderXmlNodeWriter extends AbstractXmlElementWriter {
 
     private static EntityPredicate filterEntityStringifierAppenders(final Key key) {
         return new EntityPredicate() {
-            public Boolean eval(EntityObject arg) {
+            public Boolean apply(EntityObject arg) {
                 return key.equals(arg.get(EntityStringifierAppenderDesc.STRINGIFIER));
             }
         };

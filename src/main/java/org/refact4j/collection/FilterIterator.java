@@ -50,7 +50,7 @@ public class FilterIterator<T> implements Iterator<T>, Iterable<T> {
     private boolean setNextObject() {
         while (iterator.hasNext()) {
             T object = iterator.next();
-            if (predicate.eval(object)) {
+            if (predicate.apply(object)) {
                 nextObject = object;
                 nextObjectSet = true;
                 return true;

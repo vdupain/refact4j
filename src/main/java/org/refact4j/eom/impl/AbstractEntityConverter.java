@@ -16,7 +16,7 @@ public abstract class AbstractEntityConverter<T> implements EntityConverter<T>, 
 
     public abstract EntityObject convert(T arg);
 
-    public EntityObject eval(T arg) {
+    public EntityObject apply(T arg) {
         return this.convert(arg);
     }
 

@@ -128,7 +128,7 @@ public class EntityObjectImpl implements EntityObject {
 
     public void checkConstraint() {
         Expression constraint = this.getEntityDescriptor().getConstraintExpression();
-        if (constraint != null && !constraint.eval(this)) {
+        if (constraint != null && !constraint.apply(this)) {
             throw new RuntimeException("Constraint " + constraint + " failed: " + constraint.getPropertyName() + "="
                     + this.get(constraint.getPropertyName()));
         }

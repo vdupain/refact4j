@@ -31,7 +31,7 @@ public abstract class AbstractStringifier<T> implements Stringifier<T> {
      */
     public abstract String stringify(T arg);
 
-    public String eval(T arg) {
+    public String apply(T arg) {
         return this.stringify(arg);
     }
 

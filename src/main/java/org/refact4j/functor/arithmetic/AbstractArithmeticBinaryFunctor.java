@@ -5,7 +5,7 @@ package org.refact4j.functor.arithmetic;
  * AbstractArithmeticBinaryFunctor interface, to minimize the effort required to
  * implement this interface. To implement an arithmetic binary functor, the
  * programmer needs only to extend this class and provide implementation for the
- * eval method.
+ * apply method.
  *
  * @param <T>
  */

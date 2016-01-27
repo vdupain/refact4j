@@ -5,7 +5,7 @@ import org.refact4j.visitor.Visitor;
 
 import java.lang.reflect.Method;
 
-public class GetFieldFunctor implements UnaryFunctor, Visitable {
+public class GetFieldFunctor implements Visitable, java.util.function.Function {
 
     private final String fieldName;
 
@@ -13,7 +13,7 @@ public class GetFieldFunctor implements UnaryFunctor, Visitable {
         this.fieldName = fieldName;
     }
 
-    public Object eval(Object arg) {
+    public Object apply(Object arg) {
         Object object;
         try {
             Method method = arg.getClass().getMethod("get" + fieldName);

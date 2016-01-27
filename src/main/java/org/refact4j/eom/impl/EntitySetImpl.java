@@ -32,7 +32,7 @@ public class EntitySetImpl extends AbstractSetImpl<EntityObject, Key, EntityDesc
         final EntityList result = new EntityListImpl();
         apply(entityDescriptor, new EntityFunctor<Object>() {
 
-            public Object eval(EntityObject entityObject) {
+            public Object apply(EntityObject entityObject) {
                 if (EqualsHelper.equals(entityObject.get(field), value)) {
                     result.add(entityObject);
                 }

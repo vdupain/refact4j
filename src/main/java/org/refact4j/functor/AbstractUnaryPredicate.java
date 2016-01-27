@@ -18,7 +18,7 @@ public abstract class AbstractUnaryPredicate<T> implements UnaryPredicate<T>, Vi
 
     public abstract Boolean evaluate(T arg);
 
-    public Boolean eval(T arg) {
+    public Boolean apply(T arg) {
         this.arg = arg;
         result = evaluate(arg);
         return result;

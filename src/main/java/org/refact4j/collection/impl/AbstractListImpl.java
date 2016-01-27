@@ -2,7 +2,6 @@ package org.refact4j.collection.impl;
 
 import org.refact4j.collection.ChangeSet;
 import org.refact4j.collection.CollectionHelper;
-import org.refact4j.functor.UnaryFunctor;
 import org.refact4j.functor.UnaryPredicate;
 
 import java.io.Serializable;
@@ -43,7 +42,7 @@ public abstract class AbstractListImpl<T, ID extends Serializable, TYPE> extends
         return collectionDecorator.getAll(type, predicate);
     }
 
-    public void apply(TYPE type, UnaryFunctor<T, ?> functor) {
+    public void apply(TYPE type, java.util.function.Function<T,?> functor) {
         CollectionHelper.foreach(this.getAll(type).iterator(), functor);
     }
 

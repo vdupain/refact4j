@@ -7,43 +7,43 @@ public class CompositeUnaryPredicate<T> extends AbstractUnaryPredicate<T> {
 
     private BinaryFunctor<?, ?, Boolean> binaryFunctor;
 
-    private UnaryFunctor<T, ?> unaryFunctor;
+    private java.util.function.Function<T,?> function;
 
-    private ConstantUnaryFunctor<?> constantUnaryFunctor;
+    private ConstantFunction<?> constantUnaryFunctor;
 
-    public CompositeUnaryPredicate(BinaryFunctor<?, ?, Boolean> binaryFunctor, UnaryFunctor<T, ?> unaryFunctor,
+    public CompositeUnaryPredicate(BinaryFunctor<?, ?, Boolean> binaryFunctor, java.util.function.Function<T,?> function,
                                    Object constant) {
-        init(binaryFunctor, unaryFunctor, new ConstantUnaryFunctor<Object>(constant));
+        init(binaryFunctor, function, new ConstantFunction<Object>(constant));
 
     }
 
-    public CompositeUnaryPredicate(BinaryFunctor<?, ?, Boolean> binaryFunctor, UnaryFunctor<T, ?> unaryFunctor,
-                                   ConstantUnaryFunctor<?> constantUnaryFunctor) {
-        init(binaryFunctor, unaryFunctor, constantUnaryFunctor);
+    public CompositeUnaryPredicate(BinaryFunctor<?, ?, Boolean> binaryFunctor, java.util.function.Function<T,?> function,
+                                   ConstantFunction<?> constantUnaryFunctor) {
+        init(binaryFunctor, function, constantUnaryFunctor);
     }
 
-    private void init(BinaryFunctor<?, ?, Boolean> binaryFunctor, UnaryFunctor<T, ?> unaryFunctor,
-                      ConstantUnaryFunctor<?> constantUnaryFunctor) {
+    private void init(BinaryFunctor<?, ?, Boolean> binaryFunctor, java.util.function.Function<T,?> function,
+                      ConstantFunction<?> constantUnaryFunctor) {
         this.binaryFunctor = binaryFunctor;
-        this.unaryFunctor = unaryFunctor;
+        this.function = function;
         this.constantUnaryFunctor = constantUnaryFunctor;
-        this.compositeFunctor = new BinaryCompose(binaryFunctor, unaryFunctor, constantUnaryFunctor);
+        this.compositeFunctor = new BinaryCompose(binaryFunctor, function, constantUnaryFunctor);
     }
 
     public Boolean evaluate(T arg) {
-        return this.compositeFunctor.eval(arg);
+        return this.compositeFunctor.apply(arg);
     }
 
     public BinaryFunctor<?, ?, Boolean> getBinaryFunctor() {
         return binaryFunctor;
     }
 
-    public ConstantUnaryFunctor<?> getConstantUnaryFunctor() {
+    public ConstantFunction<?> getConstantUnaryFunctor() {
         return constantUnaryFunctor;
     }
 
-    public UnaryFunctor<T, ?> getUnaryFunctor() {
-        return unaryFunctor;
+    public java.util.function.Function<T,?> getFunction() {
+        return function;
     }
 
     public void accept(Visitor visitor) {

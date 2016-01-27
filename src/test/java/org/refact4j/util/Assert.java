@@ -7,7 +7,7 @@ import org.refact4j.functor.UnaryPredicate;
 public class Assert extends org.junit.Assert {
 
 	public static void assertThat(Object something, UnaryPredicate<Object> matcher) {
-		if (!matcher.eval(something)) {
+		if (!matcher.apply(something)) {
 			StringBuffer message = new StringBuffer("Expected that: ");
 			message.append(matcher);
 			message.append(StringHelper.LINE_SEPARATOR + "but x was : ").append(something).append(

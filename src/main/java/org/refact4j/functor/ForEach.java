@@ -4,13 +4,13 @@ import org.refact4j.visitor.Visitor;
 
 import java.util.Iterator;
 
-public class ForEach<T, R> extends AbstractUnaryFunctor<Iterator<? extends T>, R> {
-    private UnaryFunctor<T, R> functor;
+public class ForEach<T, R> extends AbstractFunction<Iterator<? extends T>, R> {
+    private java.util.function.Function<T,R> functor;
 
     public ForEach() {
     }
 
-    public ForEach(UnaryFunctor<T, R> functor) {
+    public ForEach(java.util.function.Function<T,R> functor) {
         this.functor = functor;
     }
 
@@ -18,16 +18,16 @@ public class ForEach<T, R> extends AbstractUnaryFunctor<Iterator<? extends T>, R
     protected R evaluate(Iterator<? extends T> iterator) {
         R value = null;
         while (iterator.hasNext()) {
-            value = functor.eval(iterator.next());
+            value = functor.apply(iterator.next());
         }
         return value;
     }
 
-    public UnaryFunctor<T, R> getFunctor() {
+    public java.util.function.Function<T,R> getFunctor() {
         return functor;
     }
 
-    public void setFunctor(UnaryFunctor<T, R> functor) {
+    public void setFunctor(java.util.function.Function<T,R> functor) {
         this.functor = functor;
     }
 

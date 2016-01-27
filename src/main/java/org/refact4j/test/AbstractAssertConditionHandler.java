@@ -16,13 +16,13 @@ public abstract class AbstractAssertConditionHandler implements AssertConditionH
 
     protected abstract void assertion(Boolean condition);
 
-    public Boolean eval(Boolean condition) {
+    public Boolean apply(Boolean condition) {
         assertion(condition);
         return true;
     }
 
     public void assertion() {
-        this.eval(condition);
+        this.apply(condition);
     }
 
     public Boolean getCondition() {

@@ -31,7 +31,7 @@ public class FooXmlElementReader extends DefaultXmlElementReader {
             EntityObject parentEntity = ((EntityDataSetImpl) datasetConverterHolder.getDataSet()).getEntityByName(BarDesc.INSTANCE, BarDesc.NAME, parentName);
 
             EntityObject parentEntity2 = ((EntityDataSetImpl) datasetConverterHolder.getDataSet()).getEntityByPredicate(BarDesc.INSTANCE, new EntityPredicate() {
-                public Boolean eval(EntityObject arg) {
+                public Boolean apply(EntityObject arg) {
                     return arg.get(BarDesc.NAME).equals(parentName);
                 }
             });

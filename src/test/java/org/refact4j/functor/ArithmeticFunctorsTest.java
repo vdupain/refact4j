@@ -41,8 +41,8 @@ public class ArithmeticFunctorsTest {
 
 	@Test
 	public void testNegate() {
-		assertEquals((Double) (-d1), new Negate<Double>().eval(d1));
-		assertEquals((Integer) (-i1), new Negate<Integer>().eval(i1));
+		assertEquals((Double) (-d1), new Negate<Double>().apply(d1));
+		assertEquals((Integer) (-i1), new Negate<Integer>().apply(i1));
 	}
 
 }

@@ -10,13 +10,13 @@ import org.refact4j.eom.EntityObjectBuilder;
 import org.refact4j.eom.impl.EntityListImpl;
 import org.refact4j.expr.Expression;
 import org.refact4j.expr.ExpressionBuilder;
-import org.refact4j.functor.UnaryFunctor;
 import org.refact4j.functor.UnaryPredicate;
 import org.refact4j.model.FooDesc;
 
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+import java.util.function.Function;
 
 
 public class IteratorTest {
@@ -36,8 +36,8 @@ public class IteratorTest {
         }
 
         Iterator<EntityObject> i = items.iterator();
-        UnaryFunctor<EntityObject, Double> getItemPrice = new UnaryFunctor<EntityObject, Double>() {
-            public Double eval(EntityObject entityObject) {
+        java.util.function.Function<EntityObject,Double> getItemPrice = new Function<EntityObject, Double>() {
+            public Double apply(EntityObject entityObject) {
                 return entityObject.get(FooDesc.VALUE);
             }
 
@@ -58,13 +58,13 @@ public class IteratorTest {
     public void testFilteredIterator() {
         FilterIterator<Object> filteredIterator = new FilterIterator<Object>(Collections.EMPTY_LIST.iterator(),
                 new UnaryPredicate<Object>() {
-                    public Boolean eval(Object arg) {
+                    public Boolean apply(Object arg) {
                         return Boolean.TRUE;
                     }
                 });
-        CollectionHelper.foreach(filteredIterator, new UnaryFunctor<Object, Object>() {
+        CollectionHelper.foreach(filteredIterator, new Function<Object, Object>() {
 
-            public Object eval(Object arg) {
+            public Object apply(Object arg) {
                 return null;
             }
 
@@ -83,10 +83,10 @@ public class IteratorTest {
         }
     }
 
-    static class Summer implements UnaryFunctor<EntityObject, Integer> {
+    static class Summer implements java.util.function.Function<EntityObject, Integer> {
         private int sum = 0;
 
-        public Integer eval(EntityObject arg) {
+        public Integer apply(EntityObject arg) {
             return sum += (arg.get(FooDesc.VALUE));
         }
 

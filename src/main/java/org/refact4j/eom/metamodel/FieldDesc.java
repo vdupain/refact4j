@@ -64,7 +64,7 @@ public class FieldDesc {
 
     public static EntityPredicate getAllFieldsForEntityDescriptor(final String entityDescName) {
         return new EntityPredicate() {
-            public Boolean eval(EntityObject arg) {
+            public Boolean apply(EntityObject arg) {
                 Key key = KeyBuilder.init(EntityDescriptorDesc.INSTANCE).set(EntityDescriptorDesc.NAME, entityDescName)
                         .getKey();
                 return key.equals(arg.get(FieldDesc.ENTITY_DESC));
@@ -74,7 +74,7 @@ public class FieldDesc {
 
     public static EntityPredicate getFieldsForEntityDescriptor(final String entityDescName) {
         return new EntityPredicate() {
-            public Boolean eval(EntityObject arg) {
+            public Boolean apply(EntityObject arg) {
                 Key key = KeyBuilder.init(EntityDescriptorDesc.INSTANCE).set(EntityDescriptorDesc.NAME, entityDescName)
                         .getKey();
                 return key.equals(arg.get(FieldDesc.ENTITY_DESC))
@@ -86,7 +86,7 @@ public class FieldDesc {
 
     public static EntityPredicate getRelationFieldsForEntityDescriptor(final String entityDescName) {
         return new EntityPredicate() {
-            public Boolean eval(EntityObject arg) {
+            public Boolean apply(EntityObject arg) {
                 Key key = KeyBuilder.init(EntityDescriptorDesc.INSTANCE).set(EntityDescriptorDesc.NAME, entityDescName)
                         .getKey();
                 return key.equals(arg.get(FieldDesc.ENTITY_DESC))

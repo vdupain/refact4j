@@ -110,7 +110,7 @@ public class EntitySetTest {
                                                                     EntityObject entityObject) {
 
         EntityPredicate entityObjectPredicate = new EntityPredicate() {
-            public Boolean eval(EntityObject arg) {
+            public Boolean apply(EntityObject arg) {
                 return arg.get(FooDesc.ID) == 4;
             }
         };
@@ -137,7 +137,7 @@ public class EntitySetTest {
 
     private void testGetEntitiesFilteredByUnaryPredicate(EntityCollection collection, EntityObject entityObject) {
         EntityPredicate entityObjectPredicate = new EntityPredicate() {
-            public Boolean eval(EntityObject arg) {
+            public Boolean apply(EntityObject arg) {
                 return arg.getEntityDescriptor().equals(FooDesc.INSTANCE) && arg.get(FooDesc.ID) == 4;
             }
         };
@@ -208,14 +208,14 @@ public class EntitySetTest {
     private void testEntitySetApplyfunctor(final EntityCollection collection) {
         collection.apply(FooDesc.INSTANCE, new EntityFunctor<Object>() {
 
-            public Object eval(EntityObject arg) {
+            public Object apply(EntityObject arg) {
                 assertEquals(FooDesc.INSTANCE, arg.getEntityDescriptor());
                 return null;
             }
         });
         collection.apply(BarDesc.INSTANCE, new EntityFunctor<Object>() {
 
-            public Object eval(EntityObject arg) {
+            public Object apply(EntityObject arg) {
                 assertEquals(BarDesc.INSTANCE, arg.getEntityDescriptor());
                 return null;
             }

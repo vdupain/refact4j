@@ -1,9 +1,9 @@
 package org.refact4j.functor.commons;
 
-import org.refact4j.functor.AbstractUnaryFunctor;
+import org.refact4j.functor.AbstractFunction;
 import org.refact4j.visitor.Visitor;
 
-public class StringLength extends AbstractUnaryFunctor<String, Integer> {
+public class StringLength extends AbstractFunction<String, Integer> {
 
     @Override
     protected Integer evaluate(String arg) {

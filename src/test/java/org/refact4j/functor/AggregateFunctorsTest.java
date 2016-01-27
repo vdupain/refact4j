@@ -43,8 +43,8 @@ public class AggregateFunctorsTest {
     }
 
     private void assertMinAndMax(MinValue<Integer> min, MaxValue<Integer> max) {
-        assertEquals(expectedMinValue, min.eval(values));
-        assertEquals(expectedMaxValue, max.eval(values));
+        assertEquals(expectedMinValue, min.apply(values));
+        assertEquals(expectedMaxValue, max.apply(values));
     }
 
 }

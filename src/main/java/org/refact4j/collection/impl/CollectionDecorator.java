@@ -74,7 +74,7 @@ public class CollectionDecorator<T, ID extends Serializable, TYPE> implements Co
 
     public List<T> getAll(final TYPE type) {
         UnaryPredicate<T> predicate = new UnaryPredicate<T>() {
-            public Boolean eval(T arg) {
+            public Boolean apply(T arg) {
                 return typeResolver.isSameType(type, typeResolver.getTypeOf(arg));
             }
         };

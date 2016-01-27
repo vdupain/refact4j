@@ -24,7 +24,7 @@ public abstract class AbstractXMLizer<T> implements XMLizer<T> {
      */
     public abstract XML xml(T arg);
 
-    public XML eval(T arg) {
+    public XML apply(T arg) {
         return this.xml(arg);
     }
 }

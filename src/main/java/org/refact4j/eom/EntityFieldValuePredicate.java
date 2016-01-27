@@ -20,7 +20,7 @@ public class EntityFieldValuePredicate implements EntityPredicate {
         this.value = value;
     }
 
-    public Boolean eval(EntityObject arg) {
+    public Boolean apply(EntityObject arg) {
         return EqualsHelper.equals(arg.get(field), value);
     }
 

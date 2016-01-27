@@ -11,9 +11,9 @@ public class IdentityFunctorsTest {
 
     @Test
     public void testIdentity() {
-        UnaryFunctor<Object, ?> identity = new Identity<Object>();
-        assertSame(identity, identity.eval(identity));
-        assertSame(this, identity.eval(this));
+        java.util.function.Function<Object,?> identity = new Identity<Object>();
+        assertSame(identity, identity.apply(identity));
+        assertSame(this, identity.apply(this));
     }
 
     @Test

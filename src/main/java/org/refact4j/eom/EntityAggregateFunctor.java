@@ -27,8 +27,8 @@ public final class EntityAggregateFunctor implements AggregateFunctor<EntityObje
         ((AbstractAggregateFunctor<EntityObject>) this.delegate).setComparator(entityObjectComparator);
     }
 
-    public EntityObject eval(Collection<? extends EntityObject> arg) {
-        return delegate.eval(arg);
+    public EntityObject apply(Collection<? extends EntityObject> arg) {
+        return delegate.apply(arg);
     }
 
     public static EntityObject applyMaxAggregateFunctor(EntityCollection collection, EntityDescriptor entityDescriptor,
@@ -43,12 +43,12 @@ public final class EntityAggregateFunctor implements AggregateFunctor<EntityObje
 
     public static EntityObject applyMaxAggregateFunctor(EntityCollection collection, final Field field) {
         EntityCollection result = filterByEntityDescriptor(collection, field.getEntityDescriptor());
-        return new EntityAggregateFunctor(field, new MaxValue<EntityObject>()).eval(result);
+        return new EntityAggregateFunctor(field, new MaxValue<EntityObject>()).apply(result);
     }
 
     public static EntityObject applyMinAggregateFunctor(EntityCollection collection, final Field field) {
         EntityCollection result = filterByEntityDescriptor(collection, field.getEntityDescriptor());
-        return new EntityAggregateFunctor(field, new MinValue<EntityObject>()).eval(result);
+        return new EntityAggregateFunctor(field, new MinValue<EntityObject>()).apply(result);
     }
 
     private static EntityCollection filterByEntityDescriptor(EntityCollection collection,
@@ -56,7 +56,7 @@ public final class EntityAggregateFunctor implements AggregateFunctor<EntityObje
         EntityCollection result = new EntityListImpl();
         FilterIterator<EntityObject> filterIterator = new FilterIterator<EntityObject>(collection.iterator(),
                 new UnaryPredicate<EntityObject>() {
-                    public Boolean eval(EntityObject entityObject) {
+                    public Boolean apply(EntityObject entityObject) {
                         return entityObject.getEntityDescriptor().equals(entityDescriptor);
                     }
                 });

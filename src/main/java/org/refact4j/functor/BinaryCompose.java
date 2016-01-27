@@ -15,38 +15,38 @@ import org.refact4j.visitor.Visitor;
  * @param <T>
  * @param <R>
  */
-public class BinaryCompose<F1, F2, T, R> implements UnaryFunctor<T, R>, Visitable {
+public class BinaryCompose<F1, F2, T, R> implements Visitable, java.util.function.Function<T, R> {
 
-    private final UnaryFunctor<T, F1> firstUnaryFunctor;
+    private final java.util.function.Function<T,F1> firstFunction;
 
-    private final UnaryFunctor<T, F2> secondUnaryFunctor;
+    private final java.util.function.Function<T,F2> secondFunction;
 
     private final BinaryFunctor<F1, F2, R> binaryFunctor;
 
-    public BinaryCompose(BinaryFunctor<F1, F2, R> binaryFunctor, UnaryFunctor<T, F1> firstUnaryFunctor,
-                         UnaryFunctor<T, F2> secondUnaryFunctor) {
+    public BinaryCompose(BinaryFunctor<F1, F2, R> binaryFunctor, java.util.function.Function<T,F1> firstFunction,
+                         java.util.function.Function<T,F2> secondFunction) {
         this.binaryFunctor = binaryFunctor;
-        this.firstUnaryFunctor = firstUnaryFunctor;
-        this.secondUnaryFunctor = secondUnaryFunctor;
+        this.firstFunction = firstFunction;
+        this.secondFunction = secondFunction;
     }
 
     /**
      * f(g(x),h(x))
      */
-    public R eval(T arg) {
-        return binaryFunctor.eval(firstUnaryFunctor.eval(arg), secondUnaryFunctor.eval(arg));
+    public R apply(T arg) {
+        return binaryFunctor.eval(firstFunction.apply(arg), secondFunction.apply(arg));
     }
 
     public BinaryFunctor<F1, F2, R> getBinaryFunctor() {
         return binaryFunctor;
     }
 
-    public UnaryFunctor<T, F1> getFirstUnaryFunctor() {
-        return firstUnaryFunctor;
+    public java.util.function.Function<T,F1> getFirstFunction() {
+        return firstFunction;
     }
 
-    public UnaryFunctor<T, F2> getSecondUnaryFunctor() {
-        return secondUnaryFunctor;
+    public java.util.function.Function<T,F2> getSecondFunction() {
+        return secondFunction;
     }
 
     public void accept(Visitor visitor) {

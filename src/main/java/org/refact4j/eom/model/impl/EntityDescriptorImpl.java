@@ -81,7 +81,7 @@ public class EntityDescriptorImpl implements EntityDescriptor {
         List<DataField> result = new ArrayList<DataField>();
         FilterIterator<Field> filterIterator = new FilterIterator<Field>(this.orderedFields.iterator(),
                 new UnaryPredicate<Field>() {
-                    public Boolean eval(Field field) {
+                    public Boolean apply(Field field) {
                         return field instanceof DataField;
                     }
                 });
@@ -96,7 +96,7 @@ public class EntityDescriptorImpl implements EntityDescriptor {
         List<RelationField> result = new ArrayList<RelationField>();
         FilterIterator<Field> filterIterator = new FilterIterator<Field>(this.orderedFields.iterator(),
                 new UnaryPredicate<Field>() {
-                    public Boolean eval(Field field) {
+                    public Boolean apply(Field field) {
                         return field instanceof RelationField;
                     }
                 });

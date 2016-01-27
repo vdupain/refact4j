@@ -9,9 +9,9 @@ import org.refact4j.eom.model.Key;
 import org.refact4j.eom.model.ManyToOneRelationField;
 import org.refact4j.eom.model.OneToOneRelationField;
 import org.refact4j.eom.model.StringField;
-import org.refact4j.functor.UnaryFunctor;
 
 import java.util.Date;
+import java.util.function.Function;
 
 public class Value2StringFieldConverter extends DefaultFieldVisitor {
     private String stringValue;
@@ -38,8 +38,8 @@ public class Value2StringFieldConverter extends DefaultFieldVisitor {
     }
 
     public void visitDateField(final DateField dateField) {
-        this.stringValue = convert(new UnaryFunctor<Object, String>() {
-            public String eval(Object arg) {
+        this.stringValue = convert(new Function<Object, String>() {
+            public String apply(Object arg) {
                 return (dateField != null && dateField.isTimestamp()) ? EntityUtils.formatTimestamp((Date) value)
                         : EntityUtils.formatDate((Date) value);
             }
@@ -47,8 +47,8 @@ public class Value2StringFieldConverter extends DefaultFieldVisitor {
     }
 
     public void visitBooleanField(BooleanField booleanField) {
-        this.stringValue = convert(new UnaryFunctor<Object, String>() {
-            public String eval(Object arg) {
+        this.stringValue = convert(new Function<Object, String>() {
+            public String apply(Object arg) {
                 return (Boolean) arg ? "true" : "false";
             }
         });
@@ -59,8 +59,8 @@ public class Value2StringFieldConverter extends DefaultFieldVisitor {
     }
 
     private void visitToOne() {
-        this.stringValue = convert(new UnaryFunctor<Object, String>() {
-            public String eval(Object arg) {
+        this.stringValue = convert(new Function<Object, String>() {
+            public String apply(Object arg) {
                 Key key = (Key) value;
                 try {
                     Object keyValue = EntityUtils.getKeyValue(key);
@@ -81,20 +81,20 @@ public class Value2StringFieldConverter extends DefaultFieldVisitor {
     }
 
     private String convert() {
-        return convert(new UnaryFunctor<Object, String>() {
+        return convert(new Function<Object, String>() {
 
-            public String eval(Object arg) {
+            public String apply(Object arg) {
                 return value.toString();
             }
 
         });
     }
 
-    private String convert(UnaryFunctor<Object, String> functor) {
+    private String convert(java.util.function.Function<Object,String> functor) {
         if (value == null) {
             return "null";
         }
-        return functor.eval(value);
+        return functor.apply(value);
     }
 
     public void setValue(Object value) {

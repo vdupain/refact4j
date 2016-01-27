@@ -24,7 +24,7 @@ public class CollectionUtilsTest {
         Collection<Object> filteredCollection = CollectionHelper
                 .filter(collection, new UnaryPredicate<Object>() {
 
-                    public Boolean eval(Object arg) {
+                    public Boolean apply(Object arg) {
                         return arg instanceof String;
                     }
                 });
@@ -32,7 +32,7 @@ public class CollectionUtilsTest {
         filteredCollection = CollectionHelper.filter(collection,
                 new UnaryPredicate<Object>() {
 
-                    public Boolean eval(Object arg) {
+                    public Boolean apply(Object arg) {
                         return arg instanceof Date;
                     }
                 });
@@ -41,7 +41,7 @@ public class CollectionUtilsTest {
         filteredCollection = CollectionHelper.filter(collection,
                 new UnaryPredicate<Object>() {
 
-                    public Boolean eval(Object arg) {
+                    public Boolean apply(Object arg) {
                         return arg instanceof Double;
                     }
                 });

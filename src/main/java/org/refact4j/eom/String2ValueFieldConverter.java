@@ -1,9 +1,9 @@
 package org.refact4j.eom;
 
 import org.refact4j.eom.model.*;
-import org.refact4j.functor.UnaryFunctor;
 
 import java.util.StringTokenizer;
+import java.util.function.Function;
 
 public class String2ValueFieldConverter extends DefaultFieldVisitor {
     private Object value;
@@ -17,32 +17,32 @@ public class String2ValueFieldConverter extends DefaultFieldVisitor {
     }
 
     public void visitIntegerField(IntegerField integerField) {
-        value = convert(new UnaryFunctor<String, Object>() {
-            public Object eval(String arg) {
+        value = convert(new Function<String, Object>() {
+            public Object apply(String arg) {
                 return (!stringValue.equals("") ? new Integer(stringValue) : null);
             }
         });
     }
 
     public void visitDoubleField(DoubleField doubleField) {
-        value = convert(new UnaryFunctor<String, Object>() {
-            public Object eval(String arg) {
+        value = convert(new Function<String, Object>() {
+            public Object apply(String arg) {
                 return (!stringValue.equals("") ? new Double(stringValue) : null);
             }
         });
     }
 
     public void visitStringField(StringField stringField) {
-        value = convert(new UnaryFunctor<String, Object>() {
-            public Object eval(String arg) {
+        value = convert(new Function<String, Object>() {
+            public Object apply(String arg) {
                 return stringValue;
             }
         });
     }
 
     public void visitDateField(final DateField dateField) {
-        value = convert(new UnaryFunctor<String, Object>() {
-            public Object eval(String arg) {
+        value = convert(new Function<String, Object>() {
+            public Object apply(String arg) {
                 boolean isNullString = stringValue.equals("");
                 if (!isNullString) {
                     if (dateField != null && dateField.isTimestamp()) {
@@ -56,8 +56,8 @@ public class String2ValueFieldConverter extends DefaultFieldVisitor {
     }
 
     public void visitBooleanField(BooleanField booleanField) {
-        value = convert(new UnaryFunctor<String, Object>() {
-            public Object eval(String arg) {
+        value = convert(new Function<String, Object>() {
+            public Object apply(String arg) {
                 return "true".equalsIgnoreCase(stringValue) ? Boolean.TRUE : Boolean.FALSE;
             }
         });
@@ -110,11 +110,11 @@ public class String2ValueFieldConverter extends DefaultFieldVisitor {
         return (stringValue == null || "null".equalsIgnoreCase(stringValue));
     }
 
-    private Object convert(UnaryFunctor<String, Object> functor) {
+    private Object convert(java.util.function.Function<String,Object> functor) {
         if (isStringValueNull(stringValue)) {
             return null;
         }
-        return functor.eval(stringValue);
+        return functor.apply(stringValue);
     }
 
     public void setStringValue(String stringValue) {

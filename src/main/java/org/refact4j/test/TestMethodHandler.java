@@ -1,7 +1,5 @@
 package org.refact4j.test;
 
-import org.refact4j.functor.UnaryFunctor;
-
-public interface TestMethodHandler extends UnaryFunctor<XmlTestCase, Object> {
+public interface TestMethodHandler extends java.util.function.Function<XmlTestCase, Object> {
 
 }

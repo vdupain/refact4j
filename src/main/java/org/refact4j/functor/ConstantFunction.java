@@ -1,16 +1,16 @@
 package org.refact4j.functor;
 
 /**
- * ConstantUnaryFunctor functor is a functor that returns the given constant
+ * ConstantFunction functor is a functor that returns the given constant
  * value given at construction.
  *
  * @param <R>
  */
-public class ConstantUnaryFunctor<R> implements UnaryFunctor<Object, R> {
+public class ConstantFunction<R> implements java.util.function.Function<Object, R> {
 
     private final R constant;
 
-    public ConstantUnaryFunctor(final R object) {
+    public ConstantFunction(final R object) {
         this.constant = object;
     }
 
@@ -19,7 +19,7 @@ public class ConstantUnaryFunctor<R> implements UnaryFunctor<Object, R> {
      *
      * @return The constant value.
      */
-    public R eval(Object arg) {
+    public R apply(Object arg) {
         return this.constant;
     }
 

@@ -2,14 +2,14 @@ package org.refact4j.functor.arithmetic;
 
 /**
  * This abstract class provides a skeletal implementation of the
- * AbstractArithmeticUnaryFunctor interface, to minimize the effort required to
+ * AbstractArithmeticFunction interface, to minimize the effort required to
  * implement this interface. To implement an arithmetic unary functor, the
  * programmer needs only to extend this class and provide implementation for the
- * eval method.
+ * apply method.
  *
  * @param <T>
  */
-public abstract class AbstractArithmeticUnaryFunctor<T extends Number> implements ArithmeticUnaryFunctor<T> {
+public abstract class AbstractArithmeticFunction<T extends Number> implements ArithmeticFunction<T> {
 
     private final ArithmeticMathHolder<T> arithmeticMathHolder = new ArithmeticMathHolder<T>();
 
@@ -20,7 +20,7 @@ public abstract class AbstractArithmeticUnaryFunctor<T extends Number> implement
     }
 
     @SuppressWarnings("unchecked")
-    public T eval(T arg) {
+    public T apply(T arg) {
         arithmeticMathHolder.setClazz((Class<T>) (arg != null ? arg.getClass() : null));
         return evaluate(arg);
     }

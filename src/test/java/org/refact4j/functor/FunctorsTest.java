@@ -28,31 +28,31 @@ public class FunctorsTest {
         double discountRate = 0.2;
         double taxRate = 0.20;
 
-        UnaryFunctor<Number, Number> discountedPrice = new Bind1st<Number, Number, Number>(new Multiplies(),
+        java.util.function.Function<Number,Number> discountedPrice = new Bind1st<Number, Number, Number>(new Multiplies(),
                 1 - discountRate);
-        UnaryFunctor<Number, Number> taxedPrice = new Bind1st<Number, Number, Number>(new Multiplies(), 1 + taxRate);
+        java.util.function.Function<Number,Number> taxedPrice = new Bind1st<Number, Number, Number>(new Multiplies(), 1 + taxRate);
 
         Number value = 100.;
-        value = discountedPrice.eval(value);
+        value = discountedPrice.apply(value);
         assertEquals(value, 80.);
-        value = taxedPrice.eval(value);
+        value = taxedPrice.apply(value);
         assertEquals(value, 96.);
 
         value = 100.;
-        value = discountedPrice.eval(taxedPrice.eval(value));
+        value = discountedPrice.apply(taxedPrice.apply(value));
         assertEquals(value, 96.);
 
         UnaryCompose<Number, Number, Number> calcPrice = new UnaryCompose<Number, Number, Number>(
                 discountedPrice, taxedPrice);
         value = 100.;
-        value = calcPrice.eval(value);
+        value = calcPrice.apply(value);
         assertEquals(value, 96.);
 
-        UnaryFunctor<Number, Number> functor = new Bind2nd<Object, Number, Number>(new Multiplies(), 1 + taxRate);
+        java.util.function.Function<Number,Number> functor = new Bind2nd<Object, Number, Number>(new Multiplies(), 1 + taxRate);
         value = 100.;
-        value = discountedPrice.eval(value);
+        value = discountedPrice.apply(value);
         assertEquals(value, 80.);
-        value = functor.eval(value);
+        value = functor.apply(value);
         assertEquals(value, 96.);
     }
 
@@ -60,20 +60,20 @@ public class FunctorsTest {
     public void testCompositeFunctor() {
         BinaryCompose<Boolean, Boolean, Boolean, Boolean> func3 = new BinaryCompose<Boolean, Boolean, Boolean, Boolean>(
                 new And(), new Not(), new Not());
-        assertFalse(func3.eval(true));
+        assertFalse(func3.apply(true));
 
-        UnaryFunctor<DummyBean, Boolean> predicate = new BinaryCompose<Boolean, Boolean, DummyBean, Boolean>(
-                new Greater(), new ConstantUnaryFunctor(1.), new ConstantUnaryFunctor(2.));
-        assertFalse(predicate.eval(null));
+        java.util.function.Function<org.refact4j.model.DummyBean,Boolean> predicate = new BinaryCompose<Boolean, Boolean, DummyBean, Boolean>(
+                new Greater(), new ConstantFunction(1.), new ConstantFunction(2.));
+        assertFalse(predicate.apply(null));
 
         predicate = new BinaryCompose<Boolean, Boolean, DummyBean, Boolean>(new Greater(),
-                new GetFieldFunctor("Value"), new ConstantUnaryFunctor(100.));
+                new GetFieldFunctor("Value"), new ConstantFunction(100.));
         DummyBean dummy = new DummyBean();
         dummy.setValue(99.);
-        assertFalse(predicate.eval(dummy));
+        assertFalse(predicate.apply(dummy));
 
         try {
-            new GetFieldFunctor("???").eval(dummy);
+            new GetFieldFunctor("???").apply(dummy);
             fail("NoSuchMethodException Expected");
         } catch (Exception e) {
             assertEquals("java.lang.NoSuchMethodException: org.refact4j.model.DummyBean.get???()", e
@@ -94,10 +94,10 @@ public class FunctorsTest {
         UnaryPredicate<EntityObject> dummyWith100AsValue = new FieldValuePredicate<Double>(FooDesc.VALUE, 100.);
         dummyEntity = EntityObjectBuilder.init(FooDesc.INSTANCE).setFieldValue(FooDesc.VALUE, 100.)
                 .getEntity();
-        assertTrue(dummyWith100AsValue.eval(dummyEntity));
+        assertTrue(dummyWith100AsValue.apply(dummyEntity));
         dummyEntity = EntityObjectBuilder.init(FooDesc.INSTANCE).setFieldValue(FooDesc.VALUE, 123.)
                 .getEntity();
-        assertFalse(dummyWith100AsValue.eval(dummyEntity));
+        assertFalse(dummyWith100AsValue.apply(dummyEntity));
 
         System.out.println(">>" + printer.toString(dummyWith100AsValue));
 
@@ -107,19 +107,19 @@ public class FunctorsTest {
         BinaryCompose<Boolean, Boolean, EntityObject, Boolean> func4 = new BinaryCompose<Boolean, Boolean, EntityObject, Boolean>(
                 new And(), fc1, fc2);
         dummyEntity = EntityObjectBuilder.init(FooDesc.INSTANCE).setFieldValue(FooDesc.VALUE, 12.).getEntity();
-        assertTrue(func4.eval(dummyEntity));
+        assertTrue(func4.apply(dummyEntity));
         dummyEntity = EntityObjectBuilder.init(FooDesc.INSTANCE).setFieldValue(FooDesc.VALUE, 9.).getEntity();
-        assertFalse(func4.eval(dummyEntity));
+        assertFalse(func4.apply(dummyEntity));
 
         fc1 = new EntityFieldComparator<Double>(new GreaterEqual(), FooDesc.VALUE, 10.);
         fc2 = new EntityFieldComparator<String>(new Equal(), FooDesc.NAME, "azerty");
         func4 = new BinaryCompose<Boolean, Boolean, EntityObject, Boolean>(new And(), fc1, fc2);
         dummyEntity = EntityObjectBuilder.init(FooDesc.INSTANCE).setFieldValue(FooDesc.VALUE, 12.)
                 .setFieldValue(FooDesc.NAME, "azerty").getEntity();
-        assertTrue(func4.eval(dummyEntity));
+        assertTrue(func4.apply(dummyEntity));
         dummyEntity = EntityObjectBuilder.init(FooDesc.INSTANCE).setFieldValue(FooDesc.VALUE, 9.)
                 .setFieldValue(FooDesc.NAME, "azerty").getEntity();
-        assertFalse(func4.eval(dummyEntity));
+        assertFalse(func4.apply(dummyEntity));
     }
 
 }

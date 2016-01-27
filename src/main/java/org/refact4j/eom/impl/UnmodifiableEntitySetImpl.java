@@ -9,7 +9,6 @@ import org.refact4j.eom.EntitySet;
 import org.refact4j.eom.model.EntityDescriptor;
 import org.refact4j.eom.model.Field;
 import org.refact4j.eom.model.Key;
-import org.refact4j.functor.UnaryFunctor;
 import org.refact4j.functor.UnaryPredicate;
 
 import java.util.Collection;
@@ -66,7 +65,7 @@ public class UnmodifiableEntitySetImpl implements EntitySet {
         throw new UnsupportedOperationException();
     }
 
-    public void apply(EntityDescriptor entityDescriptor, UnaryFunctor<EntityObject, ?> functor) {
+    public void apply(EntityDescriptor entityDescriptor, java.util.function.Function<EntityObject,?> functor) {
         entityObjectSet.apply(entityDescriptor, functor);
     }
 

@@ -1,7 +1,7 @@
 package org.refact4j.eom;
 
 import org.refact4j.eom.model.Field;
-import org.refact4j.functor.ConstantUnaryFunctor;
+import org.refact4j.functor.ConstantFunction;
 
 public final class EntityExpressionBuilder {
     private final EntityExpression expression;
@@ -90,23 +90,23 @@ public final class EntityExpressionBuilder {
         return this;
     }
 
-    public EntityExpressionBuilder equalTo(ConstantUnaryFunctor constantFunctor) {
+    public EntityExpressionBuilder equalTo(ConstantFunction constantFunctor) {
         this.expression.equalTo(constantFunctor);
         return this;
     }
 
     public EntityExpressionBuilder equalTo(EntityObject entityObject) {
-        this.expression.equalTo(new ConstantUnaryFunctor<Object>(entityObject.getKey()));
+        this.expression.equalTo(new ConstantFunction<Object>(entityObject.getKey()));
         return this;
     }
 
     public EntityExpressionBuilder equalTo(Object object) {
-        this.expression.equalTo(new ConstantUnaryFunctor<Object>(object));
+        this.expression.equalTo(new ConstantFunction<Object>(object));
         return this;
     }
 
     public EntityExpressionBuilder notEqualTo(Object object) {
-        this.expression.not(equalTo(new ConstantUnaryFunctor<Object>(object)).getExpression());
+        this.expression.not(equalTo(new ConstantFunction<Object>(object)).getExpression());
         return this;
     }
 

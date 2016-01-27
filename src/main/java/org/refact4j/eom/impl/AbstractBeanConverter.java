@@ -14,7 +14,7 @@ public abstract class AbstractBeanConverter<T> implements EntityFunctor<T>, Enti
 
     public abstract T convert(EntityObject entityObject);
 
-    public T eval(EntityObject entityObject) {
+    public T apply(EntityObject entityObject) {
         return this.convert(entityObject);
     }
 
