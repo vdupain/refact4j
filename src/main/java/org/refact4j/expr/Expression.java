@@ -19,14 +19,17 @@ import org.refact4j.functor.identity.Identity;
 import org.refact4j.functor.logical.And;
 import org.refact4j.functor.logical.Not;
 import org.refact4j.functor.logical.Or;
+import org.refact4j.visitor.Visitable;
 import org.refact4j.visitor.Visitor;
+
+import java.util.function.Predicate;
 
 /**
  * Expression defines an object-level representation of a database query where
  * clause. An expression is a tree-like structure that defines the selection
  * criteria for a query against objects.
  */
-public class Expression<T> extends AbstractUnaryPredicate<T> {
+public class Expression<T> implements Predicate<T>, UnaryPredicate<T>, Visitable {
 
     private String name;
 
@@ -46,52 +49,48 @@ public class Expression<T> extends AbstractUnaryPredicate<T> {
         this.function = function;
     }
 
-    public Expression(java.util.function.Function<T,Boolean> function) {
-        this.function = function;
-    }
-
     public Expression<T> greaterThan(Object value) {
-        predicate = new CompositeUnaryPredicate<T>(new Greater<Object>(), function, value);
+        predicate = new CompositeUnaryPredicate<>(new Greater<>(), function, value);
         return this;
     }
 
     public Expression<T> greaterOrEqual(Object value) {
-        predicate = new CompositeUnaryPredicate<T>(new GreaterEqual<Object>(), function, value);
+        predicate = new CompositeUnaryPredicate<>(new GreaterEqual<>(), function, value);
         return this;
     }
 
     public Expression<T> lessThan(Object value) {
-        predicate = new CompositeUnaryPredicate<T>(new Less<Object>(), function, value);
+        predicate = new CompositeUnaryPredicate<>(new Less<>(), function, value);
         return this;
     }
 
     public Expression<T> lessOrEqual(Object value) {
-        predicate = new CompositeUnaryPredicate<T>(new LessEqual<Object>(), function, value);
+        predicate = new CompositeUnaryPredicate<>(new LessEqual<>(), function, value);
         return this;
     }
 
     public Expression<T> between(Object infValue, Object supValue) {
-        predicate = new UnaryCompose(new Between<Object>(infValue, supValue), function);
+        predicate = new UnaryCompose(new Between<>(infValue, supValue), function);
         return this;
     }
 
     public Expression<T> isNull() {
-        predicate = new UnaryCompose(new Null<Object>(), function);
+        predicate = new UnaryCompose(new Null<>(), function);
         return this;
     }
 
     public Expression<T> isNotNull() {
-        predicate = new UnaryCompose(new NotNull<Object>(), function);
+        predicate = new UnaryCompose(new NotNull<>(), function);
         return this;
     }
 
     public Expression<T> in(Object[] objects) {
-        predicate = new UnaryCompose(new In<Object>(objects), function);
+        predicate = new UnaryCompose(new In<>(objects), function);
         return this;
     }
 
     public Expression<T> notIn(Object[] objects) {
-        predicate = new UnaryCompose(new NotIn<Object>(objects), function);
+        predicate = new UnaryCompose(new NotIn<>(objects), function);
         return this;
     }
 
@@ -111,30 +110,30 @@ public class Expression<T> extends AbstractUnaryPredicate<T> {
     }
 
     public Expression<T> equalTo(Object value) {
-        return this.equalTo(new ConstantFunction<Object>(value));
+        return this.equalTo(new ConstantFunction<>(value));
     }
 
     public Expression<T> notEqualTo(Object value) {
-        return this.notEqualTo(new ConstantFunction<Object>(value));
+        return this.notEqualTo(new ConstantFunction<>(value));
     }
 
     public Expression<T> equalTo(ConstantFunction<Object> constantFunctor) {
-        predicate = new CompositeUnaryPredicate<T>(new Equal<Object>(), function, constantFunctor);
+        predicate = new CompositeUnaryPredicate<>(new Equal<>(), function, constantFunctor);
         return this;
     }
 
     public Expression<T> notEqualTo(ConstantFunction<Object> constantFunctor) {
-        predicate = new CompositeUnaryPredicate<T>(new NotEqual<Object>(), function, constantFunctor);
+        predicate = new CompositeUnaryPredicate<>(new NotEqual<>(), function, constantFunctor);
         return this;
     }
 
     public Expression<T> like(String regEx) {
-        predicate = new CompositeUnaryPredicate<T>(new Like(), function, regEx);
+        predicate = new CompositeUnaryPredicate<>(new Like(), function, regEx);
         return this;
     }
 
 	public Expression<T> instanceOf(Class<?> clazz) {
-        predicate = new CompositeUnaryPredicate<T>(new InstanceOf(), function, clazz);
+        predicate = new CompositeUnaryPredicate<>(new InstanceOf(), function, clazz);
         return this;
 	}
 
@@ -157,11 +156,11 @@ public class Expression<T> extends AbstractUnaryPredicate<T> {
     }
 
     public boolean test(T arg) {
-        return this.apply(arg);
+        return this.predicate.apply(arg);
     }
 
     public Boolean apply(T arg) {
-        return this.predicate.apply(arg);
+        return test(arg);
     }
 
     public void accept(Visitor visitor) {

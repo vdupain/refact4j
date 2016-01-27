@@ -10,7 +10,7 @@ public final class ExpressionBuilder {
 	}
 
 	private ExpressionBuilder(java.util.function.Function function) {
-		expression = new Expression(function);
+		expression = new Expression(null, function);
 	}
 
 	private ExpressionBuilder(String property) {
