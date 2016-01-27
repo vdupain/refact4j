@@ -1,10 +1,11 @@
 package org.refact4j.eom;
 
 import org.refact4j.eom.model.Field;
-import org.refact4j.functor.BiFunction;
 import org.refact4j.functor.CompositeUnaryPredicate;
 import org.refact4j.functor.ConstantFunction;
 import org.refact4j.visitor.Visitor;
+
+import java.util.function.BiFunction;
 
 /**
  * EntityFieldComparator is an Unary Predicate for comparing a EntityObject

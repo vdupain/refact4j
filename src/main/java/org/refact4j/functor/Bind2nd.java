@@ -2,6 +2,8 @@ package org.refact4j.functor;
 
 import org.refact4j.visitor.Visitor;
 
+import java.util.function.BiFunction;
+
 /**
  * Bind2nd is a unary functor that wraps a given BiFunction, passing a
  * constant value as the second argument of the child functor. The runtime

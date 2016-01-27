@@ -12,7 +12,7 @@ import org.refact4j.visitor.Visitable;
  * @param <T2>
  * @param <R>
  */
-public abstract class AbstractBiFunction<T1, T2, R> implements BiFunction<T1, T2, R>, Visitable {
+public abstract class AbstractBiFunction<T1, T2, R> implements Visitable, java.util.function.BiFunction<T1, T2, R> {
     private T1 firstArg;
 
     private T2 secondArg;

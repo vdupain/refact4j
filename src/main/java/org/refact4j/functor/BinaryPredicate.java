@@ -9,6 +9,6 @@ package org.refact4j.functor;
  * @param <T1>
  * @param <T2>
  */
-public interface BinaryPredicate<T1, T2> extends BiFunction<T1, T2, Boolean> {
+public interface BinaryPredicate<T1, T2> extends java.util.function.BiFunction<T1, T2, Boolean> {
 
 }

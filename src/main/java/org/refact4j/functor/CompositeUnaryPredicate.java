@@ -2,6 +2,8 @@ package org.refact4j.functor;
 
 import org.refact4j.visitor.Visitor;
 
+import java.util.function.BiFunction;
+
 public class CompositeUnaryPredicate<T> extends AbstractUnaryPredicate<T> {
     private BinaryCompose<?, ?, T, Boolean> compositeFunctor;
 

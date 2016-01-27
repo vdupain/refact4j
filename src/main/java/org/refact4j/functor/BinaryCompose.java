@@ -3,6 +3,8 @@ package org.refact4j.functor;
 import org.refact4j.visitor.Visitable;
 import org.refact4j.visitor.Visitor;
 
+import java.util.function.BiFunction;
+
 /**
  * BinaryCompose is a Unary Functor that passes the results of two Unary
  * Functors as the arguments to a Binary Functor. This allows for the
