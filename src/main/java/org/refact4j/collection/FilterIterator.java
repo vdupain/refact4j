@@ -64,11 +64,6 @@ public class FilterIterator<T> implements Iterator<T>, Iterable<T> {
         init();
     }
 
-    public void setUnaryPredicate(UnaryPredicate<T> predicate) {
-        this.predicate = predicate;
-        init();
-    }
-
     private void init() {
         nextObject = null;
         nextObjectSet = false;

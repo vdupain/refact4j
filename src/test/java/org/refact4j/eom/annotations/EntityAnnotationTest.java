@@ -18,6 +18,7 @@ import org.refact4j.eom.xml.reader.EntityXmlReaderHelper;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.stream.Collectors;
 
 
 public class EntityAnnotationTest {
@@ -78,7 +79,6 @@ public class EntityAnnotationTest {
 
     @Test
     public void testTwoBeansWithToOneRelation() {
-
         AnnotedEntityBindableEntityConverter entityObjectTransformer = new AnnotedEntityBindableEntityConverter();
         entityObjectTransformer.setEntityDescriptorRepository(repository);
         EntityObject fooEntity = entityObjectTransformer.convert(foo);
@@ -92,8 +92,8 @@ public class EntityAnnotationTest {
         beans.add(foo);
         beans.add(bar);
 
-        List<EntityObject> entityObjects = new EntityListImpl(CollectionHelper
-                .transform(beans, entityObjectTransformer));
+        List<EntityObject> entityObjects = (List) beans.stream().map(e -> entityObjectTransformer.convert(e)).collect(Collectors.toList());
+
         Assert.assertEquals(2, entityObjects.size());
         Assert.assertEquals(fooEntity.toXmlString(), entityObjects.get(0).toXmlString());
         Assert.assertEquals(barEntity.toXmlString(), entityObjects.get(1).toXmlString());
@@ -115,14 +115,13 @@ public class EntityAnnotationTest {
         Foo fooBar = actualBar.getFoo();
         Assert.assertEquals(foo.getId(), fooBar.getId());
         Assert.assertEquals(foo.getName(), fooBar.getName());
-        // Assert.assertNull(fooBar.getValue());
         Assert.assertEquals(foo.getValue(), fooBar.getValue());
 
         entityObjects = new EntityListImpl();
         entityObjects.add(fooEntity);
         entityObjects.add(barEntity);
 
-        beans = new ArrayList(CollectionHelper.transform(entityObjects, beanTransformer));
+        beans = entityObjects.stream().map(e -> beanTransformer.convert(e)).collect(Collectors.toList());
         Assert.assertEquals(2, beans.size());
         Assert.assertEquals(foo.getId(), ((Foo) beans.get(0)).getId());
         Assert.assertEquals(foo.getName(), ((Foo) beans.get(0)).getName());

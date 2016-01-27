@@ -13,6 +13,7 @@ import org.refact4j.eom.model.Key;
 import java.util.Collection;
 import java.util.List;
 import java.util.function.Function;
+import java.util.stream.Collectors;
 
 public class EntityListImpl extends AbstractListImpl<EntityObject, Key, EntityDescriptor> implements EntityList {
 
@@ -37,12 +38,7 @@ public class EntityListImpl extends AbstractListImpl<EntityObject, Key, EntityDe
     }
 
     public static List<Key> getKeys(EntityCollection entityObjects) {
-        return (List<Key>) CollectionHelper.transform(entityObjects, new Function<EntityObject, Key>() {
-
-            public Key apply(EntityObject arg) {
-                return arg.getKey();
-            }
-        });
+        return entityObjects.stream().map(e -> e.getKey()).collect(Collectors.toList());
     }
 
     public IdResolver<EntityObject, Key> getIdResolver() {

@@ -12,6 +12,8 @@ import org.refact4j.functor.aggregate.MinValue;
 import org.refact4j.util.ComparatorHelper;
 
 import java.util.Collection;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public final class EntityAggregateFunctor implements AggregateFunctor<EntityObject> {
 
@@ -53,18 +55,9 @@ public final class EntityAggregateFunctor implements AggregateFunctor<EntityObje
 
     private static EntityCollection filterByEntityDescriptor(EntityCollection collection,
                                                              final EntityDescriptor entityDescriptor) {
-        EntityCollection result = new EntityListImpl();
-        FilterIterator<EntityObject> filterIterator = new FilterIterator<EntityObject>(collection.iterator(),
-                new UnaryPredicate<EntityObject>() {
-                    public Boolean apply(EntityObject entityObject) {
-                        return entityObject.getEntityDescriptor().equals(entityDescriptor);
-                    }
-                });
-        while (filterIterator.hasNext()) {
-            result.add(filterIterator.next());
-        }
-
-        return result;
+        List<EntityObject> list = collection.stream().filter(p -> p.getEntityDescriptor().equals(entityDescriptor))
+                .collect(Collectors.toList());
+       return new EntityListImpl(list);
     }
 
 }

@@ -5,6 +5,7 @@ import org.refact4j.functor.UnaryPredicate;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.Iterator;
 
 /**
@@ -25,8 +26,8 @@ public final class CollectionHelper {
      * @param function The unary functor
      * @return
      */
-    public static <T, R> R foreach(Iterator<? extends T> iterator, java.util.function.Function<T,R> function) {
-        return new ForEach<T, R>(function).apply(iterator);
+    public static void foreach(Iterator iterator, java.util.function.Function function) {
+        new ForEach<>(function).apply(iterator);
     }
 
     /**
@@ -45,14 +46,5 @@ public final class CollectionHelper {
         }
         return result;
     }
-
-    public static <T1, T2> Collection<T2> transform(Collection<? extends T1> collection,
-                                                    java.util.function.Function<T1,T2> function) {
-        Collection<T2> result = new ArrayList<T2>();
-        for (T1 t1 : collection) {
-            result.add(function.apply(t1));
-        }
-        return result;
-    }
-
+    
 }
