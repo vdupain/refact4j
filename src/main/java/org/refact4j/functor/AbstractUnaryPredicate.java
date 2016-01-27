@@ -14,15 +14,8 @@ import java.util.function.Predicate;
  */
 public abstract class AbstractUnaryPredicate<T> implements Predicate<T>, UnaryPredicate<T>, Visitable {
 
-    private T arg;
-
     public Boolean apply(T arg) {
-        this.arg = arg;
         return test(arg);
-    }
-
-    public T getArg() {
-        return arg;
     }
 
 }

@@ -17,15 +17,12 @@ public abstract class AbstractBiFunction<T1, T2, R> implements Visitable, java.u
 
     private T2 secondArg;
 
-    private R result;
-
     protected abstract R evaluate(T1 firstArg, T2 secondArg);
 
     public R apply(T1 firstArg, T2 secondArg) {
         this.firstArg = firstArg;
         this.secondArg = secondArg;
-        result = evaluate(firstArg, secondArg);
-        return result;
+        return evaluate(firstArg, secondArg);
     }
 
     public T1 getFirstArg() {
@@ -34,10 +31,6 @@ public abstract class AbstractBiFunction<T1, T2, R> implements Visitable, java.u
 
     public T2 getSecondArg() {
         return secondArg;
-    }
-
-    public R getResult() {
-        return result;
     }
 
 }
