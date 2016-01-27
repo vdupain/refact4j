@@ -11,6 +11,8 @@ import java.io.IOException;
 import java.io.ObjectInput;
 import java.io.ObjectOutput;
 import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
 public class EntityDescriptorImpl implements EntityDescriptor {
     private String name;
@@ -65,33 +67,25 @@ public class EntityDescriptorImpl implements EntityDescriptor {
         return this.keyFields;
     }
 
-    public List<DataField> getAttributeFields() {
-        List<DataField> result = new ArrayList<DataField>();
-        FilterIterator<Field> filterIterator = new FilterIterator<Field>(this.orderedFields.iterator(),
-                new UnaryPredicate<Field>() {
-                    public Boolean apply(Field field) {
-                        return field instanceof DataField;
-                    }
-                });
+    public static <T> java.util.List<T> toList(final Iterable<T> iterable) {
+        return StreamSupport.stream(iterable.spliterator(), false)
+                .collect(Collectors.toList());
+    }
 
-        while (filterIterator.hasNext()) {
-            result.add((DataField) filterIterator.next());
-        }
-        return result;
+    public List<DataField> getAttributeFields() {
+        return this.orderedFields
+                .stream()
+                .filter(p -> p instanceof DataField)
+                .map(p -> (DataField) p)
+                .collect(Collectors.toList());
     }
 
     public List<RelationField> getRelationFields() {
-        List<RelationField> result = new ArrayList<RelationField>();
-        FilterIterator<Field> filterIterator = new FilterIterator<Field>(this.orderedFields.iterator(),
-                new UnaryPredicate<Field>() {
-                    public Boolean apply(Field field) {
-                        return field instanceof RelationField;
-                    }
-                });
-        while (filterIterator.hasNext()) {
-            result.add((RelationField) filterIterator.next());
-        }
-        return result;
+        return this.orderedFields
+                .stream()
+                .filter(p -> p instanceof RelationField)
+                .map(p -> (RelationField) p)
+                .collect(Collectors.toList());
     }
 
     public boolean containsField(Field field) {
