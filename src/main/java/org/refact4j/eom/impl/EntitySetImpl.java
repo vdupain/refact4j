@@ -1,6 +1,6 @@
 package org.refact4j.eom.impl;
 
-import org.refact4j.collection.impl.AbstractSetImpl;
+import org.refact4j.collection.impl.SetImpl;
 import org.refact4j.core.IdResolver;
 import org.refact4j.core.TypeResolver;
 import org.refact4j.eom.EntityList;
@@ -15,7 +15,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class EntitySetImpl extends AbstractSetImpl<EntityObject, Key, EntityDescriptor> implements EntitySet {
+public class EntitySetImpl extends SetImpl<EntityObject, Key, EntityDescriptor> implements EntitySet {
 
     private static final long serialVersionUID = 5875020382043001900L;
 

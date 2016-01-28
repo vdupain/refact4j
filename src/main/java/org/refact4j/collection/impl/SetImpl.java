@@ -1,21 +1,59 @@
 package org.refact4j.collection.impl;
 
+import org.refact4j.collection.Set;
 import org.refact4j.core.IdResolver;
-import org.refact4j.core.Identifiable;
 import org.refact4j.core.TypeResolver;
+import org.refact4j.functor.UnaryPredicate;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.List;
+import java.util.stream.Collectors;
 
-public class SetImpl extends AbstractSetImpl<Identifiable<Serializable>, Serializable, Class<?>> {
+public class SetImpl<T, ID extends Serializable, TYPE> extends HashSet<T> implements Set<T, ID, TYPE> {
 
-    private static final long serialVersionUID = 8720633848397047336L;
+    private final CollectionDecorator<T, ID, TYPE> collectionDecorator = new CollectionDecorator<T, ID, TYPE>(this);
 
-    public IdResolver<Identifiable<Serializable>, Serializable> getIdResolver() {
-        return new DefaultIdResolver<Serializable>();
+
+    public SetImpl() {
+        collectionDecorator.setIdResolver(getIdResolver());
+        collectionDecorator.setTypeResolver(getTypeResolver());
     }
 
-    public TypeResolver<Identifiable<Serializable>, Class<?>> getTypeResolver() {
-        return new DefaultTypeResolverImpl<Identifiable<Serializable>>();
+    public T findByIdentifier(ID id) {
+        return collectionDecorator.findByIdentifier(id);
+    }
+
+    public T findByIdentifier(TYPE type, ID id) {
+        return collectionDecorator.findByIdentifier(type, id);
+    }
+
+    public List<T> findByPredicate(UnaryPredicate<T> predicate) {
+        return collectionDecorator.findByPredicate(predicate);
+    }
+
+    public T findUnique(TYPE type, UnaryPredicate<T> predicate) {
+        return collectionDecorator.findUnique(type, predicate);
+    }
+
+    public List<T> getAll(final TYPE type) {
+        return collectionDecorator.getAll(type);
+    }
+
+    public List<T> getAll(TYPE type, UnaryPredicate<T> predicate) {
+        return collectionDecorator.getAll(type, predicate);
+    }
+
+    public void apply(TYPE type, java.util.function.Function<T, ?> functor) {
+        this.getAll(type).stream().map(e -> functor.apply(e)).collect(Collectors.toList());
+    }
+
+    public TypeResolver<T, TYPE> getTypeResolver() {
+        return new DefaultTypeResolverImpl();
+    }
+
+    public IdResolver<T, ID> getIdResolver() {
+        return new DefaultIdResolver();
     }
 
 }
