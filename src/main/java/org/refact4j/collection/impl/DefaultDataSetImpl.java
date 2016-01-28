@@ -6,7 +6,7 @@ import org.refact4j.core.TypeResolver;
 
 import java.io.Serializable;
 
-public class DefaultDataSetImpl<T> extends AbstractListImpl<T, Serializable, Class<?>> implements
+public class DefaultDataSetImpl<T> extends ListImpl<T, Serializable, Class<?>> implements
         DataSet<T, Serializable, Class<?>> {
 
     private static final long serialVersionUID = -4146887451732819925L;
