@@ -56,31 +56,6 @@ public class MetaModelTest {
                     + "    <field name='foo' dataType='manyToOne' target='foo' prettyName='ToOne Relation to Foo Object'/>"
                     + "</entityDescriptor>" + "</entityDescriptorRepository>" + "</dataset>";
 
-    private static String STRINGIFIER_XML =
-            "<dataset>" + "<stringifiers>" + "<stringifier name='fooStringifier' entityDescriptor='foo'>"
-                    + "    <append id='1' string='id=' field='id'/>"
-                    + "    <append id='2' string=', field1=' field='field1'/>" + "</stringifier>"
-                    + "<stringifier name='barStringifier' entityDescriptor='bar'>"
-                    + "    <append id='1' string='f1=' field='field1'/>"
-                    + "    <append id='2' string=', f2=' field='field2'/>" + "</stringifier>"
-                    + "<stringifier name='versionStringifier' entityDescriptor='version'>"
-                    + "    <append id='1' string='version n°' field='id'/>"
-                    + "    <append id='2' string='-' field='name'/>" + "    <append id='3' string=' du '/>"
-                    + "    <append id='4' field='beginDate'/>"
-                    + "    <append id='5' string=' au ' field='endDate'/>" + "</stringifier>"
-                    + "</stringifiers>" + "</dataset>";
-
-    private static String DATA_XML =
-            "<dataset>" + "<foo id='1' field1='foo1' field2='a' />"
-                    + "<foo id='2' field1='foo2' field2='b'>"
-                    + "    <bar id='12' field1='bar12_1' field2='bar12_2'/>" + "</foo>" + "<foo id='3'/>"
-                    + "<bar id='11' field1='bar11_1' field2='bar11_2' foo='2'/>"
-                    + "<bar id='13' field1='bar13_1' field2='bar12_2'/>"
-                    + "<bar id='14' field1='bar14_1' field2='bar14_2' foo='1'/>"
-                    + "<version id='1' name='v1' beginDate='01/01/07' endDate='12/31/07'/>"
-                    + "<version id='2' name='v2' beginDate='06/01/07' endDate='06/30/07' foo='2'/>"
-                    + "</dataset>";
-
     private EntityDescriptorRepository repository;
 
     private EntityStringifierRepo stringifierRepository;
@@ -92,6 +67,18 @@ public class MetaModelTest {
         repository =
                 DefaultEntityDescriptorRepoFactory.init(EOMMetaModelRepository.get(), META_MODEL_XML,
                         null).createEntityDescriptorRepository();
+        String STRINGIFIER_XML = "<dataset>" + "<stringifiers>" + "<stringifier name='fooStringifier' entityDescriptor='foo'>"
+                + "    <append id='1' string='id=' field='id'/>"
+                + "    <append id='2' string=', field1=' field='field1'/>" + "</stringifier>"
+                + "<stringifier name='barStringifier' entityDescriptor='bar'>"
+                + "    <append id='1' string='f1=' field='field1'/>"
+                + "    <append id='2' string=', f2=' field='field2'/>" + "</stringifier>"
+                + "<stringifier name='versionStringifier' entityDescriptor='version'>"
+                + "    <append id='1' string='version n°' field='id'/>"
+                + "    <append id='2' string='-' field='name'/>" + "    <append id='3' string=' du '/>"
+                + "    <append id='4' field='beginDate'/>"
+                + "    <append id='5' string=' au ' field='endDate'/>" + "</stringifier>"
+                + "</stringifiers>" + "</dataset>";
         stringifierRepository =
                 EntityStringifierRepoFactory.init(repository, STRINGIFIER_XML)
                         .createEntityStringifierRepository();
@@ -111,6 +98,15 @@ public class MetaModelTest {
 
     @Test
     public void testNominal() {
+        String DATA_XML = "<dataset>" + "<foo id='1' field1='foo1' field2='a' />"
+                + "<foo id='2' field1='foo2' field2='b'>"
+                + "    <bar id='12' field1='bar12_1' field2='bar12_2'/>" + "</foo>" + "<foo id='3'/>"
+                + "<bar id='11' field1='bar11_1' field2='bar11_2' foo='2'/>"
+                + "<bar id='13' field1='bar13_1' field2='bar12_2'/>"
+                + "<bar id='14' field1='bar14_1' field2='bar14_2' foo='1'/>"
+                + "<version id='1' name='v1' beginDate='01/01/07' endDate='12/31/07'/>"
+                + "<version id='2' name='v2' beginDate='06/01/07' endDate='06/30/07' foo='2'/>"
+                + "</dataset>";
         org.refact4j.eom.EntityList dataEntities = EntityXmlReaderHelper.unmarshal(repository, DATA_XML);
         EntitySet entityObjectSet = EntitySetBuilder.init().addAll(dataEntities).getEntitySet();
         EntityFieldValuePredicate getEntityByKeyPredicate = new EntityFieldValuePredicate();

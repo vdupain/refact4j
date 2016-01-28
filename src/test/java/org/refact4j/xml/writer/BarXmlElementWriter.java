@@ -21,7 +21,7 @@ public class BarXmlElementWriter extends AbstractXmlElementWriter {
 
     public XmlElementHandler[] handleNext(XmlWriter xmlWriter) throws Exception {
         EntityObject dummy = (EntityObject) next();
-        List<Field> fields = new ArrayList<Field>(dummy.getEntityDescriptor().getFields());
+        List<Field> fields = new ArrayList<>(dummy.getEntityDescriptor().getFields());
         Collections.sort(fields, new FieldNameComparator());
         for (Field field : fields) {
             xmlWriter.writeAttribute(field.getName(), ConverterHelper.convertValue2String(dummy.get(field), field));

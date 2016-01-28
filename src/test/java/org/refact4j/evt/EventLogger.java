@@ -17,28 +17,24 @@ public class EventLogger {
     }
 
     public void assertEquals(String expected) {
-        checkXml(expected, new BinaryPredicate<String, String>() {
-            public Boolean apply(String expected, String actual) {
-                try {
-                    XmlAssert.assertXmlEquals(expected, actual);
-                    return true;
-                } catch (Throwable ignored) {
-                }
-                return false;
+        checkXml(expected, (expected1, actual) -> {
+            try {
+                XmlAssert.assertXmlEquals(expected1, actual);
+                return true;
+            } catch (Throwable ignored) {
             }
+            return false;
         });
     }
 
     public void assertEquivalent(String expected) {
-        checkXml(expected, new BinaryPredicate<String, String>() {
-            public Boolean apply(String expected, String actual) {
-                try {
-                    XmlAssert.assertXmlEquivalent(expected, actual);
-                    return true;
-                } catch (Throwable ignored) {
-                }
-                return false;
+        checkXml(expected, (expected1, actual) -> {
+            try {
+                XmlAssert.assertXmlEquivalent(expected1, actual);
+                return true;
+            } catch (Throwable ignored) {
             }
+            return false;
         });
     }
 

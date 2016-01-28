@@ -24,7 +24,7 @@ public class Expression<T> implements Predicate<T>, UnaryPredicate<T>, Visitable
 
     private java.util.function.Function<T, Boolean> predicate;
 
-    private java.util.function.Function<T, ?> function = new Identity<T>();
+    private java.util.function.Function<T, ?> function = new Identity<>();
 
     public Expression() {
     }
@@ -84,17 +84,17 @@ public class Expression<T> implements Predicate<T>, UnaryPredicate<T>, Visitable
     }
 
     public Expression<T> and(Expression<T> expression) {
-        predicate = new BinaryCompose<Boolean, Boolean, T, Boolean>(new And(), this.predicate, expression.predicate);
+        predicate = new BinaryCompose<>(new And(), this.predicate, expression.predicate);
         return this;
     }
 
     public Expression<T> or(Expression<T> expression) {
-        predicate = new BinaryCompose<Boolean, Boolean, T, Boolean>(new Or(), this.predicate, expression.predicate);
+        predicate = new BinaryCompose<>(new Or(), this.predicate, expression.predicate);
         return this;
     }
 
     public Expression<T> not(Expression<T> expression) {
-        predicate = new UnaryCompose<Boolean, T, Boolean>(new Not(), expression.predicate);
+        predicate = new UnaryCompose<>(new Not(), expression.predicate);
         return this;
     }
 

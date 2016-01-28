@@ -9,7 +9,7 @@ package org.refact4j.evt;
  */
 public class EventManager<T extends EventListener<E>, E extends Event<?>> implements Listenable<T> {
 
-    private final EventListenerList<T, E> listenerList = new EventListenerList<T, E>();
+    private final EventListenerList<T, E> listenerList = new EventListenerList<>();
 
     public synchronized void fireNotifyEvent(NotifyEventFunctor<T, E> notifyEventFunctor, E event) {
         T[] listeners = listenerList.getListenerList();

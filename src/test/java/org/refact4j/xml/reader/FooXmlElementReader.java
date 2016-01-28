@@ -30,11 +30,7 @@ public class FooXmlElementReader extends DefaultXmlElementReader {
             final String parentName = XmlHelper.getAttrValue("parent", xmlAttrs);
             EntityObject parentEntity = ((EntityDataSet) datasetConverterHolder.getDataSet()).getEntityByName(BarDesc.INSTANCE, BarDesc.NAME, parentName);
 
-            EntityObject parentEntity2 = ((EntityDataSet) datasetConverterHolder.getDataSet()).getEntityByPredicate(BarDesc.INSTANCE, new EntityPredicate() {
-                public Boolean apply(EntityObject arg) {
-                    return arg.get(BarDesc.NAME).equals(parentName);
-                }
-            });
+            EntityObject parentEntity2 = ((EntityDataSet) datasetConverterHolder.getDataSet()).getEntityByPredicate(BarDesc.INSTANCE, arg -> arg.get(BarDesc.NAME).equals(parentName));
             Assert.assertEquals(parentEntity, parentEntity2);
 
             fooEntity.set(FooDesc.BAR, parentEntity);

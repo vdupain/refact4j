@@ -60,7 +60,7 @@ public class DefaultEntityDescriptorRepoFactory implements EntityDescriptorRepos
         EntityDescriptorRepositoryBuilder repoBuilder = EntityDescriptorRepositoryBuilder
                 .init(initialEntityDescriptorRepository);
         List<EntityObject> entityDescs = metaModelSet.getAll(EntityDescriptorDesc.INSTANCE);
-        Map<EntityDescriptor, EntityDescriptorBuilder> entityDescBuilderMap = new HashMap<EntityDescriptor, EntityDescriptorBuilder>();
+        Map<EntityDescriptor, EntityDescriptorBuilder> entityDescBuilderMap = new HashMap<>();
         for (EntityObject entityDescEntity : entityDescs) {
             final String entityDescName = entityDescEntity.get(EntityDescriptorDesc.NAME);
             EntityDescriptorBuilder entityDescriptorBuilder = EntityDescriptorBuilder.init(entityDescName);
@@ -170,36 +170,30 @@ public class DefaultEntityDescriptorRepoFactory implements EntityDescriptorRepos
 
     private void createRelationFields(final EntityDescriptorRepository repository, EntityDescriptorBuilder builder,
                                       List<EntityObject> fields) {
-        FieldBuilder fieldBuilder = new FieldBuilder() {
+        FieldBuilder fieldBuilder = (fieldEntity, fieldFactory) -> {
+            Key targetKey = fieldEntity.get(FieldDesc.TARGET);
+            EntityDescriptor targetEntityDescriptor = repository.getEntityDescriptor((String) targetKey
+                    .getFieldValue(EntityDescriptorDesc.NAME));
+            Field field = null;
 
-            public Field getField(EntityObject fieldEntity, FieldFactory fieldFactory) {
-                Key targetKey = fieldEntity.get(FieldDesc.TARGET);
-                EntityDescriptor targetEntityDescriptor = repository.getEntityDescriptor((String) targetKey
-                        .getFieldValue(EntityDescriptorDesc.NAME));
-                Field field = null;
-
-                if (fieldEntity.get(FieldDesc.DATA_TYPE).equals(DataTypeType.MANY_TO_ONE_RELATION_DATA_TYPE.getKey())) {
-                    field = fieldFactory.createManyToOneRelationField(targetEntityDescriptor);
-                } else if (fieldEntity.get(FieldDesc.DATA_TYPE)
-                        .equals(DataTypeType.ONE_TO_MANY_RELATION_DATA_TYPE.getKey())) {
-                    field = fieldFactory.createOneToManyRelationField(targetEntityDescriptor);
-                }
-                return field;
+            if (fieldEntity.get(FieldDesc.DATA_TYPE).equals(DataTypeType.MANY_TO_ONE_RELATION_DATA_TYPE.getKey())) {
+                field = fieldFactory.createManyToOneRelationField(targetEntityDescriptor);
+            } else if (fieldEntity.get(FieldDesc.DATA_TYPE)
+                    .equals(DataTypeType.ONE_TO_MANY_RELATION_DATA_TYPE.getKey())) {
+                field = fieldFactory.createOneToManyRelationField(targetEntityDescriptor);
             }
+            return field;
         };
         this.createFields(builder, fields, fieldBuilder);
     }
 
     private void createFields(EntityDescriptorBuilder builder, List<EntityObject> fields) {
-        FieldBuilder fieldBuilder = new FieldBuilder() {
-
-            public Field getField(EntityObject fieldEntity, FieldFactory fieldFactory) {
-                Key keyDataType = fieldEntity.get(FieldDesc.DATA_TYPE);
-                DataTypeEntity dataTypeEntity = (DataTypeEntity) metaModelSet.findByIdentifier(keyDataType);
-                DataType dataType = dataTypeEntity.getDataType();
-                dataType.accept(fieldFactory);
-                return fieldFactory.getField();
-            }
+        FieldBuilder fieldBuilder = (fieldEntity, fieldFactory) -> {
+            Key keyDataType = fieldEntity.get(FieldDesc.DATA_TYPE);
+            DataTypeEntity dataTypeEntity = (DataTypeEntity) metaModelSet.findByIdentifier(keyDataType);
+            DataType dataType = dataTypeEntity.getDataType();
+            dataType.accept(fieldFactory);
+            return fieldFactory.getField();
         };
         this.createFields(builder, fields, fieldBuilder);
     }

@@ -12,7 +12,7 @@ import java.io.StringReader;
 import java.io.StringWriter;
 import java.io.Writer;
 
-public final class XmlHelper {
+public abstract class XmlHelper {
     private static OutputFormat DEFAULT_FORMAT = new OutputFormat();
 
     static {
@@ -20,10 +20,6 @@ public final class XmlHelper {
         DEFAULT_FORMAT.setIndenting(true);
         DEFAULT_FORMAT.setIndent(2);
         DEFAULT_FORMAT.setLineSeparator(StringHelper.LINE_SEPARATOR);
-    }
-
-    private XmlHelper() {
-
     }
 
     public static String getAttrValue(String xmlAttrName, XmlAttributes xmlAttributes)

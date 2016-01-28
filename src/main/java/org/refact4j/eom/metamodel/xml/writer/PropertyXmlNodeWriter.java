@@ -30,12 +30,10 @@ class PropertyXmlNodeWriter extends AbstractXmlElementWriter {
     }
 
     private static EntityPredicate getPropertiesForField(final EntityObject fieldEntity) {
-        return new EntityPredicate() {
-            public Boolean apply(EntityObject arg) {
-                Key key = KeyBuilder.init(FieldDesc.INSTANCE).set(FieldDesc.NAME, fieldEntity.get(FieldDesc.NAME)).set(
-                        FieldDesc.ENTITY_DESC, fieldEntity.get(FieldDesc.ENTITY_DESC)).getKey();
-                return key.equals(arg.get(PropertyDesc.FIELD_TYPE));
-            }
+        return arg -> {
+            Key key = KeyBuilder.init(FieldDesc.INSTANCE).set(FieldDesc.NAME, fieldEntity.get(FieldDesc.NAME)).set(
+                    FieldDesc.ENTITY_DESC, fieldEntity.get(FieldDesc.ENTITY_DESC)).getKey();
+            return key.equals(arg.get(PropertyDesc.FIELD_TYPE));
         };
     }
 

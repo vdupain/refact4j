@@ -4,8 +4,8 @@ import org.refact4j.test.reader.TestSuiteXmlElementReader;
 import org.refact4j.xml.*;
 import org.refact4j.xml.reader.DefaultXmlElementReader;
 
-import java.util.Arrays;
 import java.util.Collection;
+import java.util.Collections;
 
 public class TestSuiteXmlDescriptor implements XmlDescriptor {
 
@@ -22,7 +22,7 @@ public class TestSuiteXmlDescriptor implements XmlDescriptor {
     };
 
     public Collection<XmlElementFactory> getXmlElementFactories() {
-        return Arrays.asList(factory);
+        return Collections.singletonList(factory);
     }
 
     public XmlElementHandler[] getXmlElementHandlers(DatasetConverterHolder holder) {

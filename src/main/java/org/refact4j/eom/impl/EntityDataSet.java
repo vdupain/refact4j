@@ -38,11 +38,7 @@ public class EntityDataSet extends EntitySetImpl implements DatasetHolder {
 
     public EntityObject getEntityByName(EntityDescriptor entityDescriptor, final StringField stringField,
                                         final String value) {
-        List<EntityObject> list = getAll(entityDescriptor, new EntityPredicate() {
-            public Boolean apply(EntityObject arg) {
-                return EqualsHelper.equals(arg.get(stringField), value);
-            }
-        });
+        List<EntityObject> list = getAll(entityDescriptor, arg -> EqualsHelper.equals(arg.get(stringField), value));
         return list.size() > 0 ? list.get(0) : null;
     }
 

@@ -8,7 +8,7 @@ import java.util.Stack;
 
 public class DefaultXmlReaderHandler implements XmlReaderHandler {
     // A stack for the xml elements
-    private final Stack<XmlElement> stack = new Stack<XmlElement>();
+    private final Stack<XmlElement> stack = new Stack<>();
     // Buffer for collecting data from the "characters" SAX event.
     private final StringBuilder stringBuilder = new StringBuilder();
 

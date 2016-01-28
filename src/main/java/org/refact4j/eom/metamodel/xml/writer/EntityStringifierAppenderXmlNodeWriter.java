@@ -19,11 +19,7 @@ class EntityStringifierAppenderXmlNodeWriter extends AbstractXmlElementWriter {
     }
 
     private static EntityPredicate filterEntityStringifierAppenders(final Key key) {
-        return new EntityPredicate() {
-            public Boolean apply(EntityObject arg) {
-                return key.equals(arg.get(EntityStringifierAppenderDesc.STRINGIFIER));
-            }
-        };
+        return arg -> key.equals(arg.get(EntityStringifierAppenderDesc.STRINGIFIER));
     }
 
     public XmlElementHandler[] handleNext(XmlWriter xmlWriter) throws Exception {

@@ -20,7 +20,7 @@ public abstract class AbstractXMLizer<T> implements XMLizer<T> {
      * Produce a XML representation of an object.
      *
      * @param arg the Object for which a XML should be produced
-     * @return
+     * @return xml
      */
     public abstract XML xml(T arg);
 

@@ -15,7 +15,7 @@ public class CompositeUnaryPredicate<T> extends AbstractUnaryPredicate<T> {
 
     public CompositeUnaryPredicate(BiFunction<?, ?, Boolean> biFunction, java.util.function.Function<T, ?> function,
                                    Object constant) {
-        init(biFunction, function, new ConstantFunction<Object>(constant));
+        init(biFunction, function, new ConstantFunction<>(constant));
 
     }
 

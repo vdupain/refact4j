@@ -16,8 +16,8 @@ import java.util.Comparator;
 public class Between<T> extends AbstractUnaryPredicate<T> {
     private final T infValue;
     private final T supValue;
-    private final GreaterEqual<T> greaterEqual = new GreaterEqual<T>();
-    private final LessEqual<T> lessEqual = new LessEqual<T>();
+    private final GreaterEqual<T> greaterEqual = new GreaterEqual<>();
+    private final LessEqual<T> lessEqual = new LessEqual<>();
 
     public Between(final T infValue, final T supValue) {
         this(infValue, supValue, null);

@@ -35,10 +35,10 @@ public abstract class AbstractNumberField extends AbstractField implements Numer
         super.checkValue(value);
         Expression<Object> minMaxValueExpr = null;
         if (this.minValue != null) {
-            minMaxValueExpr = new Expression<Object>(this.getName()).greaterOrEqual(minValue);
+            minMaxValueExpr = new Expression<>(this.getName()).greaterOrEqual(minValue);
         }
         if (this.maxValue != null) {
-            Expression<Object> maxValueExpr = new Expression<Object>(this.getName()).lessOrEqual(maxValue);
+            Expression<Object> maxValueExpr = new Expression<>(this.getName()).lessOrEqual(maxValue);
             if (minMaxValueExpr == null) {
                 minMaxValueExpr = maxValueExpr;
             } else {

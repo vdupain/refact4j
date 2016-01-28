@@ -21,12 +21,8 @@ public class EventTest {
             }
 
         };
-        NotifyEventFunctor<DummyListener, DummyEvent> notifyEventFunctor = new NotifyEventFunctor<DummyListener, DummyEvent>() {
-            public void notifyEvent(DummyListener listener, DummyEvent event) {
-                listener.notifyDummyEvent(event);
-            }
-        };
-        EventManager<DummyListener, DummyEvent> eventManager = new EventManager<DummyListener, DummyEvent>();
+        NotifyEventFunctor<DummyListener, DummyEvent> notifyEventFunctor = (listener, event) -> listener.notifyDummyEvent(event);
+        EventManager<DummyListener, DummyEvent> eventManager = new EventManager<>();
         eventManager.registerListener(listener1);
         eventManager.fireNotifyEvent(notifyEventFunctor, new DummyEvent(this));
         eventLogger.assertEquals("<log>" + "<evt name='notifyDummyEvent'/>"

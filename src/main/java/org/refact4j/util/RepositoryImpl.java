@@ -4,7 +4,7 @@ import java.util.*;
 
 public class RepositoryImpl<K, T> implements Repository<K, T> {
 
-    private final Map<K, T> objects = new HashMap<K, T>();
+    private final Map<K, T> objects = new HashMap<>();
 
     private Keyifier<K, T> keyifier;
 

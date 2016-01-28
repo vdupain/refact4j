@@ -5,7 +5,7 @@ import java.util.List;
 
 public class TestMethod {
 
-    private final List<AssertionHandler> assertions = new ArrayList<AssertionHandler>();
+    private final List<AssertionHandler> assertions = new ArrayList<>();
     private String name;
     private TestMethodHandler testMethodHandler;
 

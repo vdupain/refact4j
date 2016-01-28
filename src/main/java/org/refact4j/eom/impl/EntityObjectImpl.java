@@ -23,14 +23,14 @@ public class EntityObjectImpl implements EntityObject {
     private final EntityObjectEventSupport entityObjectEventSupport = new EntityObjectEventSupport(this);
     private EntityStringifier stringifier = EntityStringifier.XML;
     private EntityDescriptor entityDescriptor;
-    private Map<Field, Object> values = new HashMap<Field, Object>();
-    private Map<Field, Object> initialValues = new HashMap<Field, Object>();
+    private Map<Field, Object> values = new HashMap<>();
+    private Map<Field, Object> initialValues = new HashMap<>();
 
     public EntityObjectImpl() {
     }
 
     public EntityObjectImpl(EntityDescriptor entityDescriptor) {
-        this(entityDescriptor, new HashMap<Field, Object>());
+        this(entityDescriptor, new HashMap<>());
     }
 
     private EntityObjectImpl(EntityDescriptor entityDescriptor, Map<Field, Object> values) {
@@ -248,7 +248,7 @@ public class EntityObjectImpl implements EntityObject {
 
     public void writeExternal(ObjectOutput out) throws IOException {
         out.writeObject(this.entityDescriptor);
-        List<Field> keySet = new ArrayList<Field>(this.values.keySet());
+        List<Field> keySet = new ArrayList<>(this.values.keySet());
         Collections.sort(keySet, new FieldNameComparator());
         out.writeInt(keySet.size());
         for (Field field : keySet) {

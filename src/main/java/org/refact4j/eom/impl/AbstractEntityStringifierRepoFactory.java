@@ -68,18 +68,9 @@ public abstract class AbstractEntityStringifierRepoFactory implements EntityStri
 
     private EntityStringifier createStringifier(final EntityObject stringifier, EntityDescriptor entityDescriptor) {
         final List<EntityObject> appenders = entityObjectSet.getAll(EntityStringifierAppenderDesc.INSTANCE,
-                new EntityPredicate() {
-                    public Boolean apply(EntityObject arg) {
-                        return arg.get(EntityStringifierAppenderDesc.STRINGIFIER).equals(stringifier.getKey());
-                    }
+                arg -> arg.get(EntityStringifierAppenderDesc.STRINGIFIER).equals(stringifier.getKey()));
 
-                });
-
-        Collections.sort(appenders, new EntityComparator() {
-            public int compare(EntityObject o1, EntityObject o2) {
-                return ((Integer) o1.get("id")).compareTo(((Integer) o2.get("id")));
-            }
-        });
+        Collections.sort(appenders, (EntityComparator) (o1, o2) -> ((Integer) o1.get("id")).compareTo(((Integer) o2.get("id"))));
 
         EntityStringifier stringifierFunctor = new EntityStringifier();
         String stringifierName = stringifier.get(EntityStringifierDesc.NAME);

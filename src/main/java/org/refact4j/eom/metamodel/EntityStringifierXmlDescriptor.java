@@ -7,8 +7,8 @@ import org.refact4j.xml.*;
 import org.refact4j.xml.impl.DefaultXmlElementHandler;
 import org.refact4j.xml.reader.DefaultXmlElementReader;
 
-import java.util.Arrays;
 import java.util.Collection;
+import java.util.Collections;
 
 public class EntityStringifierXmlDescriptor implements XmlDescriptor {
 
@@ -32,7 +32,7 @@ public class EntityStringifierXmlDescriptor implements XmlDescriptor {
             }
 
         };
-        return Arrays.asList(factory);
+        return Collections.singletonList(factory);
     }
 
 

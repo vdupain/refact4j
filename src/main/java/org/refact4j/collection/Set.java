@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 
 public class Set<T, ID, TYPE> extends HashSet<T> implements Finder<T, ID, TYPE> {
 
-    private final CollectionDecorator<T, ID, TYPE> collectionDecorator = new CollectionDecorator<T, ID, TYPE>(this);
+    private final CollectionDecorator<T, ID, TYPE> collectionDecorator = new CollectionDecorator<>(this);
 
 
     public Set() {
@@ -29,10 +29,6 @@ public class Set<T, ID, TYPE> extends HashSet<T> implements Finder<T, ID, TYPE> 
         return collectionDecorator.findByPredicate(predicate);
     }
 
-    public T findUnique(TYPE type, UnaryPredicate<T> predicate) {
-        return collectionDecorator.findUnique(type, predicate);
-    }
-
     public List<T> getAll(final TYPE type) {
         return collectionDecorator.getAll(type);
     }
@@ -42,7 +38,7 @@ public class Set<T, ID, TYPE> extends HashSet<T> implements Finder<T, ID, TYPE> 
     }
 
     public void apply(TYPE type, java.util.function.Function<T, ?> functor) {
-        this.getAll(type).stream().map(e -> functor.apply(e)).collect(Collectors.toList());
+        this.getAll(type).stream().map(functor::apply).collect(Collectors.toList());
     }
 
 }

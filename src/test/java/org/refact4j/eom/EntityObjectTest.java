@@ -180,7 +180,7 @@ public class EntityObjectTest {
     @Test
     public void testSortedField() {
         Collection<Field> unsortedFields = FooDesc.INSTANCE.getFields();
-        List<Field> sortedList = new ArrayList<Field>(unsortedFields);
+        List<Field> sortedList = new ArrayList<>(unsortedFields);
         Collections.sort(sortedList, new FieldOrderComparator());
 
         for (Field field : sortedList) {

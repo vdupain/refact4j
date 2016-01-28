@@ -9,7 +9,7 @@ abstract class AbstractComparisonBiFunction<T> extends AbstractBiFunction<T, T, 
 
     void setComparator(Comparator<T> comparator) {
         if (comparator != null) {
-            this.visitor = new ComparatorComparisonVisitor<T>(comparator);
+            this.visitor = new ComparatorComparisonVisitor<>(comparator);
         }
     }
 

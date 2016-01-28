@@ -17,6 +17,7 @@ import org.refact4j.eom.xml.reader.EntityXmlReaderHelper;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 
@@ -42,7 +43,7 @@ public class EntityAnnotationTest {
         beans.add(foo);
         beans.add(bar);
 
-        List<EntityObject> entityObjects = (List) beans.stream().map(e -> entityObjectTransformer.convert(e)).collect(Collectors.toList());
+        List<EntityObject> entityObjects = (List) beans.stream().map(entityObjectTransformer::convert).collect(Collectors.toList());
 
         Assert.assertEquals(2, entityObjects.size());
         Assert.assertEquals(fooEntity.toXmlString(), entityObjects.get(0).toXmlString());
@@ -71,7 +72,7 @@ public class EntityAnnotationTest {
         entityObjects.add(fooEntity);
         entityObjects.add(barEntity);
 
-        beans = entityObjects.stream().map(e -> beanTransformer.convert(e)).collect(Collectors.toList());
+        beans = entityObjects.stream().map((Function<EntityObject, Object>) beanTransformer::convert).collect(Collectors.toList());
         Assert.assertEquals(2, beans.size());
         Assert.assertEquals(foo.getId(), ((Foo) beans.get(0)).getId());
         Assert.assertEquals(foo.getName(), ((Foo) beans.get(0)).getName());

@@ -99,12 +99,7 @@ public class EntitySetTest {
     private void testGetEntitiesByEntityDescriptor(EntityCollection collection1, EntityCollection collection2,
                                                    EntityCollection collection) {
         List<EntityObject> dummies = collection.getAll(FooDesc.INSTANCE);
-        EntityComparator entityObjectComparator = new EntityComparator() {
-
-            public int compare(EntityObject o1, EntityObject o2) {
-                return ComparatorHelper.compare(o1.getKey(), o2.getKey());
-            }
-        };
+        EntityComparator entityObjectComparator = (EntityComparator) (o1, o2) -> ComparatorHelper.compare(o1.getKey(), o2.getKey());
 
         Collections.sort(dummies, entityObjectComparator);
         assertEquals(collection1.size(), dummies.size());
@@ -145,11 +140,7 @@ public class EntitySetTest {
     private void testGetEntitiesByEntityDescriptorAndUnaryPredicate(EntityCollection collection,
                                                                     EntityObject entityObject) {
 
-        EntityPredicate entityObjectPredicate = new EntityPredicate() {
-            public Boolean apply(EntityObject arg) {
-                return arg.get(FooDesc.ID) == 4;
-            }
-        };
+        EntityPredicate entityObjectPredicate = arg -> arg.get(FooDesc.ID) == 4;
 
         List<EntityObject> list = collection.getAll(FooDesc.INSTANCE, entityObjectPredicate);
         assertEquals(1, list.size());
@@ -172,11 +163,7 @@ public class EntitySetTest {
     }
 
     private void testGetEntitiesFilteredByUnaryPredicate(EntityCollection collection, EntityObject entityObject) {
-        EntityPredicate entityObjectPredicate = new EntityPredicate() {
-            public Boolean apply(EntityObject arg) {
-                return arg.getEntityDescriptor().equals(FooDesc.INSTANCE) && arg.get(FooDesc.ID) == 4;
-            }
-        };
+        EntityPredicate entityObjectPredicate = arg -> arg.getEntityDescriptor().equals(FooDesc.INSTANCE) && arg.get(FooDesc.ID) == 4;
 
         List<EntityObject> list = collection.findByPredicate(entityObjectPredicate);
         assertEquals(1, list.size());

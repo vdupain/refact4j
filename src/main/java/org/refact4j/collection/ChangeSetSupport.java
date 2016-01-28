@@ -6,7 +6,7 @@ import org.refact4j.evt.EventListenerList;
 
 public class ChangeSetSupport<T> {
 
-    EventListenerList<ChangeSetListener<T>, ChangeSetEvent<T>> listenerList = new EventListenerList<ChangeSetListener<T>, ChangeSetEvent<T>>();
+    EventListenerList<ChangeSetListener<T>, ChangeSetEvent<T>> listenerList = new EventListenerList<>();
     ChangeSetEvent<T> event = null;
 
     public void registerListener(ChangeSetListener<T> listener) {
@@ -23,7 +23,7 @@ public class ChangeSetSupport<T> {
         EventListener[] listeners = listenerList.getListenerList();
         for (EventListener listener : listeners) {
             if (event == null)
-                event = new ChangeSetEvent<T>(null);
+                event = new ChangeSetEvent<>(null);
             ((ChangeSetListener) listener).notifyChangeSetUpdate(event, null, null);
         }
     }

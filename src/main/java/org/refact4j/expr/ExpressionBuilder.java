@@ -95,12 +95,12 @@ public final class ExpressionBuilder {
     }
 
     public ExpressionBuilder equalTo(Object object) {
-        this.expression.equalTo(new ConstantFunction<Object>(object));
+        this.expression.equalTo(new ConstantFunction<>(object));
         return this;
     }
 
     public ExpressionBuilder notEqualTo(Object object) {
-        this.expression.not(equalTo(new ConstantFunction<Object>(object)).getExpression());
+        this.expression.not(equalTo(new ConstantFunction<>(object)).getExpression());
         return this;
     }
 

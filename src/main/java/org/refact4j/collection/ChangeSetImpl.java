@@ -7,11 +7,11 @@ import java.util.Map;
 
 public class ChangeSetImpl<T> implements ChangeSet<T> {
 
-    private java.util.List<T> created = new ArrayList<T>();
-    private java.util.List<T> deleted = new ArrayList<T>();
+    private java.util.List<T> created = new ArrayList<>();
+    private java.util.List<T> deleted = new ArrayList<>();
     private ChangeSetSupport changeSetSupport;
-    private ChangeSetListener listener = new DefaultChangeSetListener<T>(this);
-    private Map<T, List<ChangeSetDelta<T>>> deltas = new HashMap<T, List<ChangeSetDelta<T>>>();
+    private ChangeSetListener listener = new DefaultChangeSetListener<>(this);
+    private Map<T, List<ChangeSetDelta<T>>> deltas = new HashMap<>();
     private boolean isChangesRecording;
 
     public ChangeSetImpl(ChangeSetSupport changeSetSupport) {
@@ -30,7 +30,7 @@ public class ChangeSetImpl<T> implements ChangeSet<T> {
     }
 
     public List<T> getUpdatedObjects() {
-        return new ArrayList<T>(this.deltas.keySet());
+        return new ArrayList<>(this.deltas.keySet());
     }
 
     public List<T> getDeletedObjects() {
@@ -52,7 +52,7 @@ public class ChangeSetImpl<T> implements ChangeSet<T> {
     private List<ChangeSetDelta<T>> getDeltasByT(T t) {
         List<ChangeSetDelta<T>> d = deltas.get(t);
         if (d == null) {
-            deltas.put(t, d = new ArrayList<ChangeSetDelta<T>>());
+            deltas.put(t, d = new ArrayList<>());
         }
         return d;
     }

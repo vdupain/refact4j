@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class XmlTestCase extends TestCase {
-    private final List<TestMethod> tests = new ArrayList<TestMethod>();
+    private final List<TestMethod> tests = new ArrayList<>();
     private AfterTestHandler afterTestFunctor;
     private BeforeTestHandler beforeTestFunctor;
 

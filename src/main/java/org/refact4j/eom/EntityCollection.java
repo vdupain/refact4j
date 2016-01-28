@@ -12,7 +12,7 @@ import java.util.stream.Collectors;
 public interface EntityCollection extends Collection<EntityObject>, EntityFinder {
 
     default List<Key> getKeys() {
-        return this.stream().map(e -> e.getKey()).collect(Collectors.toList());
+        return this.stream().map(EntityObject::getKey).collect(Collectors.toList());
     }
 
 

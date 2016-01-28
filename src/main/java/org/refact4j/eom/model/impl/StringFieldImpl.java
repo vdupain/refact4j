@@ -63,10 +63,10 @@ public class StringFieldImpl extends AbstractField implements StringField {
         super.checkValue(value);
         Expression<Object> constraint = null;
         if (this.minLength != null) {
-            constraint = new Expression<Object>(this.getName()).minLength(minLength);
+            constraint = new Expression<>(this.getName()).minLength(minLength);
         }
         if (this.maxLength != null) {
-            Expression<Object> maxValueExpr = new Expression<Object>(this.getName()).maxLength(maxLength);
+            Expression<Object> maxValueExpr = new Expression<>(this.getName()).maxLength(maxLength);
             if (constraint == null) {
                 constraint = maxValueExpr;
             } else {

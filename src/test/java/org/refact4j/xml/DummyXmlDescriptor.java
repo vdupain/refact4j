@@ -6,8 +6,8 @@ import org.refact4j.xml.reader.FooBarsXmlElementReader;
 import org.refact4j.xml.writer.BarXmlElementWriter;
 import org.refact4j.xml.writer.FooXmlElementWriter;
 
-import java.util.Arrays;
 import java.util.Collection;
+import java.util.Collections;
 
 public class DummyXmlDescriptor implements XmlDescriptor {
 
@@ -24,7 +24,7 @@ public class DummyXmlDescriptor implements XmlDescriptor {
     };
 
     public Collection<XmlElementFactory> getXmlElementFactories() {
-        return Arrays.asList(factory);
+        return Collections.singletonList(factory);
     }
 
 

@@ -38,7 +38,7 @@ public class CollectionDecorator<T, ID, TYPE> implements Collection<T>, Finder<T
     }
 
     public List<T> findByPredicate(UnaryPredicate<T> predicate) {
-        return this.collection.stream().filter(t -> predicate.apply(t)).collect(Collectors.toList());
+        return this.collection.stream().filter(predicate::apply).collect(Collectors.toList());
     }
 
     public T findUnique(TYPE type, UnaryPredicate<T> predicate) {
@@ -54,7 +54,7 @@ public class CollectionDecorator<T, ID, TYPE> implements Collection<T>, Finder<T
     }
 
     public List<T> getAll(TYPE type, UnaryPredicate<T> predicate) {
-        return this.getAll(type).stream().filter(t -> predicate.apply(t)).collect(Collectors.toList());
+        return this.getAll(type).stream().filter(predicate::apply).collect(Collectors.toList());
     }
 
     public void setTypeResolver(TypeResolver<T, TYPE> typeResolver) {
@@ -86,7 +86,7 @@ public class CollectionDecorator<T, ID, TYPE> implements Collection<T>, Finder<T
         return this.collection.toArray();
     }
 
-    public <T> T[] toArray(T[] a) {
+    public <T1> T1[] toArray(T1[] a) {
         return this.collection.toArray(a);
     }
 

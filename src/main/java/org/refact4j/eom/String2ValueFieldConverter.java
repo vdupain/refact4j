@@ -17,50 +17,32 @@ public class String2ValueFieldConverter extends DefaultFieldVisitor {
     }
 
     public void visitIntegerField(IntegerField integerField) {
-        value = convert(new Function<String, Object>() {
-            public Object apply(String arg) {
-                return (!stringValue.equals("") ? new Integer(stringValue) : null);
-            }
-        });
+        value = convert(arg -> (!stringValue.equals("") ? new Integer(stringValue) : null));
     }
 
     public void visitDoubleField(DoubleField doubleField) {
-        value = convert(new Function<String, Object>() {
-            public Object apply(String arg) {
-                return (!stringValue.equals("") ? new Double(stringValue) : null);
-            }
-        });
+        value = convert(arg -> (!stringValue.equals("") ? new Double(stringValue) : null));
     }
 
     public void visitStringField(StringField stringField) {
-        value = convert(new Function<String, Object>() {
-            public Object apply(String arg) {
-                return stringValue;
-            }
-        });
+        value = convert(arg -> stringValue);
     }
 
     public void visitDateField(final DateField dateField) {
-        value = convert(new Function<String, Object>() {
-            public Object apply(String arg) {
-                boolean isNullString = stringValue.equals("");
-                if (!isNullString) {
-                    if (dateField != null && dateField.isTimestamp()) {
-                        return EntityUtils.parseTimestamp(stringValue);
-                    }
-                    return EntityUtils.parseDate(stringValue);
+        value = convert(arg -> {
+            boolean isNullString = stringValue.equals("");
+            if (!isNullString) {
+                if (dateField != null && dateField.isTimestamp()) {
+                    return EntityUtils.parseTimestamp(stringValue);
                 }
-                return null;
+                return EntityUtils.parseDate(stringValue);
             }
+            return null;
         });
     }
 
     public void visitBooleanField(BooleanField booleanField) {
-        value = convert(new Function<String, Object>() {
-            public Object apply(String arg) {
-                return "true".equalsIgnoreCase(stringValue) ? Boolean.TRUE : Boolean.FALSE;
-            }
-        });
+        value = convert(arg -> "true".equalsIgnoreCase(stringValue) ? Boolean.TRUE : Boolean.FALSE);
     }
 
     public void visitManyToOneRelationField(ManyToOneRelationField manyToOneRelationField) {

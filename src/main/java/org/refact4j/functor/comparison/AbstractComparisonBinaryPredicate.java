@@ -9,7 +9,7 @@ abstract class AbstractComparisonBinaryPredicate<T> extends AbstractBinaryPredic
 
     public void setComparator(Comparator<? super T> comparator) {
         if (comparator != null) {
-            this.visitor = new ComparatorComparisonVisitor<T>(comparator);
+            this.visitor = new ComparatorComparisonVisitor<>(comparator);
         }
     }
 

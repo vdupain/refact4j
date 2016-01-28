@@ -70,7 +70,7 @@ public final class EntityXmlWriterHelper {
 
     private static void dumpAttributes(EntityObject entityObject, XMLStreamWriter xmlStreamWriter,
                                        String[] excludedFields) throws Exception {
-        List<Field> fields = new ArrayList<Field>(entityObject.getEntityDescriptor().getFields());
+        List<Field> fields = new ArrayList<>(entityObject.getEntityDescriptor().getFields());
         Collections.sort(fields, new FieldNameComparator());
         for (Field field : fields) {
             dumpEntityField(entityObject, field, xmlStreamWriter, excludedFields);

@@ -2,8 +2,6 @@ package org.refact4j.util;
 
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.fail;
 import static org.refact4j.util.Assert.*;
 
 public class AssertTest {

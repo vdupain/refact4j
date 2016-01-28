@@ -9,11 +9,7 @@ public class XmlElementFactoryRepositoryImpl extends RepositoryImpl<String, XmlE
         XmlElementFactoryRepository {
 
     public XmlElementFactoryRepositoryImpl() {
-        setKeyifier(new Keyifier<String, XmlElementFactory>() {
-            public String keyify(XmlElementFactory xmlElementFactory) {
-                return xmlElementFactory.getXmlElementTagName();
-            }
-        });
+        setKeyifier(xmlElementFactory -> xmlElementFactory.getXmlElementTagName());
     }
 
     public XmlElementFactory getXmlElementFactory(String xmlTagName) {

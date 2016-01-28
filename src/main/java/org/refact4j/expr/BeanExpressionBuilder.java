@@ -87,12 +87,12 @@ public final class BeanExpressionBuilder {
     }
 
     public BeanExpressionBuilder equalTo(Object object) {
-        this.expression.equalTo(new ConstantFunction<Object>(object));
+        this.expression.equalTo(new ConstantFunction<>(object));
         return this;
     }
 
     public BeanExpressionBuilder notEqualTo(Object object) {
-        this.expression.not(equalTo(new ConstantFunction<Object>(object)).getExpression());
+        this.expression.not(equalTo(new ConstantFunction<>(object)).getExpression());
         return this;
     }
 

@@ -18,12 +18,7 @@ public class ComparisonFunctorsTest {
 
     String s2 = "qwerty";
 
-    Comparator comparator = new Comparator() {
-        public int compare(Object o1, Object o2) {
-            return ComparatorHelper.compare(((Comparable) o1), ((Comparable) o2));
-        }
-
-    };
+    Comparator comparator = (o1, o2) -> ComparatorHelper.compare(((Comparable) o1), ((Comparable) o2));
 
     @Test
     public void testEqualAndNotEqual() {

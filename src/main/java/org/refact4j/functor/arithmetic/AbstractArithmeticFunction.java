@@ -11,7 +11,7 @@ package org.refact4j.functor.arithmetic;
  */
 public abstract class AbstractArithmeticFunction<T extends Number> implements ArithmeticFunction<T> {
 
-    private final ArithmeticMathHolder<T> arithmeticMathHolder = new ArithmeticMathHolder<T>();
+    private final ArithmeticMathHolder<T> arithmeticMathHolder = new ArithmeticMathHolder<>();
 
     protected abstract T evaluate(T firstArg);
 

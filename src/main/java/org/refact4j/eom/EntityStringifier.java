@@ -38,7 +38,7 @@ public class EntityStringifier implements Stringifier<EntityObject>, EntityFunct
         }
     };
 
-    private final List<EntityObject> appenders = new ArrayList<EntityObject>();
+    private final List<EntityObject> appenders = new ArrayList<>();
 
     private String name;
 

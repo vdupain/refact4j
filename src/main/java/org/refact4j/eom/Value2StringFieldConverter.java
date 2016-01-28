@@ -30,20 +30,12 @@ public class Value2StringFieldConverter extends DefaultFieldVisitor {
     }
 
     public void visitDateField(final DateField dateField) {
-        this.stringValue = convert(new Function<Object, String>() {
-            public String apply(Object arg) {
-                return (dateField != null && dateField.isTimestamp()) ? EntityUtils.formatTimestamp((Date) value)
-                        : EntityUtils.formatDate((Date) value);
-            }
-        });
+        this.stringValue = convert(arg -> (dateField != null && dateField.isTimestamp()) ? EntityUtils.formatTimestamp((Date) value)
+                : EntityUtils.formatDate((Date) value));
     }
 
     public void visitBooleanField(BooleanField booleanField) {
-        this.stringValue = convert(new Function<Object, String>() {
-            public String apply(Object arg) {
-                return (Boolean) arg ? "true" : "false";
-            }
-        });
+        this.stringValue = convert(arg -> (Boolean) arg ? "true" : "false");
     }
 
     public void visitManyToOneRelationField(ManyToOneRelationField manyToOneRelationField) {
@@ -51,15 +43,13 @@ public class Value2StringFieldConverter extends DefaultFieldVisitor {
     }
 
     private void visitToOne() {
-        this.stringValue = convert(new Function<Object, String>() {
-            public String apply(Object arg) {
-                Key key = (Key) value;
-                try {
-                    Object keyValue = EntityUtils.getKeyValue(key);
-                    return keyValue != null ? keyValue.toString() : "null";
-                } catch (Exception e) {
-                    return key.toString();
-                }
+        this.stringValue = convert(arg -> {
+            Key key = (Key) value;
+            try {
+                Object keyValue = EntityUtils.getKeyValue(key);
+                return keyValue != null ? keyValue.toString() : "null";
+            } catch (Exception e) {
+                return key.toString();
             }
         });
     }
@@ -73,13 +63,7 @@ public class Value2StringFieldConverter extends DefaultFieldVisitor {
     }
 
     private String convert() {
-        return convert(new Function<Object, String>() {
-
-            public String apply(Object arg) {
-                return value.toString();
-            }
-
-        });
+        return convert(arg -> value.toString());
     }
 
     private String convert(java.util.function.Function<Object, String> functor) {

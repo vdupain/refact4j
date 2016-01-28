@@ -41,7 +41,7 @@ public class ExpressionTest {
         Expression expression = EntityExpressionBuilder.init(FooDesc.VALUE).greaterThan(10.).getExpression();
         Expression beanExpression = BeanExpressionBuilder.init("Value").greaterThan(10.).getExpression();
 
-        EntityFieldComparator<Double> fc = new EntityFieldComparator<Double>(new Greater(), FooDesc.VALUE, 10.);
+        EntityFieldComparator<Double> fc = new EntityFieldComparator<>(new Greater(), FooDesc.VALUE, 10.);
         EntityObject dummyEntity = EntityObjectBuilder.init(FooDesc.INSTANCE).setFieldValue(FooDesc.VALUE, 12.)
                 .getEntity();
         DummyBean dummy = new DummyBean();
@@ -55,7 +55,7 @@ public class ExpressionTest {
         assertEquals(flag2, flag3);
 
         expression = EntityExpressionBuilder.init(FooDesc.VALUE).greaterThan(10.).and(
-                (EntityExpressionBuilder.init(FooDesc.NAME).equalTo(new ConstantFunction<String>("azerty"))))
+                (EntityExpressionBuilder.init(FooDesc.NAME).equalTo(new ConstantFunction<>("azerty"))))
                 .getExpression();
         beanExpression = BeanExpressionBuilder.init("Value").greaterThan(10.).and(
                 (BeanExpressionBuilder.init("Name").equalTo("azerty"))).getExpression();
@@ -142,7 +142,7 @@ public class ExpressionTest {
 
         Expression expression = ExpressionBuilder.init(getValue).greaterThan(10.).getExpression();
 
-        EntityFieldComparator<Double> fc = new EntityFieldComparator<Double>(new Greater(), FooDesc.VALUE, 10.);
+        EntityFieldComparator<Double> fc = new EntityFieldComparator<>(new Greater(), FooDesc.VALUE, 10.);
         EntityObject dummyEntity = EntityObjectBuilder.init(FooDesc.INSTANCE).setFieldValue(FooDesc.VALUE, 12.)
                 .getEntity();
         Boolean o1 = fc.apply(dummyEntity);

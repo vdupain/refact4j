@@ -12,7 +12,7 @@ import org.refact4j.functor.comparison.Equal;
 public class FieldValuePredicate<T> extends EntityFieldComparator<T> {
 
     public FieldValuePredicate(Field field, T value) {
-        super(new Equal<T>(), field, value);
+        super(new Equal<>(), field, value);
     }
 
 }

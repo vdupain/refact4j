@@ -18,11 +18,7 @@ public final class EntityAggregateFunctor implements AggregateFunctor<EntityObje
     private final AggregateFunctor<EntityObject> delegate;
 
     private EntityAggregateFunctor(final Field field, AggregateFunctor<EntityObject> aggregateFunctor) {
-        EntityComparator entityObjectComparator = new EntityComparator() {
-            public int compare(EntityObject o1, EntityObject o2) {
-                return ComparatorHelper.compare(((Comparable<?>) o1.get(field)), ((Comparable<?>) o2.get(field)));
-            }
-        };
+        EntityComparator entityObjectComparator = (EntityComparator) (o1, o2) -> ComparatorHelper.compare(((Comparable<?>) o1.get(field)), ((Comparable<?>) o2.get(field)));
         this.delegate = aggregateFunctor;
         ((AbstractAggregateFunctor<EntityObject>) this.delegate).setComparator(entityObjectComparator);
     }
@@ -39,12 +35,12 @@ public final class EntityAggregateFunctor implements AggregateFunctor<EntityObje
 
     public static EntityObject applyMaxAggregateFunctor(EntityCollection collection, final Field field) {
         EntityCollection result = filterByEntityDescriptor(collection, field.getEntityDescriptor());
-        return new EntityAggregateFunctor(field, new MaxValue<EntityObject>()).apply(result);
+        return new EntityAggregateFunctor(field, new MaxValue<>()).apply(result);
     }
 
     public static EntityObject applyMinAggregateFunctor(EntityCollection collection, final Field field) {
         EntityCollection result = filterByEntityDescriptor(collection, field.getEntityDescriptor());
-        return new EntityAggregateFunctor(field, new MinValue<EntityObject>()).apply(result);
+        return new EntityAggregateFunctor(field, new MinValue<>()).apply(result);
     }
 
     private static EntityCollection filterByEntityDescriptor(EntityCollection collection,

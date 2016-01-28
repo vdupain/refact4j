@@ -43,12 +43,7 @@ public final class EntityXmlReaderHelper {
     }
 
     public static org.refact4j.eom.EntityList parse(final EntityDescriptorRepository repository, String xmlData) {
-        return unmarshal(new GetEntityDescriptor() {
-
-            public EntityDescriptor getEntityDescriptor(String name) {
-                return repository.getEntityDescriptor(name);
-            }
-        }, xmlData, ENTITIES_TAGNAME, EMPTY_EXCLUDED_FIELDS);
+        return unmarshal(name -> repository.getEntityDescriptor(name), xmlData, ENTITIES_TAGNAME, EMPTY_EXCLUDED_FIELDS);
     }
 
     public static org.refact4j.eom.EntityList parse(EntityDescriptor entityDescriptor, String xmlData) {
@@ -61,12 +56,7 @@ public final class EntityXmlReaderHelper {
 
     private static org.refact4j.eom.EntityList parse(final EntityDescriptor entityDescriptor, String xmlData, String rootTag,
                                                      String[] excludedFields) {
-        return unmarshal(new GetEntityDescriptor() {
-
-            public EntityDescriptor getEntityDescriptor(String name) {
-                return entityDescriptor;
-            }
-        }, xmlData, rootTag, excludedFields);
+        return unmarshal(name -> entityDescriptor, xmlData, rootTag, excludedFields);
     }
 
     private static org.refact4j.eom.EntityList unmarshal(final GetEntityDescriptor functor, String xmlData, String rootTag,

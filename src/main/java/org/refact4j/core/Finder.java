@@ -14,8 +14,6 @@ public interface Finder<T, ID, TYPE> {
 
     List<T> findByPredicate(UnaryPredicate<T> predicate);
 
-    T findUnique(TYPE type, UnaryPredicate<T> predicate);
-
     List<T> getAll(TYPE type);
 
     List<T> getAll(TYPE type, UnaryPredicate<T> predicate);

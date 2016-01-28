@@ -63,36 +63,30 @@ public class FieldDesc {
 
 
     public static EntityPredicate getAllFieldsForEntityDescriptor(final String entityDescName) {
-        return new EntityPredicate() {
-            public Boolean apply(EntityObject arg) {
-                Key key = KeyBuilder.init(EntityDescriptorDesc.INSTANCE).set(EntityDescriptorDesc.NAME, entityDescName)
-                        .getKey();
-                return key.equals(arg.get(FieldDesc.ENTITY_DESC));
-            }
+        return arg -> {
+            Key key = KeyBuilder.init(EntityDescriptorDesc.INSTANCE).set(EntityDescriptorDesc.NAME, entityDescName)
+                    .getKey();
+            return key.equals(arg.get(FieldDesc.ENTITY_DESC));
         };
     }
 
     public static EntityPredicate getFieldsForEntityDescriptor(final String entityDescName) {
-        return new EntityPredicate() {
-            public Boolean apply(EntityObject arg) {
-                Key key = KeyBuilder.init(EntityDescriptorDesc.INSTANCE).set(EntityDescriptorDesc.NAME, entityDescName)
-                        .getKey();
-                return key.equals(arg.get(FieldDesc.ENTITY_DESC))
-                        && !arg.get(FieldDesc.DATA_TYPE).equals(DataTypeType.MANY_TO_ONE_RELATION_DATA_TYPE.getKey())
-                        && !arg.get(FieldDesc.DATA_TYPE).equals(DataTypeType.ONE_TO_MANY_RELATION_DATA_TYPE.getKey());
-            }
+        return arg -> {
+            Key key = KeyBuilder.init(EntityDescriptorDesc.INSTANCE).set(EntityDescriptorDesc.NAME, entityDescName)
+                    .getKey();
+            return key.equals(arg.get(FieldDesc.ENTITY_DESC))
+                    && !arg.get(FieldDesc.DATA_TYPE).equals(DataTypeType.MANY_TO_ONE_RELATION_DATA_TYPE.getKey())
+                    && !arg.get(FieldDesc.DATA_TYPE).equals(DataTypeType.ONE_TO_MANY_RELATION_DATA_TYPE.getKey());
         };
     }
 
     public static EntityPredicate getRelationFieldsForEntityDescriptor(final String entityDescName) {
-        return new EntityPredicate() {
-            public Boolean apply(EntityObject arg) {
-                Key key = KeyBuilder.init(EntityDescriptorDesc.INSTANCE).set(EntityDescriptorDesc.NAME, entityDescName)
-                        .getKey();
-                return key.equals(arg.get(FieldDesc.ENTITY_DESC))
-                        && (arg.get(FieldDesc.DATA_TYPE).equals(DataTypeType.MANY_TO_ONE_RELATION_DATA_TYPE.getKey()) || arg
-                        .get(FieldDesc.DATA_TYPE).equals(DataTypeType.ONE_TO_MANY_RELATION_DATA_TYPE.getKey()));
-            }
+        return arg -> {
+            Key key = KeyBuilder.init(EntityDescriptorDesc.INSTANCE).set(EntityDescriptorDesc.NAME, entityDescName)
+                    .getKey();
+            return key.equals(arg.get(FieldDesc.ENTITY_DESC))
+                    && (arg.get(FieldDesc.DATA_TYPE).equals(DataTypeType.MANY_TO_ONE_RELATION_DATA_TYPE.getKey()) || arg
+                    .get(FieldDesc.DATA_TYPE).equals(DataTypeType.ONE_TO_MANY_RELATION_DATA_TYPE.getKey()));
         };
     }
 

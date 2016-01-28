@@ -11,7 +11,7 @@ package org.refact4j.functor.arithmetic;
  */
 public abstract class AbstractArithmeticBiFunction<T extends Number> implements ArithmeticBiFunction<T> {
 
-    private final ArithmeticMathHolder<T> arithmeticMathHolder = new ArithmeticMathHolder<T>();
+    private final ArithmeticMathHolder<T> arithmeticMathHolder = new ArithmeticMathHolder<>();
 
     protected abstract T evaluate(T firstArg, T secondArg);
 

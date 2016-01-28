@@ -13,11 +13,11 @@ import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
 public class EntityDescriptorImpl implements EntityDescriptor {
-    private final List<Field> orderedFields = new ArrayList<Field>();
+    private final List<Field> orderedFields = new ArrayList<>();
     private final Property property = new PropertyImpl();
     private String name;
-    private Map<String, Field> fields = new TreeMap<String, Field>();
-    private List<Field> keyFields = new ArrayList<Field>();
+    private Map<String, Field> fields = new TreeMap<>();
+    private List<Field> keyFields = new ArrayList<>();
     private EntityExpression constraintExpression;
     private EntityStringifier entityStringifier;
 

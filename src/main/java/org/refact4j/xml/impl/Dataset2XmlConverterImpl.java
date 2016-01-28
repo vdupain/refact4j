@@ -26,7 +26,7 @@ public class Dataset2XmlConverterImpl implements DataSet2XmlConverter {
 
     private final XmlElementFactoryRepositoryImpl xmlElementFactoryRepository = new XmlElementFactoryRepositoryImpl();
 
-    private final List<XmlDescriptor> xmlDescriptors = new ArrayList<XmlDescriptor>();
+    private final List<XmlDescriptor> xmlDescriptors = new ArrayList<>();
 
     public void unmarshal(String xml, Set dataset) {
         unmarshal(xml, dataset, null);
@@ -92,7 +92,7 @@ public class Dataset2XmlConverterImpl implements DataSet2XmlConverter {
     }
 
     public Collection<XmlElementHandler> getXmlElementHandlers(DatasetConverterHolder holder) {
-        List<XmlElementHandler> xmlWriters = new ArrayList<XmlElementHandler>();
+        List<XmlElementHandler> xmlWriters = new ArrayList<>();
         for (XmlDescriptor descriptor : xmlDescriptors) {
             xmlWriters.addAll(Arrays.asList(descriptor.getXmlElementHandlers(holder)));
         }

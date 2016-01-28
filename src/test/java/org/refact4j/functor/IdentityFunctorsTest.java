@@ -10,7 +10,7 @@ public class IdentityFunctorsTest {
 
     @Test
     public void testIdentity() {
-        java.util.function.Function<Object, ?> identity = new Identity<Object>();
+        java.util.function.Function<Object, ?> identity = new Identity<>();
         assertSame(identity, identity.apply(identity));
         assertSame(this, identity.apply(this));
     }

@@ -16,7 +16,7 @@ import java.util.Map.Entry;
 
 @SuppressWarnings("serial")
 public class KeyImpl implements Key {
-    private final Map<Field, Object> keys = new HashMap<Field, Object>();
+    private final Map<Field, Object> keys = new HashMap<>();
 
     private EntityDescriptor entityDescriptor;
 
@@ -53,12 +53,8 @@ public class KeyImpl implements Key {
         StringBuffer buffer = new StringBuffer();
         buffer.append(entityDescriptor.getName());
         buffer.append("[");
-        List<Entry<Field, Object>> entrySet = new ArrayList<Entry<Field, Object>>(keys.entrySet());
-        Comparator<Map.Entry<Field, Object>> comparator = new Comparator<Map.Entry<Field, Object>>() {
-            public int compare(Map.Entry<Field, Object> o1, Map.Entry<Field, Object> o2) {
-                return o1.getKey().getName().compareTo(o2.getKey().getName());
-            }
-        };
+        List<Entry<Field, Object>> entrySet = new ArrayList<>(keys.entrySet());
+        Comparator<Map.Entry<Field, Object>> comparator = (o1, o2) -> o1.getKey().getName().compareTo(o2.getKey().getName());
 
         Collections.sort(entrySet, comparator);
         for (Iterator<Map.Entry<Field, Object>> iter = entrySet.iterator(); iter.hasNext(); ) {

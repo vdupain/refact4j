@@ -74,7 +74,7 @@ public class AnnotedEntityBindableBeanConverter<T> extends AbstractBeanConverter
                         for (Field f : targetEntity.getEntityDescriptor().getFields()) {
                             targetEntity.set(f, key.getFieldValue(f));
                         }
-                        AnnotedEntityBindableBeanConverter<?> functor = new AnnotedEntityBindableBeanConverter<Object>();
+                        AnnotedEntityBindableBeanConverter<?> functor = new AnnotedEntityBindableBeanConverter<>();
                         if (finder != null) {
                             EntityObject target = finder.findByIdentifier(targetEntity.getKey());
                             if (target != null) {

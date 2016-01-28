@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 public class List<T, ID, TYPE> extends ArrayList<T> implements
         Finder<T, ID, TYPE> {
 
-    private final CollectionDecorator<T, ID, TYPE> collectionDecorator = new CollectionDecorator<T, ID, TYPE>(this);
+    private final CollectionDecorator<T, ID, TYPE> collectionDecorator = new CollectionDecorator<>(this);
 
     public List() {
         this.collectionDecorator.setTypeResolver(getTypeResolver());
@@ -28,10 +28,6 @@ public class List<T, ID, TYPE> extends ArrayList<T> implements
         return collectionDecorator.findByPredicate(predicate);
     }
 
-    public T findUnique(TYPE type, UnaryPredicate<T> predicate) {
-        return collectionDecorator.findUnique(type, predicate);
-    }
-
     public java.util.List<T> getAll(final TYPE type) {
         return collectionDecorator.getAll(type);
     }
@@ -41,7 +37,7 @@ public class List<T, ID, TYPE> extends ArrayList<T> implements
     }
 
     public void apply(TYPE type, java.util.function.Function<T, ?> functor) {
-        this.getAll(type).stream().map(e -> functor.apply(e)).collect(Collectors.toList());
+        this.getAll(type).stream().map(functor::apply).collect(Collectors.toList());
     }
 
 }

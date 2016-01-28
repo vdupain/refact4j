@@ -17,11 +17,7 @@ import java.util.Comparator;
 public abstract class AbstractAggregateFunctor<T> extends AbstractFunction<Collection<? extends T>, T> implements
         AggregateFunctor<T> {
     private AggregateVisitor<T> visitor;
-
-    AbstractAggregateFunctor() {
-        setComparator(null);
-    }
-
+    
     AbstractAggregateFunctor(Comparator<? extends T> comparator) {
         setComparator(comparator);
     }

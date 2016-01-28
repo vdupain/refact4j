@@ -18,12 +18,9 @@ public class TestXmlElementReader extends DefaultXmlElementReader {
         testMethod = new TestMethod();
         testMethod.setName(testName);
 
-        TestMethodHandler testMethodHandler = new TestMethodHandler() {
-
-            public Object apply(XmlTestCase arg) {
-                System.out.println("TestMethodHandler.apply()=" + testName);
-                return null;
-            }
+        TestMethodHandler testMethodHandler = arg -> {
+            System.out.println("TestMethodHandler.apply()=" + testName);
+            return null;
         };
         testMethod.setTestMethodHandler(testMethodHandler);
         xmlTestCase.addTestMethod(testMethod);
@@ -31,12 +28,13 @@ public class TestXmlElementReader extends DefaultXmlElementReader {
 
     @Override
     public XmlElement createChildXmlElement(String localName, String qName, XmlAttributes attributes) {
-        if (localName.equals("assertEquals")) {
-            return new AssertEqualsXmlElementReader(this, attributes, testMethod);
-        } else if (localName.equals("assertTrue")) {
-            return new AssertTrueXmlElementReader(this, attributes, testMethod);
-        } else if (localName.equals("assertFalse")) {
-            return new AssertFalseXmlElementReader(this, attributes, testMethod);
+        switch (localName) {
+            case "assertEquals":
+                return new AssertEqualsXmlElementReader(this, attributes, testMethod);
+            case "assertTrue":
+                return new AssertTrueXmlElementReader(this, attributes, testMethod);
+            case "assertFalse":
+                return new AssertFalseXmlElementReader(this, attributes, testMethod);
         }
 
         return super.createChildXmlElement(localName, qName, attributes);

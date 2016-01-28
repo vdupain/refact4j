@@ -23,18 +23,13 @@ public class XmlWriterTest {
             }
 
             public XmlElementHandler[] handleNext(XmlWriter xmlWriter) {
-                return new XmlElementHandler[]{new DummyElementHandler("foo", new XmlWriterCallback() {
-                    public void doWithXmlWriter(XmlWriter xmlWriter) {
-                        xmlWriter.writeAttribute("p1", "v1");
-                        xmlWriter.writeCharacters("abc123");
-                    }
-                }), new DummyElementHandler("bar", new XmlWriterCallback() {
-
-                    public void doWithXmlWriter(XmlWriter xmlWriter) {
-                        xmlWriter.writeAttribute("param1", "xxx");
-                        xmlWriter.writeAttribute("param2", "zzz");
-                        xmlWriter.writeCharacters("azerty");
-                    }
+                return new XmlElementHandler[]{new DummyElementHandler("foo", xmlWriter1 -> {
+                    xmlWriter1.writeAttribute("p1", "v1");
+                    xmlWriter1.writeCharacters("abc123");
+                }), new DummyElementHandler("bar", xmlWriter1 -> {
+                    xmlWriter1.writeAttribute("param1", "xxx");
+                    xmlWriter1.writeAttribute("param2", "zzz");
+                    xmlWriter1.writeCharacters("azerty");
                 })};
             }
 

@@ -101,7 +101,7 @@ public final class EntitySerializerHelper {
             String entityDescName = (String) objectInputStream.readObject();
             EntityDescriptor entityDescriptor = repository.getEntityDescriptor(entityDescName);
             int fieldCount = objectInputStream.readInt();
-            List<Field> fields = new ArrayList<Field>(fieldCount);
+            List<Field> fields = new ArrayList<>(fieldCount);
             for (int i = 0; i < fieldCount; i++) {
                 String fieldName = (String) objectInputStream.readObject();
                 fields.add(entityDescriptor.getField(fieldName));
@@ -142,7 +142,7 @@ public final class EntitySerializerHelper {
             String entityDescName = (String) objectInputStream.readObject();
             EntityDescriptor entityDescriptor = repository.getEntityDescriptor(entityDescName);
             int fieldCount = objectInputStream.readInt();
-            List<Field> fields = new ArrayList<Field>(fieldCount);
+            List<Field> fields = new ArrayList<>(fieldCount);
             for (int i = 0; i < fieldCount; i++) {
                 String fieldName = (String) objectInputStream.readObject();
                 fields.add(entityDescriptor.getField(fieldName));

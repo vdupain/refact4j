@@ -15,59 +15,44 @@ public class EntityUtilsTest {
 
     @Test
     public void testApplyEmptyDefaultValues() {
-
         EntityDescriptorBuilder builder = EntityDescriptorBuilder.init("foo");
-
         FieldFactory.init(builder, "field1").setNullable(true).setDefaultValue("default for field1")
                 .createStringField();
-
         FieldFactory.init(builder, "field2").setNullable(true).setDefaultValue(false).createBooleanField();
-
         FieldFactory.init(builder, "id").setNullable(false).createIntegerField();
 
         String dataXml = "<entities><foo id='1' field1='foo1' field2='true'/>" + "<foo id='2' field1='foo2'/>"
                 + "<foo id='3' field2='true'/></entities>";
-
         EntityList dataEntities = EntityXmlReaderHelper.parse(builder.getEntityDescriptor(), dataXml);
-        for (EntityObject dataEntity : dataEntities) {
-            EntityObject entityObject = dataEntity;
-            EntityUtils.applyEmptyDefaultValues(entityObject);
-        }
+        dataEntities.stream().forEach(EntityUtils::applyEmptyDefaultValues);
 
-        String expected = "<entities><foo field1='foo1' field2='true' id='1'/>";
-        expected += "<foo field1='foo2' field2='false' id='2'/>";
-        expected += "<foo field1='default for field1' field2='true' id='3'/></entities>";
+        String expected = "<entities>" +
+                "<foo field1='foo1' field2='true' id='1'/>" +
+                "<foo field1='foo2' field2='false' id='2'/>" +
+                "<foo field1='default for field1' field2='true' id='3'/>" +
+                "</entities>";
         EntityList expectedEntities = EntityXmlReaderHelper.parse(builder.getEntityDescriptor(), expected);
-
         EntityTestUtils.assertEquals(expectedEntities, dataEntities);
     }
 
     @Test
     public void testApplyDefaultValues() {
-
         EntityDescriptorBuilder builder = EntityDescriptorBuilder.init("foo");
-
         FieldFactory.init(builder, "field1").setNullable(true).setDefaultValue("default for field1")
                 .createStringField();
-
         FieldFactory.init(builder, "field2").setNullable(true).setDefaultValue(false).createBooleanField();
-
         FieldFactory.init(builder, "id").setNullable(false).createIntegerField();
 
         String dataXml = "<entities><foo id='1' field1='foo1' field2='true'/>" + "<foo id='2' field1='foo2'/>"
                 + "<foo id='3' field2='true'/></entities>";
-
         EntityList dataEntities = EntityXmlReaderHelper.parse(builder.getEntityDescriptor(), dataXml);
-        for (EntityObject dataEntity : dataEntities) {
-            EntityObject entityObject = dataEntity;
-            EntityUtils.applyDefaultValues(entityObject);
-        }
-
-        String expected = "<entities><foo field1='default for field1' field2='false' id='null'/>";
-        expected += "<foo field1='default for field1' field2='false' id='null'/>";
-        expected += "<foo field1='default for field1' field2='false' id='null'/></entities>";
+        dataEntities.stream().forEach(EntityUtils::applyDefaultValues);
+        String expected = "<entities>" +
+                "<foo field1='default for field1' field2='false' id='null'/>" +
+                "<foo field1='default for field1' field2='false' id='null'/>" +
+                "<foo field1='default for field1' field2='false' id='null'/>" +
+                "</entities>";
         EntityList expectedEntities = EntityXmlReaderHelper.parse(builder.getEntityDescriptor(), expected);
-
         EntityTestUtils.assertEquals(expectedEntities, dataEntities);
     }
 

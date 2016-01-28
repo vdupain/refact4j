@@ -30,13 +30,8 @@ public class DefaultEntityStringifierRepoVisitor implements EntityStringifierRep
         Dataset2XmlConverterImpl converter = new Dataset2XmlConverterImpl();
         converter.register(new EntityStringifierXmlDescriptor(this.entityDescriptorRepository));
         List<EntityObject> entityObjects = dataSet.getAll(EntityStringifierDesc.INSTANCE,
-                new UnaryPredicate<EntityObject>() {
-
-                    public Boolean apply(EntityObject arg) {
-                        return arg.get(EntityStringifierDesc.OBJECT_TYPE) == null
-                                && arg.get(EntityStringifierDesc.NAME) == null;
-                    }
-                });
+                arg -> arg.get(EntityStringifierDesc.OBJECT_TYPE) == null
+                        && arg.get(EntityStringifierDesc.NAME) == null);
         dataSet.removeAll(entityObjects);
         return converter.marshal(dataSet);
     }

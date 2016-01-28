@@ -11,7 +11,7 @@ public final class ArithmeticMathFactory {
         INSTANCE.repo.put(Double.class, new DoubleArithmeticMath());
     }
 
-    private final Map<Class<? extends Number>, ArithmeticMath<? extends Number>> repo = new HashMap<Class<? extends Number>, ArithmeticMath<? extends Number>>();
+    private final Map<Class<? extends Number>, ArithmeticMath<? extends Number>> repo = new HashMap<>();
 
     private ArithmeticMathFactory() {
     }

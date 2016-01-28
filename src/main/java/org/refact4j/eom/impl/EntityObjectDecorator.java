@@ -33,6 +33,7 @@ public class EntityObjectDecorator implements EntityObject {
     }
 
     public Object clone() throws CloneNotSupportedException {
+        super.clone();
         return new EntityObjectDecorator((EntityObject) this.entityObject.clone());
     }
 

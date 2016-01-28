@@ -8,13 +8,7 @@ public class PropertyImpl extends RepositoryImpl<Object, Object> implements Prop
     private static final long serialVersionUID = 7878468812170283853L;
 
     public PropertyImpl() {
-        setKeyifier(new Keyifier<Object, Object>() {
-
-            public Object keyify(Object object) {
-                return object;
-            }
-
-        });
+        setKeyifier(object -> object);
     }
 
     public void addProperty(Object key, Object value) {

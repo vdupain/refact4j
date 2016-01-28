@@ -18,15 +18,11 @@ public class AggregateFunctorsTest {
 
     Collection<Integer> values;
 
-    Comparator<Integer> comparator = new Comparator<Integer>() {
-        public int compare(Integer o1, Integer o2) {
-            return o1.compareTo(o2);
-        }
-    };
+    Comparator<Integer> comparator = (o1, o2) -> o1.compareTo(o2);
 
     @Before
     public void setUp() {
-        values = new ArrayList<Integer>();
+        values = new ArrayList<>();
         for (int i = 0; i < 10; i++) {
             values.add(i + 1);
         }
@@ -34,12 +30,12 @@ public class AggregateFunctorsTest {
 
     @Test
     public void testMinAndMax() {
-        MaxValue<Integer> maxValue = new MaxValue<Integer>(comparator);
-        MinValue<Integer> minValue = new MinValue<Integer>(comparator);
+        MaxValue<Integer> maxValue = new MaxValue<>(comparator);
+        MinValue<Integer> minValue = new MinValue<>(comparator);
         assertMinAndMax(minValue, maxValue);
 
-        maxValue = new MaxValue<Integer>();
-        minValue = new MinValue<Integer>();
+        maxValue = new MaxValue<>();
+        minValue = new MinValue<>();
         assertMinAndMax(minValue, maxValue);
     }
 

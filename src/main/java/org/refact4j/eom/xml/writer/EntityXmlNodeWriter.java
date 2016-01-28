@@ -44,7 +44,7 @@ public class EntityXmlNodeWriter implements XmlElementHandler {
     }
 
     public XmlElementHandler[] handleNext(XmlWriter xmlWriter) throws Exception {
-        List<Field> fields = new ArrayList<Field>(entityObject.getEntityDescriptor().getFields());
+        List<Field> fields = new ArrayList<>(entityObject.getEntityDescriptor().getFields());
         Collections.sort(fields, new FieldNameComparator());
         for (Field field : fields) {
             xmlWriter.writeAttribute(field.getName(), ConverterHelper.convertValue2String(entityObject.get(field), field));

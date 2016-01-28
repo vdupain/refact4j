@@ -8,11 +8,10 @@ import org.junit.Test;
 public abstract class AbstractChangeSetTest {
     protected CollectionDecorator collectionDecorator;
     protected ChangeSet changeSet;
-    private List initial;
 
     @Before
     public void setUp() throws Exception {
-        initial = populateInitial();
+        List initial = populateInitial();
         collectionDecorator = new CollectionDecorator(initial);
         changeSet = collectionDecorator.getChangeSet();
     }
