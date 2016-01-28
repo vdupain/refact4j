@@ -38,11 +38,9 @@ public final class EntityUtils {
      * @param entityObject entityObject to generate default values from
      */
     public static void applyEmptyDefaultValues(EntityObject entityObject) {
-        for (Field field : entityObject.getEntityDescriptor().getFields()) {
-            if (entityObject.get(field) == null) {
-                entityObject.set(field, field.getDefaultValue());
-            }
-        }
+        entityObject.getEntityDescriptor().getFields().stream().filter(field -> entityObject.get(field) == null).forEach(field -> {
+            entityObject.set(field, field.getDefaultValue());
+        });
     }
 
     /**

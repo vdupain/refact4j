@@ -1,6 +1,5 @@
 package org.refact4j.eom.metamodel;
 
-import org.refact4j.eom.EntityObject;
 import org.refact4j.eom.EntityPredicate;
 import org.refact4j.eom.model.*;
 

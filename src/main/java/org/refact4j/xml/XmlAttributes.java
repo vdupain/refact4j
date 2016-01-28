@@ -17,7 +17,7 @@ public interface XmlAttributes {
      * @see #getValue(int)
      */
     /**
-     * @return
+     * @return int
      */
     int getLength();
 

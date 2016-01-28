@@ -10,7 +10,6 @@ import org.refact4j.eom.metamodel.EntityStringifierDesc;
 import org.refact4j.eom.metamodel.EntityStringifierXmlDescriptor;
 import org.refact4j.eom.model.EntityDescriptor;
 import org.refact4j.eom.model.EntityDescriptorRepository;
-import org.refact4j.functor.UnaryPredicate;
 import org.refact4j.visitor.Visitable;
 import org.refact4j.xml.ToXmlString;
 import org.refact4j.xml.impl.Dataset2XmlConverterImpl;

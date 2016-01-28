@@ -29,7 +29,7 @@ public interface Stringifier<T> extends java.util.function.Function<T, String> {
      * Produce a String representation of an object.
      *
      * @param arg the Object for which a String should be produced
-     * @return
+     * @return String string
      */
     default String stringify(T arg) {
         return arg != null ? arg.toString() : "null";

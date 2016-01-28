@@ -21,7 +21,7 @@ public class EventTest {
             }
 
         };
-        NotifyEventFunctor<DummyListener, DummyEvent> notifyEventFunctor = (listener, event) -> listener.notifyDummyEvent(event);
+        NotifyEventFunctor<DummyListener, DummyEvent> notifyEventFunctor = DummyListener::notifyDummyEvent;
         EventManager<DummyListener, DummyEvent> eventManager = new EventManager<>();
         eventManager.registerListener(listener1);
         eventManager.fireNotifyEvent(notifyEventFunctor, new DummyEvent(this));

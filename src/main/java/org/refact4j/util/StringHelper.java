@@ -31,7 +31,7 @@ public final class StringHelper {
     }
 
     private static String read(InputStreamReader isr) throws IOException {
-        StringBuffer buffer = new StringBuffer();
+        StringBuilder buffer = new StringBuilder();
         Reader in = new BufferedReader(isr);
         int ch;
         while ((ch = in.read()) > -1) {
@@ -79,7 +79,7 @@ public final class StringHelper {
     public static String replace(String str, String pattern, String replace) {
         int s = 0;
         int e;
-        StringBuffer result = new StringBuffer();
+        StringBuilder result = new StringBuilder();
 
         while ((e = str.indexOf(pattern, s)) >= 0) {
             result.append(str.substring(s, e));

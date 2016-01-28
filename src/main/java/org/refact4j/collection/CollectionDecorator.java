@@ -17,12 +17,12 @@ public class CollectionDecorator<T, ID, TYPE> implements Collection<T>, Finder<T
     private IdResolver<T, ID> idResolver;
 
     private ChangeSetImpl<T> changeSet;
-    private ChangeSetSupport<T> changeSetSupport = new ChangeSetSupport<T>();
+    private ChangeSetSupport<T> changeSetSupport = new ChangeSetSupport<>();
 
 
     public CollectionDecorator(Collection<T> collection) {
         this.collection = collection;
-        this.changeSet = new ChangeSetImpl<T>(changeSetSupport);
+        this.changeSet = new ChangeSetImpl<>(changeSetSupport);
     }
 
     public Collection<T> getCollection() {

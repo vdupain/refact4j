@@ -4,7 +4,6 @@ import junit.framework.Assert;
 import org.refact4j.eom.ConverterHelper;
 import org.refact4j.eom.EntityObject;
 import org.refact4j.eom.EntityObjectBuilder;
-import org.refact4j.eom.EntityPredicate;
 import org.refact4j.eom.impl.EntityDataSet;
 import org.refact4j.model.BarDesc;
 import org.refact4j.model.FooDesc;

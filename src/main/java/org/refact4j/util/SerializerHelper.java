@@ -10,8 +10,8 @@ public final class SerializerHelper {
     /**
      * Serialized the given object into an array of bytes.
      *
-     * @param serializable
-     * @return
+     * @param serializable serializable
+     * @return byte[]
      * @throws java.io.IOException
      */
     public static byte[] serialize(Serializable serializable) throws IOException {
@@ -32,8 +32,8 @@ public final class SerializerHelper {
     /**
      * Deserialized an array of bytes into a <tt>Serializable</tt> object.
      *
-     * @param serial
-     * @return
+     * @param serial serial
+     * @return Object object
      * @throws ClassNotFoundException
      * @throws java.io.IOException
      */

@@ -23,7 +23,7 @@ public class AnnotationEntityDescriptorRepoFactory extends DefaultEntityDescript
             EntityDescriptorRepository metaModelEntityDescriptorRepository, Class<?>[] beanClasses,
             EntityDescriptorRepository initialEntityDescriptorRepository) {
         EntityAnnotationsHelper annotations = new EntityAnnotationsHelper();
-        StringBuffer xmlMetaModel = new StringBuffer("<dataset>" + "<entityDescriptorRepository>");
+        StringBuilder xmlMetaModel = new StringBuilder("<dataset>" + "<entityDescriptorRepository>");
         for (Class<?> clazz : beanClasses) {
             new AnnotationsValidator().validate(annotations, clazz);
             if (annotations.hasEntityBindableAnnotation(clazz)) {

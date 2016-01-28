@@ -8,7 +8,7 @@ public class Assert extends org.junit.Assert {
 
     public static void assertThat(Object something, UnaryPredicate<Object> matcher) {
         if (!matcher.apply(something)) {
-            StringBuffer message = new StringBuffer("Expected that: ");
+            StringBuilder message = new StringBuilder("Expected that: ");
             message.append(matcher);
             message.append(StringHelper.LINE_SEPARATOR + "but x was : ").append(something).append(
                     StringHelper.LINE_SEPARATOR);

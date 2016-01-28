@@ -18,7 +18,7 @@ public class AggregateFunctorsTest {
 
     Collection<Integer> values;
 
-    Comparator<Integer> comparator = (o1, o2) -> o1.compareTo(o2);
+    Comparator<Integer> comparator = Integer::compareTo;
 
     @Before
     public void setUp() {

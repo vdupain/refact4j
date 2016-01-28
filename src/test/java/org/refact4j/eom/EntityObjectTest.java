@@ -183,10 +183,7 @@ public class EntityObjectTest {
         List<Field> sortedList = new ArrayList<>(unsortedFields);
         Collections.sort(sortedList, new FieldOrderComparator());
 
-        for (Field field : sortedList) {
-            if (field.getOrder() != null)
-                assertEquals(field, sortedList.get(field.getOrder() - 1));
-        }
+        sortedList.stream().filter(field -> field.getOrder() != null).forEach(field -> assertEquals(field, sortedList.get(field.getOrder() - 1)));
     }
 
     @Test

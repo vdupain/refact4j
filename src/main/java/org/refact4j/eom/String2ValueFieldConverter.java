@@ -3,7 +3,6 @@ package org.refact4j.eom;
 import org.refact4j.eom.model.*;
 
 import java.util.StringTokenizer;
-import java.util.function.Function;
 
 public class String2ValueFieldConverter extends DefaultFieldVisitor {
     private Object value;

@@ -30,9 +30,7 @@ public class TestMethod {
     }
 
     public void checkAssertions() {
-        for (AssertionHandler assertion : assertions) {
-            assertion.assertion();
-        }
+        assertions.forEach(AssertionHandler::assertion);
     }
 
 }

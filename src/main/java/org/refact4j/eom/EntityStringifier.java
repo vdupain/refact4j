@@ -18,7 +18,7 @@ public class EntityStringifier implements Stringifier<EntityObject>, EntityFunct
 
     public static final EntityStringifier DEFAULT = new EntityStringifier() {
         public String stringify(EntityObject entityObject) {
-            StringBuffer strBuf = new StringBuffer();
+            StringBuilder strBuf = new StringBuilder();
             List<Field> keyFields = entityObject.getEntityDescriptor().getKeyFields();
             for (Iterator<Field> iter = keyFields.iterator(); iter.hasNext(); ) {
                 Field field = iter.next();
@@ -72,7 +72,7 @@ public class EntityStringifier implements Stringifier<EntityObject>, EntityFunct
 
     @Override
     public String stringify(EntityObject arg) {
-        StringBuffer s = new StringBuffer();
+        StringBuilder s = new StringBuilder();
         for (EntityObject appender : appenders) {
             String string = (String) appender.get("string");
             if (string != null) {

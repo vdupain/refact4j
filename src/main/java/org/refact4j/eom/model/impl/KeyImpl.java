@@ -50,7 +50,7 @@ public class KeyImpl implements Key {
         if (entityDescriptor == null) {
             return super.toString();
         }
-        StringBuffer buffer = new StringBuffer();
+        StringBuilder buffer = new StringBuilder();
         buffer.append(entityDescriptor.getName());
         buffer.append("[");
         List<Entry<Field, Object>> entrySet = new ArrayList<>(keys.entrySet());

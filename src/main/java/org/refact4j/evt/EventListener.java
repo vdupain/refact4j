@@ -11,7 +11,7 @@ public interface EventListener<T extends Event<?>> extends java.util.EventListen
     /**
      * Invoked when an event occurs.
      *
-     * @param event
+     * @param event event
      */
     void notifyEvent(T event);
 }

@@ -33,7 +33,7 @@ public class Dataset2XmlConverterImpl implements DataSet2XmlConverter {
     }
 
     public void unmarshal(String xml, Set dataset, Finder finder) {
-        if (xml.indexOf(XMLSCHEMA_INSTANCE) != -1) {
+        if (xml.contains(XMLSCHEMA_INSTANCE)) {
             validate(new StringReader(xml));
         }
         unmarshal(new StringReader(xml), dataset, finder);

@@ -3,7 +3,6 @@ package org.refact4j.eom;
 import org.refact4j.eom.model.*;
 
 import java.util.Date;
-import java.util.function.Function;
 
 public class Value2StringFieldConverter extends DefaultFieldVisitor {
     private String stringValue;
