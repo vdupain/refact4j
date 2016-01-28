@@ -3,11 +3,17 @@ package org.refact4j.xml;
 
 public interface XmlElement {
 
-    void onEndElement();
+    default void onEndElement() {
+        // noop
+    }
 
-    void onStartElement();
+    default void onStartElement() {
+        // noop
+    }
 
-    void setStringValue(String value);
+    default void setStringValue(String value) {
+        // noop
+    }
 
     XmlElement createChildXmlElement(String localName, String qName, XmlAttributes attributes);
 

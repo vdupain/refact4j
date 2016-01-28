@@ -9,7 +9,6 @@ import org.refact4j.eom.model.EntityDescriptor;
 import org.refact4j.eom.model.EntityDescriptorRepository;
 import org.refact4j.eom.model.Field;
 import org.refact4j.eom.xml.EntityXmlDescriptor;
-import org.refact4j.xml.AbstractXmlElement;
 import org.refact4j.xml.XmlAttributes;
 import org.refact4j.xml.XmlElement;
 import org.refact4j.xml.XmlParserHelper;
@@ -67,7 +66,7 @@ public final class EntityXmlReaderHelper {
         final org.refact4j.eom.EntityList entityObjects = new EntityList();
         try {
             XmlParserHelper.parse(new StringReader("<" + rootTag + ">" + xmlData + "</" + rootTag + ">"),
-                    new AbstractXmlElement() {
+                    new XmlElement() {
 
                         public XmlElement createChildXmlElement(String localName, String name, XmlAttributes attributes) {
                             if (rootTagName.equals(localName)) {

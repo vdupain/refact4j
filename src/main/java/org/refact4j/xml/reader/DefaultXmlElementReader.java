@@ -2,10 +2,13 @@ package org.refact4j.xml.reader;
 
 import org.refact4j.collection.Set;
 import org.refact4j.core.Finder;
-import org.refact4j.xml.*;
+import org.refact4j.xml.DataSet2XmlConverter;
+import org.refact4j.xml.DatasetConverterHolder;
+import org.refact4j.xml.XmlAttributes;
+import org.refact4j.xml.XmlElement;
 import org.refact4j.xml.impl.DatasetConverterHolderImpl;
 
-public class DefaultXmlElementReader extends AbstractXmlElement implements DatasetConverterHolder {
+public class DefaultXmlElementReader implements XmlElement, DatasetConverterHolder {
     private final DatasetConverterHolder datasetConverterHolder;
 
     DefaultXmlElementReader(Set dataset, Finder finder, DataSet2XmlConverter dataset2XmlConverter) {

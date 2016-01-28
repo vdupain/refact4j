@@ -3,8 +3,8 @@ package org.refact4j.eom.impl;
 import org.refact4j.eom.*;
 import org.refact4j.eom.model.*;
 import org.refact4j.expr.Expression;
-import org.refact4j.xml.AbstractXMLizer;
 import org.refact4j.xml.XML;
+import org.refact4j.xml.XMLizer;
 
 import java.beans.PropertyChangeSupport;
 import java.io.IOException;
@@ -164,7 +164,7 @@ public class EntityObjectImpl implements EntityObject {
     }
 
     public XML toXML() {
-        return AbstractXMLizer.DEFAULT.xml(this);
+        return XMLizer.DEFAULT.xml(this);
     }
 
     public Object clone() {

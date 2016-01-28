@@ -57,7 +57,7 @@ public class Dataset2XmlConverterImpl implements DataSet2XmlConverter {
         try {
             org.xml.sax.XMLReader xmlReader = createXMLReader();
             final DatasetXmlElementReader datasetXmlNodeReader = new DatasetXmlElementReader(dataset, finder, this);
-            XmlParserHelper.parse(xmlReader, new InputSource(reader), new AbstractXmlElement() {
+            XmlParserHelper.parse(xmlReader, new InputSource(reader), new XmlElement() {
 
                 public XmlElement createChildXmlElement(String localName, String name, XmlAttributes attributes) {
                     if (localName.equals(DATASET_TAGNAME)) {
