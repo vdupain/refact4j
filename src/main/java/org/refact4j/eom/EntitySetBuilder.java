@@ -1,7 +1,6 @@
 package org.refact4j.eom;
 
 import org.refact4j.eom.impl.EntitySetImpl;
-import org.refact4j.eom.impl.UnmodifiableEntitySetImpl;
 
 import java.util.Collection;
 
@@ -38,10 +37,6 @@ public final class EntitySetBuilder {
 
     public EntitySet getEntitySet() {
         return this.entityObjectSet;
-    }
-
-    public EntitySet getReadOnlyEntitySet() {
-        return new UnmodifiableEntitySetImpl(entityObjectSet);
     }
 
 }

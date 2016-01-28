@@ -32,21 +32,11 @@ public class CollectionDecorator<T, ID extends Serializable, TYPE> implements Co
     }
 
     public T findByIdentifier(ID id) {
-        for (T t : this.collection) {
-            if (idResolver.getId(t).equals(id)) {
-                return t;
-            }
-        }
-        return null;
+        return this.collection.stream().filter(p->idResolver.getId(p).equals(id)).findFirst().get();
     }
 
     public T findByIdentifier(TYPE type, ID id) {
-        for (T t : this.getAll(type)) {
-            if (idResolver.getId(t).equals(id)) {
-                return t;
-            }
-        }
-        return null;
+        return this.getAll(type).stream().filter(p->idResolver.getId(p).equals(id)).findFirst().get();
     }
 
     public List<T> findByPredicate(UnaryPredicate<T> predicate) {

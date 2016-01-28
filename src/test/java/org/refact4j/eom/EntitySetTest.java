@@ -3,7 +3,7 @@ package org.refact4j.eom;
 import org.junit.Test;
 import org.refact4j.eom.impl.EntityDataSetImpl;
 import org.refact4j.eom.impl.EntityListImpl;
-import org.refact4j.eom.impl.UnmodifiableEntitySetImpl;
+import org.refact4j.eom.impl.EntitySetImpl;
 import org.refact4j.eom.model.Key;
 import org.refact4j.eom.model.KeyBuilder;
 import org.refact4j.eom.model.impl.KeyImpl;
@@ -88,8 +88,8 @@ public class EntitySetTest {
                 .getEntitySet();
 
         testGetEntitiesByEntityDescriptor(entityObjectSet1, entityObjectSet2, entityObjectSet);
-        EntitySet readOnlyEntitySet = new UnmodifiableEntitySetImpl(entityObjectSet);
-        testGetEntitiesByEntityDescriptor(entityObjectSet1, entityObjectSet2, readOnlyEntitySet);
+        EntitySet entitySet = new EntitySetImpl(entityObjectSet);
+        testGetEntitiesByEntityDescriptor(entityObjectSet1, entityObjectSet2, entitySet);
         EntityDataSetImpl entityObjectDataSet = new EntityDataSetImpl(entityObjectSet);
         testGetEntitiesByEntityDescriptor(entityObjectSet1, entityObjectSet2, entityObjectDataSet);
         EntityList entityObjectList = new EntityListImpl(entityObjectSet);
@@ -134,8 +134,8 @@ public class EntitySetTest {
         entityObjectSet.add(entityObject);
 
         testGetEntitiesByEntityDescriptorAndUnaryPredicate(entityObjectSet, entityObject);
-        EntitySet readOnlyEntitySet = new UnmodifiableEntitySetImpl(entityObjectSet);
-        testGetEntitiesByEntityDescriptorAndUnaryPredicate(readOnlyEntitySet, entityObject);
+        EntitySet entitySet = new EntitySetImpl(entityObjectSet);
+        testGetEntitiesByEntityDescriptorAndUnaryPredicate(entitySet, entityObject);
         EntityDataSetImpl entityObjectDataSet = new EntityDataSetImpl(entityObjectSet);
         testGetEntitiesByEntityDescriptorAndUnaryPredicate(entityObjectDataSet, entityObject);
         EntityList entityObjectList = new EntityListImpl(entityObjectSet);
@@ -163,8 +163,8 @@ public class EntitySetTest {
         entityObjectSet.add(entityObject);
 
         testGetEntitiesFilteredByUnaryPredicate(entityObjectSet, entityObject);
-        EntitySet readOnlyEntitySet = new UnmodifiableEntitySetImpl(entityObjectSet);
-        testGetEntitiesFilteredByUnaryPredicate(readOnlyEntitySet, entityObject);
+        EntitySet entitySet = new EntitySetImpl(entityObjectSet);
+        testGetEntitiesFilteredByUnaryPredicate(entitySet, entityObject);
         EntityDataSetImpl entityObjectDataSet = new EntityDataSetImpl(entityObjectSet);
         testGetEntitiesFilteredByUnaryPredicate(entityObjectDataSet, entityObject);
         EntityList entityObjectList = new EntityListImpl(entityObjectSet);
@@ -190,8 +190,8 @@ public class EntitySetTest {
         entityObjectSet.add(entityObject);
 
         testGetEntitiesFilteredByExprConstraint(entityObjectSet, entityObject);
-        EntitySet readOnlyEntitySet = new UnmodifiableEntitySetImpl(entityObjectSet);
-        testGetEntitiesFilteredByExprConstraint(readOnlyEntitySet, entityObject);
+        EntitySet entitySet = new EntitySetImpl(entityObjectSet);
+        testGetEntitiesFilteredByExprConstraint(entitySet, entityObject);
         EntityDataSetImpl entityObjectDataSet = new EntityDataSetImpl(entityObjectSet);
         testGetEntitiesFilteredByExprConstraint(entityObjectDataSet, entityObject);
         EntityList entityObjectList = new EntityListImpl(entityObjectSet);
@@ -213,8 +213,8 @@ public class EntitySetTest {
     public void testEntitySetContainsEntity() {
         EntitySet entityObjectSet = createEntitySetWithDummies();
         testEntitySetContainsEntity(entityObjectSet);
-        EntitySet readOnlyEntitySet = new UnmodifiableEntitySetImpl(entityObjectSet);
-        testEntitySetContainsEntity(readOnlyEntitySet);
+        EntitySet entitySet = new EntitySetImpl(entityObjectSet);
+        testEntitySetContainsEntity(entitySet);
         EntityDataSetImpl entityObjectDataSet = new EntityDataSetImpl(entityObjectSet);
         testEntitySetContainsEntity(entityObjectDataSet);
         EntityList entityObjectList = new EntityListImpl(entityObjectSet);
@@ -233,8 +233,8 @@ public class EntitySetTest {
     public void testEntitySetApplyfunctor() {
         final EntitySet entityObjectSet = createEntitySet();
         testEntitySetApplyfunctor(entityObjectSet);
-        EntitySet readOnlyEntitySet = new UnmodifiableEntitySetImpl(entityObjectSet);
-        testEntitySetApplyfunctor(readOnlyEntitySet);
+        EntitySet entityObjects = new EntitySetImpl(entityObjectSet);
+        testEntitySetApplyfunctor(entityObjects);
         EntityDataSetImpl entityObjectDataSet = new EntityDataSetImpl(entityObjectSet);
         testEntitySetApplyfunctor(entityObjectDataSet);
         EntityList entityObjectList = new EntityListImpl(entityObjectSet);
@@ -254,7 +254,7 @@ public class EntitySetTest {
     public void testEntitySetGetEntitiesByEntityDescriptorFieldAndValue() {
         final EntitySet entityObjectSet = createEntitySet();
         testEntitySetGetEntitiesByEntityDescriptorFieldAndValue(entityObjectSet);
-        EntitySet readOnlyEntitySet = new UnmodifiableEntitySetImpl(entityObjectSet);
+        EntitySet readOnlyEntitySet = new EntitySetImpl(entityObjectSet);
         testEntitySetGetEntitiesByEntityDescriptorFieldAndValue(readOnlyEntitySet);
         EntityDataSetImpl entityObjectDataSet = new EntityDataSetImpl(entityObjectSet);
         testEntitySetGetEntitiesByEntityDescriptorFieldAndValue(entityObjectDataSet);
@@ -265,52 +265,6 @@ public class EntitySetTest {
         Key key = KeyBuilder.init(FooDesc.INSTANCE).set(FooDesc.ID, 1).getKey();
         EntityObject entityObject = entityObjectSet.findByIdentifier(key);
         assertEquals(entityObject, entityObjects.iterator().next());
-    }
-
-    @Test
-    public void testReadOnlyEntitySet() {
-        String xmlData = "";
-        xmlData += "<Foo name='foo1' id='1'/>";
-        xmlData += "<Foo name='foo2' id='2'/>";
-
-        EntityList entityObjects = EntityXmlReaderHelper.parse(DummyRepository.get(), xmlData);
-        EntitySet entityObjectSet = EntitySetBuilder.init().addAll(entityObjects).getReadOnlyEntitySet();
-
-        try {
-            entityObjectSet.clear();
-            fail("Expected Exception");
-        } catch (UnsupportedOperationException e) {
-        }
-        try {
-            entityObjectSet.iterator().remove();
-            fail("Expected Exception");
-        } catch (UnsupportedOperationException e) {
-        }
-        try {
-            entityObjectSet.add(entityObjects.get(0));
-            fail("Expected Exception");
-        } catch (UnsupportedOperationException e) {
-        }
-        try {
-            entityObjectSet.remove(entityObjects.get(0));
-            fail("Expected Exception");
-        } catch (UnsupportedOperationException e) {
-        }
-        try {
-            entityObjectSet.removeAll(entityObjects);
-            fail("Expected Exception");
-        } catch (UnsupportedOperationException e) {
-        }
-        try {
-            entityObjectSet.addAll(entityObjects);
-            fail("Expected Exception");
-        } catch (UnsupportedOperationException e) {
-        }
-        try {
-            entityObjectSet.retainAll(entityObjects);
-            fail("Expected Exception");
-        } catch (UnsupportedOperationException e) {
-        }
     }
 
 }
