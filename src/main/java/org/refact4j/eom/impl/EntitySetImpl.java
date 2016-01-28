@@ -39,10 +39,6 @@ public class EntitySetImpl extends AbstractSetImpl<EntityObject, Key, EntityDesc
         return super.findByIdentifier(key.getEntityDescriptor(), key);
     }
 
-    public List<Key> getKeys() {
-        return EntityListImpl.getKeys(this);
-    }
-
     public IdResolver<EntityObject, Key> getIdResolver() {
         return new EntityIdResolverImpl();
     }

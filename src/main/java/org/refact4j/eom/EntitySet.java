@@ -14,7 +14,4 @@ public interface EntitySet extends Set<EntityObject, Key, EntityDescriptor>, Ent
 
     EntityList getEntities(EntityDescriptor entityDescriptor, Field field, Object value);
 
-    void delete(EntityObject entityObject);
-
-    void create(EntityObject entityObject);
 }

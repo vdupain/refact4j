@@ -51,12 +51,4 @@ public abstract class AbstractSetImpl<T, ID extends Serializable, TYPE> extends 
         return collectionDecorator.getChangeSet();
     }
 
-    public void delete(T t) {
-        collectionDecorator.delete(t);
-    }
-
-    public void create(T t) {
-        collectionDecorator.create(t);
-    }
-
 }

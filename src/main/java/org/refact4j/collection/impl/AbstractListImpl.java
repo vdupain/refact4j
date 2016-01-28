@@ -47,16 +47,4 @@ public abstract class AbstractListImpl<T, ID extends Serializable, TYPE> extends
     }
 
 
-    public ChangeSet<T> getChangeSet() {
-        return collectionDecorator.getChangeSet();
-    }
-
-    public void delete(T t) {
-        collectionDecorator.delete(t);
-    }
-
-    public void create(T t) {
-        collectionDecorator.create(t);
-    }
-
 }
