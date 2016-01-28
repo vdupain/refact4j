@@ -1,6 +1,5 @@
 package org.refact4j.model;
 
-import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
 import org.refact4j.collection.DataSet;
@@ -17,6 +16,8 @@ import org.refact4j.eom.model.EntityDescriptor;
 import org.refact4j.eom.model.EntityDescriptorRepository;
 import org.refact4j.eom.xml.reader.EntityXmlReaderHelper;
 import org.refact4j.xml.impl.Dataset2XmlConverterImpl;
+
+import static org.junit.Assert.assertEquals;
 
 
 public class MetaModelTest {

@@ -15,7 +15,7 @@ import org.refact4j.visitor.Visitor;
 public class NotIn<T> extends AbstractUnaryPredicate<T> {
 
     private final Object[] values;
-    private final java.util.function.Function<T,Boolean> notIn;
+    private final java.util.function.Function<T, Boolean> notIn;
 
     public NotIn(final Object[] values) {
         this.values = values;

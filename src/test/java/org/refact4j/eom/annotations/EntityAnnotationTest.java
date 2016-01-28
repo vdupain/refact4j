@@ -27,55 +27,6 @@ public class EntityAnnotationTest {
 
     private BarImpl bar;
 
-    class FooImpl implements Foo {
-        Integer id;
-
-        String name;
-
-        Double value;
-
-        boolean flag;
-
-        Collection<Bar> bars;
-
-        public Integer getId() {
-            return id;
-        }
-
-        public String getName() {
-            return name;
-        }
-
-        public Double getValue() {
-            return value;
-        }
-
-        public boolean isFlag() {
-            return flag;
-        }
-
-    }
-
-    class BarImpl implements Bar {
-        Integer id;
-
-        String name;
-
-        Foo foo;
-
-        public Foo getFoo() {
-            return foo;
-        }
-
-        public Integer getId() {
-            return id;
-        }
-
-        public String getName() {
-            return name;
-        }
-    }
-
     @Test
     public void testTwoBeansWithToOneRelation() {
         AnnotedEntityBindableEntityConverter entityObjectTransformer = new AnnotedEntityBindableEntityConverter();
@@ -163,6 +114,55 @@ public class EntityAnnotationTest {
         Assert
                 .assertEquals(barEntity.toXmlString(), converter.convert(context.getBeanConverter().convert(barEntity))
                         .toXmlString());
+    }
+
+    class FooImpl implements Foo {
+        Integer id;
+
+        String name;
+
+        Double value;
+
+        boolean flag;
+
+        Collection<Bar> bars;
+
+        public Integer getId() {
+            return id;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public Double getValue() {
+            return value;
+        }
+
+        public boolean isFlag() {
+            return flag;
+        }
+
+    }
+
+    class BarImpl implements Bar {
+        Integer id;
+
+        String name;
+
+        Foo foo;
+
+        public Foo getFoo() {
+            return foo;
+        }
+
+        public Integer getId() {
+            return id;
+        }
+
+        public String getName() {
+            return name;
+        }
     }
 
 }

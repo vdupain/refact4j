@@ -9,22 +9,22 @@ public class CompositeUnaryPredicate<T> extends AbstractUnaryPredicate<T> {
 
     private BiFunction<?, ?, Boolean> biFunction;
 
-    private java.util.function.Function<T,?> function;
+    private java.util.function.Function<T, ?> function;
 
     private ConstantFunction<?> constantUnaryFunctor;
 
-    public CompositeUnaryPredicate(BiFunction<?, ?, Boolean> biFunction, java.util.function.Function<T,?> function,
+    public CompositeUnaryPredicate(BiFunction<?, ?, Boolean> biFunction, java.util.function.Function<T, ?> function,
                                    Object constant) {
         init(biFunction, function, new ConstantFunction<Object>(constant));
 
     }
 
-    public CompositeUnaryPredicate(BiFunction<?, ?, Boolean> biFunction, java.util.function.Function<T,?> function,
+    public CompositeUnaryPredicate(BiFunction<?, ?, Boolean> biFunction, java.util.function.Function<T, ?> function,
                                    ConstantFunction<?> constantUnaryFunctor) {
         init(biFunction, function, constantUnaryFunctor);
     }
 
-    private void init(BiFunction<?, ?, Boolean> biFunction, java.util.function.Function<T,?> function,
+    private void init(BiFunction<?, ?, Boolean> biFunction, java.util.function.Function<T, ?> function,
                       ConstantFunction<?> constantUnaryFunctor) {
         this.biFunction = biFunction;
         this.function = function;
@@ -44,7 +44,7 @@ public class CompositeUnaryPredicate<T> extends AbstractUnaryPredicate<T> {
         return constantUnaryFunctor;
     }
 
-    public java.util.function.Function<T,?> getFunction() {
+    public java.util.function.Function<T, ?> getFunction() {
         return function;
     }
 

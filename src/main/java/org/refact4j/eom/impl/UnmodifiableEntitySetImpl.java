@@ -65,7 +65,7 @@ public class UnmodifiableEntitySetImpl implements EntitySet {
         throw new UnsupportedOperationException();
     }
 
-    public void apply(EntityDescriptor entityDescriptor, java.util.function.Function<EntityObject,?> functor) {
+    public void apply(EntityDescriptor entityDescriptor, java.util.function.Function<EntityObject, ?> functor) {
         entityObjectSet.apply(entityDescriptor, functor);
     }
 

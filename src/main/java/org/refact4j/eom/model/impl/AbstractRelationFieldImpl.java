@@ -52,6 +52,10 @@ public abstract class AbstractRelationFieldImpl extends AbstractField implements
         return this.inverseRelationField != this ? this.inverseRelationField : null;
     }
 
+    public void setInverseRelationField(RelationField inverseRelationfield) {
+        this.inverseRelationField = inverseRelationfield;
+    }
+
     private boolean isReciprocalToRelationField(RelationField relationField) {
         if (!this.getEntityDescriptor().equals(relationField.getTargetEntityDescriptor())) {
             return false;
@@ -64,10 +68,6 @@ public abstract class AbstractRelationFieldImpl extends AbstractField implements
             return true;
         }
         return false;
-    }
-
-    public void setInverseRelationField(RelationField inverseRelationfield) {
-        this.inverseRelationField = inverseRelationfield;
     }
 
     @Override

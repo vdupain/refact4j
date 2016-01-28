@@ -16,7 +16,7 @@ public class ChangeSetImpl<T> implements ChangeSet<T> {
     private ChangeSetSupport changeSetSupport;
     private ChangeSetListener listener = new DefaultChangeSetListener<T>(this);
     private Map<T, List<ChangeSetDelta<T>>> deltas = new HashMap<T, List<ChangeSetDelta<T>>>();
-	private boolean isChangesRecording;
+    private boolean isChangesRecording;
 
     public ChangeSetImpl(ChangeSetSupport changeSetSupport) {
         this.changeSetSupport = changeSetSupport;
@@ -67,9 +67,9 @@ public class ChangeSetImpl<T> implements ChangeSet<T> {
         this.deltas.clear();
     }
 
-	public boolean isChangesRecording() {
-		return this.isChangesRecording;
-	}
+    public boolean isChangesRecording() {
+        return this.isChangesRecording;
+    }
 
 
 }

@@ -168,10 +168,6 @@ public class DefaultEntityDescriptorRepoFactory implements EntityDescriptorRepos
         return keyValuePair;
     }
 
-    interface FieldBuilder {
-        Field getField(EntityObject fieldEntity, FieldFactory fieldFactory);
-    }
-
     private void createRelationFields(final EntityDescriptorRepository repository, EntityDescriptorBuilder builder,
                                       List<EntityObject> fields) {
         FieldBuilder fieldBuilder = new FieldBuilder() {
@@ -241,6 +237,10 @@ public class DefaultEntityDescriptorRepoFactory implements EntityDescriptorRepos
 
     void setXmlMetaModel(String xmlMetaModel) {
         this.xmlMetaModel = xmlMetaModel;
+    }
+
+    interface FieldBuilder {
+        Field getField(EntityObject fieldEntity, FieldFactory fieldFactory);
     }
 
 }

@@ -7,10 +7,9 @@ import org.refact4j.collection.impl.CollectionDecorator;
 
 
 public abstract class AbstractChangeSetTest {
-    private Collection initial;
     protected CollectionDecorator collectionDecorator;
     protected ChangeSet changeSet;
-
+    private Collection initial;
 
     @Before
     public void setUp() throws Exception {

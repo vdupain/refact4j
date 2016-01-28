@@ -1,12 +1,13 @@
 package org.refact4j.util;
 
 import junit.framework.AssertionFailedError;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.io.Serializable;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 public abstract class SerializableTestCase {
 

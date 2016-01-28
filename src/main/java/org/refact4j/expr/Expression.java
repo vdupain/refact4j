@@ -22,9 +22,9 @@ public class Expression<T> implements Predicate<T>, UnaryPredicate<T>, Visitable
 
     private String name;
 
-    private java.util.function.Function<T,Boolean> predicate;
+    private java.util.function.Function<T, Boolean> predicate;
 
-    private java.util.function.Function<T,?> function = new Identity<T>();
+    private java.util.function.Function<T, ?> function = new Identity<T>();
 
     public Expression() {
     }
@@ -33,7 +33,7 @@ public class Expression<T> implements Predicate<T>, UnaryPredicate<T>, Visitable
         this.name = name;
     }
 
-    protected Expression(String name, java.util.function.Function<T,?> function) {
+    protected Expression(String name, java.util.function.Function<T, ?> function) {
         this.name = name;
         this.function = function;
     }
@@ -121,10 +121,10 @@ public class Expression<T> implements Predicate<T>, UnaryPredicate<T>, Visitable
         return this;
     }
 
-	public Expression<T> instanceOf(Class<?> clazz) {
+    public Expression<T> instanceOf(Class<?> clazz) {
         predicate = new CompositeUnaryPredicate<>(new InstanceOf(), function, clazz);
         return this;
-	}
+    }
 
     public Expression<T> maxLength(int maxLength) {
         predicate = new CompositeUnaryPredicate(new LessEqual<Integer>(), new StringLength(), maxLength);
@@ -136,7 +136,7 @@ public class Expression<T> implements Predicate<T>, UnaryPredicate<T>, Visitable
         return this;
     }
 
-    public java.util.function.Function<T,?> getFunctor() {
+    public java.util.function.Function<T, ?> getFunctor() {
         return predicate;
     }
 
@@ -158,13 +158,13 @@ public class Expression<T> implements Predicate<T>, UnaryPredicate<T>, Visitable
         }
     }
 
-    public interface ExpressionVisitor extends Visitor {
-        void visitExpression(Expression<?> expression);
-    }
-
     @Override
     public String toString() {
         return new PrettyPrinter().toString(this);
+    }
+
+    public interface ExpressionVisitor extends Visitor {
+        void visitExpression(Expression<?> expression);
     }
 
 }

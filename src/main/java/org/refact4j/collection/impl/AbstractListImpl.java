@@ -42,7 +42,7 @@ public abstract class AbstractListImpl<T, ID extends Serializable, TYPE> extends
         return collectionDecorator.getAll(type, predicate);
     }
 
-    public void apply(TYPE type, java.util.function.Function<T,?> functor) {
+    public void apply(TYPE type, java.util.function.Function<T, ?> functor) {
         this.getAll(type).stream().map(e -> functor.apply(e)).collect(Collectors.toList());
     }
 

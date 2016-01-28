@@ -1,10 +1,5 @@
 package org.refact4j.eom;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertSame;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
 import org.junit.Before;
 import org.junit.Test;
 import org.refact4j.eom.impl.EntityObjectDecorator;
@@ -15,11 +10,9 @@ import org.refact4j.model.DummyRepository;
 import org.refact4j.model.FooDesc;
 import org.refact4j.util.EqualsHashCodeAssert;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
+
+import static org.junit.Assert.*;
 
 public class EntityObjectTest {
     EntityObject foo;
@@ -176,7 +169,7 @@ public class EntityObjectTest {
     public void testEntityStringifier() {
         String sDate = EntityUtils.formatDate(new Date());
         assertEquals("<Foo bar=\"99\" bar2=\"null\" beginDate=\"" + sDate
-                + "\" endDate=\"null\" flag=\"false\" id=\"1\" name=\"foo\" timestampDate=\"null\" value=\"1.23\"/>",
+                        + "\" endDate=\"null\" flag=\"false\" id=\"1\" name=\"foo\" timestampDate=\"null\" value=\"1.23\"/>",
                 foo.toString());
         assertEquals(foo.toString(), fooDecorated.toString());
         assertEquals(foo.toXmlString(), fooDecorated.toXmlString());

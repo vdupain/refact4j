@@ -44,12 +44,12 @@ public class RepositoryImpl<K, T> implements Repository<K, T> {
         return this.objects.containsKey(key);
     }
 
-    protected void setKeyifier(Keyifier<K, T> getKey) {
-        this.keyifier = getKey;
-    }
-
     public Keyifier<K, T> getKeyifier() {
         return this.keyifier;
+    }
+
+    protected void setKeyifier(Keyifier<K, T> getKey) {
+        this.keyifier = getKey;
     }
 
 }

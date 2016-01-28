@@ -44,7 +44,7 @@ public class EntitySetImpl extends AbstractSetImpl<EntityObject, Key, EntityDesc
 
     @Override
     public EntityObject findByIdentifier(Key key) {
-        return super.findByIdentifier(key.getEntityDescriptor() , key);
+        return super.findByIdentifier(key.getEntityDescriptor(), key);
     }
 
     public List<Key> getKeys() {

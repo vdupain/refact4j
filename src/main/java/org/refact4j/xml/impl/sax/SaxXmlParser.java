@@ -9,8 +9,8 @@ import org.xml.sax.XMLReader;
 import java.io.IOException;
 
 public class SaxXmlParser {
-    private XMLReader xmlReader;
     private final SaxHandler saxHandler = new SaxHandler();
+    private XMLReader xmlReader;
 
     public SaxXmlParser() {
     }

@@ -1,6 +1,5 @@
 package org.refact4j.eom;
 
-import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
 import org.refact4j.eom.metamodel.DefaultEntityDescriptorRepoFactory;
@@ -10,6 +9,8 @@ import org.refact4j.eom.model.EntityDescriptorRepository;
 import org.refact4j.eom.model.Field;
 import org.refact4j.eom.model.KeyBuilder;
 import org.refact4j.eom.xml.reader.EntityXmlReaderHelper;
+
+import static org.junit.Assert.assertEquals;
 
 
 public class EntityAggregateFunctorsTest {

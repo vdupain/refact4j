@@ -1,12 +1,13 @@
 package org.refact4j.eom;
 
-import static org.junit.Assert.assertEquals;
 import org.refact4j.model.BarDesc;
 import org.refact4j.model.FooDesc;
 import org.refact4j.util.SerializableTestCase;
 
 import java.io.Serializable;
 import java.util.Date;
+
+import static org.junit.Assert.assertEquals;
 
 public class EntitySerializableTestCase extends SerializableTestCase {
 

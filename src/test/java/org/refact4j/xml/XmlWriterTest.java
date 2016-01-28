@@ -44,9 +44,9 @@ public class XmlWriterTest {
     }
 
     class DummyElementHandler implements XmlElementHandler {
-        private boolean wasProcessed = false;
         private final String tagName;
         private final XmlWriterCallback xmlWriterCallback;
+        private boolean wasProcessed = false;
 
 
         public DummyElementHandler(String tagName, XmlWriterCallback xmlWriterCallback) {

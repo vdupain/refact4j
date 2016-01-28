@@ -48,15 +48,6 @@ public class AnnotationEntityDescriptorRepoFactory extends DefaultEntityDescript
                 .toString(), initialEntityDescriptorRepository);
     }
 
-    @Override
-    public EntityDescriptorRepository createEntityDescriptorRepository() {
-        EntityDescriptorRepository repo = super.createEntityDescriptorRepository();
-        for (Class<?> clazz : beanClasses) {
-            ((EntityDescriptorImpl) repo.getEntityDescriptor(clazz.getSimpleName())).setBeanClass(clazz);
-        }
-        return repo;
-    }
-
     private static DataTypeEnum getDataType(Class<?> clazz) {
         EntityAnnotationsHelper annotations = new EntityAnnotationsHelper();
         if (clazz.equals(Integer.class) || clazz.equals(Integer.TYPE)) {
@@ -73,5 +64,14 @@ public class AnnotationEntityDescriptorRepoFactory extends DefaultEntityDescript
             return DataTypeEnum.TO_ONE;
         }
         return null;
+    }
+
+    @Override
+    public EntityDescriptorRepository createEntityDescriptorRepository() {
+        EntityDescriptorRepository repo = super.createEntityDescriptorRepository();
+        for (Class<?> clazz : beanClasses) {
+            ((EntityDescriptorImpl) repo.getEntityDescriptor(clazz.getSimpleName())).setBeanClass(clazz);
+        }
+        return repo;
     }
 }

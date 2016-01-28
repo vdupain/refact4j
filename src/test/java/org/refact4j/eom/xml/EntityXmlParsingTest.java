@@ -1,6 +1,5 @@
 package org.refact4j.eom.xml;
 
-import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 import org.refact4j.collection.DataSet;
 import org.refact4j.eom.EntityList;
@@ -9,6 +8,8 @@ import org.refact4j.eom.impl.EntityDataSetImpl;
 import org.refact4j.eom.impl.EntityListImpl;
 import org.refact4j.model.DummyRepository;
 import org.refact4j.xml.impl.Dataset2XmlConverterImpl;
+
+import static org.junit.Assert.assertEquals;
 
 
 public class EntityXmlParsingTest {

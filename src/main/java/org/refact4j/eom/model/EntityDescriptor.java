@@ -60,7 +60,7 @@ public interface EntityDescriptor extends Property, ToXmlString, ToEntity, Seria
      * identifies the key.
      *
      * @return A list of all the EntityDescriptor's fields that identifies the
-     *         key.
+     * key.
      */
     List<Field> getKeyFields();
 

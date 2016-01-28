@@ -1,6 +1,5 @@
 package org.refact4j.eom.xml;
 
-import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
 import org.refact4j.eom.EntityObject;
@@ -13,6 +12,8 @@ import org.refact4j.eom.model.EntityDescriptorRepository;
 import org.refact4j.eom.model.Key;
 import org.refact4j.eom.model.KeyBuilder;
 import org.refact4j.eom.xml.reader.EntityXmlReaderHelper;
+
+import static org.junit.Assert.assertEquals;
 
 
 public class CompositeKeyTest {

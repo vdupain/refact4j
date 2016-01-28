@@ -1,7 +1,5 @@
 package org.refact4j.xml;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.fail;
 import org.junit.Before;
 import org.junit.Test;
 import org.refact4j.collection.DataSet;
@@ -18,6 +16,9 @@ import org.refact4j.xml.impl.Dataset2XmlConverterImpl;
 
 import java.io.InputStream;
 import java.io.Reader;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
 
 public class EntityXmlParsingTest {
 

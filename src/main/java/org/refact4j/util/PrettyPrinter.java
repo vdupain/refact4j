@@ -39,9 +39,6 @@ public class PrettyPrinter implements ExpressionVisitor, BinaryComposeVisitor, U
         BetweenVisitor, NullVisitor, NotNullVisitor, InVisitor, NotInVisitor, LikeVisitor, InstanceOfVisitor,
         GetEntityFieldFunctorVisitor, GetFieldFunctorVisitor, StringLengthVisitor, IdentityVisitor {
 
-	private StringBuffer buf;
-    private Expression expression;
-
     private final AbstractFieldStringifierFunctor abstractFieldStringifierFunctor = new AbstractFieldStringifierFunctor() {
 
         @Override
@@ -50,6 +47,8 @@ public class PrettyPrinter implements ExpressionVisitor, BinaryComposeVisitor, U
         }
 
     };
+    private StringBuffer buf;
+    private Expression expression;
 
     public PrettyPrinter() {
         this.buf = null;
@@ -59,7 +58,7 @@ public class PrettyPrinter implements ExpressionVisitor, BinaryComposeVisitor, U
         if (object instanceof Visitable) {
             return toString((Visitable) object);
         }
-        return  toString(object.toString());
+        return toString(object.toString());
     }
 
     public String toString(Visitable visitable) {
@@ -78,7 +77,7 @@ public class PrettyPrinter implements ExpressionVisitor, BinaryComposeVisitor, U
 
     public void visitCompositeUnaryPredicate(CompositeUnaryPredicate<?> compositeUnaryPredicate) {
         buf.append('(');
-        java.util.function.Function<?,?> function = compositeUnaryPredicate.getFunction();
+        java.util.function.Function<?, ?> function = compositeUnaryPredicate.getFunction();
         ((Visitable) function).accept(this);
         ((Visitable) compositeUnaryPredicate.getBiFunction()).accept(this);
         buf.append(compositeUnaryPredicate.getConstantUnaryFunctor().getConstant());
@@ -166,7 +165,7 @@ public class PrettyPrinter implements ExpressionVisitor, BinaryComposeVisitor, U
 
     public void visitInstanceOf(InstanceOf instanceOf) {
         buf.append(" INSTANCEOF ");
-	}
+    }
 
     public void visitExpression(Expression expression) {
         this.expression = expression;

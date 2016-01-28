@@ -2,12 +2,12 @@ package org.refact4j.evt;
 
 /**
  * A class that holds a list of EventListeners.
- * <p/>
+ * <p>
  * Usage example: Say one is defining a class that sends out FooEvents, and one
  * wants to allow users of the class to register FooListeners and receive
  * notification when FooEvents occur. The following should be added to the class
  * definition:
- * <p/>
+ * <p>
  * <pre>
  *  EventListenerList listenerList = new EventListenerList();
  *  FooEvent fooEvent = null;
@@ -28,11 +28,11 @@ package org.refact4j.evt;
  *      }
  *  }
  * </pre>
- * <p/>
+ * <p>
  * foo should be changed to the appropriate name, and fireFooXxx to the
  * appropriate method name. One fire method should exist for each notification
  * method in the FooListener interface.
- * <p/>
+ * <p>
  *
  * @see EventListener
  */

@@ -16,7 +16,8 @@ import java.util.stream.Collectors;
 public class CollectionDecorator<T, ID extends Serializable, TYPE> implements Collection<T>, Finder<T, ID, TYPE> {
 
     private final Collection<T> collection;
-
+    private TypeResolver<T, TYPE> typeResolver;
+    private IdResolver<T, ID> idResolver;
     private final EqualityResolver<T, ID> equalityResolver = new EqualityResolver<T, ID>() {
 
         public boolean areEquals(T t1, ID t2) {
@@ -25,9 +26,6 @@ public class CollectionDecorator<T, ID extends Serializable, TYPE> implements Co
         }
 
     };
-
-    private TypeResolver<T, TYPE> typeResolver;
-    private IdResolver<T, ID> idResolver;
     private ChangeSetImpl<T> changeSet;
     private ChangeSetSupport<T> changeSetSupport = new ChangeSetSupport<T>();
 

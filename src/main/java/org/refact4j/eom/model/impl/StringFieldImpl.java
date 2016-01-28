@@ -34,12 +34,12 @@ public class StringFieldImpl extends AbstractField implements StringField {
         return this.maxLength;
     }
 
-    public Integer getMinLength() {
-        return this.minLength;
-    }
-
     public void setMaxLength(Integer maxLength) {
         this.maxLength = maxLength;
+    }
+
+    public Integer getMinLength() {
+        return this.minLength;
     }
 
     public void setMinLength(Integer minLength) {

@@ -2,13 +2,7 @@ package org.refact4j.model;
 
 import org.refact4j.eom.EntityObject;
 import org.refact4j.eom.EntityStringifier;
-import org.refact4j.eom.model.DoubleField;
-import org.refact4j.eom.model.EntityDescriptor;
-import org.refact4j.eom.model.EntityDescriptorBuilder;
-import org.refact4j.eom.model.FieldFactory;
-import org.refact4j.eom.model.IntegerField;
-import org.refact4j.eom.model.OneToManyRelationField;
-import org.refact4j.eom.model.StringField;
+import org.refact4j.eom.model.*;
 
 public class BarDesc {
 
@@ -24,11 +18,6 @@ public class BarDesc {
 
     public static final OneToManyRelationField FOOS = FieldFactory.init(builder, "foos").createOneToManyRelationField(
             FooDesc.INSTANCE);
-
-    static {
-        builder.addKeyField(ID);
-    }
-
     public static EntityStringifier STRINGIFIER = new EntityStringifier() {
 
         public String stringify(EntityObject arg) {
@@ -36,5 +25,9 @@ public class BarDesc {
         }
 
     };
+
+    static {
+        builder.addKeyField(ID);
+    }
 
 }

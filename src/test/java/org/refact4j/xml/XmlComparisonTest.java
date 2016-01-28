@@ -1,9 +1,10 @@
 package org.refact4j.xml;
 
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
 import org.junit.Test;
 import org.refact4j.util.XmlAssert;
+
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 
 public class XmlComparisonTest {
@@ -159,8 +160,7 @@ public class XmlComparisonTest {
         try {
             XmlAssert.assertXmlEquals(xml1, xml2);
             fail();
-        }
-        catch (Throwable e) {
+        } catch (Throwable e) {
         }
     }
 

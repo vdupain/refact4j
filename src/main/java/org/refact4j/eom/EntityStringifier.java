@@ -20,7 +20,7 @@ public class EntityStringifier implements Stringifier<EntityObject>, EntityFunct
         public String stringify(EntityObject entityObject) {
             StringBuffer strBuf = new StringBuffer();
             List<Field> keyFields = entityObject.getEntityDescriptor().getKeyFields();
-            for (Iterator<Field> iter = keyFields.iterator(); iter.hasNext();) {
+            for (Iterator<Field> iter = keyFields.iterator(); iter.hasNext(); ) {
                 Field field = iter.next();
                 strBuf.append(entityObject.get(field));
                 if (iter.hasNext()) {

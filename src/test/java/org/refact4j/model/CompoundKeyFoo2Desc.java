@@ -1,14 +1,6 @@
 package org.refact4j.model;
 
-import org.refact4j.eom.model.BooleanField;
-import org.refact4j.eom.model.DateField;
-import org.refact4j.eom.model.DoubleField;
-import org.refact4j.eom.model.EntityDescriptor;
-import org.refact4j.eom.model.EntityDescriptorBuilder;
-import org.refact4j.eom.model.FieldFactory;
-import org.refact4j.eom.model.IntegerField;
-import org.refact4j.eom.model.ManyToOneRelationField;
-import org.refact4j.eom.model.StringField;
+import org.refact4j.eom.model.*;
 
 import java.util.Date;
 
@@ -22,7 +14,7 @@ public class CompoundKeyFoo2Desc {
 
     public static final StringField NAME = FieldFactory.init(builder, "name").setOrder(2).setPrettyName("The Name")
             .setNullable(false).setDefaultValue("").setMaxLength(20).addProperty("key1", "value1").addProperty("key2",
-            "value2").createStringField();
+                    "value2").createStringField();
 
     public static final DoubleField VALUE = FieldFactory.init(builder, "value").setOrder(4).setNullable(true)
             .createDoubleField();

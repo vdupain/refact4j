@@ -1,8 +1,5 @@
 package org.refact4j.eom;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.fail;
 import org.junit.Test;
 import org.refact4j.eom.model.EntityDescriptorBuilder;
 import org.refact4j.eom.model.FieldFactory;
@@ -11,6 +8,8 @@ import org.refact4j.eom.xml.reader.EntityXmlReaderHelper;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
+
+import static org.junit.Assert.*;
 
 public class EntityUtilsTest {
 

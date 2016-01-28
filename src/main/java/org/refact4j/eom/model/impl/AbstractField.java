@@ -75,6 +75,10 @@ public abstract class AbstractField implements Field {
         return this.defaultValue;
     }
 
+    public void setDefaultValue(Object defaultValue) {
+        this.defaultValue = defaultValue;
+    }
+
     public void checkValue(Object value) {
         if (value == null && !nullable) {
             throw new NullFieldValueNotAllowedException(this);
@@ -134,10 +138,6 @@ public abstract class AbstractField implements Field {
 
     public Property getProperty() {
         return this.property;
-    }
-
-    public void setDefaultValue(Object defaultValue) {
-        this.defaultValue = defaultValue;
     }
 
     public String toXmlString() {

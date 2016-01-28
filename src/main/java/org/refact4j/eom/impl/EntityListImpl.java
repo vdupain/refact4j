@@ -26,6 +26,10 @@ public class EntityListImpl extends AbstractListImpl<EntityObject, Key, EntityDe
         this.addAll(entityObjects);
     }
 
+    public static List<Key> getKeys(EntityCollection entityObjects) {
+        return entityObjects.stream().map(e -> e.getKey()).collect(Collectors.toList());
+    }
+
     @Override
     public EntityObject findByIdentifier(Key key) {
         return super.findByIdentifier(key.getEntityDescriptor(), key);
@@ -33,10 +37,6 @@ public class EntityListImpl extends AbstractListImpl<EntityObject, Key, EntityDe
 
     public List<Key> getKeys() {
         return getKeys(this);
-    }
-
-    public static List<Key> getKeys(EntityCollection entityObjects) {
-        return entityObjects.stream().map(e -> e.getKey()).collect(Collectors.toList());
     }
 
     public IdResolver<EntityObject, Key> getIdResolver() {

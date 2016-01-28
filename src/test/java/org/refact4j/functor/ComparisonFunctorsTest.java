@@ -1,20 +1,12 @@
 package org.refact4j.functor;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
 import org.junit.Test;
-import org.refact4j.functor.comparison.Equal;
-import org.refact4j.functor.comparison.Greater;
-import org.refact4j.functor.comparison.GreaterEqual;
-import org.refact4j.functor.comparison.Less;
-import org.refact4j.functor.comparison.LessEqual;
-import org.refact4j.functor.comparison.Max;
-import org.refact4j.functor.comparison.Min;
-import org.refact4j.functor.comparison.NotEqual;
+import org.refact4j.functor.comparison.*;
 import org.refact4j.util.ComparatorHelper;
 
 import java.util.Comparator;
+
+import static org.junit.Assert.*;
 
 
 public class ComparisonFunctorsTest {

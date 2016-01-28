@@ -1,9 +1,5 @@
 package org.refact4j.eom;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
 import org.junit.Test;
 import org.refact4j.eom.model.Key;
 import org.refact4j.eom.model.KeyBuilder;
@@ -11,6 +7,8 @@ import org.refact4j.model.CompoundKeyFooDesc;
 import org.refact4j.model.FooDesc;
 import org.refact4j.util.EqualsHashCodeAssert;
 import org.refact4j.util.HashCodeTestUtils;
+
+import static org.junit.Assert.*;
 
 public class KeyBuilderTest {
 

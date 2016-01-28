@@ -73,6 +73,24 @@ public class EventLogger {
         return lastLog;
     }
 
+    private void endLastLog() {
+        if (lastLog != null) {
+            lastLog.end();
+        }
+    }
+
+    private String closeStream() {
+        endLastLog();
+        buffer.append("</log>");
+        return buffer.toString();
+    }
+
+    private void fail(String expected, String actual) {
+        expected = expected.replace("<log>", "<log>" + StringHelper.LINE_SEPARATOR);
+        expected = expected.replace("/>", "/>" + StringHelper.LINE_SEPARATOR);
+        throw new ComparisonFailure("", expected, actual);
+    }
+
     public class Log {
         private Log(String eventName) {
             buffer.append('<').append(eventName);
@@ -91,23 +109,5 @@ public class EventLogger {
         private void end() {
             buffer.append("/>").append(StringHelper.LINE_SEPARATOR);
         }
-    }
-
-    private void endLastLog() {
-        if (lastLog != null) {
-            lastLog.end();
-        }
-    }
-
-    private String closeStream() {
-        endLastLog();
-        buffer.append("</log>");
-        return buffer.toString();
-    }
-
-    private void fail(String expected, String actual) {
-        expected = expected.replace("<log>", "<log>" + StringHelper.LINE_SEPARATOR);
-        expected = expected.replace("/>", "/>" + StringHelper.LINE_SEPARATOR);
-        throw new ComparisonFailure("", expected, actual);
     }
 }

@@ -11,10 +11,9 @@ import java.util.Collection;
 
 public class DatasetXmlWriter implements XmlElementHandler, DatasetConverterHolder {
     private final DataSet dataset;
-    private String tagName = "dataset";
-
     private final Dataset2XmlConverterImpl converter;
     private final Finder finder;
+    private String tagName = "dataset";
 
     public DatasetXmlWriter(DataSet dataset, Finder finder, Dataset2XmlConverterImpl converter) {
         this.dataset = dataset;
@@ -24,6 +23,10 @@ public class DatasetXmlWriter implements XmlElementHandler, DatasetConverterHold
 
     public String getTagName() {
         return tagName;
+    }
+
+    public void setTagName(String tagName) {
+        this.tagName = tagName;
     }
 
     public boolean hasNext() {
@@ -41,10 +44,6 @@ public class DatasetXmlWriter implements XmlElementHandler, DatasetConverterHold
 
     public DataSet getDataSet() {
         return this.dataset;
-    }
-
-    public void setTagName(String tagName) {
-        this.tagName = tagName;
     }
 
     public Finder getFinder() {

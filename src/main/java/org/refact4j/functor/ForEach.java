@@ -5,12 +5,12 @@ import org.refact4j.visitor.Visitor;
 import java.util.Iterator;
 
 public class ForEach<T, R> extends AbstractFunction<Iterator<? extends T>, R> {
-    private java.util.function.Function<T,R> functor;
+    private java.util.function.Function<T, R> functor;
 
     public ForEach() {
     }
 
-    public ForEach(java.util.function.Function<T,R> functor) {
+    public ForEach(java.util.function.Function<T, R> functor) {
         this.functor = functor;
     }
 
@@ -23,11 +23,11 @@ public class ForEach<T, R> extends AbstractFunction<Iterator<? extends T>, R> {
         return value;
     }
 
-    public java.util.function.Function<T,R> getFunctor() {
+    public java.util.function.Function<T, R> getFunctor() {
         return functor;
     }
 
-    public void setFunctor(java.util.function.Function<T,R> functor) {
+    public void setFunctor(java.util.function.Function<T, R> functor) {
         this.functor = functor;
     }
 

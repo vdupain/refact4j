@@ -5,9 +5,9 @@ import org.refact4j.xml.XmlWriter;
 
 public class DefaultXmlElementHandler implements XmlElementHandler {
 
-    private boolean wasProcessed = false;
     private final String tagName;
     private final XmlElementHandler[] children;
+    private boolean wasProcessed = false;
 
 
     public DefaultXmlElementHandler(String tagName, XmlElementHandler xmlElementHandler) {

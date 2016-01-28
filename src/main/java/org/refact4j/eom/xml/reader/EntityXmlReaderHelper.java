@@ -29,10 +29,6 @@ public final class EntityXmlReaderHelper {
 
     }
 
-    interface GetEntityDescriptor {
-        EntityDescriptor getEntityDescriptor(String name);
-    }
-
     public static EntityList unmarshal(final EntityDescriptorRepository repository, String xmlData) {
         return unmarshal(repository, xmlData, null);
     }
@@ -133,6 +129,10 @@ public final class EntityXmlReaderHelper {
                 builder.setFieldValue(attribute, converter.getValue());
             }
         }
+    }
+
+    interface GetEntityDescriptor {
+        EntityDescriptor getEntityDescriptor(String name);
     }
 
 }

@@ -7,18 +7,18 @@ import org.refact4j.eom.EntityObjectEvent;
 import org.refact4j.eom.EntityObjectListener;
 
 public class ChangeSetEntityObjectListener implements EntityObjectListener {
-	private ChangeSetImpl<EntityObject> changeSet;
+    private ChangeSetImpl<EntityObject> changeSet;
 
-	public ChangeSetEntityObjectListener(ChangeSetImpl<EntityObject> changeSet) {
-		this.changeSet = changeSet;
-	}
-	
-	public void notifyEntityObjectChange(EntityObjectEvent event, ChangeSetDelta<EntityObject> delta) {
-		changeSet.addChangeSetDelta(delta.getSource(), delta);
-	}
+    public ChangeSetEntityObjectListener(ChangeSetImpl<EntityObject> changeSet) {
+        this.changeSet = changeSet;
+    }
 
-	public void notifyEvent(EntityObjectEvent event) {
+    public void notifyEntityObjectChange(EntityObjectEvent event, ChangeSetDelta<EntityObject> delta) {
+        changeSet.addChangeSetDelta(delta.getSource(), delta);
+    }
 
-	}
+    public void notifyEvent(EntityObjectEvent event) {
+
+    }
 
 }

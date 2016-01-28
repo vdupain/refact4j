@@ -26,7 +26,7 @@ public interface XmlAttributes {
      *
      * @param index The attribute index (zero-based).
      * @return The Namespace URI, or the empty string if none is available, or
-     *         null if the index is out of range.
+     * null if the index is out of range.
      * @see #getLength
      */
     String getURI(int index);
@@ -36,7 +36,7 @@ public interface XmlAttributes {
      *
      * @param index The attribute index (zero-based).
      * @return The local name, or the empty string if Namespace processing is
-     *         not being performed, or null if the index is out of range.
+     * not being performed, or null if the index is out of range.
      * @see #getLength
      */
     String getLocalName(int index);
@@ -46,7 +46,7 @@ public interface XmlAttributes {
      *
      * @param index The attribute index (zero-based).
      * @return The XML qualified name, or the empty string if none is available,
-     *         or null if the index is out of range.
+     * or null if the index is out of range.
      * @see #getLength
      */
     String getQName(int index);
@@ -74,7 +74,7 @@ public interface XmlAttributes {
      *
      * @param index The attribute index (zero-based).
      * @return The attribute's type as a string, or null if the index is out of
-     *         range.
+     * range.
      * @see #getLength
      */
     String getType(int index);
@@ -90,7 +90,7 @@ public interface XmlAttributes {
      *
      * @param index The attribute index (zero-based).
      * @return The attribute's value as a string, or null if the index is out of
-     *         range.
+     * range.
      * @see #getLength
      */
     String getValue(int index);
@@ -106,7 +106,7 @@ public interface XmlAttributes {
      *                  Namespace URI.
      * @param localName The attribute's local name.
      * @return The index of the attribute, or -1 if it does not appear in the
-     *         list.
+     * list.
      */
     int getIndex(String uri, String localName);
 
@@ -115,7 +115,7 @@ public interface XmlAttributes {
      *
      * @param qName The qualified (prefixed) name.
      * @return The index of the attribute, or -1 if it does not appear in the
-     *         list.
+     * list.
      */
     int getIndex(String qName);
 
@@ -131,7 +131,7 @@ public interface XmlAttributes {
      *                  Namespace URI.
      * @param localName The local name of the attribute.
      * @return The attribute type as a string, or null if the attribute is not
-     *         in the list or if Namespace processing is not being performed.
+     * in the list or if Namespace processing is not being performed.
      */
     String getType(String uri, String localName);
 
@@ -145,7 +145,7 @@ public interface XmlAttributes {
      *
      * @param qName The XML qualified name.
      * @return The attribute type as a string, or null if the attribute is not
-     *         in the list or if qualified names are not available.
+     * in the list or if qualified names are not available.
      */
     String getType(String qName);
 
@@ -161,7 +161,7 @@ public interface XmlAttributes {
      *                  Namespace URI.
      * @param localName The local name of the attribute.
      * @return The attribute value as a string, or null if the attribute is not
-     *         in the list.
+     * in the list.
      */
     String getValue(String uri, String localName);
 
@@ -175,7 +175,7 @@ public interface XmlAttributes {
      *
      * @param qName The XML qualified name.
      * @return The attribute value as a string, or null if the attribute is not
-     *         in the list or if qualified names are not available.
+     * in the list or if qualified names are not available.
      */
     String getValue(String qName);
 

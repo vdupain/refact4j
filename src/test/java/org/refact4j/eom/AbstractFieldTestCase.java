@@ -1,11 +1,12 @@
 package org.refact4j.eom;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.fail;
 import org.refact4j.eom.model.EntityDescriptorBuilder;
 import org.refact4j.eom.model.Field;
 import org.refact4j.eom.model.InvalidFieldValueException;
 import org.refact4j.eom.model.NullFieldValueNotAllowedException;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
 
 
 public abstract class AbstractFieldTestCase {

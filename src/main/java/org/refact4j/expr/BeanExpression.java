@@ -8,12 +8,12 @@ import org.refact4j.functor.GetFieldFunctor;
  */
 class BeanExpression extends Expression<Object> {
 
-	public BeanExpression() {
-		super();
-	}
+    public BeanExpression() {
+        super();
+    }
 
-	public BeanExpression(String fieldName) {
-		super(fieldName, new GetFieldFunctor(fieldName));
-	}
+    public BeanExpression(String fieldName) {
+        super(fieldName, new GetFieldFunctor(fieldName));
+    }
 
 }

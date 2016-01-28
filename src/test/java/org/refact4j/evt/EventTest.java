@@ -1,22 +1,12 @@
 package org.refact4j.evt;
 
-import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 import org.refact4j.evt.EventManager.NotifyEventFunctor;
 
+import static org.junit.Assert.assertEquals;
+
 
 public class EventTest {
-
-    interface DummyListener extends EventListener<DummyEvent> {
-        void notifyDummyEvent(DummyEvent event);
-    }
-
-    class DummyEvent extends AbstractEvent<Object> {
-
-        public DummyEvent(Object source) {
-            super(source);
-        }
-    }
 
     @Test
     public void testEventListener() {
@@ -46,5 +36,16 @@ public class EventTest {
         eventManager.fireNotifyEvent(notifyEventFunctor, new DummyEvent(this));
         eventLogger.assertEquals("<log>" + "</log>");
 
+    }
+
+    interface DummyListener extends EventListener<DummyEvent> {
+        void notifyDummyEvent(DummyEvent event);
+    }
+
+    class DummyEvent extends AbstractEvent<Object> {
+
+        public DummyEvent(Object source) {
+            super(source);
+        }
     }
 }

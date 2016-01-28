@@ -1,14 +1,8 @@
 package org.refact4j.eom.xml;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.Test;
-import org.refact4j.eom.EntityList;
-import org.refact4j.eom.EntityObject;
-import org.refact4j.eom.EntityObjectBuilder;
-import org.refact4j.eom.EntityUtils;
-import org.refact4j.eom.XmlEntityConverter;
+import org.refact4j.eom.*;
 import org.refact4j.eom.impl.EntityListImpl;
 import org.refact4j.eom.model.Field;
 import org.refact4j.eom.xml.reader.EntityXmlReaderHelper;
@@ -20,25 +14,25 @@ import org.refact4j.model.FooDesc;
 import java.util.Date;
 import java.util.List;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+
 
 public class EntityXmlTest {
-    EntityObject entity1;
-
-    EntityObject entity2;
-
-    Integer id = 1;
-
-    Integer id99 = 99;
-
-    String name = "dummy";
-
     static Date date = new Date();
-
-    Double value = 1.23;
-
     static final String DUMMY_XML =
             "<Foo bar=\"99\" bar2=\"null\" beginDate=\"" + EntityUtils.formatDate(date)
                     + "\" endDate=\"null\" flag=\"false\" id=\"1\" name=\"dummy\" timestampDate=\"null\" value=\"1.23\"/>";
+    EntityObject entity1;
+    EntityObject entity2;
+    Integer id = 1;
+    Integer id99 = 99;
+    String name = "dummy";
+    Double value = 1.23;
+
+    private static Object getFieldValue(List<EntityObject> list, int entityObjectIndex, Field field) {
+        return list.get(entityObjectIndex).get(field);
+    }
 
     @Before
     public void setUp() throws Exception {
@@ -91,7 +85,7 @@ public class EntityXmlTest {
         EntityObject firstEntity = list.get(0);
         assertEquals(FooDesc.INSTANCE, firstEntity.getEntityDescriptor());
         assertEquals(Boolean.TRUE, firstEntity.get(FooDesc.FLAG));
-        assertEquals((Integer)1, firstEntity.get(FooDesc.ID));
+        assertEquals((Integer) 1, firstEntity.get(FooDesc.ID));
 
         EntityObject secondEntity = list.get(1);
         assertEquals(BarDesc.INSTANCE, secondEntity.getEntityDescriptor());
@@ -145,10 +139,6 @@ public class EntityXmlTest {
             assertTrue(expectedEntity.equals(actualManagedObject));
         }
 
-    }
-
-    private static Object getFieldValue(List<EntityObject> list, int entityObjectIndex, Field field) {
-        return list.get(entityObjectIndex).get(field);
     }
 
 }

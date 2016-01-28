@@ -9,35 +9,20 @@ import java.util.Date;
 public final class FieldFactory implements DataTypeVisitor {
 
     private final String fieldName;
-
-    private Integer maxLength;
-
-    private Integer minLength;
-
-    private boolean isTimestamp;
-
-    private boolean nullable = true;
-
-    private boolean visible;
-
-    private boolean editable;
-
     private final EntityDescriptorBuilder entityDescriptorBuilder;
-
-    private Object defaultValue;
-
-    private Number minValue;
-
-    private Number maxValue;
-
-    private Expression constraintExpression;
-
-    private String prettyName;
-
-    private Integer order;
-
     private final Property property = new PropertyImpl();
-
+    private Integer maxLength;
+    private Integer minLength;
+    private boolean isTimestamp;
+    private boolean nullable = true;
+    private boolean visible;
+    private boolean editable;
+    private Object defaultValue;
+    private Number minValue;
+    private Number maxValue;
+    private Expression constraintExpression;
+    private String prettyName;
+    private Integer order;
     private Field field;
 
     private FieldFactory(String fieldName, EntityDescriptorBuilder entityDescriptorBuilder) {

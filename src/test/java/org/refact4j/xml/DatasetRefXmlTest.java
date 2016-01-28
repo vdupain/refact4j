@@ -1,7 +1,5 @@
 package org.refact4j.xml;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.fail;
 import org.junit.Before;
 import org.junit.Test;
 import org.refact4j.collection.DataSet;
@@ -16,13 +14,11 @@ import org.refact4j.eom.xml.EntityXmlDescriptor;
 import org.refact4j.eom.xml.reader.EntityXmlReaderHelper;
 import org.refact4j.xml.impl.Dataset2XmlConverterImpl;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
+
 
 public class DatasetRefXmlTest {
-
-    private static String XML = "<dataset>"
-            + "    <datasetRef file='/org/refact4j/xml/test_datasetref.xml'/>"
-            + "    <foo id='1' name='foo1'/>" + "    <foo id='2' name='foo2'/>"
-            + "</dataset>";
 
     private static final String META_MODEL_XML = "<dataset>"
             + "<entityDescriptor name='foo'>"
@@ -32,7 +28,10 @@ public class DatasetRefXmlTest {
             + "     <field name='id' dataType='integer'  isKey='true'/>"
             + "    <field name='name' dataType='string'/>" + "</entityDescriptor>"
             + "</dataset>";
-
+    private static String XML = "<dataset>"
+            + "    <datasetRef file='/org/refact4j/xml/test_datasetref.xml'/>"
+            + "    <foo id='1' name='foo1'/>" + "    <foo id='2' name='foo2'/>"
+            + "</dataset>";
     private EntityDescriptorRepository entityDescriptorRepository;
 
     private Dataset2XmlConverterImpl dataset2XmlConverter;

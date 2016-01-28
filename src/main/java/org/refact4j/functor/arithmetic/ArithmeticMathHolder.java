@@ -16,12 +16,12 @@ class ArithmeticMathHolder<T extends Number> {
         return arithmeticMath;
     }
 
-    public void setClazz(Class<T> clazz) {
-        this.clazz = clazz;
-    }
-
     public Class<T> getClazz() {
         return clazz;
+    }
+
+    public void setClazz(Class<T> clazz) {
+        this.clazz = clazz;
     }
 
 }

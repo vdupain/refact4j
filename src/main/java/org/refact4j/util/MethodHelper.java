@@ -4,12 +4,12 @@ import java.lang.reflect.Method;
 
 public class MethodHelper {
 
-	private MethodHelper() {
-	}
+    private MethodHelper() {
+    }
 
-	public static boolean isToStringMethod(Method method) {
-		return method.getName().equals("toString") && method.getGenericReturnType().equals(String.class)
-				&& method.getParameterTypes().length == 0;
-	}
+    public static boolean isToStringMethod(Method method) {
+        return method.getName().equals("toString") && method.getGenericReturnType().equals(String.class)
+                && method.getParameterTypes().length == 0;
+    }
 
 }

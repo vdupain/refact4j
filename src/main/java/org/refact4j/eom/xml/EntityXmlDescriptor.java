@@ -14,24 +14,7 @@ import java.util.Collection;
 
 public class EntityXmlDescriptor implements XmlDescriptor {
 
-    private class EntityXmlElementFactory implements XmlElementFactory, EntityDescriptorRepositoryHolder {
-        public XmlElement createXmlElement(DefaultXmlElementReader xmlElement) {
-            return new EntitiesXmlElementReader(entityDescriptorRepository, (EntityFinder) xmlElement.getFinder(),
-                    xmlElement);
-        }
-
-        public String getXmlElementTagName() {
-            return ROOT_TAGNAME;
-        }
-
-        public EntityDescriptorRepository getEntityDescriptorRepository() {
-            return entityDescriptorRepository;
-        }
-
-    }
-
     public static final String ROOT_TAGNAME = "entities";
-
     private final EntityDescriptorRepository entityDescriptorRepository;
 
     public EntityXmlDescriptor(EntityDescriptorRepository entityDescriptorRepository) {
@@ -45,6 +28,22 @@ public class EntityXmlDescriptor implements XmlDescriptor {
     public XmlElementHandler[] getXmlElementHandlers(DatasetConverterHolder holder) {
         return new XmlElementHandler[]{new DefaultXmlElementHandler(ROOT_TAGNAME, new EntityXmlNodeWriter(
                 entityDescriptorRepository, holder))};
+
+    }
+
+    private class EntityXmlElementFactory implements XmlElementFactory, EntityDescriptorRepositoryHolder {
+        public XmlElement createXmlElement(DefaultXmlElementReader xmlElement) {
+            return new EntitiesXmlElementReader(entityDescriptorRepository, (EntityFinder) xmlElement.getFinder(),
+                    xmlElement);
+        }
+
+        public String getXmlElementTagName() {
+            return ROOT_TAGNAME;
+        }
+
+        public EntityDescriptorRepository getEntityDescriptorRepository() {
+            return entityDescriptorRepository;
+        }
 
     }
 

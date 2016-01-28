@@ -13,17 +13,12 @@ import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
 public class EntityDescriptorImpl implements EntityDescriptor {
-    private String name;
-
-    private Map<String, Field> fields = new TreeMap<String, Field>();
     private final List<Field> orderedFields = new ArrayList<Field>();
-
-    private List<Field> keyFields = new ArrayList<Field>();
-
-    private EntityExpression constraintExpression;
-
     private final Property property = new PropertyImpl();
-
+    private String name;
+    private Map<String, Field> fields = new TreeMap<String, Field>();
+    private List<Field> keyFields = new ArrayList<Field>();
+    private EntityExpression constraintExpression;
     private EntityStringifier entityStringifier;
 
     private Class<?> beanClass;
@@ -35,6 +30,11 @@ public class EntityDescriptorImpl implements EntityDescriptor {
 
     public EntityDescriptorImpl(String name) {
         this.name = name;
+    }
+
+    public static <T> java.util.List<T> toList(final Iterable<T> iterable) {
+        return StreamSupport.stream(iterable.spliterator(), false)
+                .collect(Collectors.toList());
     }
 
     public String getName() {
@@ -65,11 +65,6 @@ public class EntityDescriptorImpl implements EntityDescriptor {
         return this.keyFields;
     }
 
-    public static <T> java.util.List<T> toList(final Iterable<T> iterable) {
-        return StreamSupport.stream(iterable.spliterator(), false)
-                .collect(Collectors.toList());
-    }
-
     public List<DataField> getAttributeFields() {
         return this.orderedFields
                 .stream()
@@ -90,12 +85,12 @@ public class EntityDescriptorImpl implements EntityDescriptor {
         return this.fields.containsValue(field);
     }
 
-    public void setConstraintExpression(EntityExpression constraintExpression) {
-        this.constraintExpression = constraintExpression;
-    }
-
     public EntityExpression getConstraintExpression() {
         return this.constraintExpression;
+    }
+
+    public void setConstraintExpression(EntityExpression constraintExpression) {
+        this.constraintExpression = constraintExpression;
     }
 
     public String toString() {
@@ -120,12 +115,12 @@ public class EntityDescriptorImpl implements EntityDescriptor {
         }
     }
 
-    public void setEntityStringifier(EntityStringifier entityStringifier) {
-        this.entityStringifier = entityStringifier;
-    }
-
     public EntityStringifier getEntityStringifier() {
         return entityStringifier;
+    }
+
+    public void setEntityStringifier(EntityStringifier entityStringifier) {
+        this.entityStringifier = entityStringifier;
     }
 
     public Class<?> getBeanClass() {

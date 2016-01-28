@@ -61,7 +61,7 @@ public class KeyImpl implements Key {
         };
 
         Collections.sort(entrySet, comparator);
-        for (Iterator<Map.Entry<Field, Object>> iter = entrySet.iterator(); iter.hasNext();) {
+        for (Iterator<Map.Entry<Field, Object>> iter = entrySet.iterator(); iter.hasNext(); ) {
             Map.Entry<Field, Object> entry = iter.next();
             buffer.append(entry.getKey().getName());
             buffer.append('=');

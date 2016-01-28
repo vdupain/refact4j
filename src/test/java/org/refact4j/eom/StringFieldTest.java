@@ -1,14 +1,14 @@
 package org.refact4j.eom;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.fail;
-
 import org.junit.Test;
 import org.refact4j.eom.model.FieldFactory;
 import org.refact4j.eom.model.Property;
 import org.refact4j.eom.model.StringField;
 import org.refact4j.eom.model.impl.AbstractFieldStringifierFunctor;
 import org.refact4j.expr.ExpressionBuilder;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
 
 
 public class StringFieldTest extends AbstractFieldTestCase {

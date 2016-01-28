@@ -82,7 +82,7 @@ public class Value2StringFieldConverter extends DefaultFieldVisitor {
         });
     }
 
-    private String convert(java.util.function.Function<Object,String> functor) {
+    private String convert(java.util.function.Function<Object, String> functor) {
         if (value == null) {
             return "null";
         }

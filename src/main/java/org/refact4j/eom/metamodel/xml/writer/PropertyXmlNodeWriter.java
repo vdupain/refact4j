@@ -29,16 +29,6 @@ class PropertyXmlNodeWriter extends AbstractXmlElementWriter {
                 getPropertiesForField(fieldEntity)), holder);
     }
 
-    public XmlElementHandler[] handleNext(XmlWriter xmlWriter) throws Exception {
-        EntityObject property = (EntityObject) next();
-        xmlWriter.writeAttribute(PropertyDesc.KEY.getName(), property.get(PropertyDesc.KEY));
-        xmlWriter.writeAttribute(PropertyDesc.VALUE.getName(), property.get(PropertyDesc.VALUE));
-        xmlWriter.writeAttribute(PropertyDesc.DATA_TYPE.getName(), property.get(PropertyDesc.DATA_TYPE).getFieldValue(
-                DataTypeType.NAME).toString());
-
-        return new XmlElementHandler[0];
-    }
-
     private static EntityPredicate getPropertiesForField(final EntityObject fieldEntity) {
         return new EntityPredicate() {
             public Boolean apply(EntityObject arg) {
@@ -47,6 +37,16 @@ class PropertyXmlNodeWriter extends AbstractXmlElementWriter {
                 return key.equals(arg.get(PropertyDesc.FIELD_TYPE));
             }
         };
+    }
+
+    public XmlElementHandler[] handleNext(XmlWriter xmlWriter) throws Exception {
+        EntityObject property = (EntityObject) next();
+        xmlWriter.writeAttribute(PropertyDesc.KEY.getName(), property.get(PropertyDesc.KEY));
+        xmlWriter.writeAttribute(PropertyDesc.VALUE.getName(), property.get(PropertyDesc.VALUE));
+        xmlWriter.writeAttribute(PropertyDesc.DATA_TYPE.getName(), property.get(PropertyDesc.DATA_TYPE).getFieldValue(
+                DataTypeType.NAME).toString());
+
+        return new XmlElementHandler[0];
     }
 
 }

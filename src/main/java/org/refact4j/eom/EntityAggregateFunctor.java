@@ -27,10 +27,6 @@ public final class EntityAggregateFunctor implements AggregateFunctor<EntityObje
         ((AbstractAggregateFunctor<EntityObject>) this.delegate).setComparator(entityObjectComparator);
     }
 
-    public EntityObject apply(Collection<? extends EntityObject> arg) {
-        return delegate.apply(arg);
-    }
-
     public static EntityObject applyMaxAggregateFunctor(EntityCollection collection, EntityDescriptor entityDescriptor,
                                                         String fieldName) {
         return applyMaxAggregateFunctor(collection, entityDescriptor.getField(fieldName));
@@ -55,7 +51,11 @@ public final class EntityAggregateFunctor implements AggregateFunctor<EntityObje
                                                              final EntityDescriptor entityDescriptor) {
         List<EntityObject> list = collection.stream().filter(p -> p.getEntityDescriptor().equals(entityDescriptor))
                 .collect(Collectors.toList());
-       return new EntityListImpl(list);
+        return new EntityListImpl(list);
+    }
+
+    public EntityObject apply(Collection<? extends EntityObject> arg) {
+        return delegate.apply(arg);
     }
 
 }

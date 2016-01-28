@@ -52,12 +52,12 @@ public abstract class AbstractNumberField extends AbstractField implements Numer
         return this.minValue;
     }
 
-    public Number getMaxValue() {
-        return this.maxValue;
-    }
-
     public void setMinValue(Number minValue) {
         this.minValue = minValue;
+    }
+
+    public Number getMaxValue() {
+        return this.maxValue;
     }
 
     public void setMaxValue(Number maxValue) {

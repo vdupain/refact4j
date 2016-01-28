@@ -1,9 +1,5 @@
 package org.refact4j.eom;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
 import org.junit.Test;
 import org.refact4j.eom.impl.EntityDataSetImpl;
 import org.refact4j.eom.impl.EntityListImpl;
@@ -20,7 +16,47 @@ import org.refact4j.util.ComparatorHelper;
 import java.util.Collections;
 import java.util.List;
 
+import static org.junit.Assert.*;
+
 public class EntitySetTest {
+
+    public static EntitySet createEntitySetWithDummies() {
+        String xmlData = "";
+        xmlData += "<Foo name='foo1' id='1'/>";
+        xmlData += "<Foo name='foo2' id='2'/>";
+        xmlData += "<Foo name='foo3' id='3'/>";
+
+        EntityList entityObjects = EntityXmlReaderHelper.parse(DummyRepository.get(), xmlData);
+        return EntitySetBuilder.init().addAll(entityObjects).getEntitySet();
+    }
+
+    public static EntitySet createEntitySetWithAnotherDummies() {
+        String xmlData = "";
+        xmlData += "<Bar name='bar1' id='1'/>";
+        xmlData += "<Bar name='bar2' id='2'/>";
+
+        EntityList entityObjects = EntityXmlReaderHelper.parse(DummyRepository.get(), xmlData);
+        return EntitySetBuilder.init().addAll(entityObjects).getEntitySet();
+    }
+
+    private static EntitySet createEntitySet() {
+        EntitySet entityObjectSet1 = createEntitySetWithDummies();
+        EntitySet entityObjectSet2 = createEntitySetWithAnotherDummies();
+        return EntitySetBuilder.init().addAll(entityObjectSet1).addAll(entityObjectSet2)
+                .getEntitySet();
+    }
+
+    public static EntitySet createSampleEntitySet() {
+        String xmlData = "";
+        xmlData += "<Bar name='bar1' id='1'/>";
+        xmlData += "<Bar name='bar2' id='2'/>";
+        xmlData += "<Foo bar='1' name='foo1' id='1'/>";
+        xmlData += "<Foo bar='1' name='foo2' id='2'/>";
+        xmlData += "<Foo bar='2' name='foo3' id='3'/>";
+
+        EntityList entityObjects = EntityXmlReaderHelper.parse(DummyRepository.get(), xmlData);
+        return EntitySetBuilder.init().addAll(entityObjects).getEntitySet();
+    }
 
     @Test
     public void testEntitySet() {
@@ -283,44 +319,6 @@ public class EntitySetTest {
             fail("Expected Exception");
         } catch (UnsupportedOperationException e) {
         }
-    }
-
-    public static EntitySet createEntitySetWithDummies() {
-        String xmlData = "";
-        xmlData += "<Foo name='foo1' id='1'/>";
-        xmlData += "<Foo name='foo2' id='2'/>";
-        xmlData += "<Foo name='foo3' id='3'/>";
-
-        EntityList entityObjects = EntityXmlReaderHelper.parse(DummyRepository.get(), xmlData);
-        return EntitySetBuilder.init().addAll(entityObjects).getEntitySet();
-    }
-
-    public static EntitySet createEntitySetWithAnotherDummies() {
-        String xmlData = "";
-        xmlData += "<Bar name='bar1' id='1'/>";
-        xmlData += "<Bar name='bar2' id='2'/>";
-
-        EntityList entityObjects = EntityXmlReaderHelper.parse(DummyRepository.get(), xmlData);
-        return EntitySetBuilder.init().addAll(entityObjects).getEntitySet();
-    }
-
-    private static EntitySet createEntitySet() {
-        EntitySet entityObjectSet1 = createEntitySetWithDummies();
-        EntitySet entityObjectSet2 = createEntitySetWithAnotherDummies();
-        return EntitySetBuilder.init().addAll(entityObjectSet1).addAll(entityObjectSet2)
-                .getEntitySet();
-    }
-
-    public static EntitySet createSampleEntitySet() {
-        String xmlData = "";
-        xmlData += "<Bar name='bar1' id='1'/>";
-        xmlData += "<Bar name='bar2' id='2'/>";
-        xmlData += "<Foo bar='1' name='foo1' id='1'/>";
-        xmlData += "<Foo bar='1' name='foo2' id='2'/>";
-        xmlData += "<Foo bar='2' name='foo3' id='3'/>";
-
-        EntityList entityObjects = EntityXmlReaderHelper.parse(DummyRepository.get(), xmlData);
-        return EntitySetBuilder.init().addAll(entityObjects).getEntitySet();
     }
 
 }

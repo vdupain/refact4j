@@ -16,7 +16,7 @@ import org.refact4j.visitor.Visitor;
 public class In<T> extends AbstractUnaryPredicate<T> {
 
     private final Object[] values;
-    private java.util.function.Function<T,Boolean> pred;
+    private java.util.function.Function<T, Boolean> pred;
 
     public In(Object[] values) {
         this.values = values;

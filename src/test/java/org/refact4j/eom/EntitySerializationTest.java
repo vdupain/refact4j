@@ -1,6 +1,5 @@
 package org.refact4j.eom;
 
-import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 import org.refact4j.eom.model.Field;
 import org.refact4j.model.BarDesc;
@@ -9,6 +8,8 @@ import org.refact4j.model.FooDesc;
 
 import java.util.Collection;
 import java.util.Date;
+
+import static org.junit.Assert.assertEquals;
 
 public class EntitySerializationTest {
 

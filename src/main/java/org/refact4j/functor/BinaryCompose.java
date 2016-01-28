@@ -19,15 +19,13 @@ import java.util.function.BinaryOperator;
  * @param <R>
  */
 public class BinaryCompose<F1, F2, T, R> implements Visitable, java.util.function.Function<T, R> {
-BinaryOperator xx;
-    private final java.util.function.Function<T,F1> firstFunction;
-
-    private final java.util.function.Function<T,F2> secondFunction;
-
+    private final java.util.function.Function<T, F1> firstFunction;
+    private final java.util.function.Function<T, F2> secondFunction;
     private final BiFunction<F1, F2, R> biFunction;
+    BinaryOperator xx;
 
-    public BinaryCompose(BiFunction<F1, F2, R> biFunction, java.util.function.Function<T,F1> firstFunction,
-                         java.util.function.Function<T,F2> secondFunction) {
+    public BinaryCompose(BiFunction<F1, F2, R> biFunction, java.util.function.Function<T, F1> firstFunction,
+                         java.util.function.Function<T, F2> secondFunction) {
         this.biFunction = biFunction;
         this.firstFunction = firstFunction;
         this.secondFunction = secondFunction;
@@ -44,11 +42,11 @@ BinaryOperator xx;
         return biFunction;
     }
 
-    public java.util.function.Function<T,F1> getFirstFunction() {
+    public java.util.function.Function<T, F1> getFirstFunction() {
         return firstFunction;
     }
 
-    public java.util.function.Function<T,F2> getSecondFunction() {
+    public java.util.function.Function<T, F2> getSecondFunction() {
         return secondFunction;
     }
 

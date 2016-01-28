@@ -1,9 +1,10 @@
 package org.refact4j.eom;
 
-import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 import org.refact4j.model.BarDesc;
 import org.refact4j.model.FooDesc;
+
+import static org.junit.Assert.assertEquals;
 
 public class RelationFieldTest {
 

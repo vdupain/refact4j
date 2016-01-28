@@ -5,14 +5,15 @@ import java.util.Map;
 
 public final class ArithmeticMathFactory {
     private static final ArithmeticMathFactory INSTANCE = new ArithmeticMathFactory();
-    private final Map<Class<? extends Number>, ArithmeticMath<? extends Number>> repo = new HashMap<Class<? extends Number>, ArithmeticMath<? extends Number>>();
-
-    private ArithmeticMathFactory() {
-    }
 
     static {
         INSTANCE.repo.put(Integer.class, new IntegerArithmeticMath());
         INSTANCE.repo.put(Double.class, new DoubleArithmeticMath());
+    }
+
+    private final Map<Class<? extends Number>, ArithmeticMath<? extends Number>> repo = new HashMap<Class<? extends Number>, ArithmeticMath<? extends Number>>();
+
+    private ArithmeticMathFactory() {
     }
 
     public static ArithmeticMathFactory getInstance() {

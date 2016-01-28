@@ -6,14 +6,14 @@ import org.refact4j.eom.model.EntityDescriptorRepositoryBuilder;
 public final class EOMMetaModelRepository {
     private static final EntityDescriptorRepository REPO;
 
-    private EOMMetaModelRepository() {
-    }
-
     static {
         REPO = EntityDescriptorRepositoryBuilder.init().add(EntityDescriptorDesc.INSTANCE)
                 .add(FieldDesc.INSTANCE).add(PropertyDesc.INSTANCE).add(DataTypeType.INSTANCE).add(
-                EntityStringifierDesc.INSTANCE).add(EntityStringifierAppenderDesc.INSTANCE)
+                        EntityStringifierDesc.INSTANCE).add(EntityStringifierAppenderDesc.INSTANCE)
                 .getEntityDescriptorsRepository();
+    }
+
+    private EOMMetaModelRepository() {
     }
 
     public static EntityDescriptorRepository get() {

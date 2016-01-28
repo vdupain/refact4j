@@ -19,16 +19,12 @@ import java.util.*;
  */
 public class EntityObjectImpl implements EntityObject {
 
-    private EntityStringifier stringifier = EntityStringifier.XML;
-
-    private EntityDescriptor entityDescriptor;
-
-    private Map<Field, Object> values = new HashMap<Field, Object>();
-
-    private Map<Field, Object> initialValues = new HashMap<Field, Object>();
-
     private final PropertyChangeSupport changeSupport = new PropertyChangeSupport(this);
     private final EntityObjectEventSupport entityObjectEventSupport = new EntityObjectEventSupport(this);
+    private EntityStringifier stringifier = EntityStringifier.XML;
+    private EntityDescriptor entityDescriptor;
+    private Map<Field, Object> values = new HashMap<Field, Object>();
+    private Map<Field, Object> initialValues = new HashMap<Field, Object>();
 
     public EntityObjectImpl() {
     }
@@ -106,6 +102,10 @@ public class EntityObjectImpl implements EntityObject {
 
     public EntityDescriptor getEntityDescriptor() {
         return this.entityDescriptor;
+    }
+
+    public void setEntityDescriptor(EntityDescriptor entityDescriptor) {
+        this.entityDescriptor = entityDescriptor;
     }
 
     void checkField(Field field) {
@@ -255,10 +255,6 @@ public class EntityObjectImpl implements EntityObject {
             out.writeObject(field.getName());
             out.writeObject(this.get(field));
         }
-    }
-
-    public void setEntityDescriptor(EntityDescriptor entityDescriptor) {
-        this.entityDescriptor = entityDescriptor;
     }
 
     public Key getId() {

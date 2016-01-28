@@ -110,7 +110,7 @@ public class String2ValueFieldConverter extends DefaultFieldVisitor {
         return (stringValue == null || "null".equalsIgnoreCase(stringValue));
     }
 
-    private Object convert(java.util.function.Function<String,Object> functor) {
+    private Object convert(java.util.function.Function<String, Object> functor) {
         if (isStringValueNull(stringValue)) {
             return null;
         }

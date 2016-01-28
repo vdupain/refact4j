@@ -1,9 +1,5 @@
 package org.refact4j.functor;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
 import org.junit.Test;
 import org.refact4j.eom.EntityFieldComparator;
 import org.refact4j.eom.EntityObject;
@@ -20,6 +16,8 @@ import org.refact4j.model.DummyBean;
 import org.refact4j.model.FooDesc;
 import org.refact4j.util.PrettyPrinter;
 
+import static org.junit.Assert.*;
+
 
 public class FunctorsTest {
 
@@ -28,9 +26,9 @@ public class FunctorsTest {
         double discountRate = 0.2;
         double taxRate = 0.20;
 
-        java.util.function.Function<Number,Number> discountedPrice = new Bind1st<Number, Number, Number>(new Multiplies(),
+        java.util.function.Function<Number, Number> discountedPrice = new Bind1st<Number, Number, Number>(new Multiplies(),
                 1 - discountRate);
-        java.util.function.Function<Number,Number> taxedPrice = new Bind1st<Number, Number, Number>(new Multiplies(), 1 + taxRate);
+        java.util.function.Function<Number, Number> taxedPrice = new Bind1st<Number, Number, Number>(new Multiplies(), 1 + taxRate);
 
         Number value = 100.;
         value = discountedPrice.apply(value);
@@ -48,7 +46,7 @@ public class FunctorsTest {
         value = calcPrice.apply(value);
         assertEquals(value, 96.);
 
-        java.util.function.Function<Number,Number> functor = new Bind2nd<Object, Number, Number>(new Multiplies(), 1 + taxRate);
+        java.util.function.Function<Number, Number> functor = new Bind2nd<Object, Number, Number>(new Multiplies(), 1 + taxRate);
         value = 100.;
         value = discountedPrice.apply(value);
         assertEquals(value, 80.);
@@ -62,7 +60,7 @@ public class FunctorsTest {
                 new And(), new Not(), new Not());
         assertFalse(func3.apply(true));
 
-        java.util.function.Function<org.refact4j.model.DummyBean,Boolean> predicate = new BinaryCompose<Boolean, Boolean, DummyBean, Boolean>(
+        java.util.function.Function<org.refact4j.model.DummyBean, Boolean> predicate = new BinaryCompose<Boolean, Boolean, DummyBean, Boolean>(
                 new Greater(), new ConstantFunction(1.), new ConstantFunction(2.));
         assertFalse(predicate.apply(null));
 

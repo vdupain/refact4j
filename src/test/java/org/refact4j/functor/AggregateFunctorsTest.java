@@ -1,6 +1,5 @@
 package org.refact4j.functor;
 
-import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
 import org.refact4j.functor.aggregate.MaxValue;
@@ -9,6 +8,8 @@ import org.refact4j.functor.aggregate.MinValue;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Comparator;
+
+import static org.junit.Assert.assertEquals;
 
 
 public class AggregateFunctorsTest {

@@ -1,7 +1,5 @@
 package org.refact4j.functor;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.fail;
 import org.junit.Test;
 import org.refact4j.eom.EntityStringifierRepo;
 import org.refact4j.eom.model.impl.EntityDescriptorImpl;
@@ -9,6 +7,9 @@ import org.refact4j.model.BarDesc;
 import org.refact4j.model.DummyStringifierRepository;
 import org.refact4j.model.FooDesc;
 import org.refact4j.util.StringHelper;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
 
 public class StringifierTest {
 
