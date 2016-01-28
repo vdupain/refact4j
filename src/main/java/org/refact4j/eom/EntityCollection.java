@@ -1,10 +1,5 @@
 package org.refact4j.eom;
 
-import org.refact4j.core.IdResolver;
-import org.refact4j.core.TypeResolver;
-import org.refact4j.eom.impl.EntityIdResolverImpl;
-import org.refact4j.eom.impl.EntityTypeResolverImpl;
-import org.refact4j.eom.model.EntityDescriptor;
 import org.refact4j.eom.model.Key;
 
 import java.util.Collection;

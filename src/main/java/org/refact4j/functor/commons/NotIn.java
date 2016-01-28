@@ -1,7 +1,6 @@
 package org.refact4j.functor.commons;
 
 import org.refact4j.functor.AbstractUnaryPredicate;
-import org.refact4j.functor.UnaryCompose;
 import org.refact4j.functor.logical.Not;
 import org.refact4j.visitor.Visitor;
 

@@ -3,8 +3,6 @@ package org.refact4j.functor.comparison;
 import org.refact4j.functor.AbstractUnaryPredicate;
 import org.refact4j.visitor.Visitor;
 
-import java.util.Comparator;
-
 /**
  * Null is an Unary Predicate that returns true when its argument is null.
  *

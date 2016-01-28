@@ -3,7 +3,6 @@ package org.refact4j.eom.impl;
 import org.refact4j.collection.impl.AbstractSetImpl;
 import org.refact4j.core.IdResolver;
 import org.refact4j.core.TypeResolver;
-import org.refact4j.eom.EntityFunctor;
 import org.refact4j.eom.EntityList;
 import org.refact4j.eom.EntityObject;
 import org.refact4j.eom.EntitySet;

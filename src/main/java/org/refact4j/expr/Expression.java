@@ -11,7 +11,6 @@ import org.refact4j.util.PrettyPrinter;
 import org.refact4j.visitor.Visitable;
 import org.refact4j.visitor.Visitor;
 
-import java.util.function.Function;
 import java.util.function.Predicate;
 
 /**
