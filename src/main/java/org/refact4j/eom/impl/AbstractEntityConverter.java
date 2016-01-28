@@ -11,13 +11,6 @@ public abstract class AbstractEntityConverter<T> implements EntityConverter<T>, 
 
     public void setEntityDescriptorRepository(EntityDescriptorRepository entityDescriptorRepository) {
         this.entityDescriptorRepository = entityDescriptorRepository;
-
-    }
-
-    public abstract EntityObject convert(T arg);
-
-    public EntityObject apply(T arg) {
-        return this.convert(arg);
     }
 
 }

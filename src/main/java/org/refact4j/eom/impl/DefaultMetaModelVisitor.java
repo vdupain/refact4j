@@ -6,15 +6,24 @@ import org.refact4j.eom.EntityObjectBuilder;
 import org.refact4j.eom.metamodel.DataTypeConverter;
 import org.refact4j.eom.metamodel.PropertyDesc;
 import org.refact4j.eom.metamodel.xml.EOMXmlDescriptor;
-import org.refact4j.eom.model.DataType;
-import org.refact4j.eom.model.EntityDescriptor;
-import org.refact4j.eom.model.Field;
+import org.refact4j.eom.model.*;
 import org.refact4j.eom.model.impl.PropertyImpl;
 import org.refact4j.xml.ToXmlString;
 import org.refact4j.xml.impl.Dataset2XmlConverterImpl;
 
-public class DefaultMetaModelVisitor extends AbstractMetaModelVisitor implements ToXmlString {
+public class DefaultMetaModelVisitor implements MetaModelVisitor, ToXmlString {
     private final Set dataSet = new EntityDataSet();
+    private EntityDescriptorRepository entityDescriptorRepository;
+
+    public void visitEntityDescriptorRepository(EntityDescriptorRepository entityDescriptorRepository) {
+        this.entityDescriptorRepository = entityDescriptorRepository;
+        for (EntityDescriptor entityDescriptor : entityDescriptorRepository) {
+            entityDescriptor.accept(this);
+            for (Field field : entityDescriptor.getFields()) {
+                field.accept(this);
+            }
+        }
+    }
 
     public String toXmlString() {
         Dataset2XmlConverterImpl converter = new Dataset2XmlConverterImpl();

@@ -38,7 +38,7 @@ public class EntitySetImpl extends Set<EntityObject, Key, EntityDescriptor> impl
     }
 
     public IdResolver<EntityObject, Key> getIdResolver() {
-        return new EntityIdResolverImpl();
+        return new EntityIdResolver();
     }
 
     public TypeResolver<EntityObject, EntityDescriptor> getTypeResolver() {

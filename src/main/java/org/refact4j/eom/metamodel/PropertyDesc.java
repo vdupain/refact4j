@@ -44,27 +44,27 @@ public final class PropertyDesc {
     }
 
     public static class TypeVisitor extends AbstractVisitor {
-        public DataTypeEntity dataTypeEntity = DataTypeType.STRING_DATA_TYPE;
+       public DataTypeEntity dataTypeEntity = DataTypeType.STRING_DATA_TYPE;
 
-        public void visitInteger(Integer value) {
-            this.dataTypeEntity = DataTypeType.INTEGER_DATA_TYPE;
-        }
-
-        public void visitString(String value) {
-            this.dataTypeEntity = DataTypeType.STRING_DATA_TYPE;
-        }
-
-        public void visitBoolean(Boolean value) {
-            this.dataTypeEntity = DataTypeType.BOOLEAN_DATA_TYPE;
-        }
-
-        public void visitDate(Date value) {
-            this.dataTypeEntity = DataTypeType.DATE_DATA_TYPE;
-        }
-
-        public void visitDouble(Double value) {
-            this.dataTypeEntity = DataTypeType.DOUBLE_DATA_TYPE;
-        }
+//        public void visitInteger(Integer value) {
+//            this.dataTypeEntity = DataTypeType.INTEGER_DATA_TYPE;
+//        }
+//
+//        public void visitString(String value) {
+//            this.dataTypeEntity = DataTypeType.STRING_DATA_TYPE;
+//        }
+//
+//        public void visitBoolean(Boolean value) {
+//            this.dataTypeEntity = DataTypeType.BOOLEAN_DATA_TYPE;
+//        }
+//
+//        public void visitDate(Date value) {
+//            this.dataTypeEntity = DataTypeType.DATE_DATA_TYPE;
+//        }
+//
+//        public void visitDouble(Double value) {
+//            this.dataTypeEntity = DataTypeType.DOUBLE_DATA_TYPE;
+//        }
 
     }
 

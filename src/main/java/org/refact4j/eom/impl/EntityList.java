@@ -28,7 +28,7 @@ public class EntityList extends List<EntityObject, Key, EntityDescriptor> implem
     }
 
     public IdResolver<EntityObject, Key> getIdResolver() {
-        return new EntityIdResolverImpl();
+        return new EntityIdResolver();
     }
 
     public TypeResolver<EntityObject, EntityDescriptor> getTypeResolver() {

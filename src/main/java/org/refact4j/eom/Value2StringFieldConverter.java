@@ -3,6 +3,7 @@ package org.refact4j.eom;
 import org.refact4j.eom.model.*;
 
 import java.util.Date;
+import java.util.function.Function;
 
 public class Value2StringFieldConverter extends DefaultFieldVisitor {
     private String stringValue;
@@ -10,10 +11,6 @@ public class Value2StringFieldConverter extends DefaultFieldVisitor {
     private Object value;
 
     public Value2StringFieldConverter() {
-    }
-
-    public Value2StringFieldConverter(Object value) {
-        this.value = value;
     }
 
     public void visitIntegerField(IntegerField integerField) {
@@ -65,7 +62,7 @@ public class Value2StringFieldConverter extends DefaultFieldVisitor {
         return convert(arg -> value.toString());
     }
 
-    private String convert(java.util.function.Function<Object, String> functor) {
+    private String convert(Function<Object, String> functor) {
         if (value == null) {
             return "null";
         }

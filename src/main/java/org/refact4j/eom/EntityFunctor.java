@@ -8,9 +8,5 @@ import org.refact4j.visitor.Visitor;
  * @param <T>
  */
 public interface EntityFunctor<T> extends java.util.function.Function<EntityObject, T> {
-
-    interface EntityFunctorVisitor extends Visitor {
-        void visitEntityFunctor(EntityFunctor<?> entityFunctor);
-    }
-
+    
 }

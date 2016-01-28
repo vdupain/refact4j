@@ -11,18 +11,19 @@ public final class ConverterHelper {
     private ConverterHelper() {
     }
 
+    static Value2StringFieldConverter value2StringConverter = new Value2StringFieldConverter();
+    static String2ValueFieldConverter string2ValueConverter = new String2ValueFieldConverter();
+
     public static String convertValue2String(final Object value, final Field field) {
-        Value2StringFieldConverter converter = new Value2StringFieldConverter();
-        converter.setValue(value);
-        field.accept(converter);
-        return converter.getStringValue();
+        value2StringConverter.setValue(value);
+        field.accept(value2StringConverter);
+        return value2StringConverter.getStringValue();
     }
 
     public static Object convertString2Value(final String stringValue, final Field field) {
-        String2ValueFieldConverter converter = new String2ValueFieldConverter();
-        converter.setStringValue(stringValue);
-        field.accept(converter);
-        return converter.getValue();
+        string2ValueConverter.setStringValue(stringValue);
+        field.accept(string2ValueConverter);
+        return string2ValueConverter.getValue();
     }
 
 }
