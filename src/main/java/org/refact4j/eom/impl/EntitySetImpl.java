@@ -14,6 +14,7 @@ import org.refact4j.util.EqualsHelper;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class EntitySetImpl extends AbstractSetImpl<EntityObject, Key, EntityDescriptor> implements EntitySet {
 
@@ -29,17 +30,8 @@ public class EntitySetImpl extends AbstractSetImpl<EntityObject, Key, EntityDesc
     }
 
     public EntityList getEntities(EntityDescriptor entityDescriptor, final Field field, final Object value) {
-        final EntityList result = new EntityListImpl();
-        apply(entityDescriptor, new EntityFunctor<Object>() {
-
-            public Object apply(EntityObject entityObject) {
-                if (EqualsHelper.equals(entityObject.get(field), value)) {
-                    result.add(entityObject);
-                }
-                return null;
-            }
-        });
-        return result;
+        List<EntityObject> collect = this.stream().filter(e -> EqualsHelper.equals(e.get(field), value)).collect(Collectors.toList());
+        return new EntityListImpl(collect);
     }
 
     @Override

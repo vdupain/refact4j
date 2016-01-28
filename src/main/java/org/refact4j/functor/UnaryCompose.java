@@ -3,6 +3,8 @@ package org.refact4j.functor;
 import org.refact4j.visitor.Visitable;
 import org.refact4j.visitor.Visitor;
 
+import java.util.function.Function;
+
 /**
  * UnaryCompose is a Unary Functor that passes the results of a Unary Functor as
  * the argument to a Unary Functor. This allows for the construction of compound
@@ -13,30 +15,30 @@ import org.refact4j.visitor.Visitor;
  * @param <T>
  * @param <R>
  */
-public class UnaryCompose<F1, T, R> implements Visitable, java.util.function.Function<T, R> {
+public class UnaryCompose<F1, T, R> implements Visitable, Function<T, R> {
 
-    private final java.util.function.Function<F1, R> firstFunction;
+    private final Function<F1, R> function;
 
-    private final java.util.function.Function<T, F1> secondFunction;
+    private final Function<T, F1> before;
 
-    public UnaryCompose(java.util.function.Function<F1, R> function1, java.util.function.Function<T, F1> function2) {
-        this.firstFunction = function1;
-        this.secondFunction = function2;
+    public UnaryCompose(Function<F1, R> function, Function<T, F1> before) {
+        this.function = function;
+        this.before = before;
     }
 
     /**
      * f(g(x))
      */
     public R apply(T arg) {
-        return firstFunction.apply(secondFunction.apply(arg));
+        return function.compose(before).apply(arg);
     }
 
-    public java.util.function.Function<F1, R> getFirstFunction() {
-        return firstFunction;
+    public java.util.function.Function<F1, R> getFunction() {
+        return function;
     }
 
-    public java.util.function.Function<T, F1> getSecondFunction() {
-        return secondFunction;
+    public java.util.function.Function<T, F1> getBefore() {
+        return before;
     }
 
     public void accept(Visitor visitor) {

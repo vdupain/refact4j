@@ -11,19 +11,10 @@ import java.util.Comparator;
  * @param <T>
  */
 public class Null<T> extends AbstractUnaryPredicate<T> {
-    private final Equal<T> equal = new Equal<T>();
-
-    public Null() {
-        this(null);
-    }
-
-    private Null(Comparator<T> comparator) {
-        equal.setComparator(comparator);
-    }
 
     @Override
     public boolean test(T arg) {
-        return equal.apply(arg, null);
+        return arg == null;
     }
 
     public void accept(Visitor visitor) {

@@ -8,11 +8,8 @@ import java.io.Serializable;
 
 public interface Collection<T, ID extends Serializable, TYPE> extends java.util.Collection<T>, Finder<T, ID, TYPE> {
 
-    void apply(TYPE type, java.util.function.Function<T, ?> functor);
-
     TypeResolver<T, TYPE> getTypeResolver();
 
     IdResolver<T, ID> getIdResolver();
 
-    ChangeSet<T> getChangeSet();
 }

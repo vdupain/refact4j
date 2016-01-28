@@ -102,8 +102,8 @@ public class PrettyPrinter implements ExpressionVisitor, BinaryComposeVisitor, U
 
     public void visitUnaryCompose(UnaryCompose unaryCompose) {
         buf.append('(');
-        java.util.function.Function secondFunction = unaryCompose.getSecondFunction();
-        java.util.function.Function firstFunction = unaryCompose.getFirstFunction();
+        java.util.function.Function secondFunction = unaryCompose.getBefore();
+        java.util.function.Function firstFunction = unaryCompose.getFunction();
         if (firstFunction instanceof Between || firstFunction instanceof In
                 || firstFunction instanceof NotIn) {
             ((Visitable) secondFunction).accept(this);

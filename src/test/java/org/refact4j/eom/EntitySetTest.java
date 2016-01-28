@@ -242,20 +242,12 @@ public class EntitySetTest {
     }
 
     private void testEntitySetApplyfunctor(final EntityCollection collection) {
-        collection.apply(FooDesc.INSTANCE, new EntityFunctor<Object>() {
-
-            public Object apply(EntityObject arg) {
-                assertEquals(FooDesc.INSTANCE, arg.getEntityDescriptor());
-                return null;
-            }
-        });
-        collection.apply(BarDesc.INSTANCE, new EntityFunctor<Object>() {
-
-            public Object apply(EntityObject arg) {
-                assertEquals(BarDesc.INSTANCE, arg.getEntityDescriptor());
-                return null;
-            }
-        });
+        collection.stream()
+                .filter(p -> p.getEntityDescriptor().equals(FooDesc.INSTANCE))
+                .forEach(arg -> assertEquals(FooDesc.INSTANCE, arg.getEntityDescriptor()));
+        collection.stream()
+                .filter(p -> p.getEntityDescriptor().equals(BarDesc.INSTANCE))
+                .forEach(arg -> assertEquals(BarDesc.INSTANCE, arg.getEntityDescriptor()));
     }
 
     @Test

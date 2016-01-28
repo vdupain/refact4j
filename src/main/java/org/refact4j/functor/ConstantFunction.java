@@ -10,8 +10,8 @@ public class ConstantFunction<R> implements java.util.function.Function<Object, 
 
     private final R constant;
 
-    public ConstantFunction(final R object) {
-        this.constant = object;
+    public ConstantFunction(final R constant) {
+        this.constant = constant;
     }
 
     /**

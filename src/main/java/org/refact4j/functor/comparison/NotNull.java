@@ -13,19 +13,9 @@ import java.util.Comparator;
  */
 public class NotNull<T> extends AbstractUnaryPredicate<T> {
 
-    private final NotEqual<T> notEqual = new NotEqual<T>();
-
-    public NotNull() {
-        this(null);
-    }
-
-    private NotNull(Comparator<T> comparator) {
-        notEqual.setComparator(comparator);
-    }
-
     @Override
     public boolean test(T arg) {
-        return notEqual.apply(arg, null);
+        return arg != null;
     }
 
     public void accept(Visitor visitor) {

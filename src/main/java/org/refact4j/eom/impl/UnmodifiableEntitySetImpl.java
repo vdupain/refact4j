@@ -65,10 +65,6 @@ public class UnmodifiableEntitySetImpl implements EntitySet {
         throw new UnsupportedOperationException();
     }
 
-    public void apply(EntityDescriptor entityDescriptor, java.util.function.Function<EntityObject, ?> functor) {
-        entityObjectSet.apply(entityDescriptor, functor);
-    }
-
     public boolean contains(EntityObject entityObject) {
         return entityObjectSet.contains(entityObject);
     }
@@ -143,10 +139,6 @@ public class UnmodifiableEntitySetImpl implements EntitySet {
 
     public IdResolver<EntityObject, Key> getIdResolver() {
         return this.entityObjectSet.getIdResolver();
-    }
-
-    public ChangeSet<EntityObject> getChangeSet() {
-        return this.entityObjectSet.getChangeSet();
     }
 
     public TypeResolver<EntityObject, EntityDescriptor> getTypeResolver() {
