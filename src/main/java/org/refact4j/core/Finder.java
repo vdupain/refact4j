@@ -2,10 +2,9 @@ package org.refact4j.core;
 
 import org.refact4j.functor.UnaryPredicate;
 
-import java.io.Serializable;
 import java.util.List;
 
-public interface Finder<T, ID extends Serializable, TYPE> {
+public interface Finder<T, ID, TYPE> {
 
     T findByIdentifier(ID id);
 

@@ -4,9 +4,7 @@ import org.refact4j.core.Finder;
 import org.refact4j.core.IdResolver;
 import org.refact4j.core.TypeResolver;
 
-import java.io.Serializable;
-
-public interface Set<T, ID extends Serializable, TYPE> extends java.util.Set<T>, Finder<T, ID, TYPE> {
+public interface Set<T, ID, TYPE> extends java.util.Set<T>, Finder<T, ID, TYPE> {
 
     TypeResolver<T, TYPE> getTypeResolver();
 

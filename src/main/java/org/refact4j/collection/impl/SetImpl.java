@@ -5,12 +5,11 @@ import org.refact4j.core.IdResolver;
 import org.refact4j.core.TypeResolver;
 import org.refact4j.functor.UnaryPredicate;
 
-import java.io.Serializable;
 import java.util.HashSet;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class SetImpl<T, ID extends Serializable, TYPE> extends HashSet<T> implements Set<T, ID, TYPE> {
+public class SetImpl<T, ID, TYPE> extends HashSet<T> implements Set<T, ID, TYPE> {
 
     private final CollectionDecorator<T, ID, TYPE> collectionDecorator = new CollectionDecorator<T, ID, TYPE>(this);
 

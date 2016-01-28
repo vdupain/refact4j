@@ -6,13 +6,12 @@ import org.refact4j.core.IdResolver;
 import org.refact4j.core.TypeResolver;
 import org.refact4j.functor.UnaryPredicate;
 
-import java.io.Serializable;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class CollectionDecorator<T, ID extends Serializable, TYPE> implements Collection<T>, Finder<T, ID, TYPE> {
+public class CollectionDecorator<T, ID, TYPE> implements Collection<T>, Finder<T, ID, TYPE> {
 
     private final Collection<T> collection;
     private TypeResolver<T, TYPE> typeResolver;

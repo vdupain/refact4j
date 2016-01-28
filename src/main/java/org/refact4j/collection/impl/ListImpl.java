@@ -4,12 +4,11 @@ import org.refact4j.core.IdResolver;
 import org.refact4j.core.TypeResolver;
 import org.refact4j.functor.UnaryPredicate;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class ListImpl<T, ID extends Serializable, TYPE> extends ArrayList<T> implements
+public class ListImpl<T, ID, TYPE> extends ArrayList<T> implements
         org.refact4j.collection.List<T, ID, TYPE> {
 
     private final CollectionDecorator<T, ID, TYPE> collectionDecorator = new CollectionDecorator<T, ID, TYPE>(this);
