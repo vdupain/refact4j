@@ -46,12 +46,4 @@ public class ListImpl<T, ID, TYPE> extends ArrayList<T> implements
         this.getAll(type).stream().map(e -> functor.apply(e)).collect(Collectors.toList());
     }
 
-    public TypeResolver<T, TYPE> getTypeResolver() {
-        return new DefaultTypeResolverImpl();
-    }
-
-    public IdResolver<T, ID> getIdResolver() {
-        return new DefaultIdResolver();
-    }
-
 }

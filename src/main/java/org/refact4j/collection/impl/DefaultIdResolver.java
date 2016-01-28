@@ -5,7 +5,7 @@ import org.refact4j.core.Identifiable;
 
 import java.io.Serializable;
 
-public class DefaultIdResolver<ID extends Serializable> implements IdResolver<Identifiable<ID>, ID> {
+public class DefaultIdResolver<ID> implements IdResolver<Identifiable<ID>, ID> {
 
     public ID getId(Identifiable<ID> t) {
         return t.getId();

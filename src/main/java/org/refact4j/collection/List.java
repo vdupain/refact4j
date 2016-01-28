@@ -6,8 +6,4 @@ import org.refact4j.core.TypeResolver;
 
 public interface List<T, ID, TYPE> extends java.util.List<T>, Finder<T, ID, TYPE> {
 
-    TypeResolver<T, TYPE> getTypeResolver();
-
-    IdResolver<T, ID> getIdResolver();
-
 }

@@ -47,12 +47,4 @@ public class SetImpl<T, ID, TYPE> extends HashSet<T> implements Set<T, ID, TYPE>
         this.getAll(type).stream().map(e -> functor.apply(e)).collect(Collectors.toList());
     }
 
-    public TypeResolver<T, TYPE> getTypeResolver() {
-        return new DefaultTypeResolverImpl();
-    }
-
-    public IdResolver<T, ID> getIdResolver() {
-        return new DefaultIdResolver();
-    }
-
 }
