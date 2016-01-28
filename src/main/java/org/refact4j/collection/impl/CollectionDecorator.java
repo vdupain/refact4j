@@ -1,7 +1,6 @@
 package org.refact4j.collection.impl;
 
 import org.refact4j.collection.ChangeSet;
-import org.refact4j.core.EqualityResolver;
 import org.refact4j.core.Finder;
 import org.refact4j.core.IdResolver;
 import org.refact4j.core.TypeResolver;
@@ -18,14 +17,7 @@ public class CollectionDecorator<T, ID extends Serializable, TYPE> implements Co
     private final Collection<T> collection;
     private TypeResolver<T, TYPE> typeResolver;
     private IdResolver<T, ID> idResolver;
-    private final EqualityResolver<T, ID> equalityResolver = new EqualityResolver<T, ID>() {
 
-        public boolean areEquals(T t1, ID t2) {
-
-            return idResolver.getId(t1).equals(t2);
-        }
-
-    };
     private ChangeSetImpl<T> changeSet;
     private ChangeSetSupport<T> changeSetSupport = new ChangeSetSupport<T>();
 
@@ -41,7 +33,7 @@ public class CollectionDecorator<T, ID extends Serializable, TYPE> implements Co
 
     public T findByIdentifier(ID id) {
         for (T t : this.collection) {
-            if (equalityResolver.areEquals(t, id)) {
+            if (idResolver.getId(t).equals(id)) {
                 return t;
             }
         }
@@ -50,7 +42,7 @@ public class CollectionDecorator<T, ID extends Serializable, TYPE> implements Co
 
     public T findByIdentifier(TYPE type, ID id) {
         for (T t : this.getAll(type)) {
-            if (equalityResolver.areEquals(t, id)) {
+            if (idResolver.getId(t).equals(id)) {
                 return t;
             }
         }
