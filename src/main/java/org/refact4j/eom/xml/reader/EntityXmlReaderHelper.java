@@ -1,6 +1,6 @@
 package org.refact4j.eom.xml.reader;
 
-import org.refact4j.collection.DataSet;
+import org.refact4j.collection.Set;
 import org.refact4j.eom.*;
 import org.refact4j.eom.impl.EntityDataSetImpl;
 import org.refact4j.eom.impl.EntityListImpl;
@@ -36,7 +36,7 @@ public final class EntityXmlReaderHelper {
     private static EntityList unmarshal(final EntityDescriptorRepository repository, String xmlData,
                                         EntityFinder entityObjectFinder) {
         Dataset2XmlConverterImpl dataset2XmlConverter = new Dataset2XmlConverterImpl();
-        DataSet dataset = new EntityDataSetImpl();
+        Set dataset = new EntityDataSetImpl();
         dataset2XmlConverter.register(new EntityXmlDescriptor(repository));
         dataset2XmlConverter.unmarshal(xmlData, dataset, entityObjectFinder);
         return new EntityListImpl(dataset);

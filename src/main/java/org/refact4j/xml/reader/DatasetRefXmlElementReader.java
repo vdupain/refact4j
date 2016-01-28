@@ -1,6 +1,6 @@
 package org.refact4j.xml.reader;
 
-import org.refact4j.collection.DataSet;
+import org.refact4j.collection.Set;
 import org.refact4j.core.Finder;
 import org.refact4j.util.StringHelper;
 import org.refact4j.xml.DatasetConverterHolder;
@@ -15,7 +15,7 @@ import java.net.URL;
 
 class DatasetRefXmlElementReader extends DefaultXmlElementReader {
 
-    public DatasetRefXmlElementReader(DataSet dataset, Finder finder, Dataset2XmlConverterImpl dataset2XmlConverter) {
+    public DatasetRefXmlElementReader(Set dataset, Finder finder, Dataset2XmlConverterImpl dataset2XmlConverter) {
         super(dataset, finder, dataset2XmlConverter);
     }
 

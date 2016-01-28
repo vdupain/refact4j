@@ -1,6 +1,6 @@
 package org.refact4j.xml.reader;
 
-import org.refact4j.collection.DataSet;
+import org.refact4j.collection.Set;
 import org.refact4j.core.Finder;
 import org.refact4j.xml.*;
 import org.refact4j.xml.impl.DatasetConverterHolderImpl;
@@ -8,7 +8,7 @@ import org.refact4j.xml.impl.DatasetConverterHolderImpl;
 public class DefaultXmlElementReader extends AbstractXmlElement implements DatasetConverterHolder {
     private final DatasetConverterHolder datasetConverterHolder;
 
-    DefaultXmlElementReader(DataSet dataset, Finder finder, DataSet2XmlConverter dataset2XmlConverter) {
+    DefaultXmlElementReader(Set dataset, Finder finder, DataSet2XmlConverter dataset2XmlConverter) {
         this.datasetConverterHolder = new DatasetConverterHolderImpl(dataset, finder, dataset2XmlConverter);
     }
 
@@ -21,7 +21,7 @@ public class DefaultXmlElementReader extends AbstractXmlElement implements Datas
         this.datasetConverterHolder.getDataSet().add(object);
     }
 
-    public DataSet getDataSet() {
+    public Set getDataSet() {
         return this.datasetConverterHolder.getDataSet();
     }
 

@@ -1,6 +1,6 @@
 package org.refact4j.eom.impl;
 
-import org.refact4j.collection.DataSet;
+import org.refact4j.collection.Set;
 import org.refact4j.eom.*;
 import org.refact4j.eom.model.EntityDescriptor;
 import org.refact4j.eom.model.Field;
@@ -13,7 +13,7 @@ import org.refact4j.xml.DatasetHolder;
 import java.util.List;
 
 public class EntityDataSetImpl extends EntityListImpl implements EntitySet,
-        DataSet<EntityObject, Key, EntityDescriptor>, DatasetHolder {
+        Set<EntityObject, Key, EntityDescriptor>, DatasetHolder {
 
     private static final long serialVersionUID = 7143433867762051132L;
 
@@ -33,7 +33,7 @@ public class EntityDataSetImpl extends EntityListImpl implements EntitySet,
         return EntitySetBuilder.init().addAll(this).getEntitySet().getEntities(entityDescriptor, field, value);
     }
 
-    public DataSet<EntityObject, Key, EntityDescriptor> getDataSet() {
+    public Set<EntityObject, Key, EntityDescriptor> getDataSet() {
         return this;
     }
 

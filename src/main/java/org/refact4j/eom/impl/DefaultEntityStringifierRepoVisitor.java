@@ -1,6 +1,6 @@
 package org.refact4j.eom.impl;
 
-import org.refact4j.collection.DataSet;
+import org.refact4j.collection.Set;
 import org.refact4j.eom.EntityObject;
 import org.refact4j.eom.EntityStringifier;
 import org.refact4j.eom.EntityStringifierRepo;
@@ -41,7 +41,7 @@ public class DefaultEntityStringifierRepoVisitor implements EntityStringifierRep
         return converter.marshal(dataSet);
     }
 
-    public DataSet getDataSet() {
+    public Set getDataSet() {
         return dataSet;
     }
 

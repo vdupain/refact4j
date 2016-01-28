@@ -1,6 +1,6 @@
 package org.refact4j.xml.writer;
 
-import org.refact4j.collection.DataSet;
+import org.refact4j.collection.Set;
 import org.refact4j.core.Finder;
 import org.refact4j.xml.DatasetConverterHolder;
 import org.refact4j.xml.XmlElementHandler;
@@ -10,12 +10,12 @@ import org.refact4j.xml.impl.Dataset2XmlConverterImpl;
 import java.util.Collection;
 
 public class DatasetXmlWriter implements XmlElementHandler, DatasetConverterHolder {
-    private final DataSet dataset;
+    private final Set dataset;
     private final Dataset2XmlConverterImpl converter;
     private final Finder finder;
     private String tagName = "dataset";
 
-    public DatasetXmlWriter(DataSet dataset, Finder finder, Dataset2XmlConverterImpl converter) {
+    public DatasetXmlWriter(Set dataset, Finder finder, Dataset2XmlConverterImpl converter) {
         this.dataset = dataset;
         this.finder = finder;
         this.converter = converter;
@@ -42,7 +42,7 @@ public class DatasetXmlWriter implements XmlElementHandler, DatasetConverterHold
         return this.converter;
     }
 
-    public DataSet getDataSet() {
+    public Set getDataSet() {
         return this.dataset;
     }
 

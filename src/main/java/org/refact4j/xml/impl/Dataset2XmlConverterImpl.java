@@ -1,6 +1,6 @@
 package org.refact4j.xml.impl;
 
-import org.refact4j.collection.DataSet;
+import org.refact4j.collection.Set;
 import org.refact4j.core.Finder;
 import org.refact4j.xml.*;
 import org.refact4j.xml.impl.sax.DefaultSaxErrorHandler;
@@ -28,11 +28,11 @@ public class Dataset2XmlConverterImpl implements DataSet2XmlConverter {
 
     private final List<XmlDescriptor> xmlDescriptors = new ArrayList<XmlDescriptor>();
 
-    public void unmarshal(String xml, DataSet dataset) {
+    public void unmarshal(String xml, Set dataset) {
         unmarshal(xml, dataset, null);
     }
 
-    public void unmarshal(String xml, DataSet dataset, Finder finder) {
+    public void unmarshal(String xml, Set dataset, Finder finder) {
         if (xml.indexOf(XMLSCHEMA_INSTANCE) != -1) {
             validate(new StringReader(xml));
         }
@@ -49,11 +49,11 @@ public class Dataset2XmlConverterImpl implements DataSet2XmlConverter {
         }
     }
 
-    public void unmarshal(Reader reader, DataSet dataset) {
+    public void unmarshal(Reader reader, Set dataset) {
         unmarshal(reader, dataset, null);
     }
 
-    void unmarshal(Reader reader, DataSet dataset, Finder finder) {
+    void unmarshal(Reader reader, Set dataset, Finder finder) {
         try {
             org.xml.sax.XMLReader xmlReader = createXMLReader();
             final DatasetXmlElementReader datasetXmlNodeReader = new DatasetXmlElementReader(dataset, finder, this);
@@ -100,7 +100,7 @@ public class Dataset2XmlConverterImpl implements DataSet2XmlConverter {
     }
 
 
-    public String marshal(DataSet dataset) {
+    public String marshal(Set dataset) {
         try {
             StringWriter result = new StringWriter();
             XmlWriterHelper.build(result, new DatasetXmlWriter(dataset, null, this));

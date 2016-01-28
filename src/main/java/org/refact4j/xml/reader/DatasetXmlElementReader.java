@@ -1,6 +1,6 @@
 package org.refact4j.xml.reader;
 
-import org.refact4j.collection.DataSet;
+import org.refact4j.collection.Set;
 import org.refact4j.core.Finder;
 import org.refact4j.eom.EntityFinder;
 import org.refact4j.eom.model.EntityDescriptor;
@@ -13,7 +13,7 @@ import org.refact4j.xml.impl.Dataset2XmlConverterImpl;
 
 public class DatasetXmlElementReader extends DefaultXmlElementReader {
 
-    public DatasetXmlElementReader(DataSet dataset, Finder finder, DataSet2XmlConverter dataset2XmlConverter) {
+    public DatasetXmlElementReader(Set dataset, Finder finder, DataSet2XmlConverter dataset2XmlConverter) {
         super(dataset, finder, dataset2XmlConverter);
     }
 

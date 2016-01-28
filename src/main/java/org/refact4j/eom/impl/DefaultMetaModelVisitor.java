@@ -1,6 +1,6 @@
 package org.refact4j.eom.impl;
 
-import org.refact4j.collection.DataSet;
+import org.refact4j.collection.Set;
 import org.refact4j.eom.EntityList;
 import org.refact4j.eom.EntityObject;
 import org.refact4j.eom.EntityObjectBuilder;
@@ -15,7 +15,7 @@ import org.refact4j.xml.ToXmlString;
 import org.refact4j.xml.impl.Dataset2XmlConverterImpl;
 
 public class DefaultMetaModelVisitor extends AbstractMetaModelVisitor implements ToXmlString {
-    private final DataSet dataSet = new EntityDataSetImpl();
+    private final Set dataSet = new EntityDataSetImpl();
 
     public String toXmlString() {
         Dataset2XmlConverterImpl converter = new Dataset2XmlConverterImpl();
@@ -23,7 +23,7 @@ public class DefaultMetaModelVisitor extends AbstractMetaModelVisitor implements
         return converter.marshal(dataSet);
     }
 
-    public DataSet getDataSet() {
+    public Set getDataSet() {
         return dataSet;
     }
 

@@ -2,7 +2,7 @@ package org.refact4j.model;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.refact4j.collection.DataSet;
+import org.refact4j.collection.Set;
 import org.refact4j.eom.*;
 import org.refact4j.eom.impl.DefaultEntityStringifierRepoVisitor;
 import org.refact4j.eom.impl.DefaultMetaModelVisitor;
@@ -159,8 +159,8 @@ public class MetaModelTest {
     public void testEntityDescriptorRepo2Xml() {
         DefaultMetaModelVisitor visitor = new DefaultMetaModelVisitor();
         this.repository.accept(visitor);
-        DataSet initialDataset = visitor.getDataSet();
-        DataSet actualDataset = new EntityDataSetImpl();
+        Set initialDataset = visitor.getDataSet();
+        Set actualDataset = new EntityDataSetImpl();
         Dataset2XmlConverterImpl converter = new Dataset2XmlConverterImpl();
         converter.register(new EOMXmlDescriptor(EOMMetaModelRepository.get()));
         converter.unmarshal(visitor.toXmlString(), actualDataset);
@@ -172,8 +172,8 @@ public class MetaModelTest {
         DefaultEntityStringifierRepoVisitor visitor =
                 new DefaultEntityStringifierRepoVisitor(this.repository);
         this.stringifierRepository.accept(visitor);
-        DataSet initialDataset = visitor.getDataSet();
-        DataSet actualDataset = new EntityDataSetImpl();
+        Set initialDataset = visitor.getDataSet();
+        Set actualDataset = new EntityDataSetImpl();
         Dataset2XmlConverterImpl converter = new Dataset2XmlConverterImpl();
         converter.register(new EntityStringifierXmlDescriptor(this.repository));
         converter.unmarshal(visitor.toXmlString(), actualDataset);

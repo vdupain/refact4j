@@ -1,9 +1,9 @@
 package org.refact4j.xml;
 
-import org.refact4j.collection.DataSet;
+import org.refact4j.collection.Set;
 
 public interface DatasetHolder {
 
-    DataSet getDataSet();
+    Set getDataSet();
 
 }

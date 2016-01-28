@@ -1,7 +1,7 @@
 package org.refact4j.eom.xml;
 
 import org.junit.Test;
-import org.refact4j.collection.DataSet;
+import org.refact4j.collection.Set;
 import org.refact4j.eom.EntityList;
 import org.refact4j.eom.EntityStringifier;
 import org.refact4j.eom.impl.EntityDataSetImpl;
@@ -32,7 +32,7 @@ public class EntityXmlParsingTest {
                 + "</dataset>";
 
         Dataset2XmlConverterImpl dataset2XmlConverter = new Dataset2XmlConverterImpl();
-        DataSet dataset = new EntityDataSetImpl();
+        Set dataset = new EntityDataSetImpl();
         dataset2XmlConverter
                 .register(new EntityXmlDescriptor(DummyRepository.get()));
         dataset2XmlConverter.unmarshal(input, dataset);

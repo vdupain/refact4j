@@ -1,6 +1,6 @@
 package org.refact4j.eom.metamodel;
 
-import org.refact4j.collection.DataSet;
+import org.refact4j.collection.Set;
 import org.refact4j.eom.*;
 import org.refact4j.eom.impl.EntityDataSetImpl;
 import org.refact4j.eom.impl.EntityListImpl;
@@ -50,7 +50,7 @@ public class DefaultEntityDescriptorRepoFactory implements EntityDescriptorRepos
     }
 
     public EntityDescriptorRepository createEntityDescriptorRepository() {
-        DataSet actualDataset = new EntityDataSetImpl();
+        Set actualDataset = new EntityDataSetImpl();
         Dataset2XmlConverterImpl converter = new Dataset2XmlConverterImpl();
         converter.register(new EntityXmlDescriptor(EOMMetaModelRepository.get()));
         converter.register(new EOMXmlDescriptor(metaModelEntityDescriptorRepository));

@@ -2,7 +2,7 @@ package org.refact4j.xml;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.refact4j.collection.DataSet;
+import org.refact4j.collection.Set;
 import org.refact4j.eom.EntityList;
 import org.refact4j.eom.EntityTestUtils;
 import org.refact4j.eom.impl.EntityDataSetImpl;
@@ -36,7 +36,7 @@ public class DatasetRefXmlTest {
 
     private Dataset2XmlConverterImpl dataset2XmlConverter;
 
-    private DataSet dataset;
+    private Set dataset;
 
     @Before
     public void setUp() throws Exception {
