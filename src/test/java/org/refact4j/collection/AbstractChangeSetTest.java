@@ -9,7 +9,7 @@ import org.refact4j.collection.impl.CollectionDecorator;
 public abstract class AbstractChangeSetTest {
     protected CollectionDecorator collectionDecorator;
     protected ChangeSet changeSet;
-    private Collection initial;
+    private List initial;
 
     @Before
     public void setUp() throws Exception {
@@ -18,7 +18,7 @@ public abstract class AbstractChangeSetTest {
         changeSet = collectionDecorator.getChangeSet();
     }
 
-    protected abstract Collection populateInitial();
+    protected abstract List populateInitial();
 
     protected abstract void generateDelta();
 

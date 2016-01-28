@@ -3,9 +3,11 @@ package org.refact4j.eom;
 import org.junit.Assert;
 import org.refact4j.collection.AbstractChangeSetTest;
 import org.refact4j.collection.ChangeSetDelta;
-import org.refact4j.collection.Collection;
+import org.refact4j.collection.List;
 import org.refact4j.collection.impl.ChangeSetImpl;
+import org.refact4j.collection.impl.ListImpl;
 import org.refact4j.eom.impl.ChangeSetEntityObjectListener;
+import org.refact4j.eom.impl.EntitySetImpl;
 import org.refact4j.eom.model.KeyBuilder;
 import org.refact4j.eom.xml.reader.EntityXmlReaderHelper;
 import org.refact4j.evt.EventLogger;
@@ -16,12 +18,15 @@ public class EntityChangeSetTest extends AbstractChangeSetTest {
     EntityObject foo, foo3;
     EventLogger eventLogger = new EventLogger();
 
-    protected Collection populateInitial() {
-        return EntitySetTest.createSampleEntitySet();
+    protected List populateInitial() {
+        List list = new ListImpl();
+        list.addAll(EntitySetTest.createSampleEntitySet());
+        return list;
     }
 
     protected void generateDelta() {
-        EntitySet entitySet = (EntitySet) collectionDecorator.getCollection();
+        EntitySet entitySet = new EntitySetImpl();
+        entitySet.addAll(collectionDecorator.getCollection());
         for (EntityObject e : entitySet) {
             e.registerListener(new ChangeSetEntityObjectListener((ChangeSetImpl<EntityObject>) changeSet));
             e.registerListener(new EntityObjectListener() {

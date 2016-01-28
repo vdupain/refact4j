@@ -9,8 +9,8 @@ import java.util.Iterator;
 public class ChangeSetTest extends AbstractChangeSetTest {
     MyBean myBean;
 
-    protected Collection populateInitial() {
-        Collection collection = new ListImpl();
+    protected List populateInitial() {
+        List collection = new ListImpl();
         collection.add("a1");
         collection.add("a2");
         collection.add("a3");
