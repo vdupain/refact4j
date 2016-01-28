@@ -6,8 +6,8 @@ import org.refact4j.collection.Set;
 import org.refact4j.eom.*;
 import org.refact4j.eom.impl.DefaultEntityStringifierRepoVisitor;
 import org.refact4j.eom.impl.DefaultMetaModelVisitor;
-import org.refact4j.eom.impl.EntityDataSetImpl;
-import org.refact4j.eom.impl.EntityListImpl;
+import org.refact4j.eom.impl.EntityDataSet;
+import org.refact4j.eom.impl.EntityList;
 import org.refact4j.eom.metamodel.DefaultEntityDescriptorRepoFactory;
 import org.refact4j.eom.metamodel.EOMMetaModelRepository;
 import org.refact4j.eom.metamodel.EntityStringifierXmlDescriptor;
@@ -111,7 +111,7 @@ public class MetaModelTest {
 
     @Test
     public void testNominal() {
-        EntityList dataEntities = EntityXmlReaderHelper.unmarshal(repository, DATA_XML);
+        org.refact4j.eom.EntityList dataEntities = EntityXmlReaderHelper.unmarshal(repository, DATA_XML);
         EntitySet entityObjectSet = EntitySetBuilder.init().addAll(dataEntities).getEntitySet();
         EntityFieldValuePredicate getEntityByKeyPredicate = new EntityFieldValuePredicate();
         getEntityByKeyPredicate.setField(repository.getEntityDescriptor("version").getField("id"));
@@ -160,11 +160,11 @@ public class MetaModelTest {
         DefaultMetaModelVisitor visitor = new DefaultMetaModelVisitor();
         this.repository.accept(visitor);
         Set initialDataset = visitor.getDataSet();
-        Set actualDataset = new EntityDataSetImpl();
+        Set actualDataset = new EntityDataSet();
         Dataset2XmlConverterImpl converter = new Dataset2XmlConverterImpl();
         converter.register(new EOMXmlDescriptor(EOMMetaModelRepository.get()));
         converter.unmarshal(visitor.toXmlString(), actualDataset);
-        EntityTestUtils.assertEquals(new EntityListImpl(initialDataset), new EntityListImpl(actualDataset));
+        EntityTestUtils.assertEquals(new EntityList(initialDataset), new EntityList(actualDataset));
     }
 
     @Test
@@ -173,11 +173,11 @@ public class MetaModelTest {
                 new DefaultEntityStringifierRepoVisitor(this.repository);
         this.stringifierRepository.accept(visitor);
         Set initialDataset = visitor.getDataSet();
-        Set actualDataset = new EntityDataSetImpl();
+        Set actualDataset = new EntityDataSet();
         Dataset2XmlConverterImpl converter = new Dataset2XmlConverterImpl();
         converter.register(new EntityStringifierXmlDescriptor(this.repository));
         converter.unmarshal(visitor.toXmlString(), actualDataset);
-        EntityTestUtils.assertEquals(new EntityListImpl(initialDataset), new EntityListImpl(actualDataset));
+        EntityTestUtils.assertEquals(new EntityList(initialDataset), new EntityList(actualDataset));
     }
 
 }

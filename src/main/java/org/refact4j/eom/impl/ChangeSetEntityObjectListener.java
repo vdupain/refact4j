@@ -1,7 +1,7 @@
 package org.refact4j.eom.impl;
 
 import org.refact4j.collection.ChangeSetDelta;
-import org.refact4j.collection.impl.ChangeSetImpl;
+import org.refact4j.collection.ChangeSetImpl;
 import org.refact4j.eom.EntityObject;
 import org.refact4j.eom.EntityObjectEvent;
 import org.refact4j.eom.EntityObjectListener;

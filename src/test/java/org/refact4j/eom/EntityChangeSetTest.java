@@ -3,9 +3,8 @@ package org.refact4j.eom;
 import org.junit.Assert;
 import org.refact4j.collection.AbstractChangeSetTest;
 import org.refact4j.collection.ChangeSetDelta;
+import org.refact4j.collection.ChangeSetImpl;
 import org.refact4j.collection.List;
-import org.refact4j.collection.impl.ChangeSetImpl;
-import org.refact4j.collection.impl.ListImpl;
 import org.refact4j.eom.impl.ChangeSetEntityObjectListener;
 import org.refact4j.eom.impl.EntitySetImpl;
 import org.refact4j.eom.model.KeyBuilder;
@@ -19,7 +18,7 @@ public class EntityChangeSetTest extends AbstractChangeSetTest {
     EventLogger eventLogger = new EventLogger();
 
     protected List populateInitial() {
-        List list = new ListImpl();
+        List list = new List();
         list.addAll(EntitySetTest.createSampleEntitySet());
         return list;
     }

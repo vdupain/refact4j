@@ -1,24 +1,23 @@
 package org.refact4j.eom.impl;
 
-import org.refact4j.collection.impl.ListImpl;
+import org.refact4j.collection.List;
 import org.refact4j.core.IdResolver;
 import org.refact4j.core.TypeResolver;
-import org.refact4j.eom.EntityList;
 import org.refact4j.eom.EntityObject;
 import org.refact4j.eom.model.EntityDescriptor;
 import org.refact4j.eom.model.Key;
 
 import java.util.Collection;
 
-public class EntityListImpl extends ListImpl<EntityObject, Key, EntityDescriptor> implements EntityList {
+public class EntityList extends List<EntityObject, Key, EntityDescriptor> implements org.refact4j.eom.EntityList {
 
     private static final long serialVersionUID = -1382509656778184779L;
 
-    public EntityListImpl() {
+    public EntityList() {
         super();
     }
 
-    public EntityListImpl(Collection<EntityObject> entityObjects) {
+    public EntityList(Collection<EntityObject> entityObjects) {
         this();
         this.addAll(entityObjects);
     }

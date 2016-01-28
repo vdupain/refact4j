@@ -2,8 +2,8 @@ package org.refact4j.eom.xml.reader;
 
 import org.refact4j.collection.Set;
 import org.refact4j.eom.*;
-import org.refact4j.eom.impl.EntityDataSetImpl;
-import org.refact4j.eom.impl.EntityListImpl;
+import org.refact4j.eom.impl.EntityDataSet;
+import org.refact4j.eom.impl.EntityList;
 import org.refact4j.eom.model.DefaultFieldVisitor;
 import org.refact4j.eom.model.EntityDescriptor;
 import org.refact4j.eom.model.EntityDescriptorRepository;
@@ -29,20 +29,20 @@ public final class EntityXmlReaderHelper {
 
     }
 
-    public static EntityList unmarshal(final EntityDescriptorRepository repository, String xmlData) {
+    public static org.refact4j.eom.EntityList unmarshal(final EntityDescriptorRepository repository, String xmlData) {
         return unmarshal(repository, xmlData, null);
     }
 
-    private static EntityList unmarshal(final EntityDescriptorRepository repository, String xmlData,
-                                        EntityFinder entityObjectFinder) {
+    private static org.refact4j.eom.EntityList unmarshal(final EntityDescriptorRepository repository, String xmlData,
+                                                         EntityFinder entityObjectFinder) {
         Dataset2XmlConverterImpl dataset2XmlConverter = new Dataset2XmlConverterImpl();
-        Set dataset = new EntityDataSetImpl();
+        Set dataset = new EntityDataSet();
         dataset2XmlConverter.register(new EntityXmlDescriptor(repository));
         dataset2XmlConverter.unmarshal(xmlData, dataset, entityObjectFinder);
-        return new EntityListImpl(dataset);
+        return new EntityList(dataset);
     }
 
-    public static EntityList parse(final EntityDescriptorRepository repository, String xmlData) {
+    public static org.refact4j.eom.EntityList parse(final EntityDescriptorRepository repository, String xmlData) {
         return unmarshal(new GetEntityDescriptor() {
 
             public EntityDescriptor getEntityDescriptor(String name) {
@@ -51,16 +51,16 @@ public final class EntityXmlReaderHelper {
         }, xmlData, ENTITIES_TAGNAME, EMPTY_EXCLUDED_FIELDS);
     }
 
-    public static EntityList parse(EntityDescriptor entityDescriptor, String xmlData) {
+    public static org.refact4j.eom.EntityList parse(EntityDescriptor entityDescriptor, String xmlData) {
         return parse(entityDescriptor, xmlData, ENTITIES_TAGNAME, EMPTY_EXCLUDED_FIELDS);
     }
 
-    public static EntityList parse(EntityDescriptor entityDescriptor, String expectedXmlData, String rootTag) {
+    public static org.refact4j.eom.EntityList parse(EntityDescriptor entityDescriptor, String expectedXmlData, String rootTag) {
         return parse(entityDescriptor, expectedXmlData, rootTag, EMPTY_EXCLUDED_FIELDS);
     }
 
-    private static EntityList parse(final EntityDescriptor entityDescriptor, String xmlData, String rootTag,
-                                    String[] excludedFields) {
+    private static org.refact4j.eom.EntityList parse(final EntityDescriptor entityDescriptor, String xmlData, String rootTag,
+                                                     String[] excludedFields) {
         return unmarshal(new GetEntityDescriptor() {
 
             public EntityDescriptor getEntityDescriptor(String name) {
@@ -69,12 +69,12 @@ public final class EntityXmlReaderHelper {
         }, xmlData, rootTag, excludedFields);
     }
 
-    private static EntityList unmarshal(final GetEntityDescriptor functor, String xmlData, String rootTag,
-                                        final String[] excludedFields) {
+    private static org.refact4j.eom.EntityList unmarshal(final GetEntityDescriptor functor, String xmlData, String rootTag,
+                                                         final String[] excludedFields) {
         if (rootTag == null)
             rootTag = ENTITIES_TAGNAME;
         final String rootTagName = rootTag;
-        final EntityList entityObjects = new EntityListImpl();
+        final org.refact4j.eom.EntityList entityObjects = new EntityList();
         try {
             XmlParserHelper.parse(new StringReader("<" + rootTag + ">" + xmlData + "</" + rootTag + ">"),
                     new AbstractXmlElement() {

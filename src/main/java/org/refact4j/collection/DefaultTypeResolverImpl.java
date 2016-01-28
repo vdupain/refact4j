@@ -1,4 +1,4 @@
-package org.refact4j.collection.impl;
+package org.refact4j.collection;
 
 import org.refact4j.core.TypeResolver;
 

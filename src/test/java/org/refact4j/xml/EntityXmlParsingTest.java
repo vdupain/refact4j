@@ -3,10 +3,9 @@ package org.refact4j.xml;
 import org.junit.Before;
 import org.junit.Test;
 import org.refact4j.collection.Set;
-import org.refact4j.eom.EntityList;
 import org.refact4j.eom.EntityTestUtils;
-import org.refact4j.eom.impl.EntityDataSetImpl;
-import org.refact4j.eom.impl.EntityListImpl;
+import org.refact4j.eom.impl.EntityDataSet;
+import org.refact4j.eom.impl.EntityList;
 import org.refact4j.eom.xml.EntityXmlDescriptor;
 import org.refact4j.eom.xml.reader.EntityXmlReaderHelper;
 import org.refact4j.eom.xml.writer.EntityXmlWriterHelper;
@@ -34,7 +33,7 @@ public class EntityXmlParsingTest {
     @Test
     public void testXmlReader() throws Exception {
         String xmlData1, xmlData2;
-        EntityList entityObjects1, entityObjects2;
+        org.refact4j.eom.EntityList entityObjects1, entityObjects2;
 
         InputStream xmlInputStream = this.getClass().getResourceAsStream("/org/refact4j/xml/dataset1.xml");
         entityObjects1 = EntityXmlReaderHelper.unmarshal(DummyRepository.get(), StringHelper
@@ -45,10 +44,10 @@ public class EntityXmlParsingTest {
 
         xmlData2 = StringHelper.getStringFromUTF8File(xmlInputStream);
 
-        Set dataset = new EntityDataSetImpl();
+        Set dataset = new EntityDataSet();
         this.dataset2xmlconverter.unmarshal(xmlData2, dataset);
 
-        entityObjects2 = new EntityListImpl(dataset);
+        entityObjects2 = new EntityList(dataset);
         EntityTestUtils.assertEquals(entityObjects2, xmlData1, "entities");
     }
 
@@ -56,14 +55,14 @@ public class EntityXmlParsingTest {
     public void testXmlWriter() throws Exception {
         InputStream xmlInputStream = this.getClass().getResourceAsStream("/org/refact4j/xml/dataset2.xml");
         String xmlData = StringHelper.getStringFromUTF8File(xmlInputStream);
-        Set initialDataset = new EntityDataSetImpl();
+        Set initialDataset = new EntityDataSet();
         this.dataset2xmlconverter.unmarshal(xmlData, initialDataset);
 
         Dataset2XmlConverterImpl converter = new Dataset2XmlConverterImpl();
         converter.register(new EntityXmlDescriptor(DummyRepository.get()));
-        Set actualDataset = new EntityDataSetImpl();
+        Set actualDataset = new EntityDataSet();
         this.dataset2xmlconverter.unmarshal(converter.marshal(initialDataset), actualDataset);
-        EntityTestUtils.assertEquals(new EntityListImpl(initialDataset), new EntityListImpl(actualDataset));
+        EntityTestUtils.assertEquals(new EntityList(initialDataset), new EntityList(actualDataset));
     }
 
     @Test
@@ -83,7 +82,7 @@ public class EntityXmlParsingTest {
         String xml = StringHelper.getStringFromUTF8File(xmlInputStream);
         xml = xml.replaceFirst("dataset2.xsd", "unknow.xsd");
         try {
-            this.dataset2xmlconverter.unmarshal(xml, new EntityDataSetImpl());
+            this.dataset2xmlconverter.unmarshal(xml, new EntityDataSet());
             fail("RuntimeException Expected");
         } catch (RuntimeException e) {
         }

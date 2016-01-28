@@ -1,7 +1,6 @@
 package org.refact4j.collection;
 
 import org.junit.Assert;
-import org.refact4j.collection.impl.ListImpl;
 
 import java.util.Iterator;
 
@@ -10,7 +9,7 @@ public class ChangeSetTest extends AbstractChangeSetTest {
     MyBean myBean;
 
     protected List populateInitial() {
-        List collection = new ListImpl();
+        List collection = new List();
         collection.add("a1");
         collection.add("a2");
         collection.add("a3");

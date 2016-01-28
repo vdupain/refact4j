@@ -3,7 +3,6 @@ package org.refact4j.collection;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import org.refact4j.collection.impl.CollectionDecorator;
 
 
 public abstract class AbstractChangeSetTest {

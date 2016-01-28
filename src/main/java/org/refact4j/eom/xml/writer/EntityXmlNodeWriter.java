@@ -3,7 +3,7 @@ package org.refact4j.eom.xml.writer;
 import org.refact4j.eom.ConverterHelper;
 import org.refact4j.eom.EntityCollection;
 import org.refact4j.eom.EntityObject;
-import org.refact4j.eom.impl.EntityListImpl;
+import org.refact4j.eom.impl.EntityList;
 import org.refact4j.eom.model.EntityDescriptor;
 import org.refact4j.eom.model.EntityDescriptorRepository;
 import org.refact4j.eom.model.Field;
@@ -23,7 +23,7 @@ public class EntityXmlNodeWriter implements XmlElementHandler {
     private EntityObject entityObject;
 
     public EntityXmlNodeWriter(EntityDescriptorRepository entityDescriptorRepository, DatasetConverterHolder holder) {
-        EntityCollection entityObjects = new EntityListImpl();
+        EntityCollection entityObjects = new EntityList();
         for (EntityDescriptor entityDescriptor : entityDescriptorRepository) {
             entityObjects.addAll(holder.getDataSet().getAll(entityDescriptor));
         }

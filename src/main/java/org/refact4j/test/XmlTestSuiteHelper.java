@@ -1,7 +1,7 @@
 package org.refact4j.test;
 
 import junit.framework.TestSuite;
-import org.refact4j.collection.impl.DataSet;
+import org.refact4j.collection.DataSet;
 import org.refact4j.xml.impl.Dataset2XmlConverterImpl;
 
 public class XmlTestSuiteHelper {

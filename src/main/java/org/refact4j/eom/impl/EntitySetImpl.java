@@ -1,9 +1,8 @@
 package org.refact4j.eom.impl;
 
-import org.refact4j.collection.impl.SetImpl;
+import org.refact4j.collection.Set;
 import org.refact4j.core.IdResolver;
 import org.refact4j.core.TypeResolver;
-import org.refact4j.eom.EntityList;
 import org.refact4j.eom.EntityObject;
 import org.refact4j.eom.EntitySet;
 import org.refact4j.eom.model.EntityDescriptor;
@@ -15,7 +14,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class EntitySetImpl extends SetImpl<EntityObject, Key, EntityDescriptor> implements EntitySet {
+public class EntitySetImpl extends Set<EntityObject, Key, EntityDescriptor> implements EntitySet {
 
     private static final long serialVersionUID = 5875020382043001900L;
 
@@ -28,9 +27,9 @@ public class EntitySetImpl extends SetImpl<EntityObject, Key, EntityDescriptor> 
         this.addAll(entityObjects);
     }
 
-    public EntityList getEntities(EntityDescriptor entityDescriptor, final Field field, final Object value) {
+    public org.refact4j.eom.EntityList getEntities(EntityDescriptor entityDescriptor, final Field field, final Object value) {
         List<EntityObject> collect = this.stream().filter(e -> EqualsHelper.equals(e.get(field), value)).collect(Collectors.toList());
-        return new EntityListImpl(collect);
+        return new EntityList(collect);
     }
 
     @Override

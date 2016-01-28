@@ -1,7 +1,7 @@
 package org.refact4j.core;
 
-import org.refact4j.collection.impl.DefaultIdResolver;
-import org.refact4j.collection.impl.DefaultTypeResolverImpl;
+import org.refact4j.collection.DefaultIdResolver;
+import org.refact4j.collection.DefaultTypeResolverImpl;
 import org.refact4j.functor.UnaryPredicate;
 
 import java.util.List;

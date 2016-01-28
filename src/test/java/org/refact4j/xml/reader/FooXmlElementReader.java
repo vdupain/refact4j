@@ -5,7 +5,7 @@ import org.refact4j.eom.ConverterHelper;
 import org.refact4j.eom.EntityObject;
 import org.refact4j.eom.EntityObjectBuilder;
 import org.refact4j.eom.EntityPredicate;
-import org.refact4j.eom.impl.EntityDataSetImpl;
+import org.refact4j.eom.impl.EntityDataSet;
 import org.refact4j.model.BarDesc;
 import org.refact4j.model.FooDesc;
 import org.refact4j.xml.DatasetConverterHolder;
@@ -20,7 +20,7 @@ public class FooXmlElementReader extends DefaultXmlElementReader {
 
         String name = XmlHelper.getAttrValue("name", xmlAttrs);
 
-        EntityObject fooEntity = ((EntityDataSetImpl) datasetConverterHolder.getDataSet()).getEntityByName(FooDesc.INSTANCE,
+        EntityObject fooEntity = ((EntityDataSet) datasetConverterHolder.getDataSet()).getEntityByName(FooDesc.INSTANCE,
                 FooDesc.NAME, name);
         if (fooEntity == null) {
             fooEntity = EntityObjectBuilder.init(FooDesc.INSTANCE).getEntity();
@@ -28,9 +28,9 @@ public class FooXmlElementReader extends DefaultXmlElementReader {
 
         try {
             final String parentName = XmlHelper.getAttrValue("parent", xmlAttrs);
-            EntityObject parentEntity = ((EntityDataSetImpl) datasetConverterHolder.getDataSet()).getEntityByName(BarDesc.INSTANCE, BarDesc.NAME, parentName);
+            EntityObject parentEntity = ((EntityDataSet) datasetConverterHolder.getDataSet()).getEntityByName(BarDesc.INSTANCE, BarDesc.NAME, parentName);
 
-            EntityObject parentEntity2 = ((EntityDataSetImpl) datasetConverterHolder.getDataSet()).getEntityByPredicate(BarDesc.INSTANCE, new EntityPredicate() {
+            EntityObject parentEntity2 = ((EntityDataSet) datasetConverterHolder.getDataSet()).getEntityByPredicate(BarDesc.INSTANCE, new EntityPredicate() {
                 public Boolean apply(EntityObject arg) {
                     return arg.get(BarDesc.NAME).equals(parentName);
                 }

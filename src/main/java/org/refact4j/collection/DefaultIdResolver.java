@@ -1,9 +1,7 @@
-package org.refact4j.collection.impl;
+package org.refact4j.collection;
 
 import org.refact4j.core.IdResolver;
 import org.refact4j.core.Identifiable;
-
-import java.io.Serializable;
 
 public class DefaultIdResolver<ID> implements IdResolver<Identifiable<ID>, ID> {
 

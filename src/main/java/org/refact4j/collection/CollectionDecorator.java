@@ -1,6 +1,5 @@
-package org.refact4j.collection.impl;
+package org.refact4j.collection;
 
-import org.refact4j.collection.ChangeSet;
 import org.refact4j.core.Finder;
 import org.refact4j.core.IdResolver;
 import org.refact4j.core.TypeResolver;
@@ -31,11 +30,11 @@ public class CollectionDecorator<T, ID, TYPE> implements Collection<T>, Finder<T
     }
 
     public T findByIdentifier(ID id) {
-        return this.collection.stream().filter(p->idResolver.getId(p).equals(id)).findFirst().get();
+        return this.collection.stream().filter(p -> idResolver.getId(p).equals(id)).findFirst().get();
     }
 
     public T findByIdentifier(TYPE type, ID id) {
-        return this.getAll(type).stream().filter(p->idResolver.getId(p).equals(id)).findFirst().get();
+        return this.getAll(type).stream().filter(p -> idResolver.getId(p).equals(id)).findFirst().get();
     }
 
     public List<T> findByPredicate(UnaryPredicate<T> predicate) {

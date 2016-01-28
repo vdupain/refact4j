@@ -1,7 +1,6 @@
 package org.refact4j.eom.impl;
 
 import org.refact4j.collection.Set;
-import org.refact4j.eom.EntityList;
 import org.refact4j.eom.EntityObject;
 import org.refact4j.eom.EntityObjectBuilder;
 import org.refact4j.eom.metamodel.DataTypeConverter;
@@ -15,7 +14,7 @@ import org.refact4j.xml.ToXmlString;
 import org.refact4j.xml.impl.Dataset2XmlConverterImpl;
 
 public class DefaultMetaModelVisitor extends AbstractMetaModelVisitor implements ToXmlString {
-    private final Set dataSet = new EntityDataSetImpl();
+    private final Set dataSet = new EntityDataSet();
 
     public String toXmlString() {
         Dataset2XmlConverterImpl converter = new Dataset2XmlConverterImpl();
@@ -29,20 +28,20 @@ public class DefaultMetaModelVisitor extends AbstractMetaModelVisitor implements
 
     public void visitEntityDescriptor(EntityDescriptor entityDescriptor) {
         dataSet.add(entityDescriptor.toEntity());
-        EntityList properties = getPropertiesAsEntityList((PropertyImpl) entityDescriptor.getProperty(),
+        org.refact4j.eom.EntityList properties = getPropertiesAsEntityList((PropertyImpl) entityDescriptor.getProperty(),
                 entityDescriptor.toEntity(), null);
         dataSet.addAll(properties);
     }
 
     public void visitField(Field field) {
         dataSet.add(field.toEntity());
-        EntityList properties = getPropertiesAsEntityList((PropertyImpl) field.getProperty(), null, field.toEntity());
+        org.refact4j.eom.EntityList properties = getPropertiesAsEntityList((PropertyImpl) field.getProperty(), null, field.toEntity());
         dataSet.addAll(properties);
     }
 
-    private EntityList getPropertiesAsEntityList(PropertyImpl property, EntityObject entityDescEntity,
-                                                 EntityObject fieldEntity) {
-        EntityList list = new EntityListImpl();
+    private org.refact4j.eom.EntityList getPropertiesAsEntityList(PropertyImpl property, EntityObject entityDescEntity,
+                                                                  EntityObject fieldEntity) {
+        org.refact4j.eom.EntityList list = new EntityList();
         for (Object key : property.keySet()) {
             Object value = property.getProperty(key);
             if (value == null) {

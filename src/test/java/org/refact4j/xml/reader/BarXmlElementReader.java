@@ -3,7 +3,7 @@ package org.refact4j.xml.reader;
 import org.refact4j.eom.ConverterHelper;
 import org.refact4j.eom.EntityObject;
 import org.refact4j.eom.EntityObjectBuilder;
-import org.refact4j.eom.impl.EntityDataSetImpl;
+import org.refact4j.eom.impl.EntityDataSet;
 import org.refact4j.model.BarDesc;
 import org.refact4j.xml.DatasetConverterHolder;
 import org.refact4j.xml.XmlAttributes;
@@ -16,7 +16,7 @@ public class BarXmlElementReader extends DefaultXmlElementReader {
         super(datasetConverterHolder);
         EntityObject barEntity;
         String name = XmlHelper.getAttrValue("name", xmlAttrs);
-        barEntity = ((EntityDataSetImpl) datasetConverterHolder.getDataSet()).getEntityByName(BarDesc.INSTANCE,
+        barEntity = ((EntityDataSet) datasetConverterHolder.getDataSet()).getEntityByName(BarDesc.INSTANCE,
                 BarDesc.NAME, name);
         if (barEntity == null) {
             barEntity = EntityObjectBuilder.init(BarDesc.INSTANCE).getEntity();

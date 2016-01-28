@@ -1,16 +1,14 @@
 package org.refact4j.eom;
 
-import org.refact4j.collection.Set;
 import org.refact4j.eom.model.EntityDescriptor;
 import org.refact4j.eom.model.Field;
-import org.refact4j.eom.model.Key;
 
 /**
  * EntitySet is a collection of EntityObject that contains no duplicate
  * elements.
  */
 
-public interface EntitySet extends Set<EntityObject, Key, EntityDescriptor>, EntityCollection {
+public interface EntitySet extends java.util.Set<EntityObject>, EntityCollection {
 
     EntityList getEntities(EntityDescriptor entityDescriptor, Field field, Object value);
 

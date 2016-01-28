@@ -12,15 +12,14 @@ import org.refact4j.xml.DatasetHolder;
 
 import java.util.List;
 
-public class EntityDataSetImpl extends EntityListImpl implements EntitySet,
-        Set<EntityObject, Key, EntityDescriptor>, DatasetHolder {
+public class EntityDataSet extends EntitySetImpl implements DatasetHolder {
 
     private static final long serialVersionUID = 7143433867762051132L;
 
-    public EntityDataSetImpl() {
+    public EntityDataSet() {
     }
 
-    public EntityDataSetImpl(EntityCollection entityObjects) {
+    public EntityDataSet(EntityCollection entityObjects) {
         super();
         this.addAll(entityObjects);
     }
@@ -29,7 +28,7 @@ public class EntityDataSetImpl extends EntityListImpl implements EntitySet,
         throw new NotImplementedException();
     }
 
-    public EntityList getEntities(EntityDescriptor entityDescriptor, Field field, Object value) {
+    public org.refact4j.eom.EntityList getEntities(EntityDescriptor entityDescriptor, Field field, Object value) {
         return EntitySetBuilder.init().addAll(this).getEntitySet().getEntities(entityDescriptor, field, value);
     }
 

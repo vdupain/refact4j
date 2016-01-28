@@ -8,7 +8,7 @@ import org.refact4j.eom.EntityFinder;
 import org.refact4j.eom.EntityObject;
 import org.refact4j.eom.EntitySetBuilder;
 import org.refact4j.eom.impl.EOMContextImpl;
-import org.refact4j.eom.impl.EntityListImpl;
+import org.refact4j.eom.impl.EntityList;
 import org.refact4j.eom.metamodel.EOMMetaModelRepository;
 import org.refact4j.eom.model.EntityDescriptorRepository;
 import org.refact4j.eom.model.impl.EntityDescriptorRepositoryImpl;
@@ -67,7 +67,7 @@ public class EntityAnnotationTest {
         Assert.assertEquals(foo.getName(), fooBar.getName());
         Assert.assertEquals(foo.getValue(), fooBar.getValue());
 
-        entityObjects = new EntityListImpl();
+        entityObjects = new EntityList();
         entityObjects.add(fooEntity);
         entityObjects.add(barEntity);
 

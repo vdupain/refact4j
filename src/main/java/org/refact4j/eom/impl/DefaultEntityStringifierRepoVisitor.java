@@ -18,7 +18,7 @@ import org.refact4j.xml.impl.Dataset2XmlConverterImpl;
 import java.util.List;
 
 public class DefaultEntityStringifierRepoVisitor implements EntityStringifierRepoVisitor, ToXmlString {
-    private final EntityDataSetImpl dataSet = new EntityDataSetImpl();
+    private final EntityDataSet dataSet = new EntityDataSet();
 
     private final EntityDescriptorRepository entityDescriptorRepository;
 
