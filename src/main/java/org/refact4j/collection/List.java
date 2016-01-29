@@ -24,10 +24,6 @@ public class List<T, ID, TYPE> extends ArrayList<T> implements
         return collectionDecorator.findByIdentifier(type, id);
     }
 
-    public java.util.List<T> findByPredicate(UnaryPredicate<T> predicate) {
-        return collectionDecorator.findByPredicate(predicate);
-    }
-
     public java.util.List<T> getAll(final TYPE type) {
         return collectionDecorator.getAll(type);
     }

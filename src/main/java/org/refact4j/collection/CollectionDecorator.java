@@ -37,18 +37,6 @@ public class CollectionDecorator<T, ID, TYPE> implements Collection<T>, Finder<T
         return this.getAll(type).stream().filter(p -> idResolver.getId(p).equals(id)).findFirst().get();
     }
 
-    public List<T> findByPredicate(UnaryPredicate<T> predicate) {
-        return this.collection.stream().filter(predicate::apply).collect(Collectors.toList());
-    }
-
-    public T findUnique(TYPE type, UnaryPredicate<T> predicate) {
-        try {
-            return getAll(type, predicate).iterator().next();
-        } catch (Exception e) {
-            return null;
-        }
-    }
-
     public List<T> getAll(final TYPE type) {
         return this.collection.stream().filter(t -> typeResolver.isSameType(type, typeResolver.getTypeOf(t))).collect(Collectors.toList());
     }

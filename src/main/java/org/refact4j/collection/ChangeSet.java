@@ -13,6 +13,4 @@ public interface ChangeSet<T> {
     java.util.List<T> getDeletedObjects();
 
     java.util.List<ChangeSetDelta<T>> getDeltas(T t);
-
-    boolean isChangesRecording();
 }

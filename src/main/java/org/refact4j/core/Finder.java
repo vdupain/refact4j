@@ -1,7 +1,7 @@
 package org.refact4j.core;
 
 import org.refact4j.collection.DefaultIdResolver;
-import org.refact4j.collection.DefaultTypeResolverImpl;
+import org.refact4j.collection.DefaultTypeResolver;
 import org.refact4j.functor.UnaryPredicate;
 
 import java.util.List;
@@ -12,8 +12,6 @@ public interface Finder<T, ID, TYPE> {
 
     T findByIdentifier(TYPE type, ID id);
 
-    List<T> findByPredicate(UnaryPredicate<T> predicate);
-
     List<T> getAll(TYPE type);
 
     List<T> getAll(TYPE type, UnaryPredicate<T> predicate);
@@ -23,7 +21,7 @@ public interface Finder<T, ID, TYPE> {
     }
 
     default TypeResolver<T, TYPE> getTypeResolver() {
-        return new DefaultTypeResolverImpl();
+        return new DefaultTypeResolver();
     }
 
 

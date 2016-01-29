@@ -1,7 +1,7 @@
 package org.refact4j.eom;
 
 import org.refact4j.collection.ChangeSetDelta;
-import org.refact4j.eom.impl.EntityObjectChangeSetDeltaImpl;
+import org.refact4j.eom.impl.EntityObjectChangeSetDelta;
 import org.refact4j.eom.model.Field;
 
 import java.beans.PropertyChangeEvent;
@@ -18,7 +18,7 @@ public class EntityObjectChangeSetDeltaPropertyChangeListener implements Propert
     public void propertyChange(PropertyChangeEvent evt) {
         EntityObject source = (EntityObject) evt.getSource();
         Field field = source.getEntityDescriptor().getField(evt.getPropertyName());
-        ChangeSetDelta<EntityObject> delta = new EntityObjectChangeSetDeltaImpl(source, field, evt.getOldValue(), evt.getNewValue());
+        ChangeSetDelta<EntityObject> delta = new EntityObjectChangeSetDelta(source, field, evt.getOldValue(), evt.getNewValue());
         entityObjectEventSupport.fireEntityObjectChange(delta);
     }
 }

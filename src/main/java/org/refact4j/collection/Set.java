@@ -25,10 +25,6 @@ public class Set<T, ID, TYPE> extends HashSet<T> implements Finder<T, ID, TYPE> 
         return collectionDecorator.findByIdentifier(type, id);
     }
 
-    public List<T> findByPredicate(UnaryPredicate<T> predicate) {
-        return collectionDecorator.findByPredicate(predicate);
-    }
-
     public List<T> getAll(final TYPE type) {
         return collectionDecorator.getAll(type);
     }

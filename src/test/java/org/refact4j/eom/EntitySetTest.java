@@ -15,6 +15,7 @@ import org.refact4j.util.ComparatorHelper;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static org.junit.Assert.*;
 
@@ -164,8 +165,7 @@ public class EntitySetTest {
 
     private void testGetEntitiesFilteredByUnaryPredicate(EntityCollection collection, EntityObject entityObject) {
         EntityPredicate entityObjectPredicate = arg -> arg.getEntityDescriptor().equals(FooDesc.INSTANCE) && arg.get(FooDesc.ID) == 4;
-
-        List<EntityObject> list = collection.findByPredicate(entityObjectPredicate);
+        List<EntityObject> list = collection.stream().filter(entityObjectPredicate::apply).collect(Collectors.toList());
         assertEquals(1, list.size());
         assertEquals(entityObject, list.get(0));
     }
@@ -188,7 +188,7 @@ public class EntitySetTest {
     private void testGetEntitiesFilteredByExprConstraint(EntityCollection collection, EntityObject entityObject) {
         EntityExpression expr = EntityExpressionBuilder.init(FooDesc.ID).equalTo(4).or(
                 EntityExpressionBuilder.init(BarDesc.NAME).equalTo("bar1")).getExpression();
-        List<EntityObject> list = collection.findByPredicate(expr);
+        List<EntityObject> list = collection.stream().filter(expr).collect(Collectors.toList());
         assertEquals(2, list.size());
         assertTrue(list.contains(entityObject));
         KeyImpl key = new KeyImpl(BarDesc.INSTANCE);

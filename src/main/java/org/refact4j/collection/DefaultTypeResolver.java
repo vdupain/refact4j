@@ -2,7 +2,7 @@ package org.refact4j.collection;
 
 import org.refact4j.core.TypeResolver;
 
-public class DefaultTypeResolverImpl<T> implements TypeResolver<T, Class<?>> {
+public class DefaultTypeResolver<T> implements TypeResolver<T, Class<?>> {
 
     public Class<?> getTypeOf(T t) {
         return t.getClass();
