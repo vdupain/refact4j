@@ -10,19 +10,19 @@ import java.io.ObjectInput;
 import java.io.ObjectOutput;
 import java.util.Collection;
 
-public abstract class AbstractRelationFieldImpl extends AbstractField implements RelationField {
+public abstract class AbstractRelationField extends AbstractField implements RelationField {
 
     private EntityDescriptor targetEntityDescriptor;
 
     private RelationField inverseRelationField;
 
-    AbstractRelationFieldImpl() {
+    AbstractRelationField() {
     }
 
-    AbstractRelationFieldImpl(String fieldName, String prettyName, EntityDescriptor entityDescriptor,
-                              EntityDescriptor targetEntityDescriptor, RelationField inverseRelationField, Object defaultValue,
-                              boolean nullable, boolean visible, boolean editable, Integer order, Property property,
-                              Expression<?> constraint) {
+    AbstractRelationField(String fieldName, String prettyName, EntityDescriptor entityDescriptor,
+                          EntityDescriptor targetEntityDescriptor, RelationField inverseRelationField, Object defaultValue,
+                          boolean nullable, boolean visible, boolean editable, Integer order, Property property,
+                          Expression<?> constraint) {
         super(fieldName, prettyName, entityDescriptor, defaultValue, nullable, visible, editable, order, property,
                 constraint);
         this.targetEntityDescriptor = targetEntityDescriptor;

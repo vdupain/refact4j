@@ -96,7 +96,7 @@ public class EntityAnnotationTest {
         bar.foo = foo;
 
         repository = AnnotationEntityDescriptorRepoFactory.init(EOMMetaModelRepository.get(),
-                new Class[]{Foo.class, Bar.class}, null).createEntityDescriptorRepository();
+                new Class[]{Foo.class, Bar.class}).createEntityDescriptorRepository();
     }
 
     @Test

@@ -35,7 +35,7 @@ public final class FieldFactory implements DataTypeVisitor {
     }
 
     public StringField createStringField() {
-        StringFieldImpl field = new StringFieldImpl(fieldName, prettyName, entityDescriptorBuilder
+        org.refact4j.eom.model.impl.StringField field = new org.refact4j.eom.model.impl.StringField(fieldName, prettyName, entityDescriptorBuilder
                 .getEntityDescriptor(), (String) defaultValue, nullable, visible, editable, order, property,
                 constraintExpression);
         field.setMaxLength(maxLength);
@@ -45,7 +45,7 @@ public final class FieldFactory implements DataTypeVisitor {
     }
 
     public DoubleField createDoubleField() {
-        DoubleFieldImpl field = new DoubleFieldImpl(fieldName, prettyName, entityDescriptorBuilder
+        org.refact4j.eom.model.impl.DoubleField field = new org.refact4j.eom.model.impl.DoubleField(fieldName, prettyName, entityDescriptorBuilder
                 .getEntityDescriptor(), (Double) defaultValue, nullable, visible, editable, order, property,
                 constraintExpression);
         field.setMaxValue(maxValue);
@@ -65,21 +65,21 @@ public final class FieldFactory implements DataTypeVisitor {
     }
 
     public DateField createDateField() {
-        DateField field = new DateFieldImpl(fieldName, prettyName, entityDescriptorBuilder.getEntityDescriptor(),
+        DateField field = new org.refact4j.eom.model.impl.DateField(fieldName, prettyName, entityDescriptorBuilder.getEntityDescriptor(),
                 isTimestamp, (Date) defaultValue, nullable, visible, editable, order, property, constraintExpression);
         entityDescriptorBuilder.addField(field);
         return field;
     }
 
     public BooleanField createBooleanField() {
-        BooleanField field = new BooleanFieldImpl(fieldName, prettyName, entityDescriptorBuilder.getEntityDescriptor(),
+        BooleanField field = new org.refact4j.eom.model.impl.BooleanField(fieldName, prettyName, entityDescriptorBuilder.getEntityDescriptor(),
                 (Boolean) defaultValue, nullable, visible, editable, order, property, constraintExpression);
         entityDescriptorBuilder.addField(field);
         return field;
     }
 
     public ManyToOneRelationField createManyToOneRelationField(EntityDescriptor entityDescriptor) {
-        ManyToOneRelationField field = new ManyToOneRelationFieldImpl(fieldName, prettyName, entityDescriptorBuilder
+        ManyToOneRelationField field = new org.refact4j.eom.model.impl.ManyToOneRelationField(fieldName, prettyName, entityDescriptorBuilder
                 .getEntityDescriptor(), entityDescriptor, null, (Key) defaultValue, nullable, visible, editable, order,
                 property, constraintExpression);
         entityDescriptorBuilder.addField(field);
@@ -87,7 +87,7 @@ public final class FieldFactory implements DataTypeVisitor {
     }
 
     public OneToManyRelationField createOneToManyRelationField(EntityDescriptor entityDescriptor) {
-        OneToManyRelationField field = new OneToManyRelationFieldImpl(fieldName, prettyName, entityDescriptorBuilder
+        OneToManyRelationField field = new org.refact4j.eom.model.impl.OneToManyRelationField(fieldName, prettyName, entityDescriptorBuilder
                 .getEntityDescriptor(), entityDescriptor, null, (EntityCollection) defaultValue, nullable, visible,
                 editable, order, property, constraintExpression);
         entityDescriptorBuilder.addField(field);
@@ -95,7 +95,7 @@ public final class FieldFactory implements DataTypeVisitor {
     }
 
     public OneToOneRelationField createOneToOneRelationField(EntityDescriptor entityDescriptor) {
-        OneToOneRelationField field = new OneToOneRelationFieldImpl(fieldName, prettyName, entityDescriptorBuilder
+        OneToOneRelationField field = new org.refact4j.eom.model.impl.OneToOneRelationField(fieldName, prettyName, entityDescriptorBuilder
                 .getEntityDescriptor(), entityDescriptor, null, (Key) defaultValue, nullable, visible,
                 editable, order, property, constraintExpression);
         entityDescriptorBuilder.addField(field);

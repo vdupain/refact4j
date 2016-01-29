@@ -166,12 +166,17 @@ public abstract class AbstractField implements Field {
     }
 
     public EntityObject toEntity() {
-        return EntityObjectBuilder.init(FieldDesc.INSTANCE).set(FieldDesc.ENTITY_DESC,
-                this.entityDescriptor.toEntity()).set(FieldDesc.NAME, this.fieldName).set(FieldDesc.PRETTY_NAME,
-                this.prettyName).set(FieldDesc.IS_KEY, this.entityDescriptor.getKeyFields().contains(this)).set(
-                FieldDesc.NULLABLE, this.nullable).set(FieldDesc.VISIBLE, this.visible).set(FieldDesc.EDITABLE,
-                this.editable).set(FieldDesc.ORDER, this.order).set(FieldDesc.DEFAULT_VALUE,
-                ConverterHelper.convertValue2String(defaultValue, this)).getEntity();
+        return EntityObjectBuilder.init(FieldDesc.INSTANCE)
+                .set(FieldDesc.ENTITY_DESC, this.entityDescriptor.toEntity())
+                .set(FieldDesc.NAME, this.fieldName)
+                .set(FieldDesc.PRETTY_NAME, this.prettyName)
+                .set(FieldDesc.IS_KEY, this.entityDescriptor.getKeyFields().contains(this))
+                .set(FieldDesc.NULLABLE, this.nullable)
+                .set(FieldDesc.VISIBLE, this.visible)
+                .set(FieldDesc.EDITABLE, this.editable)
+                .set(FieldDesc.ORDER, this.order)
+                .set(FieldDesc.DEFAULT_VALUE, ConverterHelper.convertValue2String(defaultValue, this))
+                .getEntity();
     }
 
     public boolean isKey() {

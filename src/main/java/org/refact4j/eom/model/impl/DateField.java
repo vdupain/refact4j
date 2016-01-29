@@ -12,16 +12,16 @@ import java.io.ObjectOutput;
 import java.util.Date;
 
 @SuppressWarnings("serial")
-public class DateFieldImpl extends AbstractField implements DateField {
+public class DateField extends AbstractField implements org.refact4j.eom.model.DateField {
 
     private boolean isTimestamp;
 
-    public DateFieldImpl() {
+    public DateField() {
     }
 
-    public DateFieldImpl(String fieldName, String prettyName, EntityDescriptor entityDescriptor, boolean isTimestamp,
-                         Date defaultValue, boolean nullable, boolean visible, boolean editable, Integer order, Property property,
-                         Expression<? extends Date> constraint) {
+    public DateField(String fieldName, String prettyName, EntityDescriptor entityDescriptor, boolean isTimestamp,
+                     Date defaultValue, boolean nullable, boolean visible, boolean editable, Integer order, Property property,
+                     Expression<? extends Date> constraint) {
         super(fieldName, prettyName, entityDescriptor, defaultValue, nullable, visible, editable, order, property,
                 constraint);
         this.isTimestamp = isTimestamp;

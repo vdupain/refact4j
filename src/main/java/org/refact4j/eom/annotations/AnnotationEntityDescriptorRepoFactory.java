@@ -20,8 +20,7 @@ public class AnnotationEntityDescriptorRepoFactory extends DefaultEntityDescript
     }
 
     public static DefaultEntityDescriptorRepoFactory init(
-            EntityDescriptorRepository metaModelEntityDescriptorRepository, Class<?>[] beanClasses,
-            EntityDescriptorRepository initialEntityDescriptorRepository) {
+            EntityDescriptorRepository metaModelEntityDescriptorRepository, Class<?>[] beanClasses) {
         EntityAnnotationsHelper annotations = new EntityAnnotationsHelper();
         StringBuilder xmlMetaModel = new StringBuilder("<dataset>" + "<entityDescriptorRepository>");
         for (Class<?> clazz : beanClasses) {
@@ -45,7 +44,7 @@ public class AnnotationEntityDescriptorRepoFactory extends DefaultEntityDescript
         }
         xmlMetaModel.append("</entityDescriptorRepository>" + "</dataset>");
         return new AnnotationEntityDescriptorRepoFactory(beanClasses, metaModelEntityDescriptorRepository, xmlMetaModel
-                .toString(), initialEntityDescriptorRepository);
+                .toString(), null);
     }
 
     private static DataTypeEnum getDataType(Class<?> clazz) {

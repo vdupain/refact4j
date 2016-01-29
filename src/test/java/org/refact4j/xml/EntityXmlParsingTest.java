@@ -17,6 +17,7 @@ import java.io.InputStream;
 import java.io.Reader;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThat;
 import static org.junit.Assert.fail;
 
 public class EntityXmlParsingTest {
@@ -85,6 +86,7 @@ public class EntityXmlParsingTest {
             this.dataset2xmlconverter.unmarshal(xml, new EntityDataSet());
             fail("RuntimeException Expected");
         } catch (RuntimeException e) {
+            assertEquals("org.xml.sax.SAXParseException", e.getMessage().substring(0, 29));
         }
     }
 

@@ -10,7 +10,7 @@ import static org.junit.Assert.fail;
 
 
 public abstract class AbstractFieldTestCase {
-    protected EntityDescriptorBuilder entityDescriptorBuilder = EntityDescriptorBuilder
+    protected final EntityDescriptorBuilder entityDescriptorBuilder = EntityDescriptorBuilder
             .init("type");
 
     protected void checkError(Field field, Object value, String message) {

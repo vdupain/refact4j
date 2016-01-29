@@ -10,38 +10,38 @@ public class Assert extends org.junit.Assert {
         if (!matcher.apply(something)) {
             StringBuilder message = new StringBuilder("Expected that: ");
             message.append(matcher);
-            message.append(StringHelper.LINE_SEPARATOR + "but x was : ").append(something).append(
+            message.append(StringHelper.LINE_SEPARATOR + "but value was : ").append(something).append(
                     StringHelper.LINE_SEPARATOR);
             fail(message.toString());
         }
     }
 
     public static Expression<Object> equalTo(Object value) {
-        return ExpressionBuilder.init("x").equalTo(value).getExpression();
+        return ExpressionBuilder.init("value").equalTo(value).getExpression();
     }
 
     public static Expression<Object> notEqualTo(Object value) {
-        return ExpressionBuilder.init("x").not(ExpressionBuilder.init("x").equalTo(value)).getExpression();
+        return ExpressionBuilder.init("value").not(ExpressionBuilder.init("value").equalTo(value)).getExpression();
     }
 
     public static Expression<Object> between(Object min, Object max) {
-        return ExpressionBuilder.init("x").between(min, max).getExpression();
+        return ExpressionBuilder.init("value").between(min, max).getExpression();
     }
 
     public static Expression<Object> matchRegEx(String regEx) {
-        return ExpressionBuilder.init("x").like(regEx).getExpression();
+        return ExpressionBuilder.init("value").like(regEx).getExpression();
     }
 
     public static Expression<Object> not(Expression<Object> expr) {
-        return ExpressionBuilder.init("x").getExpression().not(expr);
+        return ExpressionBuilder.init("value").getExpression().not(expr);
     }
 
     public static Expression<Object> isNull() {
-        return ExpressionBuilder.init("x").isNull().getExpression();
+        return ExpressionBuilder.init("value").isNull().getExpression();
     }
 
     public static Expression<Object> isNotNull() {
-        return ExpressionBuilder.init("x").isNotNull().getExpression();
+        return ExpressionBuilder.init("value").isNotNull().getExpression();
     }
 
     public static Expression<Object> and(Expression<Object> expr1, Expression<Object> expr2) {
@@ -53,7 +53,7 @@ public class Assert extends org.junit.Assert {
     }
 
     public static Expression<Object> instanceOf(Class<?> clazz) {
-        return ExpressionBuilder.init("x").instanceOf(clazz).getExpression();
+        return ExpressionBuilder.init("value").instanceOf(clazz).getExpression();
     }
 
 }

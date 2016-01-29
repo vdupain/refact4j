@@ -13,7 +13,7 @@ public abstract class AbstractVisitor implements Visitor {
     void defaultVisit(Object o) throws Exception {
     }
 
-    private Method getMethod(String visitMethodName, Class<?> clazz) throws Exception {
+    private Method getMethod(String visitMethodName, Class<?> clazz) {
         Class<?> cl = clazz; // the bottom-most class
         // Check through superclasses for matching method
         while (cl != null && !cl.equals(Object.class)) {
@@ -25,14 +25,13 @@ public abstract class AbstractVisitor implements Visitor {
         }
         // Check through interfaces for matching method;
         Class<?>[] interfaces = clazz.getInterfaces();
-        for (int i = 0; i < interfaces.length; i++) {
-            Class<?> anInterface = interfaces[i];
+        for (Class<?> anInterface : interfaces) {
             // System.out.println("interface:" + interfaces[i]);
             try {
                 String visitMethod = "visit";
                 return this.getMethod(visitMethod + anInterface.getSimpleName(), anInterface);
             } catch (Exception ex) {
-                throw new RuntimeException(ex);
+                //ignored
             }
         }
         return null;

@@ -7,14 +7,14 @@ import org.refact4j.eom.model.*;
 import org.refact4j.expr.Expression;
 
 @SuppressWarnings("serial")
-public class DoubleFieldImpl extends AbstractNumberField implements DoubleField {
+public class DoubleField extends AbstractNumberField implements org.refact4j.eom.model.DoubleField {
 
-    public DoubleFieldImpl() {
+    public DoubleField() {
     }
 
-    public DoubleFieldImpl(String fieldName, String prettyName, EntityDescriptor entityDescriptor, Double defaultValue,
-                           boolean nullable, boolean visible, boolean editable, Integer order, Property property,
-                           Expression<Double> constraint) {
+    public DoubleField(String fieldName, String prettyName, EntityDescriptor entityDescriptor, Double defaultValue,
+                       boolean nullable, boolean visible, boolean editable, Integer order, Property property,
+                       Expression<Double> constraint) {
         super(fieldName, prettyName, entityDescriptor, defaultValue, nullable, visible, editable, order, property,
                 constraint);
     }

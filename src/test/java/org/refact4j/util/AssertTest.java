@@ -15,8 +15,8 @@ public class AssertTest {
             assertThat(1, notEqualTo(1));
             fail();
         } catch (Throwable e) {
-            String expected = "Expected that: ( NOT (x=1))" + StringHelper.LINE_SEPARATOR;
-            expected += "but x was : 1" + StringHelper.LINE_SEPARATOR;
+            String expected = "Expected that: ( NOT (value=1))" + StringHelper.LINE_SEPARATOR;
+            expected += "but value was : 1" + StringHelper.LINE_SEPARATOR;
             assertEquals(expected, e.getMessage());
         }
 
@@ -30,8 +30,8 @@ public class AssertTest {
             assertThat("abc", instanceOf(Integer.class));
             fail();
         } catch (Throwable e) {
-            String expected = "Expected that: (x INSTANCEOF class java.lang.Integer)" + StringHelper.LINE_SEPARATOR;
-            expected += "but x was : abc" + StringHelper.LINE_SEPARATOR;
+            String expected = "Expected that: (value INSTANCEOF class java.lang.Integer)" + StringHelper.LINE_SEPARATOR;
+            expected += "but value was : abc" + StringHelper.LINE_SEPARATOR;
             assertEquals(expected, e.getMessage());
         }
 
@@ -47,8 +47,8 @@ public class AssertTest {
             assertThat(10, between(1, 11).and(not(equalTo(10))));
             fail();
         } catch (Throwable e) {
-            String expected = "Expected that: ((x BETWEEN 1 AND 11) AND ( NOT (x=10)))" + StringHelper.LINE_SEPARATOR;
-            expected += "but x was : 10" + StringHelper.LINE_SEPARATOR;
+            String expected = "Expected that: ((value BETWEEN 1 AND 11) AND ( NOT (value=10)))" + StringHelper.LINE_SEPARATOR;
+            expected += "but value was : 10" + StringHelper.LINE_SEPARATOR;
             assertEquals(expected, e.getMessage());
         }
     }
@@ -62,8 +62,8 @@ public class AssertTest {
             assertThat(null, isNotNull());
             fail();
         } catch (Throwable e) {
-            String expected = "Expected that: ( IS NOT NULL x)" + StringHelper.LINE_SEPARATOR;
-            expected += "but x was : null" + StringHelper.LINE_SEPARATOR;
+            String expected = "Expected that: ( IS NOT NULL value)" + StringHelper.LINE_SEPARATOR;
+            expected += "but value was : null" + StringHelper.LINE_SEPARATOR;
             assertEquals(expected, e.getMessage());
         }
     }

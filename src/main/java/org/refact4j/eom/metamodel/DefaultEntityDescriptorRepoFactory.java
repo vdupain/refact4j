@@ -6,7 +6,7 @@ import org.refact4j.eom.impl.EntityDataSet;
 import org.refact4j.eom.impl.EntityList;
 import org.refact4j.eom.metamodel.xml.EOMXmlDescriptor;
 import org.refact4j.eom.model.*;
-import org.refact4j.eom.model.impl.AbstractRelationFieldImpl;
+import org.refact4j.eom.model.impl.AbstractRelationField;
 import org.refact4j.eom.xml.EntityXmlDescriptor;
 import org.refact4j.xml.impl.Dataset2XmlConverterImpl;
 
@@ -116,7 +116,7 @@ public class DefaultEntityDescriptorRepoFactory implements EntityDescriptorRepos
             if (inverseRelationFieldKey != null) {
                 inverseRelationFieldname = (String) inverseRelationFieldKey.getFieldValue(FieldDesc.NAME);
             }
-            final AbstractRelationFieldImpl field = (AbstractRelationFieldImpl) parentEntityDescriptor
+            final AbstractRelationField field = (AbstractRelationField) parentEntityDescriptor
                     .getField(relationEntity.get(FieldDesc.NAME));
             RelationField inverseRelationField = (RelationField) field.getTargetEntityDescriptor().getField(
                     inverseRelationFieldname);

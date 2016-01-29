@@ -7,15 +7,15 @@ import org.refact4j.eom.model.*;
 import org.refact4j.expr.Expression;
 
 @SuppressWarnings("serial")
-public class OneToOneRelationFieldImpl extends AbstractRelationFieldImpl implements OneToOneRelationField {
+public class OneToOneRelationField extends AbstractRelationField implements org.refact4j.eom.model.OneToOneRelationField {
 
-    public OneToOneRelationFieldImpl() {
+    public OneToOneRelationField() {
     }
 
-    public OneToOneRelationFieldImpl(String fieldName, String prettyName, EntityDescriptor entityDescriptor,
-                                     EntityDescriptor targetEntityDesc, OneToOneRelationField inverseRelationField, Key defaultValue,
-                                     boolean nullable, boolean visible, boolean editable, Integer order, Property property,
-                                     Expression<Key> constraint) {
+    public OneToOneRelationField(String fieldName, String prettyName, EntityDescriptor entityDescriptor,
+                                 EntityDescriptor targetEntityDesc, org.refact4j.eom.model.OneToOneRelationField inverseRelationField, Key defaultValue,
+                                 boolean nullable, boolean visible, boolean editable, Integer order, Property property,
+                                 Expression<Key> constraint) {
         super(fieldName, prettyName, entityDescriptor, targetEntityDesc, inverseRelationField, defaultValue, nullable,
                 visible, editable, order, property, constraint);
     }

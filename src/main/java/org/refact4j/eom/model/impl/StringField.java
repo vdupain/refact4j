@@ -7,17 +7,17 @@ import org.refact4j.eom.model.*;
 import org.refact4j.expr.Expression;
 
 @SuppressWarnings("serial")
-public class StringFieldImpl extends AbstractField implements StringField {
+public class StringField extends AbstractField implements org.refact4j.eom.model.StringField {
 
     private Integer maxLength;
     private Integer minLength;
 
-    public StringFieldImpl() {
+    public StringField() {
     }
 
-    public StringFieldImpl(String fieldName, String prettyName, EntityDescriptor entityDescriptor, String defaultValue,
-                           boolean nullable, boolean visible, boolean editable, Integer order, Property property,
-                           Expression<String> constraint) {
+    public StringField(String fieldName, String prettyName, EntityDescriptor entityDescriptor, String defaultValue,
+                       boolean nullable, boolean visible, boolean editable, Integer order, Property property,
+                       Expression<String> constraint) {
         super(fieldName, prettyName, entityDescriptor, defaultValue, nullable, visible, editable, order, property,
                 constraint);
     }

@@ -4,12 +4,12 @@ import org.junit.Assert;
 import org.junit.Test;
 
 public abstract class AbstractXmlReaderTest {
-    protected String xmlWithNameSpace =
-            "<xmlRoot xmlns=\"http://xml.refact4j.org\" " +
-                    "   xmlns:dummy=\"http://dummy.xml.refact4j.org\"" +
-                    "   xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"" +
-                    "   xsi:schemaLocation=\"http://xml.refact4j.org http://xml.refact4j.org" +
-                    "   http://dummy.xml.refact4j.org http://dummy.xml.refact4j.org\">" +
+    protected final String xmlWithNameSpace =
+            "<xmlRoot xmlns='http://xml.refact4j.org' " +
+                    "   xmlns:dummy='http://dummy.xml.refact4j.org'" +
+                    "   xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'" +
+                    "   xsi:schemaLocation='http://xml.refact4j.org http://xml.refact4j.org" +
+                    "   http://dummy.xml.refact4j.org http://dummy.xml.refact4j.org'>" +
                     "   <a param1='value1' param2='value2'>abcd</a>" +
                     "   <dummy:b>" +
                     "       <c p1='v1'>123abc</c>" +

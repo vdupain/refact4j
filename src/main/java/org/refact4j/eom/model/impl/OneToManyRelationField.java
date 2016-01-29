@@ -8,15 +8,15 @@ import org.refact4j.eom.model.*;
 import org.refact4j.expr.Expression;
 
 @SuppressWarnings("serial")
-public class OneToManyRelationFieldImpl extends AbstractRelationFieldImpl implements OneToManyRelationField {
+public class OneToManyRelationField extends AbstractRelationField implements org.refact4j.eom.model.OneToManyRelationField {
 
-    public OneToManyRelationFieldImpl() {
+    public OneToManyRelationField() {
     }
 
-    public OneToManyRelationFieldImpl(String fieldName, String prettyName, EntityDescriptor entityDescriptor,
-                                      EntityDescriptor targetEntityDescriptor, ManyToOneRelationField inverseRelationField,
-                                      EntityCollection defaultValue, boolean nullable, boolean visible, boolean editable, Integer order,
-                                      Property property, Expression<EntityCollection> constraint) {
+    public OneToManyRelationField(String fieldName, String prettyName, EntityDescriptor entityDescriptor,
+                                  EntityDescriptor targetEntityDescriptor, ManyToOneRelationField inverseRelationField,
+                                  EntityCollection defaultValue, boolean nullable, boolean visible, boolean editable, Integer order,
+                                  Property property, Expression<EntityCollection> constraint) {
         super(fieldName, prettyName, entityDescriptor, targetEntityDescriptor, inverseRelationField, defaultValue,
                 nullable, visible, editable, order, property, constraint);
     }

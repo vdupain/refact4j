@@ -80,7 +80,8 @@ public class EntityObjectTest {
             foo = EntityObjectBuilder.init(FooDesc.INSTANCE).set(FooDesc.ID, id).set(FooDesc.NAME, name).set(
                     BarDesc.VALUE, value).set(FooDesc.BEGIN_DATE, date).set(FooDesc.BAR, bar).getEntity();
             fail("Expected RuntimeException");
-        } catch (Exception e) {
+        } catch (RuntimeException e) {
+            assertEquals("Object type 'Foo' does not contain field 'Bar.value'", e.getMessage());
         }
 
         FooDesc.NAME.checkValue("azerty");

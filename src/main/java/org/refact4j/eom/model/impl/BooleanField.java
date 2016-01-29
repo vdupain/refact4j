@@ -7,14 +7,14 @@ import org.refact4j.eom.model.*;
 import org.refact4j.expr.Expression;
 
 @SuppressWarnings("serial")
-public class BooleanFieldImpl extends AbstractField implements BooleanField {
+public class BooleanField extends AbstractField implements org.refact4j.eom.model.BooleanField {
 
-    public BooleanFieldImpl() {
+    public BooleanField() {
     }
 
-    public BooleanFieldImpl(String fieldName, String prettyName, EntityDescriptor entityDescriptor,
-                            Boolean defaultValue, boolean nullable, boolean visible, boolean editable, Integer order,
-                            Property property, Expression<Boolean> constraint) {
+    public BooleanField(String fieldName, String prettyName, EntityDescriptor entityDescriptor,
+                        Boolean defaultValue, boolean nullable, boolean visible, boolean editable, Integer order,
+                        Property property, Expression<Boolean> constraint) {
         super(fieldName, prettyName, entityDescriptor, defaultValue, nullable, visible, editable, order, property,
                 constraint);
     }
