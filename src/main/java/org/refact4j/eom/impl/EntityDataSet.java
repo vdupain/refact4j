@@ -12,6 +12,7 @@ import org.refact4j.util.EqualsHelper;
 import org.refact4j.xml.DatasetHolder;
 
 import java.util.Collection;
+import java.util.List;
 
 public class EntityDataSet extends EntitySetImpl implements DatasetHolder {
 
@@ -25,7 +26,8 @@ public class EntityDataSet extends EntitySetImpl implements DatasetHolder {
         this.addAll(entityObjects);
     }
 
-    public org.refact4j.eom.EntityList getEntities(EntityDescriptor entityDescriptor, Field field, Object value) {
+    public List<EntityObject> getEntities(EntityDescriptor entityDescriptor, Field field, Object value) {
+//        return EntitySetBuilder.init().addAll(this).getEntitySet().getEntities(entityDescriptor, field, value);
         return EntitySetBuilder.init().addAll(this).getEntitySet().getEntities(entityDescriptor, field, value);
     }
 
