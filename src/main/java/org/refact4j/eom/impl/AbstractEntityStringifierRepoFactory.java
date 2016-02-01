@@ -13,6 +13,7 @@ import org.refact4j.eom.xml.reader.EntityXmlReaderHelper;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public abstract class AbstractEntityStringifierRepoFactory implements EntityStringifierRepositoryFactory {
 
@@ -67,8 +68,9 @@ public abstract class AbstractEntityStringifierRepoFactory implements EntityStri
     }
 
     private EntityStringifier createStringifier(final EntityObject stringifier, EntityDescriptor entityDescriptor) {
-        final List<EntityObject> appenders = entityObjectSet.getAll(EntityStringifierAppenderDesc.INSTANCE,
-                arg -> arg.get(EntityStringifierAppenderDesc.STRINGIFIER).equals(stringifier.getKey()));
+        final List<EntityObject> appenders = entityObjectSet.getAll(EntityStringifierAppenderDesc.INSTANCE)
+                .stream().filter(arg -> arg.get(EntityStringifierAppenderDesc.STRINGIFIER).equals(stringifier.getKey()))
+                .collect(Collectors.toList());
 
         Collections.sort(appenders, (EntityComparator) (o1, o2) -> ((Integer) o1.get("id")).compareTo(((Integer) o2.get("id"))));
 

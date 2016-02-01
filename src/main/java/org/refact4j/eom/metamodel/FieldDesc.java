@@ -1,7 +1,10 @@
 package org.refact4j.eom.metamodel;
 
+import org.refact4j.eom.EntityObject;
 import org.refact4j.eom.EntityPredicate;
 import org.refact4j.eom.model.*;
+
+import java.util.function.Predicate;
 
 public class FieldDesc {
 
@@ -61,7 +64,7 @@ public class FieldDesc {
     }
 
 
-    public static EntityPredicate getAllFieldsForEntityDescriptor(final String entityDescName) {
+    public static Predicate<EntityObject> getAllFieldsForEntityDescriptor(final String entityDescName) {
         return arg -> {
             Key key = KeyBuilder.init(EntityDescriptorDesc.INSTANCE).set(EntityDescriptorDesc.NAME, entityDescName)
                     .getKey();
@@ -69,7 +72,7 @@ public class FieldDesc {
         };
     }
 
-    public static EntityPredicate getFieldsForEntityDescriptor(final String entityDescName) {
+    public static Predicate<EntityObject> getFieldsForEntityDescriptor(final String entityDescName) {
         return arg -> {
             Key key = KeyBuilder.init(EntityDescriptorDesc.INSTANCE).set(EntityDescriptorDesc.NAME, entityDescName)
                     .getKey();
@@ -79,7 +82,7 @@ public class FieldDesc {
         };
     }
 
-    public static EntityPredicate getRelationFieldsForEntityDescriptor(final String entityDescName) {
+    public static Predicate<EntityObject> getRelationFieldsForEntityDescriptor(final String entityDescName) {
         return arg -> {
             Key key = KeyBuilder.init(EntityDescriptorDesc.INSTANCE).set(EntityDescriptorDesc.NAME, entityDescName)
                     .getKey();

@@ -1,10 +1,12 @@
 package org.refact4j.eom.metamodel;
 
+import org.refact4j.eom.EntityObject;
 import org.refact4j.eom.EntityPredicate;
 import org.refact4j.eom.model.*;
 import org.refact4j.visitor.AbstractVisitor;
 
 import java.util.Date;
+import java.util.function.Predicate;
 
 public final class PropertyDesc {
 
@@ -39,7 +41,7 @@ public final class PropertyDesc {
         };
     }
 
-    public static EntityPredicate getPropertiesForEntityDescriptor(final EntityDescriptor entityDescriptor) {
+    public static Predicate<EntityObject> getPropertiesForEntityDescriptor(final EntityDescriptor entityDescriptor) {
         return arg -> entityDescriptor.toEntity().getKey().equals(arg.get(PropertyDesc.ENTITY_DESC_DESC));
     }
 

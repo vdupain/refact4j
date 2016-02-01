@@ -15,6 +15,7 @@ import org.refact4j.xml.ToXmlString;
 import org.refact4j.xml.impl.Dataset2XmlConverterImpl;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class DefaultEntityStringifierRepoVisitor implements EntityStringifierRepoVisitor, ToXmlString {
     private final EntityDataSet dataSet = new EntityDataSet();
@@ -28,9 +29,9 @@ public class DefaultEntityStringifierRepoVisitor implements EntityStringifierRep
     public String toXmlString() {
         Dataset2XmlConverterImpl converter = new Dataset2XmlConverterImpl();
         converter.register(new EntityStringifierXmlDescriptor(this.entityDescriptorRepository));
-        List<EntityObject> entityObjects = dataSet.getAll(EntityStringifierDesc.INSTANCE,
-                arg -> arg.get(EntityStringifierDesc.OBJECT_TYPE) == null
-                        && arg.get(EntityStringifierDesc.NAME) == null);
+        List<EntityObject> entityObjects = dataSet.getAll(EntityStringifierDesc.INSTANCE).stream()
+                .filter(arg -> arg.get(EntityStringifierDesc.OBJECT_TYPE) == null
+                        && arg.get(EntityStringifierDesc.NAME) == null).collect(Collectors.toList());
         dataSet.removeAll(entityObjects);
         return converter.marshal(dataSet);
     }

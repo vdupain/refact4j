@@ -10,15 +10,21 @@ import org.refact4j.xml.XmlElementHandler;
 import org.refact4j.xml.XmlWriter;
 import org.refact4j.xml.writer.AbstractXmlElementWriter;
 
+import java.util.Collection;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
+
 class EntityStringifierAppenderXmlNodeWriter extends AbstractXmlElementWriter {
 
     public EntityStringifierAppenderXmlNodeWriter(DatasetConverterHolder holder, EntityObject stringifierEntity) {
-        super(EntityStringifierAppenderDesc.INSTANCE.getName(), holder.getDataSet().getAll(
-                EntityStringifierAppenderDesc.INSTANCE, filterEntityStringifierAppenders(stringifierEntity.getKey())),
+        super(EntityStringifierAppenderDesc.INSTANCE.getName(),
+                (Collection<?>) holder.getDataSet().getAll(EntityStringifierAppenderDesc.INSTANCE).stream()
+                .filter(filterEntityStringifierAppenders(stringifierEntity.getKey()))
+                        .collect(Collectors.toList()),
                 holder);
     }
 
-    private static EntityPredicate filterEntityStringifierAppenders(final Key key) {
+    private static Predicate<EntityObject> filterEntityStringifierAppenders(final Key key) {
         return arg -> key.equals(arg.get(EntityStringifierAppenderDesc.STRINGIFIER));
     }
 

@@ -13,6 +13,7 @@ import org.refact4j.xml.impl.Dataset2XmlConverterImpl;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class DefaultEntityDescriptorRepoFactory implements EntityDescriptorRepositoryFactory {
     private EntityDescriptorRepository initialEntityDescriptorRepository;
@@ -64,8 +65,9 @@ public class DefaultEntityDescriptorRepoFactory implements EntityDescriptorRepos
         for (EntityObject entityDescEntity : entityDescs) {
             final String entityDescName = entityDescEntity.get(EntityDescriptorDesc.NAME);
             EntityDescriptorBuilder entityDescriptorBuilder = EntityDescriptorBuilder.init(entityDescName);
-            List<EntityObject> fields = metaModelSet.getAll(FieldDesc.INSTANCE, FieldDesc
-                    .getFieldsForEntityDescriptor(entityDescName));
+            List<EntityObject> fields = metaModelSet.getAll(FieldDesc.INSTANCE).stream()
+                    .filter(FieldDesc.getFieldsForEntityDescriptor(entityDescName))
+                    .collect(Collectors.toList());
             createFields(entityDescriptorBuilder, fields);
             EntityDescriptor entityDescriptor = entityDescriptorBuilder.getEntityDescriptor();
             repoBuilder.add(entityDescriptor);
@@ -75,28 +77,31 @@ public class DefaultEntityDescriptorRepoFactory implements EntityDescriptorRepos
 
         for (final EntityDescriptor entityDescriptor : repository) {
             EntityDescriptorBuilder builder = entityDescBuilderMap.get(entityDescriptor);
-            List<EntityObject> relations = metaModelSet.getAll(FieldDesc.INSTANCE, FieldDesc
-                    .getRelationFieldsForEntityDescriptor(entityDescriptor.getName()));
+            List<EntityObject> relations = metaModelSet.getAll(FieldDesc.INSTANCE).stream()
+                    .filter(FieldDesc.getRelationFieldsForEntityDescriptor(entityDescriptor.getName()))
+                    .collect(Collectors.toList());
             createRelationFields(repository, builder, relations);
         }
         for (final EntityDescriptor entityDescriptor : repository) {
-            List<EntityObject> relations = metaModelSet.getAll(FieldDesc.INSTANCE, FieldDesc
-                    .getRelationFieldsForEntityDescriptor(entityDescriptor.getName()));
+            List<EntityObject> relations = metaModelSet.getAll(FieldDesc.INSTANCE).stream()
+                    .filter(FieldDesc.getRelationFieldsForEntityDescriptor(entityDescriptor.getName()))
+                    .collect(Collectors.toList());
             createInverseRelationships(repository, relations);
         }
 
         // field properties
         for (final EntityDescriptor entityDescriptor : repository) {
-            List<EntityObject> entityDescProperties = metaModelSet.getAll(PropertyDesc.INSTANCE, PropertyDesc
-                    .getPropertiesForEntityDescriptor(entityDescriptor));
+            List<EntityObject> entityDescProperties = metaModelSet.getAll(PropertyDesc.INSTANCE).stream()
+                .filter(PropertyDesc.getPropertiesForEntityDescriptor(entityDescriptor))
+                    .collect(Collectors.toList());
             for (EntityObject entityObject : entityDescProperties) {
                 PropertyDesc.KeyValuePair keyValuePair = getKeyValuePair(metaModelSet, entityObject);
                 entityDescriptor.addProperty(keyValuePair.key, keyValuePair.value);
             }
 
             for (Field field : entityDescriptor.getFields()) {
-                List<EntityObject> properties = metaModelSet.getAll(PropertyDesc.INSTANCE, PropertyDesc
-                        .getPropertiesForField(field));
+                List<EntityObject> properties = metaModelSet.getAll(PropertyDesc.INSTANCE).stream()
+                        .filter(PropertyDesc.getPropertiesForField(field)::apply).collect(Collectors.toList());
                 for (EntityObject entityObject : properties) {
                     PropertyDesc.KeyValuePair keyValuePair = getKeyValuePair(metaModelSet, entityObject);
                     field.addProperty(keyValuePair.key, keyValuePair.value);

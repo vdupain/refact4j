@@ -19,7 +19,8 @@ public class Set<T, ID, TYPE> extends HashSet<T> implements Finder<T, ID, TYPE> 
     }
 
     public List<T> getAll(final TYPE type) {
-        return this.stream().filter(t -> getTypeResolver().isSameType(type, getTypeResolver().getTypeOf(t))).collect(Collectors.toList());
+        return this.stream().filter(t -> getTypeResolver().isSameType(type, getTypeResolver().getTypeOf(t)))
+                .collect(Collectors.toList());
     }
 
     public List<T> getAll(TYPE type, UnaryPredicate<T> predicate) {

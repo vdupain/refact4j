@@ -14,22 +14,27 @@ import org.refact4j.xml.XmlElementHandler;
 import org.refact4j.xml.XmlWriter;
 import org.refact4j.xml.writer.AbstractXmlElementWriter;
 
+import java.util.Collection;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
+
 class PropertyXmlNodeWriter extends AbstractXmlElementWriter {
 
     public PropertyXmlNodeWriter(DatasetConverterHolder holder, EntityObject entityDescEntity,
                                  EntityDescriptorRepository repository) {
-        super(PropertyDesc.INSTANCE.getName(), holder.getDataSet().getAll(
-                PropertyDesc.INSTANCE,
-                PropertyDesc.getPropertiesForEntityDescriptor(repository.getEntityDescriptor(entityDescEntity
-                        .get(EntityDescriptorDesc.NAME)))), holder);
+        super(PropertyDesc.INSTANCE.getName(), (Collection<?>) holder.getDataSet().getAll(
+                PropertyDesc.INSTANCE).stream()
+                .filter(PropertyDesc.getPropertiesForEntityDescriptor(repository.getEntityDescriptor(entityDescEntity
+                        .get(EntityDescriptorDesc.NAME)))).collect(Collectors.toList()), holder);
     }
 
     public PropertyXmlNodeWriter(DatasetConverterHolder holder, EntityObject fieldEntity) {
-        super(PropertyDesc.INSTANCE.getName(), holder.getDataSet().getAll(PropertyDesc.INSTANCE,
-                getPropertiesForField(fieldEntity)), holder);
+        super(PropertyDesc.INSTANCE.getName(), (Collection<?>) holder.getDataSet().getAll(PropertyDesc.INSTANCE).stream()
+                .filter( getPropertiesForField(fieldEntity)).collect(Collectors.toList()), holder);
+
     }
 
-    private static EntityPredicate getPropertiesForField(final EntityObject fieldEntity) {
+    private static Predicate<EntityObject> getPropertiesForField(final EntityObject fieldEntity) {
         return arg -> {
             Key key = KeyBuilder.init(FieldDesc.INSTANCE).set(FieldDesc.NAME, fieldEntity.get(FieldDesc.NAME)).set(
                     FieldDesc.ENTITY_DESC, fieldEntity.get(FieldDesc.ENTITY_DESC)).getKey();

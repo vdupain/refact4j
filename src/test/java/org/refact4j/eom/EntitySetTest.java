@@ -143,7 +143,8 @@ public class EntitySetTest {
 
         EntityPredicate entityObjectPredicate = arg -> arg.get(FooDesc.ID) == 4;
 
-        List<EntityObject> list = collection.getAll(FooDesc.INSTANCE, entityObjectPredicate);
+        List<EntityObject> list = collection.getAll(FooDesc.INSTANCE).stream()
+                .filter(entityObjectPredicate::apply).collect(Collectors.toList());
         assertEquals(1, list.size());
         assertEquals(entityObject, list.get(0));
     }
