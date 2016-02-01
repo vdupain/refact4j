@@ -4,7 +4,7 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.refact4j.util.XmlAssert;
 
-import static org.refact4j.xml.XMLizer.*;
+import static org.refact4j.xml.XMLizer.DEFAULT;
 
 public class XMLizerTest {
 

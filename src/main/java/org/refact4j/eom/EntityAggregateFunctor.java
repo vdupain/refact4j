@@ -44,7 +44,7 @@ public final class EntityAggregateFunctor implements AggregateFunctor<EntityObje
     }
 
     private static Collection<EntityObject> filterByEntityDescriptor(Collection<EntityObject> collection,
-                                                             final EntityDescriptor entityDescriptor) {
+                                                                     final EntityDescriptor entityDescriptor) {
         List<EntityObject> list = collection.stream().filter(p -> p.getEntityDescriptor().equals(entityDescriptor))
                 .collect(Collectors.toList());
         return new EntityListImpl(list);

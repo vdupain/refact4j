@@ -3,7 +3,6 @@ package org.refact4j.eom;
 import org.refact4j.eom.model.EntityDescriptor;
 import org.refact4j.eom.model.Field;
 
-import java.util.Collection;
 import java.util.List;
 
 /**

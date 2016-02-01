@@ -80,7 +80,7 @@ public class EntitySetTest {
         assertTrue(entityObjectList.contains(entityObject));
         assertEquals(3, entityObjectList.size());
 
-        assertTrue(EntityUtils.getKeys(entityObjectList).contains(entityObject.getKey()));
+        assertTrue(entityObjectList.stream().map(EntityObject::getKey).collect(Collectors.toList()).contains(entityObject.getKey()));
     }
 
     @Test
@@ -141,7 +141,7 @@ public class EntitySetTest {
     private void testGetEntitiesByEntityDescriptorAndUnaryPredicate(EntitySet collection,
                                                                     EntityObject entityObject) {
         List<EntityObject> list = collection.getAll(FooDesc.INSTANCE).stream()
-                .filter(arg->arg.get(FooDesc.ID) == 4).collect(Collectors.toList());
+                .filter(arg -> arg.get(FooDesc.ID) == 4).collect(Collectors.toList());
         assertEquals(1, list.size());
         assertEquals(entityObject, list.get(0));
     }

@@ -36,7 +36,7 @@ public interface EntityObject extends Cloneable, ToXML, ToXmlString, Serializabl
      */
     default Key getKey() {
         KeyBuilder keyBuilder = KeyBuilder.init(this.getEntityDescriptor());
-        this.getEntityDescriptor().getKeyFields().stream().forEach(field->keyBuilder.set(field, get(field)));
+        this.getEntityDescriptor().getKeyFields().stream().forEach(field -> keyBuilder.set(field, get(field)));
         return keyBuilder.getKey();
     }
 
@@ -52,8 +52,7 @@ public interface EntityObject extends Cloneable, ToXML, ToXmlString, Serializabl
      * @return The value of the field identified by fieldName.
      */
     default Object get(String fieldName) {
-        Field field = this.getEntityDescriptor().getField(fieldName);
-        return this.getFieldValue(field);
+        return this.getFieldValue(this.getEntityDescriptor().getField(fieldName));
     }
 
 
@@ -152,18 +151,18 @@ public interface EntityObject extends Cloneable, ToXML, ToXmlString, Serializabl
     }
 
 
-        /**
-         * Sets the integer value for the field identified by integerField to
-         * integerValue.
-         *
-         * @param integerField Identifies the field to change.
-         * @param integerValue The new integer value for the integer field.
-         * @return the current EntityObject instance.
-         */
-        default EntityObject set(IntegerField integerField, Integer integerValue) {
-            this.set((Field) integerField, integerValue);
-            return this;
-        }
+    /**
+     * Sets the integer value for the field identified by integerField to
+     * integerValue.
+     *
+     * @param integerField Identifies the field to change.
+     * @param integerValue The new integer value for the integer field.
+     * @return the current EntityObject instance.
+     */
+    default EntityObject set(IntegerField integerField, Integer integerValue) {
+        this.set((Field) integerField, integerValue);
+        return this;
+    }
 
     /**
      * Sets the double value for the field identified by doubleField to

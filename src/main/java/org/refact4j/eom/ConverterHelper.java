@@ -10,6 +10,7 @@ public final class ConverterHelper {
 
     private static final Value2StringFieldConverter value2StringConverter = new Value2StringFieldConverter();
     private static final String2ValueFieldConverter string2ValueConverter = new String2ValueFieldConverter();
+
     private ConverterHelper() {
     }
 
