@@ -1,6 +1,5 @@
 package org.refact4j.eom.xml.reader;
 
-import org.refact4j.eom.EntityFinder;
 import org.refact4j.eom.model.EntityDescriptor;
 import org.refact4j.eom.model.EntityDescriptorRepository;
 import org.refact4j.xml.DatasetConverterHolder;

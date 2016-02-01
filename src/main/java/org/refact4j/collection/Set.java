@@ -22,8 +22,4 @@ public class Set<T, ID, TYPE> extends HashSet<T> implements Finder<T, ID, TYPE> 
                 .collect(Collectors.toList());
     }
 
-    public void apply(TYPE type, java.util.function.Function<T, ?> functor) {
-        this.getAll(type).stream().map(functor::apply).collect(Collectors.toList());
-    }
-
 }

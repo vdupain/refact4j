@@ -8,11 +8,10 @@ import org.refact4j.eom.model.Field;
  */
 public final class ConverterHelper {
 
-    private ConverterHelper() {
-    }
-
     static Value2StringFieldConverter value2StringConverter = new Value2StringFieldConverter();
     static String2ValueFieldConverter string2ValueConverter = new String2ValueFieldConverter();
+    private ConverterHelper() {
+    }
 
     public static String convertValue2String(final Object value, final Field field) {
         value2StringConverter.setValue(value);

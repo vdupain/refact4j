@@ -5,7 +5,6 @@ import org.refact4j.eom.metamodel.DataTypeType;
 import org.refact4j.eom.metamodel.EntityDescriptorDesc;
 import org.refact4j.eom.metamodel.FieldDesc;
 import org.refact4j.eom.model.Key;
-import org.refact4j.functor.UnaryPredicate;
 import org.refact4j.xml.DatasetConverterHolder;
 import org.refact4j.xml.XmlElementHandler;
 import org.refact4j.xml.XmlWriter;
@@ -18,8 +17,8 @@ class FieldXmlNodeWriter extends AbstractXmlElementWriter {
 
     public FieldXmlNodeWriter(DatasetConverterHolder holder, EntityObject entityDescEntity) {
         super(FieldDesc.INSTANCE.getName(), (Collection<?>) holder.getDataSet().getAll(FieldDesc.INSTANCE).stream()
-            .filter(FieldDesc.getAllFieldsForEntityDescriptor(entityDescEntity.get(EntityDescriptorDesc.NAME)))
-                .collect(Collectors.toList())
+                        .filter(FieldDesc.getAllFieldsForEntityDescriptor(entityDescEntity.get(EntityDescriptorDesc.NAME)))
+                        .collect(Collectors.toList())
                 , holder);
     }
 

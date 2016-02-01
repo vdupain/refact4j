@@ -1,7 +1,6 @@
 package org.refact4j.eom.impl;
 
 import org.refact4j.eom.EntityConverter;
-import org.refact4j.eom.EntityObject;
 import org.refact4j.eom.model.EntityDescriptorRepository;
 import org.refact4j.eom.model.EntityDescriptorRepositoryAware;
 

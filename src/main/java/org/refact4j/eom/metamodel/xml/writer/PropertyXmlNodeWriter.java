@@ -1,7 +1,6 @@
 package org.refact4j.eom.metamodel.xml.writer;
 
 import org.refact4j.eom.EntityObject;
-import org.refact4j.eom.EntityPredicate;
 import org.refact4j.eom.metamodel.DataTypeType;
 import org.refact4j.eom.metamodel.EntityDescriptorDesc;
 import org.refact4j.eom.metamodel.FieldDesc;
@@ -30,7 +29,7 @@ class PropertyXmlNodeWriter extends AbstractXmlElementWriter {
 
     public PropertyXmlNodeWriter(DatasetConverterHolder holder, EntityObject fieldEntity) {
         super(PropertyDesc.INSTANCE.getName(), (Collection<?>) holder.getDataSet().getAll(PropertyDesc.INSTANCE).stream()
-                .filter( getPropertiesForField(fieldEntity)).collect(Collectors.toList()), holder);
+                .filter(getPropertiesForField(fieldEntity)).collect(Collectors.toList()), holder);
 
     }
 

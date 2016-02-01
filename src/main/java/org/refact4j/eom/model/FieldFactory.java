@@ -1,7 +1,8 @@
 package org.refact4j.eom.model;
 
 import org.refact4j.eom.EntityCollection;
-import org.refact4j.eom.model.impl.*;
+import org.refact4j.eom.model.impl.IntegerFieldImpl;
+import org.refact4j.eom.model.impl.PropertyImpl;
 import org.refact4j.expr.Expression;
 
 import java.util.Date;

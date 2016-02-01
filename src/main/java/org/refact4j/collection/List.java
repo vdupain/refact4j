@@ -22,8 +22,4 @@ public class List<T, ID, TYPE> extends ArrayList<T> implements
 
     }
 
-    public void apply(TYPE type, java.util.function.Function<T, ?> functor) {
-        this.getAll(type).stream().map(functor::apply).collect(Collectors.toList());
-    }
-
 }

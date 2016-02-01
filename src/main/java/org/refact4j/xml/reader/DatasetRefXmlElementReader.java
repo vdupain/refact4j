@@ -1,7 +1,6 @@
 package org.refact4j.xml.reader;
 
 import org.refact4j.collection.Set;
-import org.refact4j.core.Finder;
 import org.refact4j.util.StringHelper;
 import org.refact4j.xml.DatasetConverterHolder;
 import org.refact4j.xml.XmlAttributes;

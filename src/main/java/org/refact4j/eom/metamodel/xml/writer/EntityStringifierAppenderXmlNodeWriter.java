@@ -1,7 +1,6 @@
 package org.refact4j.eom.metamodel.xml.writer;
 
 import org.refact4j.eom.EntityObject;
-import org.refact4j.eom.EntityPredicate;
 import org.refact4j.eom.metamodel.EntityStringifierAppenderDesc;
 import org.refact4j.eom.metamodel.FieldDesc;
 import org.refact4j.eom.model.Key;
@@ -19,7 +18,7 @@ class EntityStringifierAppenderXmlNodeWriter extends AbstractXmlElementWriter {
     public EntityStringifierAppenderXmlNodeWriter(DatasetConverterHolder holder, EntityObject stringifierEntity) {
         super(EntityStringifierAppenderDesc.INSTANCE.getName(),
                 (Collection<?>) holder.getDataSet().getAll(EntityStringifierAppenderDesc.INSTANCE).stream()
-                .filter(filterEntityStringifierAppenders(stringifierEntity.getKey()))
+                        .filter(filterEntityStringifierAppenders(stringifierEntity.getKey()))
                         .collect(Collectors.toList()),
                 holder);
     }

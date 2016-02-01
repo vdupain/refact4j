@@ -1,7 +1,6 @@
 package org.refact4j.xml.impl;
 
 import org.refact4j.collection.Set;
-import org.refact4j.core.Finder;
 import org.refact4j.xml.*;
 import org.refact4j.xml.impl.sax.DefaultSaxErrorHandler;
 import org.refact4j.xml.reader.DatasetXmlElementReader;

@@ -5,7 +5,6 @@ import org.refact4j.eom.EntityPredicate;
 import org.refact4j.eom.model.*;
 import org.refact4j.visitor.AbstractVisitor;
 
-import java.util.Date;
 import java.util.function.Predicate;
 
 public final class PropertyDesc {
@@ -46,7 +45,7 @@ public final class PropertyDesc {
     }
 
     public static class TypeVisitor extends AbstractVisitor {
-       public DataTypeEntity dataTypeEntity = DataTypeType.STRING_DATA_TYPE;
+        public DataTypeEntity dataTypeEntity = DataTypeType.STRING_DATA_TYPE;
 
 //        public void visitInteger(Integer value) {
 //            this.dataTypeEntity = DataTypeType.INTEGER_DATA_TYPE;

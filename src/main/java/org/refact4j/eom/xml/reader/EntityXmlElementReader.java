@@ -1,6 +1,5 @@
 package org.refact4j.eom.xml.reader;
 
-import org.refact4j.eom.EntityFinder;
 import org.refact4j.eom.EntityObject;
 import org.refact4j.eom.EntityObjectBuilder;
 import org.refact4j.eom.impl.EntityList;
