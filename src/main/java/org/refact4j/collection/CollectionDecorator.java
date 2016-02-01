@@ -1,21 +1,11 @@
 package org.refact4j.collection;
 
-import org.refact4j.core.Finder;
-import org.refact4j.core.IdResolver;
-import org.refact4j.core.TypeResolver;
-import org.refact4j.functor.UnaryPredicate;
-
 import java.util.Collection;
 import java.util.Iterator;
-import java.util.List;
-import java.util.stream.Collectors;
 
-public class CollectionDecorator<T, ID, TYPE> implements Collection<T>, Finder<T, ID, TYPE> {
+public class CollectionDecorator<T> implements Collection<T> {
 
     private final Collection<T> collection;
-    private TypeResolver<T, TYPE> typeResolver;
-    private IdResolver<T, ID> idResolver;
-
     private ChangeSetImpl<T> changeSet;
     private ChangeSetSupport<T> changeSetSupport = new ChangeSetSupport<>();
 
@@ -28,31 +18,6 @@ public class CollectionDecorator<T, ID, TYPE> implements Collection<T>, Finder<T
     public Collection<T> getCollection() {
         return this.collection;
     }
-
-    public T findByIdentifier(ID id) {
-        return this.collection.stream().filter(p -> idResolver.getId(p).equals(id)).findFirst().get();
-    }
-
-    public T findByIdentifier(TYPE type, ID id) {
-        return this.getAll(type).stream().filter(p -> idResolver.getId(p).equals(id)).findFirst().get();
-    }
-
-    public List<T> getAll(final TYPE type) {
-        return this.collection.stream().filter(t -> typeResolver.isSameType(type, typeResolver.getTypeOf(t))).collect(Collectors.toList());
-    }
-
-    public List<T> getAll(TYPE type, UnaryPredicate<T> predicate) {
-        return this.getAll(type).stream().filter(predicate::apply).collect(Collectors.toList());
-    }
-
-    public void setTypeResolver(TypeResolver<T, TYPE> typeResolver) {
-        this.typeResolver = typeResolver;
-    }
-
-    public void setIdResolver(IdResolver<T, ID> idResolver) {
-        this.idResolver = idResolver;
-    }
-
 
     public int size() {
         return this.collection.size();

@@ -9,28 +9,21 @@ import java.util.stream.Collectors;
 
 public class Set<T, ID, TYPE> extends HashSet<T> implements Finder<T, ID, TYPE> {
 
-    private final CollectionDecorator<T, ID, TYPE> collectionDecorator = new CollectionDecorator<>(this);
-
-
-    public Set() {
-        collectionDecorator.setIdResolver(getIdResolver());
-        collectionDecorator.setTypeResolver(getTypeResolver());
-    }
 
     public T findByIdentifier(ID id) {
-        return collectionDecorator.findByIdentifier(id);
+        return this.stream().filter(p -> getIdResolver().getId(p).equals(id)).findFirst().get();
     }
 
     public T findByIdentifier(TYPE type, ID id) {
-        return collectionDecorator.findByIdentifier(type, id);
+        return this.getAll(type).stream().filter(p -> getIdResolver().getId(p).equals(id)).findFirst().get();
     }
 
     public List<T> getAll(final TYPE type) {
-        return collectionDecorator.getAll(type);
+        return this.stream().filter(t -> getTypeResolver().isSameType(type, getTypeResolver().getTypeOf(t))).collect(Collectors.toList());
     }
 
     public List<T> getAll(TYPE type, UnaryPredicate<T> predicate) {
-        return collectionDecorator.getAll(type, predicate);
+        return this.getAll(type).stream().filter(predicate::apply).collect(Collectors.toList());
     }
 
     public void apply(TYPE type, java.util.function.Function<T, ?> functor) {
