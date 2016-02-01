@@ -40,6 +40,11 @@ public interface EntityObject extends Cloneable, ToXML, ToXmlString, Serializabl
         return keyBuilder.getKey();
     }
 
+    @Override
+    default Key getId() {
+        return this.getKey();
+    }
+
     /**
      * Retrieves the value of the field named fieldName.
      *

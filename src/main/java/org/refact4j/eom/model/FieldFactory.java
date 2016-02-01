@@ -1,10 +1,11 @@
 package org.refact4j.eom.model;
 
-import org.refact4j.eom.EntityCollection;
+import org.refact4j.eom.EntityObject;
 import org.refact4j.eom.model.impl.IntegerFieldImpl;
 import org.refact4j.eom.model.impl.PropertyImpl;
 import org.refact4j.expr.Expression;
 
+import java.util.Collection;
 import java.util.Date;
 
 public final class FieldFactory implements DataTypeVisitor {
@@ -89,7 +90,7 @@ public final class FieldFactory implements DataTypeVisitor {
 
     public OneToManyRelationField createOneToManyRelationField(EntityDescriptor entityDescriptor) {
         OneToManyRelationField field = new org.refact4j.eom.model.impl.OneToManyRelationField(fieldName, prettyName, entityDescriptorBuilder
-                .getEntityDescriptor(), entityDescriptor, null, (EntityCollection) defaultValue, nullable, visible,
+                .getEntityDescriptor(), entityDescriptor, null, (Collection<EntityObject>) defaultValue, nullable, visible,
                 editable, order, property, constraintExpression);
         entityDescriptorBuilder.addField(field);
         return field;

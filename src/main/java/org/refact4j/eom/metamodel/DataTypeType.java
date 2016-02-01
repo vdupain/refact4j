@@ -1,13 +1,15 @@
 package org.refact4j.eom.metamodel;
 
-import org.refact4j.eom.EntityCollection;
+import org.refact4j.eom.EntityObject;
 import org.refact4j.eom.impl.EntityListImpl;
 import org.refact4j.eom.model.*;
+
+import java.util.Collection;
 
 
 public class DataTypeType {
 
-    public static final EntityCollection DATA_TYPES = new EntityListImpl();
+    public static final Collection<EntityObject> DATA_TYPES = new EntityListImpl();
     private static final String INTEGER_TYPE = "integer";
     private static final String STRING_TYPE = "string";
     private static final String DATE_TYPE = "date";

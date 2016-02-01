@@ -20,11 +20,6 @@ public final class EntitySetBuilder {
         return new EntitySetBuilder();
     }
 
-    public EntitySetBuilder addAll(EntityCollection entityObjects) {
-        entityObjectSet.addAll(entityObjects);
-        return this;
-    }
-
     public EntitySetBuilder addAll(Collection<EntityObject> entityObjects) {
         entityObjectSet.addAll(entityObjects);
         return this;

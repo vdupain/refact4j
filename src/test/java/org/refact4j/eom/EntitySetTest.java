@@ -13,6 +13,7 @@ import org.refact4j.model.DummyRepository;
 import org.refact4j.model.FooDesc;
 import org.refact4j.util.ComparatorHelper;
 
+import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -78,7 +79,7 @@ public class EntitySetTest {
         assertTrue(entityObjectList.contains(entityObject));
         assertEquals(3, entityObjectList.size());
 
-        assertTrue(entityObjectList.getKeys().contains(entityObject.getKey()));
+        assertTrue(EntityUtils.getKeys(entityObjectList).contains(entityObject.getKey()));
     }
 
     @Test
@@ -93,12 +94,11 @@ public class EntitySetTest {
         testGetEntitiesByEntityDescriptor(entityObjectSet1, entityObjectSet2, entitySet);
         EntityDataSet entityObjectDataSet = new EntityDataSet(entityObjectSet);
         testGetEntitiesByEntityDescriptor(entityObjectSet1, entityObjectSet2, entityObjectDataSet);
-        org.refact4j.eom.EntityList entityObjectList = new EntityListImpl(entityObjectSet);
-        testGetEntitiesByEntityDescriptor(entityObjectSet1, entityObjectSet2, entityObjectList);
+        testGetEntitiesByEntityDescriptor(entityObjectSet1, entityObjectSet2, entityObjectSet);
     }
 
-    private void testGetEntitiesByEntityDescriptor(EntityCollection collection1, EntityCollection collection2,
-                                                   EntityCollection collection) {
+    private void testGetEntitiesByEntityDescriptor(EntitySet collection1, EntitySet collection2,
+                                                   EntitySet collection) {
         List<EntityObject> dummies = collection.getAll(FooDesc.INSTANCE);
         EntityComparator entityObjectComparator = (EntityComparator) (o1, o2) -> ComparatorHelper.compare(o1.getKey(), o2.getKey());
 
@@ -134,11 +134,10 @@ public class EntitySetTest {
         testGetEntitiesByEntityDescriptorAndUnaryPredicate(entitySet, entityObject);
         EntityDataSet entityObjectDataSet = new EntityDataSet(entityObjectSet);
         testGetEntitiesByEntityDescriptorAndUnaryPredicate(entityObjectDataSet, entityObject);
-        org.refact4j.eom.EntityList entityObjectList = new EntityListImpl(entityObjectSet);
-        testGetEntitiesByEntityDescriptorAndUnaryPredicate(entityObjectList, entityObject);
+        testGetEntitiesByEntityDescriptorAndUnaryPredicate(entityObjectSet, entityObject);
     }
 
-    private void testGetEntitiesByEntityDescriptorAndUnaryPredicate(EntityCollection collection,
+    private void testGetEntitiesByEntityDescriptorAndUnaryPredicate(EntitySet collection,
                                                                     EntityObject entityObject) {
 
         EntityPredicate entityObjectPredicate = arg -> arg.get(FooDesc.ID) == 4;
@@ -160,11 +159,10 @@ public class EntitySetTest {
         testGetEntitiesFilteredByUnaryPredicate(entitySet, entityObject);
         EntityDataSet entityObjectDataSet = new EntityDataSet(entityObjectSet);
         testGetEntitiesFilteredByUnaryPredicate(entityObjectDataSet, entityObject);
-        org.refact4j.eom.EntityList entityObjectList = new EntityListImpl(entityObjectSet);
-        testGetEntitiesFilteredByUnaryPredicate(entityObjectList, entityObject);
+        testGetEntitiesFilteredByUnaryPredicate(entityObjectSet, entityObject);
     }
 
-    private void testGetEntitiesFilteredByUnaryPredicate(EntityCollection collection, EntityObject entityObject) {
+    private void testGetEntitiesFilteredByUnaryPredicate(EntitySet collection, EntityObject entityObject) {
         EntityPredicate entityObjectPredicate = arg -> arg.getEntityDescriptor().equals(FooDesc.INSTANCE) && arg.get(FooDesc.ID) == 4;
         List<EntityObject> list = collection.stream().filter(entityObjectPredicate::apply).collect(Collectors.toList());
         assertEquals(1, list.size());
@@ -182,11 +180,10 @@ public class EntitySetTest {
         testGetEntitiesFilteredByExprConstraint(entitySet, entityObject);
         EntityDataSet entityObjectDataSet = new EntityDataSet(entityObjectSet);
         testGetEntitiesFilteredByExprConstraint(entityObjectDataSet, entityObject);
-        org.refact4j.eom.EntityList entityObjectList = new EntityListImpl(entityObjectSet);
-        testGetEntitiesFilteredByExprConstraint(entityObjectList, entityObject);
+        testGetEntitiesFilteredByExprConstraint(entityObjectSet, entityObject);
     }
 
-    private void testGetEntitiesFilteredByExprConstraint(EntityCollection collection, EntityObject entityObject) {
+    private void testGetEntitiesFilteredByExprConstraint(EntitySet collection, EntityObject entityObject) {
         EntityExpression expr = EntityExpressionBuilder.init(FooDesc.ID).equalTo(4).or(
                 EntityExpressionBuilder.init(BarDesc.NAME).equalTo("bar1")).getExpression();
         List<EntityObject> list = collection.stream().filter(expr).collect(Collectors.toList());
@@ -205,11 +202,10 @@ public class EntitySetTest {
         testEntitySetContainsEntity(entitySet);
         EntityDataSet entityObjectDataSet = new EntityDataSet(entityObjectSet);
         testEntitySetContainsEntity(entityObjectDataSet);
-        org.refact4j.eom.EntityList entityObjectList = new EntityListImpl(entityObjectSet);
-        testEntitySetContainsEntity(entityObjectList);
+        testEntitySetContainsEntity(entityObjectSet);
     }
 
-    private void testEntitySetContainsEntity(EntityCollection entityObjectSet) {
+    private void testEntitySetContainsEntity(EntitySet entityObjectSet) {
         KeyImpl key = new KeyImpl(FooDesc.INSTANCE);
         key.add(FooDesc.ID, 1);
         EntityObject entityObject = entityObjectSet.findByIdentifier(key);
@@ -229,7 +225,7 @@ public class EntitySetTest {
         testEntitySetApplyfunctor(entityObjectList);
     }
 
-    private void testEntitySetApplyfunctor(final EntityCollection collection) {
+    private void testEntitySetApplyfunctor(final Collection<EntityObject> collection) {
         collection.stream()
                 .filter(p -> p.getEntityDescriptor().equals(FooDesc.INSTANCE))
                 .forEach(arg -> assertEquals(FooDesc.INSTANCE, arg.getEntityDescriptor()));
@@ -249,7 +245,7 @@ public class EntitySetTest {
     }
 
     private void testEntitySetGetEntitiesByEntityDescriptorFieldAndValue(EntitySet entityObjectSet) {
-        EntityCollection entityObjects = entityObjectSet.getEntities(FooDesc.INSTANCE, FooDesc.NAME, "foo1");
+        Collection<EntityObject> entityObjects = entityObjectSet.getEntities(FooDesc.INSTANCE, FooDesc.NAME, "foo1");
         Key key = KeyBuilder.init(FooDesc.INSTANCE).set(FooDesc.ID, 1).getKey();
         EntityObject entityObject = entityObjectSet.findByIdentifier(key);
         assertEquals(entityObject, entityObjects.iterator().next());

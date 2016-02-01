@@ -23,27 +23,27 @@ public final class EntityAggregateFunctor implements AggregateFunctor<EntityObje
         ((AbstractAggregateFunctor<EntityObject>) this.delegate).setComparator(entityObjectComparator);
     }
 
-    public static EntityObject applyMaxAggregateFunctor(EntityCollection collection, EntityDescriptor entityDescriptor,
+    public static EntityObject applyMaxAggregateFunctor(Collection<EntityObject> collection, EntityDescriptor entityDescriptor,
                                                         String fieldName) {
         return applyMaxAggregateFunctor(collection, entityDescriptor.getField(fieldName));
     }
 
-    public static EntityObject applyMinAggregateFunctor(EntityCollection collection, EntityDescriptor entityDescriptor,
+    public static EntityObject applyMinAggregateFunctor(Collection<EntityObject> collection, EntityDescriptor entityDescriptor,
                                                         String fieldName) {
         return applyMinAggregateFunctor(collection, entityDescriptor.getField(fieldName));
     }
 
-    public static EntityObject applyMaxAggregateFunctor(EntityCollection collection, final Field field) {
-        EntityCollection result = filterByEntityDescriptor(collection, field.getEntityDescriptor());
+    public static EntityObject applyMaxAggregateFunctor(Collection<EntityObject> collection, final Field field) {
+        Collection<EntityObject> result = filterByEntityDescriptor(collection, field.getEntityDescriptor());
         return new EntityAggregateFunctor(field, new MaxValue<>()).apply(result);
     }
 
-    public static EntityObject applyMinAggregateFunctor(EntityCollection collection, final Field field) {
-        EntityCollection result = filterByEntityDescriptor(collection, field.getEntityDescriptor());
+    public static EntityObject applyMinAggregateFunctor(Collection<EntityObject> collection, final Field field) {
+        Collection<EntityObject> result = filterByEntityDescriptor(collection, field.getEntityDescriptor());
         return new EntityAggregateFunctor(field, new MinValue<>()).apply(result);
     }
 
-    private static EntityCollection filterByEntityDescriptor(EntityCollection collection,
+    private static Collection<EntityObject> filterByEntityDescriptor(Collection<EntityObject> collection,
                                                              final EntityDescriptor entityDescriptor) {
         List<EntityObject> list = collection.stream().filter(p -> p.getEntityDescriptor().equals(entityDescriptor))
                 .collect(Collectors.toList());

@@ -1,6 +1,5 @@
 package org.refact4j.eom.impl;
 
-import org.refact4j.eom.EntityCollection;
 import org.refact4j.eom.EntityObject;
 import org.refact4j.eom.EntityObjectListener;
 import org.refact4j.eom.model.*;
@@ -9,6 +8,7 @@ import org.refact4j.xml.XML;
 import java.io.IOException;
 import java.io.ObjectInput;
 import java.io.ObjectOutput;
+import java.util.Collection;
 import java.util.Date;
 import java.util.Iterator;
 
@@ -117,7 +117,7 @@ public class EntityObjectDecorator implements EntityObject {
         return this.entityObject.set(stringField, stringValue);
     }
 
-    public EntityObject set(OneToManyRelationField field, EntityCollection entityObjects) {
+    public EntityObject set(OneToManyRelationField field, Collection<EntityObject> entityObjects) {
         return this.entityObject.set(field, entityObjects);
     }
 

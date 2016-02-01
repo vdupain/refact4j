@@ -8,8 +8,10 @@ import org.refact4j.util.EqualsHelper;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Collection;
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * This class provides static methods to manipulate {@link EntityObject}
@@ -137,5 +139,10 @@ public final class EntityUtils {
     public static Key createKey(EntityDescriptor entityDescriptor, Object keyValue) {
         return KeyBuilder.init(entityDescriptor).set(EntityUtils.getKeyField(entityDescriptor), keyValue).getKey();
     }
+
+    public static List<Key> getKeys(Collection<EntityObject> entities) {
+        return entities.stream().map(EntityObject::getKey).collect(Collectors.toList());
+    }
+
 
 }

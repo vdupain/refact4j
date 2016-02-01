@@ -1,6 +1,5 @@
 package org.refact4j.eom.model.impl;
 
-import org.refact4j.eom.EntityCollection;
 import org.refact4j.eom.EntityObject;
 import org.refact4j.eom.metamodel.DataTypeType;
 import org.refact4j.eom.metamodel.FieldDesc;
@@ -10,6 +9,8 @@ import org.refact4j.eom.model.FieldVisitor;
 import org.refact4j.eom.model.Property;
 import org.refact4j.expr.Expression;
 
+import java.util.Collection;
+
 @SuppressWarnings("serial")
 public class OneToManyRelationField extends AbstractRelationField implements org.refact4j.eom.model.OneToManyRelationField {
 
@@ -18,8 +19,8 @@ public class OneToManyRelationField extends AbstractRelationField implements org
 
     public OneToManyRelationField(String fieldName, String prettyName, EntityDescriptor entityDescriptor,
                                   EntityDescriptor targetEntityDescriptor, ManyToOneRelationField inverseRelationField,
-                                  EntityCollection defaultValue, boolean nullable, boolean visible, boolean editable, Integer order,
-                                  Property property, Expression<EntityCollection> constraint) {
+                                  Collection<EntityObject> defaultValue, boolean nullable, boolean visible, boolean editable, Integer order,
+                                  Property property, Expression<Collection<EntityObject>> constraint) {
         super(fieldName, prettyName, entityDescriptor, targetEntityDescriptor, inverseRelationField, defaultValue,
                 nullable, visible, editable, order, property, constraint);
     }
@@ -33,8 +34,8 @@ public class OneToManyRelationField extends AbstractRelationField implements org
     }
 
     @Override
-    protected Class<EntityCollection> getDataTypeClass() {
-        return EntityCollection.class;
+    protected Class<Collection> getDataTypeClass() {
+        return Collection.class;
     }
 
     @Override

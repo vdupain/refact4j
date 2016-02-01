@@ -1,8 +1,9 @@
 package org.refact4j.eom.impl;
 
 import org.refact4j.eom.*;
-import org.refact4j.eom.model.*;
-import org.refact4j.expr.Expression;
+import org.refact4j.eom.model.EntityDescriptor;
+import org.refact4j.eom.model.Field;
+import org.refact4j.eom.model.FieldNameComparator;
 import org.refact4j.xml.XML;
 import org.refact4j.xml.XMLizer;
 
@@ -136,10 +137,6 @@ public class EntityObjectImpl implements EntityObject {
             out.writeObject(field.getName());
             out.writeObject(this.get(field));
         }
-    }
-
-    public Key getId() {
-        return this.getKey();
     }
 
     private void firePropertyChange(Field field, Object oldValue, Object newValue) {

@@ -3,6 +3,7 @@ package org.refact4j.eom;
 import org.refact4j.eom.impl.EntityObjectImpl;
 import org.refact4j.eom.model.*;
 
+import java.util.Collection;
 import java.util.Date;
 
 public final class EntityObjectBuilder {
@@ -95,7 +96,7 @@ public final class EntityObjectBuilder {
         return this;
     }
 
-    public EntityObjectBuilder set(OneToManyRelationType field, EntityCollection values) {
+    public EntityObjectBuilder set(OneToManyRelationType field, Collection<EntityObject> values) {
         throw new UnsupportedOperationException();
     }
 

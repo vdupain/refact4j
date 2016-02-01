@@ -1,7 +1,6 @@
 package org.refact4j.eom.xml.writer;
 
 import org.refact4j.eom.ConverterHelper;
-import org.refact4j.eom.EntityCollection;
 import org.refact4j.eom.EntityObject;
 import org.refact4j.eom.impl.EntityListImpl;
 import org.refact4j.eom.model.EntityDescriptor;
@@ -12,10 +11,7 @@ import org.refact4j.xml.DatasetConverterHolder;
 import org.refact4j.xml.XmlElementHandler;
 import org.refact4j.xml.XmlWriter;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 
 public class EntityXmlNodeWriter implements XmlElementHandler {
     private final Iterator<EntityObject> iterator;
@@ -23,7 +19,7 @@ public class EntityXmlNodeWriter implements XmlElementHandler {
     private EntityObject entityObject;
 
     public EntityXmlNodeWriter(EntityDescriptorRepository entityDescriptorRepository, DatasetConverterHolder holder) {
-        EntityCollection entityObjects = new EntityListImpl();
+        Collection<EntityObject> entityObjects = new EntityListImpl();
         for (EntityDescriptor entityDescriptor : entityDescriptorRepository) {
             entityObjects.addAll(holder.getDataSet().getAll(entityDescriptor));
         }

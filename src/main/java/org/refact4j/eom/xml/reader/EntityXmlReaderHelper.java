@@ -1,7 +1,6 @@
 package org.refact4j.eom.xml.reader;
 
 import org.refact4j.collection.Set;
-import org.refact4j.eom.EntityCollection;
 import org.refact4j.eom.EntityObject;
 import org.refact4j.eom.EntityObjectBuilder;
 import org.refact4j.eom.String2ValueFieldConverter;
@@ -19,6 +18,7 @@ import org.refact4j.xml.impl.Dataset2XmlConverterImpl;
 
 import java.io.StringReader;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.List;
 
 public final class EntityXmlReaderHelper {
@@ -86,18 +86,18 @@ public final class EntityXmlReaderHelper {
     }
 
     private static EntityObject parse(XmlAttributes xmlAttrs, EntityDescriptor entityDescriptor, String[] excludedFields,
-                                      EntityCollection entityObjects) {
+                                      Collection<EntityObject> entityObjects) {
         EntityObjectBuilder builder = EntityObjectBuilder.init(entityDescriptor);
         parse(xmlAttrs, builder, excludedFields, entityObjects);
         return builder.getEntity();
     }
 
-    public static void parse(XmlAttributes xmlAttrs, EntityObjectBuilder builder, EntityCollection entityObjects) {
+    public static void parse(XmlAttributes xmlAttrs, EntityObjectBuilder builder, Collection<EntityObject> entityObjects) {
         parse(xmlAttrs, builder, EMPTY_EXCLUDED_FIELDS, entityObjects);
     }
 
     private static void parse(XmlAttributes xmlAttrs, final EntityObjectBuilder builder, String[] excludedFields,
-                              final EntityCollection entityObjects) {
+                              final Collection<EntityObject> entityObjects) {
         List<String> listExcludedFields = Arrays.asList(excludedFields);
         EntityDescriptor entityDescriptor = builder.getEntity().getEntityDescriptor();
         for (int i = 0; i < xmlAttrs.getLength(); i++) {
