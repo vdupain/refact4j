@@ -226,15 +226,15 @@ public class DefaultEntityDescriptorRepoFactory implements EntityDescriptorRepos
         }
     }
 
-    void setInitialEntityDescriptorRepository(EntityDescriptorRepository initialEntityDescriptorRepository) {
+    private void setInitialEntityDescriptorRepository(EntityDescriptorRepository initialEntityDescriptorRepository) {
         this.initialEntityDescriptorRepository = initialEntityDescriptorRepository;
     }
 
-    void setMetaModelEntityDescriptorRepository(EntityDescriptorRepository metaModelEntityDescriptorRepository) {
+    private void setMetaModelEntityDescriptorRepository(EntityDescriptorRepository metaModelEntityDescriptorRepository) {
         this.metaModelEntityDescriptorRepository = metaModelEntityDescriptorRepository;
     }
 
-    void setXmlMetaModel(String xmlMetaModel) {
+    private void setXmlMetaModel(String xmlMetaModel) {
         this.xmlMetaModel = xmlMetaModel;
     }
 

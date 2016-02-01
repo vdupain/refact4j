@@ -9,7 +9,7 @@ package org.refact4j.functor.arithmetic;
  *
  * @param <T>
  */
-public abstract class AbstractArithmeticBiFunction<T extends Number> implements ArithmeticBiFunction<T> {
+abstract class AbstractArithmeticBiFunction<T extends Number> implements ArithmeticBiFunction<T> {
 
     private final ArithmeticMathHolder<T> arithmeticMathHolder = new ArithmeticMathHolder<>();
 

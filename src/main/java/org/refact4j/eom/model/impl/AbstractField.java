@@ -89,7 +89,7 @@ public abstract class AbstractField implements Field {
 
     protected abstract Class<?> getDataTypeClass();
 
-    void checkClassValue(Object value) {
+    private void checkClassValue(Object value) {
         if (value == null) {
             return;
         }

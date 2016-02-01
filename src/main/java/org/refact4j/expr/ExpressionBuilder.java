@@ -89,7 +89,7 @@ public final class ExpressionBuilder {
         return this;
     }
 
-    ExpressionBuilder equalTo(ConstantFunction constantFunctor) {
+    private ExpressionBuilder equalTo(ConstantFunction constantFunctor) {
         this.expression.equalTo(constantFunctor);
         return this;
     }

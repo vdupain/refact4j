@@ -87,7 +87,7 @@ public class String2ValueFieldConverter extends DefaultFieldVisitor {
         return this.value;
     }
 
-    boolean isStringValueNull(String stringValue) {
+    private boolean isStringValueNull(String stringValue) {
         return (stringValue == null || "null".equalsIgnoreCase(stringValue));
     }
 

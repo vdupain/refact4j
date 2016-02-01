@@ -43,7 +43,7 @@ public final class EntityDescriptorBuilder {
         return this;
     }
 
-    EntityDescriptorBuilder setEntityStringifier(EntityStringifier entityObjectStringifierFunctor) {
+    private EntityDescriptorBuilder setEntityStringifier(EntityStringifier entityObjectStringifierFunctor) {
         this.entityDescriptor.setEntityStringifier(entityObjectStringifierFunctor);
         return this;
     }

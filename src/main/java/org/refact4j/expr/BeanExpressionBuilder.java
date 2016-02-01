@@ -81,7 +81,7 @@ public final class BeanExpressionBuilder {
         return this;
     }
 
-    BeanExpressionBuilder equalTo(ConstantFunction constantFunctor) {
+    private BeanExpressionBuilder equalTo(ConstantFunction constantFunctor) {
         this.expression.equalTo(constantFunctor);
         return this;
     }

@@ -6,5 +6,5 @@ package org.refact4j.functor.arithmetic;
  *
  * @param <T>
  */
-public interface ArithmeticFunction<T extends Number> extends java.util.function.Function<T, T> {
+interface ArithmeticFunction<T extends Number> extends java.util.function.Function<T, T> {
 }

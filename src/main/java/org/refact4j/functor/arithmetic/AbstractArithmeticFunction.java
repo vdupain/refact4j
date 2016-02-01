@@ -9,7 +9,7 @@ package org.refact4j.functor.arithmetic;
  *
  * @param <T>
  */
-public abstract class AbstractArithmeticFunction<T extends Number> implements ArithmeticFunction<T> {
+abstract class AbstractArithmeticFunction<T extends Number> implements ArithmeticFunction<T> {
 
     private final ArithmeticMathHolder<T> arithmeticMathHolder = new ArithmeticMathHolder<>();
 

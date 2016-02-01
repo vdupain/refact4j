@@ -7,7 +7,7 @@ package org.refact4j.evt;
  * occurred upon.
  */
 
-public interface Event<T> {
+interface Event<T> {
 
     /**
      * The object on which the Event initially occurred.

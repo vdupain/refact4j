@@ -4,10 +4,10 @@ import org.refact4j.evt.EventListener;
 import org.refact4j.evt.EventListenerList;
 
 
-public class ChangeSetSupport<T> {
+class ChangeSetSupport<T> {
 
-    EventListenerList<ChangeSetListener<T>, ChangeSetEvent<T>> listenerList = new EventListenerList<>();
-    ChangeSetEvent<T> event = null;
+    private final EventListenerList<ChangeSetListener<T>, ChangeSetEvent<T>> listenerList = new EventListenerList<>();
+    private ChangeSetEvent<T> event = null;
 
     public void registerListener(ChangeSetListener<T> listener) {
         listenerList.add(listener);

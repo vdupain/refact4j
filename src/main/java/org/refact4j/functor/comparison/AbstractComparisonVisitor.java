@@ -11,7 +11,7 @@ abstract class AbstractComparisonVisitor<T> implements ComparisonVisitor<T> {
         return result;
     }
 
-    public void setResult(Boolean result) {
+    void setResult(Boolean result) {
         this.result = result;
     }
 
@@ -19,7 +19,7 @@ abstract class AbstractComparisonVisitor<T> implements ComparisonVisitor<T> {
         return value;
     }
 
-    public void setValue(T value) {
+    void setValue(T value) {
         this.value = value;
     }
 

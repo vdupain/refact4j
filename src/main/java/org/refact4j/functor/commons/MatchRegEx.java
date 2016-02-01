@@ -5,7 +5,7 @@ import org.refact4j.visitor.Visitor;
 
 import java.util.regex.Pattern;
 
-public class MatchRegEx extends AbstractBinaryPredicate<String, String> {
+class MatchRegEx extends AbstractBinaryPredicate<String, String> {
 
     @Override
     public boolean test(String arg, String pattern) {

@@ -3,8 +3,8 @@ package org.refact4j.util;
 import java.lang.reflect.Method;
 
 public final class BeanHelper {
-    public static final String[] ACCESSOR_PREFIXES = new String[]{"is", "get", "has"};
-    public static final String[] MUTATOR_PREFIXES = new String[]{"set"};
+    private static final String[] ACCESSOR_PREFIXES = new String[]{"is", "get", "has"};
+    private static final String[] MUTATOR_PREFIXES = new String[]{"set"};
 
     private BeanHelper() {
     }

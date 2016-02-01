@@ -4,9 +4,9 @@ import org.refact4j.xml.ToXmlString;
 
 public class XMLImpl extends AbstractXMLImpl {
 
-    private String xml;
+    private final String xml;
 
-    public XMLImpl(String xml) {
+    private XMLImpl(String xml) {
         this.xml = xml;
     }
 

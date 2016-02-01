@@ -1,7 +1,7 @@
 package org.refact4j.collection;
 
 public class DefaultChangeSetListener<T> implements ChangeSetListener<T> {
-    private ChangeSet<T> changeSet;
+    private final ChangeSet<T> changeSet;
 
     public DefaultChangeSetListener(ChangeSet<T> changeSet) {
         this.changeSet = changeSet;

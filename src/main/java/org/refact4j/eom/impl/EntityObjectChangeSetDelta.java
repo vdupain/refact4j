@@ -5,10 +5,10 @@ import org.refact4j.eom.EntityObject;
 import org.refact4j.eom.model.Field;
 
 public class EntityObjectChangeSetDelta implements ChangeSetDelta<EntityObject> {
-    private Field field;
-    private Object oldValue;
-    private Object newValue;
-    private EntityObject source;
+    private final Field field;
+    private final Object oldValue;
+    private final Object newValue;
+    private final EntityObject source;
 
     public EntityObjectChangeSetDelta(EntityObject source, Field field, Object oldValue, Object newValue) {
         this.source = source;

@@ -6,7 +6,7 @@ import org.refact4j.eom.model.EntityDescriptorRepository;
 import org.refact4j.eom.model.EntityDescriptorRepositoryAware;
 
 public abstract class AbstractBeanConverter<T> implements EntityFunctor<T>, EntityDescriptorRepositoryAware {
-    protected EntityDescriptorRepository entityDescriptorRepository;
+    private EntityDescriptorRepository entityDescriptorRepository;
 
     public void setEntityDescriptorRepository(EntityDescriptorRepository entityDescriptorRepository) {
         this.entityDescriptorRepository = entityDescriptorRepository;

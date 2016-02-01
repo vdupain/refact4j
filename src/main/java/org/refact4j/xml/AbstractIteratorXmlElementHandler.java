@@ -7,7 +7,7 @@ public abstract class AbstractIteratorXmlElementHandler implements XmlElementHan
     private final String tagName;
     private final Iterator iterator;
 
-    public AbstractIteratorXmlElementHandler(String tagName, Iterable iterable) {
+    protected AbstractIteratorXmlElementHandler(String tagName, Iterable iterable) {
         this.tagName = tagName;
         this.iterator = iterable.iterator();
     }

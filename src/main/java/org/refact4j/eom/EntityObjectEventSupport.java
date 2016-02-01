@@ -7,9 +7,9 @@ import org.refact4j.evt.EventListenerList;
 
 public class EntityObjectEventSupport {
 
-    EventListenerList<EntityObjectListener, EntityObjectEvent> listenerList = new EventListenerList<>();
-    EntityObjectEvent event = null;
-    private EntityObject entityObject;
+    private final EventListenerList<EntityObjectListener, EntityObjectEvent> listenerList = new EventListenerList<>();
+    private EntityObjectEvent event = null;
+    private final EntityObject entityObject;
 
     public EntityObjectEventSupport(EntityObject entityObject) {
         this.entityObject = entityObject;

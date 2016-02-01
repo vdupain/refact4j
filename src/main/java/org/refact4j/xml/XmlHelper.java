@@ -13,7 +13,7 @@ import java.io.StringWriter;
 import java.io.Writer;
 
 public abstract class XmlHelper {
-    private static OutputFormat DEFAULT_FORMAT = new OutputFormat();
+    private static final OutputFormat DEFAULT_FORMAT = new OutputFormat();
 
     static {
         DEFAULT_FORMAT.setLineWidth(80);

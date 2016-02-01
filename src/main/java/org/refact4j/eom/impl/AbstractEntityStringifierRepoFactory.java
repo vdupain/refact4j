@@ -40,14 +40,14 @@ public abstract class AbstractEntityStringifierRepoFactory implements EntityStri
         return this.createEntityStringifierRepository(null);
     }
 
-    void init(EntityStringifierRepo initalEntityStringifierRepository) {
+    private void init(EntityStringifierRepo initalEntityStringifierRepository) {
         entityObjectSet = EntitySetBuilder.init().addAll(
                 EntityXmlReaderHelper.unmarshal(metaModelRepository, xmlStringifier)).getEntitySet();
         stringifierRepositoryBuilder = EntityStringifierRepoBuilder.init(initalEntityStringifierRepository);
         stringifierRepositoryBuilder.setEntityDescriptorRepository(this.entityDescriptorRepository);
     }
 
-    EntityStringifierRepo createStringifiers() {
+    private EntityStringifierRepo createStringifiers() {
         Collection<EntityObject> stringifiers = entityObjectSet.getAll(EntityStringifierDesc.INSTANCE);
         for (final EntityObject stringifier : stringifiers) {
             final Key keyEntityDescriptor = stringifier.get(EntityStringifierDesc.OBJECT_TYPE);

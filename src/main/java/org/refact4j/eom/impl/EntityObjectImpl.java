@@ -108,7 +108,7 @@ public class EntityObjectImpl implements EntityObject {
         this.entityDescriptor = entityDescriptor;
     }
 
-    void checkField(Field field) {
+    private void checkField(Field field) {
         if (!this.entityDescriptor.containsField(field)) {
             throw new RuntimeException("Object type '" + this.entityDescriptor.getName() + "' does not contain field '"
                     + field.getEntityDescriptor().getName() + "." + field.getName() + "'");

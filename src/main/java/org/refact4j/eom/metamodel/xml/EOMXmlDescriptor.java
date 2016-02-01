@@ -9,6 +9,7 @@ import org.refact4j.xml.reader.DefaultXmlElementReader;
 
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Collections;
 
 public class EOMXmlDescriptor implements XmlDescriptor {
 
@@ -30,7 +31,7 @@ public class EOMXmlDescriptor implements XmlDescriptor {
             }
 
         };
-        return Arrays.asList(factory);
+        return Collections.singletonList(factory);
     }
 
 

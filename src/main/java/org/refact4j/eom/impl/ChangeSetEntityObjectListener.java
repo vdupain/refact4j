@@ -7,7 +7,7 @@ import org.refact4j.eom.EntityObjectEvent;
 import org.refact4j.eom.EntityObjectListener;
 
 public class ChangeSetEntityObjectListener implements EntityObjectListener {
-    private ChangeSetImpl<EntityObject> changeSet;
+    private final ChangeSetImpl<EntityObject> changeSet;
 
     public ChangeSetEntityObjectListener(ChangeSetImpl<EntityObject> changeSet) {
         this.changeSet = changeSet;

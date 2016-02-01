@@ -30,7 +30,7 @@ public class EntityXmlNodeWriter implements XmlElementHandler {
         iterator = entityObjects.iterator();
     }
 
-    public String getNextTagName() {
+    private String getNextTagName() {
         entityObject = iterator.next();
         return entityObject.getEntityDescriptor().getName();
     }

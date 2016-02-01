@@ -34,7 +34,7 @@ public class Dataset2XmlConverterImpl implements DataSet2XmlConverter {
         unmarshal(new StringReader(xml), dataset);
     }
 
-    void validate(Reader reader) {
+    private void validate(Reader reader) {
         try {
             org.xml.sax.XMLReader xmlReader = createXMLReader();
             xmlReader.setErrorHandler(new DefaultSaxErrorHandler());
@@ -48,15 +48,11 @@ public class Dataset2XmlConverterImpl implements DataSet2XmlConverter {
         try {
             org.xml.sax.XMLReader xmlReader = createXMLReader();
             final DatasetXmlElementReader datasetXmlNodeReader = new DatasetXmlElementReader(dataset, this);
-            XmlParserHelper.parse(xmlReader, new InputSource(reader), new XmlElement() {
-
-                public XmlElement createChildXmlElement(String localName, String name, XmlAttributes attributes) {
-                    if (localName.equals(DATASET_TAGNAME)) {
-                        return datasetXmlNodeReader;
-                    }
-                    return null;
+            XmlParserHelper.parse(xmlReader, new InputSource(reader), (localName, name, attributes) -> {
+                if (localName.equals(DATASET_TAGNAME)) {
+                    return datasetXmlNodeReader;
                 }
-
+                return null;
             });
         } catch (Exception e) {
             throw new RuntimeException(e);

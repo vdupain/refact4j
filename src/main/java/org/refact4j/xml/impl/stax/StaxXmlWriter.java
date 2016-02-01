@@ -7,7 +7,7 @@ import javax.xml.stream.XMLStreamWriter;
 
 
 public class StaxXmlWriter implements XmlWriter {
-    private XMLStreamWriter xmlStreamWriter;
+    private final XMLStreamWriter xmlStreamWriter;
 
     public StaxXmlWriter(XMLStreamWriter xmlStreamWriter) {
         this.xmlStreamWriter = xmlStreamWriter;

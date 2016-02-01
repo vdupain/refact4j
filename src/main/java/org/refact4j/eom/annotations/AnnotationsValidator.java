@@ -10,7 +10,7 @@ class AnnotationsValidator {
         validate(clazz);
     }
 
-    void validate(Class<?> clazz) {
+    private void validate(Class<?> clazz) {
         for (Method method : clazz.getMethods()) {
             if (annotationsHelper.hasEntityFieldAnnotation(method)) {
                 validateMethod(method);

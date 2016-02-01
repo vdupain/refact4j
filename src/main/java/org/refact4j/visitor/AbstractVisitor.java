@@ -10,7 +10,7 @@ import java.lang.reflect.Method;
  */
 public abstract class AbstractVisitor implements Visitor {
 
-    void defaultVisit(Object o) throws Exception {
+    private void defaultVisit(Object o) throws Exception {
     }
 
     private Method getMethod(String visitMethodName, Class<?> clazz) {
@@ -44,7 +44,7 @@ public abstract class AbstractVisitor implements Visitor {
     public void visit(Visitable visitable) {
     }
 
-    void visitImpl(String visitMethodName, Object object) {
+    private void visitImpl(String visitMethodName, Object object) {
         Method method;
         try {
             method = getMethod(visitMethodName, object.getClass());

@@ -6,5 +6,5 @@ package org.refact4j.functor.arithmetic;
  *
  * @param <T>
  */
-public interface ArithmeticBiFunction<T extends Number> extends java.util.function.BiFunction<T, T, T> {
+interface ArithmeticBiFunction<T extends Number> extends java.util.function.BiFunction<T, T, T> {
 }

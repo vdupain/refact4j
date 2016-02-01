@@ -6,8 +6,8 @@ import java.util.Iterator;
 public class CollectionDecorator<T> implements Collection<T> {
 
     private final Collection<T> collection;
-    private ChangeSetImpl<T> changeSet;
-    private ChangeSetSupport<T> changeSetSupport = new ChangeSetSupport<>();
+    private final ChangeSetImpl<T> changeSet;
+    private final ChangeSetSupport<T> changeSetSupport = new ChangeSetSupport<>();
 
 
     public CollectionDecorator(Collection<T> collection) {

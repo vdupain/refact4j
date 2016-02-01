@@ -5,9 +5,9 @@ import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 
-public class BeanPropertyChangeSupportProxy implements InvocationHandler {
-    private PropertyChangeSupport propertyChangeSupport;
-    private Object bean;
+class BeanPropertyChangeSupportProxy implements InvocationHandler {
+    private final PropertyChangeSupport propertyChangeSupport;
+    private final Object bean;
 
     private BeanPropertyChangeSupportProxy(Object bean, PropertyChangeSupport propertyChangeSupport) {
         this.bean = bean;

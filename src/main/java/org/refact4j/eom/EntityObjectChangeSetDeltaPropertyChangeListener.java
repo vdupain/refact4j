@@ -8,7 +8,7 @@ import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 
 public class EntityObjectChangeSetDeltaPropertyChangeListener implements PropertyChangeListener {
-    private EntityObjectEventSupport entityObjectEventSupport;
+    private final EntityObjectEventSupport entityObjectEventSupport;
 
 
     public EntityObjectChangeSetDeltaPropertyChangeListener(EntityObjectEventSupport entityObjectEventSupport) {

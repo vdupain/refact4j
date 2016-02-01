@@ -2,7 +2,7 @@ package org.refact4j.collection;
 
 import org.refact4j.evt.EventListener;
 
-public interface ChangeSetListener<T> extends EventListener<ChangeSetEvent<T>> {
+interface ChangeSetListener<T> extends EventListener<ChangeSetEvent<T>> {
 
     void notifyChangeSetUpdate(ChangeSetEvent<T> event, T t, ChangeSetDelta changeSetDelta);
 

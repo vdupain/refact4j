@@ -7,11 +7,11 @@ import java.util.Map;
 
 public class ChangeSetImpl<T> implements ChangeSet<T> {
 
-    private java.util.List<T> created = new ArrayList<>();
-    private java.util.List<T> deleted = new ArrayList<>();
-    private ChangeSetSupport changeSetSupport;
-    private ChangeSetListener listener = new DefaultChangeSetListener<>(this);
-    private Map<T, List<ChangeSetDelta<T>>> deltas = new HashMap<>();
+    private final java.util.List<T> created = new ArrayList<>();
+    private final java.util.List<T> deleted = new ArrayList<>();
+    private final ChangeSetSupport changeSetSupport;
+    private final ChangeSetListener listener = new DefaultChangeSetListener<>(this);
+    private final Map<T, List<ChangeSetDelta<T>>> deltas = new HashMap<>();
     private boolean isChangesRecording;
 
     public ChangeSetImpl(ChangeSetSupport changeSetSupport) {
