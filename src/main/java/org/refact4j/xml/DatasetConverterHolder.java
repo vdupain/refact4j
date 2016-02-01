@@ -6,6 +6,4 @@ public interface DatasetConverterHolder extends DatasetHolder {
 
     DataSet2XmlConverter getDataset2XmlConverter();
 
-    Finder getFinder();
-
 }

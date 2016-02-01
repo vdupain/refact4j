@@ -11,19 +11,17 @@ import org.refact4j.xml.reader.DefaultXmlElementReader;
 public class EntitiesXmlElementReader extends DefaultXmlElementReader {
     private final EntityDescriptorRepository entityDescriptorRepository;
 
-    private final EntityFinder finder;
 
     public EntitiesXmlElementReader(EntityDescriptorRepository entityDescriptorRepository,
-                                    EntityFinder entityObjectFinder, DatasetConverterHolder holder) {
+                                    DatasetConverterHolder holder) {
         super(holder);
         this.entityDescriptorRepository = entityDescriptorRepository;
-        this.finder = entityObjectFinder;
     }
 
     public XmlElement createChildXmlElement(String localName, String qName, XmlAttributes attributes) {
         for (EntityDescriptor entityDescriptor : entityDescriptorRepository) {
             if (localName.equals(entityDescriptor.getName())) {
-                return new EntityXmlElementReader(entityDescriptor, entityDescriptorRepository, finder, attributes, this,
+                return new EntityXmlElementReader(entityDescriptor, entityDescriptorRepository, attributes, this,
                         null);
             }
         }

@@ -29,14 +29,10 @@ public class Dataset2XmlConverterImpl implements DataSet2XmlConverter {
     private final List<XmlDescriptor> xmlDescriptors = new ArrayList<>();
 
     public void unmarshal(String xml, Set dataset) {
-        unmarshal(xml, dataset, null);
-    }
-
-    public void unmarshal(String xml, Set dataset, Finder finder) {
         if (xml.contains(XMLSCHEMA_INSTANCE)) {
             validate(new StringReader(xml));
         }
-        unmarshal(new StringReader(xml), dataset, finder);
+        unmarshal(new StringReader(xml), dataset);
     }
 
     void validate(Reader reader) {
@@ -50,13 +46,9 @@ public class Dataset2XmlConverterImpl implements DataSet2XmlConverter {
     }
 
     public void unmarshal(Reader reader, Set dataset) {
-        unmarshal(reader, dataset, null);
-    }
-
-    void unmarshal(Reader reader, Set dataset, Finder finder) {
         try {
             org.xml.sax.XMLReader xmlReader = createXMLReader();
-            final DatasetXmlElementReader datasetXmlNodeReader = new DatasetXmlElementReader(dataset, finder, this);
+            final DatasetXmlElementReader datasetXmlNodeReader = new DatasetXmlElementReader(dataset, this);
             XmlParserHelper.parse(xmlReader, new InputSource(reader), new XmlElement() {
 
                 public XmlElement createChildXmlElement(String localName, String name, XmlAttributes attributes) {

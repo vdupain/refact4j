@@ -29,15 +29,10 @@ public final class EntityXmlReaderHelper {
     }
 
     public static org.refact4j.eom.EntityList unmarshal(final EntityDescriptorRepository repository, String xmlData) {
-        return unmarshal(repository, xmlData, null);
-    }
-
-    private static org.refact4j.eom.EntityList unmarshal(final EntityDescriptorRepository repository, String xmlData,
-                                                         EntityFinder entityObjectFinder) {
         Dataset2XmlConverterImpl dataset2XmlConverter = new Dataset2XmlConverterImpl();
         Set dataset = new EntityDataSet();
         dataset2XmlConverter.register(new EntityXmlDescriptor(repository));
-        dataset2XmlConverter.unmarshal(xmlData, dataset, entityObjectFinder);
+        dataset2XmlConverter.unmarshal(xmlData, dataset);
         return new EntityList(dataset);
     }
 
@@ -94,8 +89,7 @@ public final class EntityXmlReaderHelper {
         return builder.getEntity();
     }
 
-    public static void parse(XmlAttributes xmlAttrs, EntityObjectBuilder builder, EntityCollection entityObjects,
-                             EntityFinder entityObjectFinder) {
+    public static void parse(XmlAttributes xmlAttrs, EntityObjectBuilder builder, EntityCollection entityObjects) {
         parse(xmlAttrs, builder, EMPTY_EXCLUDED_FIELDS, entityObjects);
     }
 

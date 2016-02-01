@@ -25,10 +25,6 @@ public abstract class AbstractXmlElementWriter extends AbstractIteratorXmlElemen
         return this.holder.getDataset2XmlConverter();
     }
 
-    public Finder getFinder() {
-        return this.holder.getFinder();
-    }
-
     public DatasetConverterHolder getDatasetConverterHolder() {
         return this.holder;
     }

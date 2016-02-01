@@ -13,8 +13,8 @@ import org.refact4j.xml.impl.Dataset2XmlConverterImpl;
 
 public class DatasetXmlElementReader extends DefaultXmlElementReader {
 
-    public DatasetXmlElementReader(Set dataset, Finder finder, DataSet2XmlConverter dataset2XmlConverter) {
-        super(dataset, finder, dataset2XmlConverter);
+    public DatasetXmlElementReader(Set dataset, DataSet2XmlConverter dataset2XmlConverter) {
+        super(dataset, dataset2XmlConverter);
     }
 
     private DatasetXmlElementReader(DatasetConverterHolder datasetConverterHolder) {
@@ -41,8 +41,7 @@ public class DatasetXmlElementReader extends DefaultXmlElementReader {
                     .getEntityDescriptorRepository();
             try {
                 EntityDescriptor entityDescriptor = entityDescriptorRepository.getEntityDescriptor(localName);
-                return new EntityXmlElementReader(entityDescriptor, entityDescriptorRepository, (EntityFinder) this
-                        .getFinder(), attributes, this, null);
+                return new EntityXmlElementReader(entityDescriptor, entityDescriptorRepository, attributes, this, null);
             } catch (Exception ignored) {
             }
         }

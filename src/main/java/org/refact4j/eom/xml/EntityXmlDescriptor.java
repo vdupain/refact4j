@@ -33,7 +33,7 @@ public class EntityXmlDescriptor implements XmlDescriptor {
 
     private class EntityXmlElementFactory implements XmlElementFactory, EntityDescriptorRepositoryHolder {
         public XmlElement createXmlElement(DefaultXmlElementReader xmlElement) {
-            return new EntitiesXmlElementReader(entityDescriptorRepository, (EntityFinder) xmlElement.getFinder(),
+            return new EntitiesXmlElementReader(entityDescriptorRepository,
                     xmlElement);
         }
 

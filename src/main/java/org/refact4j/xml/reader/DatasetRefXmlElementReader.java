@@ -15,8 +15,8 @@ import java.net.URL;
 
 class DatasetRefXmlElementReader extends DefaultXmlElementReader {
 
-    public DatasetRefXmlElementReader(Set dataset, Finder finder, Dataset2XmlConverterImpl dataset2XmlConverter) {
-        super(dataset, finder, dataset2XmlConverter);
+    public DatasetRefXmlElementReader(Set dataset, Dataset2XmlConverterImpl dataset2XmlConverter) {
+        super(dataset, dataset2XmlConverter);
     }
 
     public DatasetRefXmlElementReader(XmlAttributes xmlAttrs, DatasetConverterHolder datasetConverterHolder) {

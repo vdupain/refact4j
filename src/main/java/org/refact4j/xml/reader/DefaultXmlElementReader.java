@@ -11,12 +11,12 @@ import org.refact4j.xml.impl.DatasetConverterHolderImpl;
 public class DefaultXmlElementReader implements XmlElement, DatasetConverterHolder {
     private final DatasetConverterHolder datasetConverterHolder;
 
-    DefaultXmlElementReader(Set dataset, Finder finder, DataSet2XmlConverter dataset2XmlConverter) {
-        this.datasetConverterHolder = new DatasetConverterHolderImpl(dataset, finder, dataset2XmlConverter);
+    DefaultXmlElementReader(Set dataset, DataSet2XmlConverter dataset2XmlConverter) {
+        this.datasetConverterHolder = new DatasetConverterHolderImpl(dataset, dataset2XmlConverter);
     }
 
     public DefaultXmlElementReader(DatasetConverterHolder datasetConverterHolder) {
-        this(datasetConverterHolder.getDataSet(), datasetConverterHolder.getFinder(), datasetConverterHolder
+        this(datasetConverterHolder.getDataSet(), datasetConverterHolder
                 .getDataset2XmlConverter());
     }
 
@@ -30,10 +30,6 @@ public class DefaultXmlElementReader implements XmlElement, DatasetConverterHold
 
     public DataSet2XmlConverter getDataset2XmlConverter() {
         return this.datasetConverterHolder.getDataset2XmlConverter();
-    }
-
-    public Finder getFinder() {
-        return this.datasetConverterHolder.getFinder();
     }
 
     public XmlElement createChildXmlElement(String localName, String qName, XmlAttributes attributes) {

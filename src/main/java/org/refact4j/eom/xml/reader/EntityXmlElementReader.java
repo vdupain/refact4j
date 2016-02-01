@@ -21,16 +21,13 @@ public class EntityXmlElementReader extends DefaultXmlElementReader {
 
     private final EntityDescriptorRepository entityDescriptorRepository;
 
-    private final EntityFinder finder;
-
     public EntityXmlElementReader(EntityDescriptor entityDescriptor,
-                                  EntityDescriptorRepository entityDescriptorRepository, EntityFinder finder, XmlAttributes xmlAttrs,
+                                  EntityDescriptorRepository entityDescriptorRepository, XmlAttributes xmlAttrs,
                                   DatasetConverterHolder holder, final EntityObject parentEntity) {
         super(holder);
         this.entityDescriptorRepository = entityDescriptorRepository;
-        this.finder = finder;
         final EntityObjectBuilder builder = EntityObjectBuilder.init(entityDescriptor);
-        EntityXmlReaderHelper.parse(xmlAttrs, builder, new EntityList(holder.getDataSet()), finder);
+        EntityXmlReaderHelper.parse(xmlAttrs, builder, new EntityList(holder.getDataSet()));
         if (parentEntity != null) {
             Collection<RelationField> fields = entityDescriptor.getRelationFields();
             for (RelationField relationField : fields) {
@@ -52,7 +49,7 @@ public class EntityXmlElementReader extends DefaultXmlElementReader {
     public XmlElement createChildXmlElement(String localName, String qName, XmlAttributes attributes) {
         for (EntityDescriptor entityDescriptor : entityDescriptorRepository) {
             if (localName.equals(entityDescriptor.getName())) {
-                return new EntityXmlElementReader(entityDescriptor, entityDescriptorRepository, finder, attributes,
+                return new EntityXmlElementReader(entityDescriptor, entityDescriptorRepository, attributes,
                         this, entityObject);
             }
         }
