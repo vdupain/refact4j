@@ -2,8 +2,8 @@ package org.refact4j.util;
 
 import org.refact4j.eom.EntityFieldComparator;
 import org.refact4j.eom.EntityFieldComparator.EntityFieldComparatorVisitor;
-import org.refact4j.eom.GetEntityFieldFunctor;
-import org.refact4j.eom.GetEntityFieldFunctor.GetEntityFieldFunctorVisitor;
+import org.refact4j.eom.GetEntityFieldFunction;
+import org.refact4j.eom.GetEntityFieldFunction.GetEntityFieldFunctorVisitor;
 import org.refact4j.eom.model.Field;
 import org.refact4j.eom.model.impl.AbstractFieldStringifierFunctor;
 import org.refact4j.expr.Expression;
@@ -84,7 +84,7 @@ public class PrettyPrinter implements ExpressionVisitor, BinaryComposeVisitor, U
         buf.append(')');
     }
 
-    public void visitGetEntityFieldFunctor(GetEntityFieldFunctor getEntityFieldFunctor) {
+    public void visitGetEntityFieldFunctor(GetEntityFieldFunction getEntityFieldFunctor) {
         buf.append(this.abstractFieldStringifierFunctor.stringify(getEntityFieldFunctor.getField()));
     }
 

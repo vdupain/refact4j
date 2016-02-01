@@ -6,7 +6,7 @@ import org.refact4j.eom.EntityObject;
 import org.refact4j.eom.EntityObjectBuilder;
 import org.refact4j.eom.EntityUtils;
 import org.refact4j.eom.XmlEntityConverter;
-import org.refact4j.eom.impl.EntityList;
+import org.refact4j.eom.impl.EntityListImpl;
 import org.refact4j.eom.model.Field;
 import org.refact4j.eom.xml.reader.EntityXmlReaderHelper;
 import org.refact4j.eom.xml.writer.EntityXmlWriterHelper;
@@ -115,7 +115,7 @@ public class EntityXmlTest {
     }
 
     public void testEntityXmlReader(String rootTag) {
-        org.refact4j.eom.EntityList expectedEntityList = new EntityList();
+        org.refact4j.eom.EntityList expectedEntityList = new EntityListImpl();
         expectedEntityList.add(entity1);
         expectedEntityList.add(entity2);
         String expectedXmlData;

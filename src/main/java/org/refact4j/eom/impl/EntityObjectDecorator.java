@@ -61,6 +61,10 @@ public class EntityObjectDecorator implements EntityObject {
         return this.entityObject.get(fieldName);
     }
 
+    public Object getFieldValue(Field field) {
+        return this.entityObject.getFieldValue(field);
+    }
+
     public String get(StringField stringField) {
         return this.entityObject.get(stringField);
     }

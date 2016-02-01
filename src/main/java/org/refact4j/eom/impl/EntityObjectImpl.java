@@ -41,94 +41,27 @@ public class EntityObjectImpl implements EntityObject {
         this.changeSupport.addPropertyChangeListener(new EntityObjectChangeSetDeltaPropertyChangeListener(entityObjectEventSupport));
     }
 
-    public Key getKey() {
-        KeyBuilder keyBuilder = KeyBuilder.init(this.entityDescriptor);
-        for (Field field : this.entityDescriptor.getKeyFields()) {
-            keyBuilder.set(field, get(field));
-        }
-        return keyBuilder.getKey();
-    }
-
     public Iterator<Field> iterator() {
         return Collections.unmodifiableMap(this.values).keySet().iterator();
     }
 
-    private Object getFieldValue(Field field) {
+    @Override
+    public Object getFieldValue(Field field) {
         return this.values.get(field);
     }
 
-    public Object get(Field field) {
-        return this.getFieldValue(field);
-    }
-
-    public Object get(String fieldName) {
-        Field field = this.getEntityDescriptor().getField(fieldName);
-        return this.getFieldValue(field);
-    }
-
-    public Integer get(IntegerField integerField) {
-        return (Integer) this.getFieldValue(integerField);
-    }
-
-    public Double get(DoubleField doubleField) {
-        return (Double) this.getFieldValue(doubleField);
-    }
-
-    public String get(StringField stringField) {
-        return (String) this.getFieldValue(stringField);
-    }
-
-    public Date get(DateField dateField) {
-        return (Date) this.getFieldValue(dateField);
-    }
-
-    public Boolean get(BooleanField booleanField) {
-        return (Boolean) this.getFieldValue(booleanField);
-    }
-
-    public Key get(ManyToOneRelationField manyToOneRelationField) {
-        return (Key) this.getFieldValue(manyToOneRelationField);
-    }
-
-    public Key get(OneToOneRelationField oneToOneRelationField) {
-        return (Key) this.getFieldValue(oneToOneRelationField);
-    }
-
-    public void setFieldValue(Field field, Object value) {
-        checkField(field);
-        Object oldValue = this.values.put(field, value);
-        this.firePropertyChange(field, oldValue, value);
-    }
 
     public EntityDescriptor getEntityDescriptor() {
         return this.entityDescriptor;
     }
 
-    public void setEntityDescriptor(EntityDescriptor entityDescriptor) {
-        this.entityDescriptor = entityDescriptor;
-    }
-
     private void checkField(Field field) {
-        if (!this.entityDescriptor.containsField(field)) {
+        if (!this.getEntityDescriptor().containsField(field)) {
             throw new RuntimeException("Object type '" + this.entityDescriptor.getName() + "' does not contain field '"
                     + field.getEntityDescriptor().getName() + "." + field.getName() + "'");
         }
     }
 
-    public void checkConstraint() {
-        Expression constraint = this.getEntityDescriptor().getConstraintExpression();
-        if (constraint != null && !constraint.apply(this)) {
-            throw new RuntimeException("Constraint " + constraint + " failed: " + constraint.getPropertyName() + "="
-                    + this.get(constraint.getPropertyName()));
-        }
-    }
-
-    public void checkValues() {
-        Collection<Field> fields = getEntityDescriptor().getFields();
-        for (Field field : fields) {
-            field.checkValue(get(field));
-        }
-    }
 
     public int hashCode() {
         final int prime = 31;
@@ -175,63 +108,11 @@ public class EntityObjectImpl implements EntityObject {
         visitor.visitEntityObject(this);
     }
 
-    public EntityObject set(StringField stringField, String stringValue) {
-        this.setFieldValue(stringField, stringValue);
-        return this;
-    }
-
-    public EntityObject set(IntegerField integerField, Integer integerValue) {
-        this.setFieldValue(integerField, integerValue);
-        return this;
-    }
-
-    public EntityObject set(DoubleField doubleField, Double doubleValue) {
-        this.setFieldValue(doubleField, doubleValue);
-        return this;
-    }
-
-    public EntityObject set(DateField dateField, Date dateValue) {
-        this.setFieldValue(dateField, dateValue);
-        return this;
-    }
-
-    public EntityObject set(BooleanField booleanField, Boolean booleanValue) {
-        this.setFieldValue(booleanField, booleanValue);
-        return this;
-    }
-
-    public EntityObject set(ManyToOneRelationField manyToOneRelationField, Key key) {
-        this.setFieldValue(manyToOneRelationField, key);
-        return this;
-    }
-
-    public EntityObject set(OneToOneRelationField oneToOneRelationField, Key key) {
-        this.setFieldValue(oneToOneRelationField, key);
-        return this;
-    }
-
-    public EntityObject set(ManyToOneRelationField manyToOneRelationField, EntityObject entityObject) {
-        this.setFieldValue(manyToOneRelationField, entityObject != null ? entityObject.getKey() : null);
-        return this;
-    }
-
-    public EntityObject set(OneToOneRelationField oneToOneRelationField, EntityObject entityObject) {
-        this.setFieldValue(oneToOneRelationField, entityObject != null ? entityObject.getKey() : null);
-        return this;
-    }
-
-    public EntityObject set(String fieldName, Object value) {
-        Field field = this.getEntityDescriptor().getField(fieldName);
-        if (field == null) {
-            throw new RuntimeException("Entity '" + this.getEntityDescriptor().getName() + "' does not contain field '"
-                    + fieldName + "'");
-        }
-        this.setFieldValue(field, value);
-        return this;
-    }
-
     public EntityObject set(Field field, Object value) {
-        this.setFieldValue(field, value);
+        checkField(field);
+        Object oldValue = this.values.put(field, value);
+        this.firePropertyChange(field, oldValue, value);
+
         return this;
     }
 

@@ -13,7 +13,7 @@ public class DataTypeEntity extends EntityObjectImpl implements DataType {
     DataTypeEntity(StringField field, String name, EntityDescriptorBuilder builder) {
         super(builder.getEntityDescriptor());
         this.field = field;
-        setFieldValue(field, name);
+        set(field, name);
     }
 
     public String getName() {

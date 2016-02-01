@@ -7,7 +7,7 @@ import org.refact4j.eom.*;
 import org.refact4j.eom.impl.DefaultEntityStringifierRepoVisitor;
 import org.refact4j.eom.impl.DefaultMetaModelVisitor;
 import org.refact4j.eom.impl.EntityDataSet;
-import org.refact4j.eom.impl.EntityList;
+import org.refact4j.eom.impl.EntityListImpl;
 import org.refact4j.eom.metamodel.DefaultEntityDescriptorRepoFactory;
 import org.refact4j.eom.metamodel.EOMMetaModelRepository;
 import org.refact4j.eom.metamodel.EntityStringifierXmlDescriptor;
@@ -165,7 +165,7 @@ public class MetaModelTest {
         Dataset2XmlConverterImpl converter = new Dataset2XmlConverterImpl();
         converter.register(new EOMXmlDescriptor(EOMMetaModelRepository.get()));
         converter.unmarshal(visitor.toXmlString(), actualDataset);
-        EntityTestUtils.assertEquals(new EntityList(initialDataset), new EntityList(actualDataset));
+        EntityTestUtils.assertEquals(new EntityListImpl(initialDataset), new EntityListImpl(actualDataset));
     }
 
     @Test
@@ -178,7 +178,7 @@ public class MetaModelTest {
         Dataset2XmlConverterImpl converter = new Dataset2XmlConverterImpl();
         converter.register(new EntityStringifierXmlDescriptor(this.repository));
         converter.unmarshal(visitor.toXmlString(), actualDataset);
-        EntityTestUtils.assertEquals(new EntityList(initialDataset), new EntityList(actualDataset));
+        EntityTestUtils.assertEquals(new EntityListImpl(initialDataset), new EntityListImpl(actualDataset));
     }
 
 }

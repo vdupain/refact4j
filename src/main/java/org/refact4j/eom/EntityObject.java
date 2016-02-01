@@ -3,6 +3,7 @@ package org.refact4j.eom;
 import org.refact4j.core.Identifiable;
 import org.refact4j.eom.model.*;
 import org.refact4j.evt.Listenable;
+import org.refact4j.expr.Expression;
 import org.refact4j.xml.ToXML;
 import org.refact4j.xml.ToXmlString;
 
@@ -33,7 +34,11 @@ public interface EntityObject extends Cloneable, ToXML, ToXmlString, Serializabl
      *
      * @return The EntityObject's key.
      */
-    Key getKey();
+    default Key getKey() {
+        KeyBuilder keyBuilder = KeyBuilder.init(this.getEntityDescriptor());
+        this.getEntityDescriptor().getKeyFields().stream().forEach(field->keyBuilder.set(field, get(field)));
+        return keyBuilder.getKey();
+    }
 
     /**
      * Retrieves the value of the field named fieldName.
@@ -41,7 +46,19 @@ public interface EntityObject extends Cloneable, ToXML, ToXmlString, Serializabl
      * @param fieldName Identifies the field to retrieve.
      * @return The value of the field identified by fieldName.
      */
-    Object get(String fieldName);
+    default Object get(String fieldName) {
+        Field field = this.getEntityDescriptor().getField(fieldName);
+        return this.getFieldValue(field);
+    }
+
+
+    /**
+     * Retrieves the value of the field.
+     *
+     * @param field Identifies the field to retrieve.
+     * @return The value of the field identified by fieldName.
+     */
+    Object getFieldValue(Field field);
 
     /**
      * Retrieves the value of the field.
@@ -49,7 +66,10 @@ public interface EntityObject extends Cloneable, ToXML, ToXmlString, Serializabl
      * @param field Identifies the field to retrieve.
      * @return The value of the field identified by the field.
      */
-    Object get(Field field);
+    default Object get(Field field) {
+        return this.getFieldValue(field);
+    }
+
 
     /**
      * Retrieves the integer value of the typed integer field.
@@ -57,7 +77,10 @@ public interface EntityObject extends Cloneable, ToXML, ToXmlString, Serializabl
      * @param integerField Identifies the integer field to retrieve.
      * @return The integer value of the field identified by the field.
      */
-    Integer get(IntegerField integerField);
+    default Integer get(IntegerField integerField) {
+        return (Integer) this.getFieldValue(integerField);
+    }
+
 
     /**
      * Retrieves the double value of the typed double field.
@@ -65,7 +88,9 @@ public interface EntityObject extends Cloneable, ToXML, ToXmlString, Serializabl
      * @param doubleField Identifies the double field to retrieve.
      * @return The double value of the field identified by the field.
      */
-    Double get(DoubleField doubleField);
+    default Double get(DoubleField doubleField) {
+        return (Double) this.getFieldValue(doubleField);
+    }
 
     /**
      * Retrieves the string value of the typed string field.
@@ -73,7 +98,10 @@ public interface EntityObject extends Cloneable, ToXML, ToXmlString, Serializabl
      * @param stringField Identifies the string field to retrieve.
      * @return The string value of the field identified by the field.
      */
-    String get(StringField stringField);
+    default String get(StringField stringField) {
+        return (String) this.getFieldValue(stringField);
+    }
+
 
     /**
      * Retrieves the date value of the typed date field.
@@ -81,7 +109,10 @@ public interface EntityObject extends Cloneable, ToXML, ToXmlString, Serializabl
      * @param dateField Identifies the date field to retrieve.
      * @return The date value of the field identified by the field.
      */
-    Date get(DateField dateField);
+    default Date get(DateField dateField) {
+        return (Date) this.getFieldValue(dateField);
+    }
+
 
     /**
      * Retrieves the boolean value of the typed boolean field.
@@ -89,7 +120,10 @@ public interface EntityObject extends Cloneable, ToXML, ToXmlString, Serializabl
      * @param booleanField Identifies the boolean field to retrieve.
      * @return The boolean value of the field identified by the field.
      */
-    Boolean get(BooleanField booleanField);
+    default Boolean get(BooleanField booleanField) {
+        return (Boolean) this.getFieldValue(booleanField);
+    }
+
 
     /**
      * Retrieves the value of the typed many-to-one field.
@@ -97,7 +131,10 @@ public interface EntityObject extends Cloneable, ToXML, ToXmlString, Serializabl
      * @param manyToOneRelationField Identifies the field to retrieve.
      * @return The value of the field identified by the field.
      */
-    Key get(ManyToOneRelationField manyToOneRelationField);
+    default Key get(ManyToOneRelationField manyToOneRelationField) {
+        return (Key) this.getFieldValue(manyToOneRelationField);
+    }
+
 
     /**
      * Retrieves the value of the typed one-to-one field.
@@ -105,17 +142,23 @@ public interface EntityObject extends Cloneable, ToXML, ToXmlString, Serializabl
      * @param oneToOneRelationField Identifies the field to retrieve.
      * @return The value of the field identified by the field.
      */
-    Key get(OneToOneRelationField oneToOneRelationField);
+    default Key get(OneToOneRelationField oneToOneRelationField) {
+        return (Key) this.getFieldValue(oneToOneRelationField);
+    }
 
-    /**
-     * Sets the integer value for the field identified by integerField to
-     * integerValue.
-     *
-     * @param integerField Identifies the field to change.
-     * @param integerValue The new integer value for the integer field.
-     * @return the current EntityObject instance.
-     */
-    EntityObject set(IntegerField integerField, Integer integerValue);
+
+        /**
+         * Sets the integer value for the field identified by integerField to
+         * integerValue.
+         *
+         * @param integerField Identifies the field to change.
+         * @param integerValue The new integer value for the integer field.
+         * @return the current EntityObject instance.
+         */
+        default EntityObject set(IntegerField integerField, Integer integerValue) {
+            this.set((Field) integerField, integerValue);
+            return this;
+        }
 
     /**
      * Sets the double value for the field identified by doubleField to
@@ -125,7 +168,10 @@ public interface EntityObject extends Cloneable, ToXML, ToXmlString, Serializabl
      * @param doubleValue The new double value for the double field.
      * @return the current EntityObject instance.
      */
-    EntityObject set(DoubleField doubleField, Double doubleValue);
+    default EntityObject set(DoubleField doubleField, Double doubleValue) {
+        this.set((Field) doubleField, doubleValue);
+        return this;
+    }
 
     /**
      * Sets the string value for the field identified by stringField to
@@ -135,7 +181,11 @@ public interface EntityObject extends Cloneable, ToXML, ToXmlString, Serializabl
      * @param stringValue The new string value for the string field.
      * @return the current EntityObject instance.
      */
-    EntityObject set(StringField stringField, String stringValue);
+    default EntityObject set(StringField stringField, String stringValue) {
+        this.set((Field) stringField, stringValue);
+        return this;
+    }
+
 
     /**
      * Sets the date value for the field identified by dateField to dateValue.
@@ -144,7 +194,10 @@ public interface EntityObject extends Cloneable, ToXML, ToXmlString, Serializabl
      * @param dateValue The new date value for the date field.
      * @return the current EntityObject instance.
      */
-    EntityObject set(DateField dateField, Date dateValue);
+    default EntityObject set(DateField dateField, Date dateValue) {
+        this.set((Field) dateField, dateValue);
+        return this;
+    }
 
     /**
      * Sets the boolean value for the field identified by booleanField to
@@ -154,7 +207,10 @@ public interface EntityObject extends Cloneable, ToXML, ToXmlString, Serializabl
      * @param booleanValue The new boolean value for the date field.
      * @return the current EntityObject instance.
      */
-    EntityObject set(BooleanField booleanField, Boolean booleanValue);
+    default EntityObject set(BooleanField booleanField, Boolean booleanValue) {
+        this.set((Field) booleanField, booleanValue);
+        return this;
+    }
 
     /**
      * Sets the key value for the field identified by manyToOneRelationField to key.
@@ -163,7 +219,10 @@ public interface EntityObject extends Cloneable, ToXML, ToXmlString, Serializabl
      * @param key                    The new key value for the to-one field.
      * @return the current EntityObject instance.
      */
-    EntityObject set(ManyToOneRelationField manyToOneRelationField, Key key);
+    default EntityObject set(ManyToOneRelationField manyToOneRelationField, Key key) {
+        this.set((Field) manyToOneRelationField, key);
+        return this;
+    }
 
     /**
      * Sets the key value for the field identified by oneToOneRelationField to key.
@@ -172,7 +231,10 @@ public interface EntityObject extends Cloneable, ToXML, ToXmlString, Serializabl
      * @param key                   The new key value for the to-one field.
      * @return the current EntityObject instance.
      */
-    EntityObject set(OneToOneRelationField oneToOneRelationField, Key key);
+    default EntityObject set(OneToOneRelationField oneToOneRelationField, Key key) {
+        this.set((Field) oneToOneRelationField, key);
+        return this;
+    }
 
     /**
      * Sets the EntityObject value for the field identified by
@@ -182,7 +244,10 @@ public interface EntityObject extends Cloneable, ToXML, ToXmlString, Serializabl
      * @param entityObject           The new EntityObject value for the to-one field.
      * @return the current EntityObject instance.
      */
-    EntityObject set(ManyToOneRelationField manyToOneRelationField, EntityObject entityObject);
+    default EntityObject set(ManyToOneRelationField manyToOneRelationField, EntityObject entityObject) {
+        this.set((Field) manyToOneRelationField, entityObject != null ? entityObject.getKey() : null);
+        return this;
+    }
 
     /**
      * Sets the EntityObject value for the field identified by
@@ -192,7 +257,10 @@ public interface EntityObject extends Cloneable, ToXML, ToXmlString, Serializabl
      * @param entityObject          The new EntityObject value for the to-one field.
      * @return the current EntityObject instance.
      */
-    EntityObject set(OneToOneRelationField oneToOneRelationField, EntityObject entityObject);
+    default EntityObject set(OneToOneRelationField oneToOneRelationField, EntityObject entityObject) {
+        this.set((Field) oneToOneRelationField, entityObject != null ? entityObject.getKey() : null);
+        return this;
+    }
 
     /**
      * Sets the value for the field identified by fieldName to value.
@@ -201,7 +269,15 @@ public interface EntityObject extends Cloneable, ToXML, ToXmlString, Serializabl
      * @param value     The new value for the field.
      * @return the current EntityObject instance.
      */
-    EntityObject set(String fieldName, Object value);
+    default EntityObject set(String fieldName, Object value) {
+        Field field = this.getEntityDescriptor().getField(fieldName);
+        if (field == null) {
+            throw new RuntimeException("Entity '" + this.getEntityDescriptor().getName() + "' does not contain field '"
+                    + fieldName + "'");
+        }
+        this.set(field, value);
+        return this;
+    }
 
     /**
      * Sets the value for the field identified by field to value.
@@ -215,13 +291,23 @@ public interface EntityObject extends Cloneable, ToXML, ToXmlString, Serializabl
     /**
      * Checks constraint on EntityObject.
      */
-    void checkConstraint();
+    default void checkConstraint() {
+        Expression constraint = this.getEntityDescriptor().getConstraintExpression();
+        if (constraint != null && !constraint.apply(this)) {
+            throw new RuntimeException("Constraint " + constraint + " failed: " + constraint.getPropertyName() + "="
+                    + this.get(constraint.getPropertyName()));
+        }
+    }
 
     /**
      * Checks all values of the EntityObject (checks for nullable value, type of
      * the value to set...).
      */
-    void checkValues();
+    default void checkValues() {
+        getEntityDescriptor().getFields()
+                .stream().forEach(field -> field.checkValue(get(field)));
+    }
+
 
     /**
      * Accepts a EntityObject's visitor (Visitor Design Pattern).

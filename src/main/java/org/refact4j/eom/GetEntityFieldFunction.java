@@ -4,18 +4,18 @@ import org.refact4j.eom.model.Field;
 import org.refact4j.visitor.Visitable;
 import org.refact4j.visitor.Visitor;
 
-public class GetEntityFieldFunctor implements EntityFunctor<Object>, Visitable {
+public class GetEntityFieldFunction implements EntityFunction<Object>, Visitable {
 
     private final String fieldName;
 
     private Field field;
 
-    public GetEntityFieldFunctor(Field field) {
+    public GetEntityFieldFunction(Field field) {
         this(field.getName());
         this.field = field;
     }
 
-    public GetEntityFieldFunctor(String fieldName) {
+    public GetEntityFieldFunction(String fieldName) {
         this.fieldName = fieldName;
     }
 
@@ -38,7 +38,7 @@ public class GetEntityFieldFunctor implements EntityFunctor<Object>, Visitable {
     }
 
     public interface GetEntityFieldFunctorVisitor extends Visitor {
-        void visitGetEntityFieldFunctor(GetEntityFieldFunctor functor);
+        void visitGetEntityFieldFunctor(GetEntityFieldFunction functor);
     }
 
 }

@@ -14,11 +14,11 @@ public class EntityExpression extends Expression<EntityObject> implements Entity
     }
 
     public EntityExpression(Field field) {
-        super(field.getName(), new GetEntityFieldFunctor(field));
+        super(field.getName(), new GetEntityFieldFunction(field));
     }
 
     public EntityExpression(String fieldName) {
-        super(fieldName, new GetEntityFieldFunctor(fieldName));
+        super(fieldName, new GetEntityFieldFunction(fieldName));
     }
 
 }

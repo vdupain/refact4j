@@ -20,7 +20,7 @@ public class EntityFieldComparator<T> extends CompositeUnaryPredicate<EntityObje
     private final Field field;
 
     public EntityFieldComparator(BiFunction<T, T, Boolean> biFunction, Field field, T value) {
-        super(biFunction, new GetEntityFieldFunctor(field), new ConstantFunction<Object>(value));
+        super(biFunction, new GetEntityFieldFunction(field), new ConstantFunction<Object>(value));
         this.field = field;
         this.value = value;
     }

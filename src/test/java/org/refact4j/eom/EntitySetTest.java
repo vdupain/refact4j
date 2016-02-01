@@ -2,7 +2,7 @@ package org.refact4j.eom;
 
 import org.junit.Test;
 import org.refact4j.eom.impl.EntityDataSet;
-import org.refact4j.eom.impl.EntityList;
+import org.refact4j.eom.impl.EntityListImpl;
 import org.refact4j.eom.impl.EntitySetImpl;
 import org.refact4j.eom.model.Key;
 import org.refact4j.eom.model.KeyBuilder;
@@ -73,7 +73,7 @@ public class EntitySetTest {
         assertTrue(entityObjectSet.contains(entityObject));
         assertEquals(3, entityObjectSet.size());
 
-        org.refact4j.eom.EntityList entityObjectList = new EntityList(entityObjectSet);
+        org.refact4j.eom.EntityList entityObjectList = new EntityListImpl(entityObjectSet);
         assertTrue(entityObjectList.containsAll(entityObjects));
         assertTrue(entityObjectList.contains(entityObject));
         assertEquals(3, entityObjectList.size());
@@ -93,7 +93,7 @@ public class EntitySetTest {
         testGetEntitiesByEntityDescriptor(entityObjectSet1, entityObjectSet2, entitySet);
         EntityDataSet entityObjectDataSet = new EntityDataSet(entityObjectSet);
         testGetEntitiesByEntityDescriptor(entityObjectSet1, entityObjectSet2, entityObjectDataSet);
-        org.refact4j.eom.EntityList entityObjectList = new EntityList(entityObjectSet);
+        org.refact4j.eom.EntityList entityObjectList = new EntityListImpl(entityObjectSet);
         testGetEntitiesByEntityDescriptor(entityObjectSet1, entityObjectSet2, entityObjectList);
     }
 
@@ -104,7 +104,7 @@ public class EntitySetTest {
 
         Collections.sort(dummies, entityObjectComparator);
         assertEquals(collection1.size(), dummies.size());
-        org.refact4j.eom.EntityList list1 = new EntityList(collection1);
+        org.refact4j.eom.EntityList list1 = new EntityListImpl(collection1);
         Collections.sort(list1, entityObjectComparator);
         for (int i = 0; i < dummies.size(); i++) {
             assertEquals(list1.get(i), dummies.get(i));
@@ -113,7 +113,7 @@ public class EntitySetTest {
         List<EntityObject> othersdummies = collection.getAll(BarDesc.INSTANCE);
         Collections.sort(othersdummies, entityObjectComparator);
         assertEquals(collection2.size(), othersdummies.size());
-        org.refact4j.eom.EntityList list2 = new EntityList(collection2);
+        org.refact4j.eom.EntityList list2 = new EntityListImpl(collection2);
         Collections.sort(list2, entityObjectComparator);
         for (int i = 0; i < othersdummies.size(); i++) {
             assertEquals(list2.get(i), othersdummies.get(i));
@@ -134,7 +134,7 @@ public class EntitySetTest {
         testGetEntitiesByEntityDescriptorAndUnaryPredicate(entitySet, entityObject);
         EntityDataSet entityObjectDataSet = new EntityDataSet(entityObjectSet);
         testGetEntitiesByEntityDescriptorAndUnaryPredicate(entityObjectDataSet, entityObject);
-        org.refact4j.eom.EntityList entityObjectList = new EntityList(entityObjectSet);
+        org.refact4j.eom.EntityList entityObjectList = new EntityListImpl(entityObjectSet);
         testGetEntitiesByEntityDescriptorAndUnaryPredicate(entityObjectList, entityObject);
     }
 
@@ -160,7 +160,7 @@ public class EntitySetTest {
         testGetEntitiesFilteredByUnaryPredicate(entitySet, entityObject);
         EntityDataSet entityObjectDataSet = new EntityDataSet(entityObjectSet);
         testGetEntitiesFilteredByUnaryPredicate(entityObjectDataSet, entityObject);
-        org.refact4j.eom.EntityList entityObjectList = new EntityList(entityObjectSet);
+        org.refact4j.eom.EntityList entityObjectList = new EntityListImpl(entityObjectSet);
         testGetEntitiesFilteredByUnaryPredicate(entityObjectList, entityObject);
     }
 
@@ -182,7 +182,7 @@ public class EntitySetTest {
         testGetEntitiesFilteredByExprConstraint(entitySet, entityObject);
         EntityDataSet entityObjectDataSet = new EntityDataSet(entityObjectSet);
         testGetEntitiesFilteredByExprConstraint(entityObjectDataSet, entityObject);
-        org.refact4j.eom.EntityList entityObjectList = new EntityList(entityObjectSet);
+        org.refact4j.eom.EntityList entityObjectList = new EntityListImpl(entityObjectSet);
         testGetEntitiesFilteredByExprConstraint(entityObjectList, entityObject);
     }
 
@@ -205,7 +205,7 @@ public class EntitySetTest {
         testEntitySetContainsEntity(entitySet);
         EntityDataSet entityObjectDataSet = new EntityDataSet(entityObjectSet);
         testEntitySetContainsEntity(entityObjectDataSet);
-        org.refact4j.eom.EntityList entityObjectList = new EntityList(entityObjectSet);
+        org.refact4j.eom.EntityList entityObjectList = new EntityListImpl(entityObjectSet);
         testEntitySetContainsEntity(entityObjectList);
     }
 
@@ -225,7 +225,7 @@ public class EntitySetTest {
         testEntitySetApplyfunctor(entityObjects);
         EntityDataSet entityObjectDataSet = new EntityDataSet(entityObjectSet);
         testEntitySetApplyfunctor(entityObjectDataSet);
-        org.refact4j.eom.EntityList entityObjectList = new EntityList(entityObjectSet);
+        org.refact4j.eom.EntityList entityObjectList = new EntityListImpl(entityObjectSet);
         testEntitySetApplyfunctor(entityObjectList);
     }
 

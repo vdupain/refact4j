@@ -14,7 +14,7 @@ import java.util.List;
 /**
  * EntityStringifier is the default implementation of EntityObject Stringifier.
  */
-public class EntityStringifier implements Stringifier<EntityObject>, EntityFunctor<String>, ToEntity {
+public class EntityStringifier implements Stringifier<EntityObject>, EntityFunction<String>, ToEntity {
 
     public static final EntityStringifier DEFAULT = new EntityStringifier() {
         public String stringify(EntityObject entityObject) {

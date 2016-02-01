@@ -29,7 +29,7 @@ public class EntitySetImpl extends Set<EntityObject, Key, EntityDescriptor> impl
 
     public org.refact4j.eom.EntityList getEntities(EntityDescriptor entityDescriptor, final Field field, final Object value) {
         List<EntityObject> collect = this.stream().filter(e -> EqualsHelper.equals(e.get(field), value)).collect(Collectors.toList());
-        return new EntityList(collect);
+        return new EntityListImpl(collect);
     }
 
     @Override

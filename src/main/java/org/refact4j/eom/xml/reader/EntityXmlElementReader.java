@@ -2,7 +2,7 @@ package org.refact4j.eom.xml.reader;
 
 import org.refact4j.eom.EntityObject;
 import org.refact4j.eom.EntityObjectBuilder;
-import org.refact4j.eom.impl.EntityList;
+import org.refact4j.eom.impl.EntityListImpl;
 import org.refact4j.eom.model.EntityDescriptor;
 import org.refact4j.eom.model.EntityDescriptorRepository;
 import org.refact4j.eom.model.OneToOneRelationField;
@@ -26,7 +26,7 @@ public class EntityXmlElementReader extends DefaultXmlElementReader {
         super(holder);
         this.entityDescriptorRepository = entityDescriptorRepository;
         final EntityObjectBuilder builder = EntityObjectBuilder.init(entityDescriptor);
-        EntityXmlReaderHelper.parse(xmlAttrs, builder, new EntityList(holder.getDataSet()));
+        EntityXmlReaderHelper.parse(xmlAttrs, builder, new EntityListImpl(holder.getDataSet()));
         if (parentEntity != null) {
             Collection<RelationField> fields = entityDescriptor.getRelationFields();
             for (RelationField relationField : fields) {

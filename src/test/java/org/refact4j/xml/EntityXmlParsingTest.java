@@ -5,7 +5,7 @@ import org.junit.Test;
 import org.refact4j.collection.Set;
 import org.refact4j.eom.EntityTestUtils;
 import org.refact4j.eom.impl.EntityDataSet;
-import org.refact4j.eom.impl.EntityList;
+import org.refact4j.eom.impl.EntityListImpl;
 import org.refact4j.eom.xml.EntityXmlDescriptor;
 import org.refact4j.eom.xml.reader.EntityXmlReaderHelper;
 import org.refact4j.eom.xml.writer.EntityXmlWriterHelper;
@@ -48,7 +48,7 @@ public class EntityXmlParsingTest {
         Set dataset = new EntityDataSet();
         this.dataset2xmlconverter.unmarshal(xmlData2, dataset);
 
-        entityObjects2 = new EntityList(dataset);
+        entityObjects2 = new EntityListImpl(dataset);
         EntityTestUtils.assertEquals(entityObjects2, xmlData1, "entities");
     }
 
@@ -63,7 +63,7 @@ public class EntityXmlParsingTest {
         converter.register(new EntityXmlDescriptor(DummyRepository.get()));
         Set actualDataset = new EntityDataSet();
         this.dataset2xmlconverter.unmarshal(converter.marshal(initialDataset), actualDataset);
-        EntityTestUtils.assertEquals(new EntityList(initialDataset), new EntityList(actualDataset));
+        EntityTestUtils.assertEquals(new EntityListImpl(initialDataset), new EntityListImpl(actualDataset));
     }
 
     @Test

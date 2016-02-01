@@ -22,10 +22,6 @@ public class EntityDataSet extends EntitySetImpl implements DatasetHolder {
         this.addAll(entityObjects);
     }
 
-    public void apply(EntityDescriptor entityDescriptor, EntityFunctor<?> functor) {
-        throw new NotImplementedException();
-    }
-
     public org.refact4j.eom.EntityList getEntities(EntityDescriptor entityDescriptor, Field field, Object value) {
         return EntitySetBuilder.init().addAll(this).getEntitySet().getEntities(entityDescriptor, field, value);
     }

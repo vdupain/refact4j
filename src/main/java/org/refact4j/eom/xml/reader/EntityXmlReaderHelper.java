@@ -6,7 +6,7 @@ import org.refact4j.eom.EntityObject;
 import org.refact4j.eom.EntityObjectBuilder;
 import org.refact4j.eom.String2ValueFieldConverter;
 import org.refact4j.eom.impl.EntityDataSet;
-import org.refact4j.eom.impl.EntityList;
+import org.refact4j.eom.impl.EntityListImpl;
 import org.refact4j.eom.model.DefaultFieldVisitor;
 import org.refact4j.eom.model.EntityDescriptor;
 import org.refact4j.eom.model.EntityDescriptorRepository;
@@ -36,7 +36,7 @@ public final class EntityXmlReaderHelper {
         Set dataset = new EntityDataSet();
         dataset2XmlConverter.register(new EntityXmlDescriptor(repository));
         dataset2XmlConverter.unmarshal(xmlData, dataset);
-        return new EntityList(dataset);
+        return new EntityListImpl(dataset);
     }
 
     public static org.refact4j.eom.EntityList parse(final EntityDescriptorRepository repository, String xmlData) {
@@ -61,7 +61,7 @@ public final class EntityXmlReaderHelper {
         if (rootTag == null)
             rootTag = ENTITIES_TAGNAME;
         final String rootTagName = rootTag;
-        final org.refact4j.eom.EntityList entityObjects = new EntityList();
+        final org.refact4j.eom.EntityList entityObjects = new EntityListImpl();
         try {
             XmlParserHelper.parse(new StringReader("<" + rootTag + ">" + xmlData + "</" + rootTag + ">"),
                     new XmlElement() {

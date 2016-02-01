@@ -19,7 +19,7 @@ public final class EntityObjectBuilder {
     private EntityObjectBuilder(EntityDescriptor type, Key entityObjectKey) {
         this(type);
         for (Field field : type.getKeyFields()) {
-            entityObject.setFieldValue(field, entityObjectKey.getFieldValue(field));
+            entityObject.set(field, entityObjectKey.getFieldValue(field));
         }
     }
 
@@ -46,7 +46,7 @@ public final class EntityObjectBuilder {
     }
 
     public EntityObjectBuilder setFieldValue(Field field, Object value) {
-        this.entityObject.setFieldValue(field, value);
+        this.entityObject.set(field, value);
         return this;
     }
 
@@ -76,22 +76,22 @@ public final class EntityObjectBuilder {
     }
 
     public EntityObjectBuilder set(ManyToOneRelationField field, EntityObject entityObject) {
-        this.entityObject.setFieldValue(field, entityObject != null ? entityObject.getKey() : null);
+        this.entityObject.set(field, entityObject != null ? entityObject.getKey() : null);
         return this;
     }
 
     public EntityObjectBuilder set(OneToOneRelationField field, EntityObject entityObject) {
-        this.entityObject.setFieldValue(field, entityObject != null ? entityObject.getKey() : null);
+        this.entityObject.set(field, entityObject != null ? entityObject.getKey() : null);
         return this;
     }
 
     public EntityObjectBuilder set(ManyToOneRelationField field, Key key) {
-        this.entityObject.setFieldValue(field, key);
+        this.entityObject.set(field, key);
         return this;
     }
 
     public EntityObjectBuilder set(OneToOneRelationField field, Key key) {
-        this.entityObject.setFieldValue(field, key);
+        this.entityObject.set(field, key);
         return this;
     }
 

@@ -5,7 +5,7 @@ import org.junit.Test;
 import org.refact4j.collection.Set;
 import org.refact4j.eom.EntityTestUtils;
 import org.refact4j.eom.impl.EntityDataSet;
-import org.refact4j.eom.impl.EntityList;
+import org.refact4j.eom.impl.EntityListImpl;
 import org.refact4j.eom.metamodel.DefaultEntityDescriptorRepoFactory;
 import org.refact4j.eom.metamodel.EOMMetaModelRepository;
 import org.refact4j.eom.model.EntityDescriptorRepository;
@@ -56,7 +56,7 @@ public class DatasetRefXmlTest {
                 + "<foo name='foo2' id='2'/>";
         org.refact4j.eom.EntityList expectedEntities = EntityXmlReaderHelper.parse(entityDescriptorRepository,
                 expectedXml);
-        EntityTestUtils.assertEquals(expectedEntities, new EntityList(dataset));
+        EntityTestUtils.assertEquals(expectedEntities, new EntityListImpl(dataset));
 
     }
 
