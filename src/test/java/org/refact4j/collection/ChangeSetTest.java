@@ -6,7 +6,7 @@ import java.util.Iterator;
 
 
 public class ChangeSetTest extends AbstractChangeSetTest {
-    MyBean myBean;
+    MyBean bean1;
 
     protected List populateInitial() {
         List collection = new List();
@@ -14,18 +14,21 @@ public class ChangeSetTest extends AbstractChangeSetTest {
         collection.add("a2");
         collection.add("a3");
 
-        myBean = new MyBean();
-        myBean.setId(1);
-        myBean.setValue("abc");
-        collection.add(myBean);
+        bean1 = new MyBean();
+        bean1.setId(1);
+        bean1.setValue("abc");
+        collection.add(bean1);
         return collection;
     }
 
     protected void generateDelta() {
+        //create
         collectionDecorator.create("new1");
         collectionDecorator.create(1.23);
+        //delete
         collectionDecorator.delete("a2");
-        myBean.setValue("xxx");
+        //update
+        bean1.setValue("xxx");
     }
 
     protected void assertDelta() {
