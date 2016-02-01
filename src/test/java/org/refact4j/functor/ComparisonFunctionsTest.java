@@ -9,7 +9,7 @@ import java.util.Comparator;
 import static org.junit.Assert.*;
 
 
-public class ComparisonFunctorsTest {
+public class ComparisonFunctionsTest {
     Double d1 = 1.2345;
 
     Double d2 = 6.789;

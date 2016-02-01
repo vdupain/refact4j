@@ -19,10 +19,10 @@ import org.refact4j.util.PrettyPrinter;
 import static org.junit.Assert.*;
 
 
-public class FunctorsTest {
+public class FunctionsTest {
 
     @Test
-    public void testConstantArgUnaryFunctor() {
+    public void testConstantArgUnaryFunction() {
         double discountRate = 0.2;
         double taxRate = 0.20;
 
@@ -55,7 +55,7 @@ public class FunctorsTest {
     }
 
     @Test
-    public void testCompositeFunctor() {
+    public void testCompositeFunction() {
         BinaryCompose<Boolean, Boolean, Boolean, Boolean> func3 = new BinaryCompose<>(
                 new And(), new Not(), new Not());
         assertFalse(func3.apply(true));

@@ -18,9 +18,7 @@ public class StringTest {
 
     @Test
     public void testGetStringFromFile() throws Exception {
-        String s = StringHelper.getStringFromResourceFile("/file.txt");
-        assertEquals("abcdef12345", s);
-        s = StringHelper.getStringFromResourceFile("/org/refact4j/file.txt");
+        String s = StringHelper.getStringFromResourceFile("/org/refact4j/file.txt");
         assertEquals("abcdef", s);
     }
 

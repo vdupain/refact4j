@@ -12,7 +12,7 @@ import java.util.Comparator;
 import static org.junit.Assert.assertEquals;
 
 
-public class AggregateFunctorsTest {
+public class AggregateFunctionsTest {
     Integer expectedMinValue = 1;
     Integer expectedMaxValue = 10;
 

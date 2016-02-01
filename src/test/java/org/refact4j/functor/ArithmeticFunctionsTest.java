@@ -5,7 +5,7 @@ import org.refact4j.functor.arithmetic.*;
 
 import static org.junit.Assert.assertEquals;
 
-public class ArithmeticFunctorsTest {
+public class ArithmeticFunctionsTest {
     double d1 = 12345.;
     double d2 = 6789.;
     int i1 = 12345;

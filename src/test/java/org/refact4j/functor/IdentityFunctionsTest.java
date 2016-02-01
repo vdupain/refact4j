@@ -6,7 +6,7 @@ import org.refact4j.functor.identity.Identity;
 import static org.junit.Assert.assertSame;
 
 
-public class IdentityFunctorsTest {
+public class IdentityFunctionsTest {
 
     @Test
     public void testIdentity() {
