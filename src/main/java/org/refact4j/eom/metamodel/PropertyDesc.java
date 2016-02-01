@@ -1,7 +1,6 @@
 package org.refact4j.eom.metamodel;
 
 import org.refact4j.eom.EntityObject;
-import org.refact4j.eom.EntityPredicate;
 import org.refact4j.eom.model.*;
 import org.refact4j.visitor.AbstractVisitor;
 
@@ -32,7 +31,7 @@ public final class PropertyDesc {
         BUILDER.addKeyField(ENTITY_DESC_DESC);
     }
 
-    public static EntityPredicate getPropertiesForField(final Field field) {
+    public static Predicate<EntityObject> getPropertiesForField(final Field field) {
         return arg -> {
             Key key = KeyBuilder.init(FieldDesc.INSTANCE).set(FieldDesc.NAME, field.getName()).set(
                     FieldDesc.ENTITY_DESC, field.getEntityDescriptor().toEntity().getKey()).getKey();

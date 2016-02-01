@@ -2,7 +2,6 @@ package org.refact4j.eom.impl;
 
 import org.refact4j.collection.Set;
 import org.refact4j.eom.EntityObject;
-import org.refact4j.eom.EntityPredicate;
 import org.refact4j.eom.EntitySetBuilder;
 import org.refact4j.eom.model.EntityDescriptor;
 import org.refact4j.eom.model.Field;
@@ -13,6 +12,7 @@ import org.refact4j.xml.DatasetHolder;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.function.Predicate;
 
 public class EntityDataSet extends EntitySetImpl implements DatasetHolder {
 
@@ -42,9 +42,9 @@ public class EntityDataSet extends EntitySetImpl implements DatasetHolder {
                 .findFirst().orElse(null);
     }
 
-    public EntityObject getEntityByPredicate(EntityDescriptor entityDescriptor, EntityPredicate entityObjectPredicate) {
+    public EntityObject getEntityByPredicate(EntityDescriptor entityDescriptor, Predicate<EntityObject> entityObjectPredicate) {
         return getAll(entityDescriptor).stream()
-                .filter(entityObjectPredicate::apply)
+                .filter(entityObjectPredicate)
                 .findFirst().orElse(null);
     }
 

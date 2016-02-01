@@ -16,6 +16,7 @@ import org.refact4j.util.ComparatorHelper;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 import static org.junit.Assert.*;
@@ -139,11 +140,8 @@ public class EntitySetTest {
 
     private void testGetEntitiesByEntityDescriptorAndUnaryPredicate(EntitySet collection,
                                                                     EntityObject entityObject) {
-
-        EntityPredicate entityObjectPredicate = arg -> arg.get(FooDesc.ID) == 4;
-
         List<EntityObject> list = collection.getAll(FooDesc.INSTANCE).stream()
-                .filter(entityObjectPredicate::apply).collect(Collectors.toList());
+                .filter(arg->arg.get(FooDesc.ID) == 4).collect(Collectors.toList());
         assertEquals(1, list.size());
         assertEquals(entityObject, list.get(0));
     }
@@ -163,8 +161,8 @@ public class EntitySetTest {
     }
 
     private void testGetEntitiesFilteredByUnaryPredicate(EntitySet collection, EntityObject entityObject) {
-        EntityPredicate entityObjectPredicate = arg -> arg.getEntityDescriptor().equals(FooDesc.INSTANCE) && arg.get(FooDesc.ID) == 4;
-        List<EntityObject> list = collection.stream().filter(entityObjectPredicate::apply).collect(Collectors.toList());
+        Predicate<EntityObject> entityObjectPredicate = arg -> arg.getEntityDescriptor().equals(FooDesc.INSTANCE) && arg.get(FooDesc.ID) == 4;
+        List<EntityObject> list = collection.stream().filter(entityObjectPredicate).collect(Collectors.toList());
         assertEquals(1, list.size());
         assertEquals(entityObject, list.get(0));
     }

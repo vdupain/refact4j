@@ -101,7 +101,7 @@ public class DefaultEntityDescriptorRepoFactory implements EntityDescriptorRepos
 
             for (Field field : entityDescriptor.getFields()) {
                 List<EntityObject> properties = metaModelSet.getAll(PropertyDesc.INSTANCE).stream()
-                        .filter(PropertyDesc.getPropertiesForField(field)::apply).collect(Collectors.toList());
+                        .filter(PropertyDesc.getPropertiesForField(field)).collect(Collectors.toList());
                 for (EntityObject entityObject : properties) {
                     PropertyDesc.KeyValuePair keyValuePair = getKeyValuePair(metaModelSet, entityObject);
                     field.addProperty(keyValuePair.key, keyValuePair.value);
