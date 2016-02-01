@@ -1,7 +1,6 @@
 package org.refact4j.collection;
 
 import org.refact4j.core.Finder;
-import org.refact4j.functor.UnaryPredicate;
 
 import java.util.ArrayList;
 import java.util.stream.Collectors;
@@ -21,10 +20,6 @@ public class List<T, ID, TYPE> extends ArrayList<T> implements
     public java.util.List<T> getAll(final TYPE type) {
         return this.stream().filter(t -> getTypeResolver().isSameType(type, getTypeResolver().getTypeOf(t))).collect(Collectors.toList());
 
-    }
-
-    public java.util.List<T> getAll(TYPE type, UnaryPredicate<T> predicate) {
-        return this.getAll(type).stream().filter(predicate::apply).collect(Collectors.toList());
     }
 
     public void apply(TYPE type, java.util.function.Function<T, ?> functor) {

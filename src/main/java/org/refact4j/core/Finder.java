@@ -14,8 +14,6 @@ public interface Finder<T, ID, TYPE> {
 
     List<T> getAll(TYPE type);
 
-    List<T> getAll(TYPE type, UnaryPredicate<T> predicate);
-
     default IdResolver<T, ID> getIdResolver() {
         return new DefaultIdResolver();
     }
