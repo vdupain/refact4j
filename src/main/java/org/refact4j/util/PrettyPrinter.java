@@ -169,7 +169,7 @@ public class PrettyPrinter implements ExpressionVisitor, BinaryComposeVisitor, U
 
     public void visitExpression(Expression expression) {
         this.expression = expression;
-        ((Visitable) expression.getFunctor()).accept(this);
+        ((Visitable) expression.getPredicate()).accept(this);
     }
 
     public void visitBetween(Between<?> between) {

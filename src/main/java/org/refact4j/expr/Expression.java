@@ -136,7 +136,7 @@ public class Expression<T> implements Predicate<T>, Visitable {
         return this;
     }
 
-    public java.util.function.Function<T, ?> getFunctor() {
+    public java.util.function.Function<T, Boolean> getPredicate() {
         return predicate;
     }
 
