@@ -1,6 +1,5 @@
 package org.refact4j.functor.comparison;
 
-import org.refact4j.functor.AbstractUnaryPredicate;
 import org.refact4j.visitor.Visitor;
 
 /**
@@ -9,7 +8,7 @@ import org.refact4j.visitor.Visitor;
  *
  * @param <T>
  */
-public class NotNull<T> extends AbstractUnaryPredicate<T> {
+public class NotNull<T> implements org.refact4j.functor.UnaryPredicate<T> {
 
     @Override
     public boolean test(T arg) {

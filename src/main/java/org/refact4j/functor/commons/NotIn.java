@@ -1,6 +1,5 @@
 package org.refact4j.functor.commons;
 
-import org.refact4j.functor.AbstractUnaryPredicate;
 import org.refact4j.functor.logical.Not;
 import org.refact4j.visitor.Visitor;
 
@@ -11,7 +10,7 @@ import org.refact4j.visitor.Visitor;
  * @param <T>
  */
 
-public class NotIn<T> extends AbstractUnaryPredicate<T> {
+public class NotIn<T> implements org.refact4j.functor.UnaryPredicate<T> {
 
     private final Object[] values;
 

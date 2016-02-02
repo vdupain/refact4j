@@ -1,13 +1,10 @@
 package org.refact4j.functor.commons;
 
-import org.refact4j.functor.AbstractUnaryPredicate;
 import org.refact4j.functor.BinaryCompose;
 import org.refact4j.functor.Bind2nd;
 import org.refact4j.functor.comparison.Equal;
 import org.refact4j.functor.logical.Or;
 import org.refact4j.visitor.Visitor;
-
-import java.util.function.BiFunction;
 
 /**
  * In is an Unary Predicate that returns true when its argument is contains on
@@ -15,7 +12,7 @@ import java.util.function.BiFunction;
  *
  * @param <T>
  */
-public class In<T> extends AbstractUnaryPredicate<T> {
+public class In<T> implements org.refact4j.functor.UnaryPredicate<T> {
 
     private final Object[] values;
     private java.util.function.Function<T, Boolean> pred;

@@ -1,6 +1,5 @@
 package org.refact4j.functor.commons;
 
-import org.refact4j.functor.AbstractUnaryPredicate;
 import org.refact4j.functor.comparison.GreaterEqual;
 import org.refact4j.functor.comparison.LessEqual;
 import org.refact4j.visitor.Visitor;
@@ -13,7 +12,7 @@ import java.util.Comparator;
  *
  * @param <T>
  */
-public class Between<T> extends AbstractUnaryPredicate<T> {
+public class Between<T> implements org.refact4j.functor.UnaryPredicate<T> {
     private final T infValue;
     private final T supValue;
     private final GreaterEqual<T> greaterEqual = new GreaterEqual<>();

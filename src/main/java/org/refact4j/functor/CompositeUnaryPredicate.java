@@ -4,7 +4,7 @@ import org.refact4j.visitor.Visitor;
 
 import java.util.function.BiFunction;
 
-public class CompositeUnaryPredicate<T> extends AbstractUnaryPredicate<T> {
+public class CompositeUnaryPredicate<T> implements UnaryPredicate<T> {
     private BinaryCompose<?, ?, T, Boolean> compositeFunctor;
 
     private BiFunction<?, ?, Boolean> biFunction;
