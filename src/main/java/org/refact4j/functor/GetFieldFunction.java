@@ -5,11 +5,11 @@ import org.refact4j.visitor.Visitor;
 
 import java.lang.reflect.Method;
 
-public class GetFieldFunctor implements Visitable, java.util.function.Function {
+public class GetFieldFunction implements Visitable, java.util.function.Function {
 
     private final String fieldName;
 
-    public GetFieldFunctor(String fieldName) {
+    public GetFieldFunction(String fieldName) {
         this.fieldName = fieldName;
     }
 
@@ -33,13 +33,13 @@ public class GetFieldFunctor implements Visitable, java.util.function.Function {
     }
 
     public void accept(Visitor visitor) {
-        if (visitor instanceof GetFieldFunctorVisitor) {
-            ((GetFieldFunctorVisitor) visitor).visitGetFieldFunctor(this);
+        if (visitor instanceof GetFieldFunctionVisitor) {
+            ((GetFieldFunctionVisitor) visitor).visitGetFieldFunction(this);
         }
     }
 
-    public interface GetFieldFunctorVisitor extends Visitor {
-        void visitGetFieldFunctor(GetFieldFunctor functor);
+    public interface GetFieldFunctionVisitor extends Visitor {
+        void visitGetFieldFunction(GetFieldFunction functor);
     }
 
 }

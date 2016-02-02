@@ -4,10 +4,12 @@ import org.refact4j.expr.Expression;
 import org.refact4j.expr.ExpressionBuilder;
 import org.refact4j.functor.UnaryPredicate;
 
+import java.util.function.Predicate;
+
 public class Assert extends org.junit.Assert {
 
-    public static void assertThat(Object something, UnaryPredicate<Object> matcher) {
-        if (!matcher.apply(something)) {
+    public static void assertThat(Object something, Predicate<Object> matcher) {
+        if (!matcher.test(something)) {
             StringBuilder message = new StringBuilder("Expected that: ");
             message.append(matcher);
             message.append(StringHelper.LINE_SEPARATOR + "but value was : ").append(something).append(

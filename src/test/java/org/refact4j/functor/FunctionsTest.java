@@ -65,13 +65,13 @@ public class FunctionsTest {
         assertFalse(predicate.apply(null));
 
         predicate = new BinaryCompose<>(new Greater(),
-                new GetFieldFunctor("Value"), new ConstantFunction(100.));
+                new GetFieldFunction("Value"), new ConstantFunction(100.));
         DummyBean dummy = new DummyBean();
         dummy.setValue(99.);
         assertFalse(predicate.apply(dummy));
 
         try {
-            new GetFieldFunctor("???").apply(dummy);
+            new GetFieldFunction("???").apply(dummy);
             fail("NoSuchMethodException Expected");
         } catch (Exception e) {
             assertEquals("java.lang.NoSuchMethodException: org.refact4j.model.DummyBean.get???()", e

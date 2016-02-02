@@ -12,10 +12,7 @@ import java.util.function.Predicate;
  *
  * @param <T>
  */
-public abstract class AbstractUnaryPredicate<T> implements Predicate<T>, UnaryPredicate<T>, Visitable {
+public abstract class AbstractUnaryPredicate<T> implements UnaryPredicate<T> {
 
-    public Boolean apply(T arg) {
-        return test(arg);
-    }
 
 }

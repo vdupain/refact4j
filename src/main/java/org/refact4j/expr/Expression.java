@@ -18,7 +18,7 @@ import java.util.function.Predicate;
  * clause. An expression is a tree-like structure that defines the selection
  * criteria for a query against objects.
  */
-public class Expression<T> implements Predicate<T>, UnaryPredicate<T>, Visitable {
+public class Expression<T> implements Predicate<T>, Visitable {
 
     private String name;
 
@@ -148,9 +148,6 @@ public class Expression<T> implements Predicate<T>, UnaryPredicate<T>, Visitable
         return this.predicate.apply(arg);
     }
 
-    public Boolean apply(T arg) {
-        return test(arg);
-    }
 
     public void accept(Visitor visitor) {
         if (visitor instanceof ExpressionVisitor) {

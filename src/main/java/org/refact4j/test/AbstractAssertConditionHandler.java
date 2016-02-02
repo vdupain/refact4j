@@ -16,7 +16,7 @@ public abstract class AbstractAssertConditionHandler implements AssertConditionH
 
     protected abstract void assertion(Boolean condition);
 
-    public Boolean apply(Boolean condition) {
+    public boolean test(Boolean condition) {
         assertion(condition);
         return true;
     }

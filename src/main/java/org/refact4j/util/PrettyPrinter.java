@@ -12,8 +12,8 @@ import org.refact4j.functor.BinaryCompose;
 import org.refact4j.functor.BinaryCompose.BinaryComposeVisitor;
 import org.refact4j.functor.CompositeUnaryPredicate;
 import org.refact4j.functor.CompositeUnaryPredicate.CompositeUnaryPredicateVisitor;
-import org.refact4j.functor.GetFieldFunctor;
-import org.refact4j.functor.GetFieldFunctor.GetFieldFunctorVisitor;
+import org.refact4j.functor.GetFieldFunction;
+import org.refact4j.functor.GetFieldFunction.GetFieldFunctionVisitor;
 import org.refact4j.functor.UnaryCompose;
 import org.refact4j.functor.UnaryCompose.UnaryComposeVisitor;
 import org.refact4j.functor.commons.*;
@@ -37,9 +37,9 @@ import org.refact4j.visitor.Visitable;
 public class PrettyPrinter implements ExpressionVisitor, BinaryComposeVisitor, UnaryComposeVisitor,
         CompositeUnaryPredicateVisitor, EntityFieldComparatorVisitor, ComparisonVisitor, LogicalVisitor,
         BetweenVisitor, NullVisitor, NotNullVisitor, InVisitor, NotInVisitor, LikeVisitor, InstanceOfVisitor,
-        GetEntityFieldFunctorVisitor, GetFieldFunctorVisitor, StringLengthVisitor, IdentityVisitor {
+        GetEntityFieldFunctorVisitor, GetFieldFunctionVisitor, StringLengthVisitor, IdentityVisitor {
 
-    private final FieldStringifier abstractFieldStringifierFunctor = new FieldStringifier() {
+    private final FieldStringifier stringifier = new FieldStringifier() {
 
         @Override
         public String stringify(Field field) {
@@ -69,7 +69,7 @@ public class PrettyPrinter implements ExpressionVisitor, BinaryComposeVisitor, U
 
     public void visitEntityFieldComparator(EntityFieldComparator fieldComparator) {
         buf.append('(');
-        buf.append(this.abstractFieldStringifierFunctor.stringify(fieldComparator.getField()));
+        buf.append(this.stringifier.stringify(fieldComparator.getField()));
         ((Visitable) fieldComparator.getBiFunction()).accept(this);
         buf.append(fieldComparator.getValue());
         buf.append(')');
@@ -85,11 +85,11 @@ public class PrettyPrinter implements ExpressionVisitor, BinaryComposeVisitor, U
     }
 
     public void visitGetEntityFieldFunctor(GetEntityFieldFunction getEntityFieldFunctor) {
-        buf.append(this.abstractFieldStringifierFunctor.stringify(getEntityFieldFunctor.getField()));
+        buf.append(this.stringifier.stringify(getEntityFieldFunctor.getField()));
     }
 
-    public void visitGetFieldFunctor(GetFieldFunctor getFieldFunctor) {
-        buf.append(getFieldFunctor.getFieldName());
+    public void visitGetFieldFunction(GetFieldFunction getFieldFunction) {
+        buf.append(getFieldFunction.getFieldName());
     }
 
     public void visitBinaryCompose(BinaryCompose binaryCompose) {

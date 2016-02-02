@@ -297,7 +297,7 @@ public interface EntityObject extends Cloneable, ToXML, ToXmlString, Serializabl
      */
     default void checkConstraint() {
         Expression constraint = this.getEntityDescriptor().getConstraintExpression();
-        if (constraint != null && !constraint.apply(this)) {
+        if (constraint != null && !constraint.test(this)) {
             throw new RuntimeException("Constraint " + constraint + " failed: " + constraint.getPropertyName() + "="
                     + this.get(constraint.getPropertyName()));
         }

@@ -1,6 +1,6 @@
 package org.refact4j.expr;
 
-import org.refact4j.functor.GetFieldFunctor;
+import org.refact4j.functor.GetFieldFunction;
 
 /**
  * Expression for Java Beans. BeanExpression should be created by
@@ -13,7 +13,7 @@ class BeanExpression extends Expression<Object> {
     }
 
     public BeanExpression(String fieldName) {
-        super(fieldName, new GetFieldFunctor(fieldName));
+        super(fieldName, new GetFieldFunction(fieldName));
     }
 
 }
