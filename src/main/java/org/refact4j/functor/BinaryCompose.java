@@ -5,6 +5,7 @@ import org.refact4j.visitor.Visitor;
 
 import java.util.function.BiFunction;
 import java.util.function.BinaryOperator;
+import java.util.function.Function;
 
 /**
  * BinaryCompose is a Unary Functor that passes the results of two Unary
@@ -18,13 +19,12 @@ import java.util.function.BinaryOperator;
  * @param <T>
  * @param <R>
  */
-public class BinaryCompose<F1, F2, T, R> implements Visitable, java.util.function.Function<T, R> {
+public class BinaryCompose<F1, F2, T, R> implements Visitable, Function<T, R> {
     private final java.util.function.Function<T, F1> firstFunction;
     private final java.util.function.Function<T, F2> secondFunction;
     private final BiFunction<F1, F2, R> biFunction;
-    BinaryOperator xx;
 
-    public BinaryCompose(BiFunction<F1, F2, R> biFunction, java.util.function.Function<T, F1> firstFunction,
+    public BinaryCompose(BiFunction<F1, F2, R> biFunction, Function<T, F1> firstFunction,
                          java.util.function.Function<T, F2> secondFunction) {
         this.biFunction = biFunction;
         this.firstFunction = firstFunction;
@@ -42,11 +42,11 @@ public class BinaryCompose<F1, F2, T, R> implements Visitable, java.util.functio
         return biFunction;
     }
 
-    public java.util.function.Function<T, F1> getFirstFunction() {
+    public Function<T, F1> getFirstFunction() {
         return firstFunction;
     }
 
-    public java.util.function.Function<T, F2> getSecondFunction() {
+    public Function<T, F2> getSecondFunction() {
         return secondFunction;
     }
 
