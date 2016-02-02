@@ -9,7 +9,7 @@ import java.util.Comparator;
  * object arguments arg1 and arg2 when arg1 == arg2 using the built-in equals()
  * method or an optional Comparator given at construction
  */
-public class Equal<T> extends AbstractComparisonBinaryPredicate<T> {
+public class Equal<T> extends AbstractComparisonBiPredicate<T> {
 
     public Equal() {
         setComparator(null);

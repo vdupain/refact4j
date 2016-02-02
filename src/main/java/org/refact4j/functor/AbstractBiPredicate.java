@@ -13,7 +13,7 @@ import java.util.function.BiPredicate;
  * @param <T1>
  * @param <T2>
  */
-public abstract class AbstractBinaryPredicate<T1, T2> implements BiPredicate<T1, T2>, BinaryPredicate<T1, T2>, Visitable {
+public abstract class AbstractBiPredicate<T1, T2> implements BinaryPredicate<T1, T2>, Visitable {
     private T1 firstArg;
 
     private T2 secondArg;

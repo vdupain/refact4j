@@ -1,6 +1,6 @@
 package org.refact4j.functor.comparison;
 
-import org.refact4j.functor.AbstractBinaryPredicate;
+import org.refact4j.functor.AbstractBiPredicate;
 import org.refact4j.util.ComparatorHelper;
 
 public class ComparableComparisonVisitor<T extends Object & Comparable<? super T>> extends AbstractComparisonVisitor<T> {
@@ -46,7 +46,7 @@ public class ComparableComparisonVisitor<T extends Object & Comparable<? super T
         }
     }
 
-    private int compare(AbstractBinaryPredicate<T, T> binaryPredicate) {
+    private int compare(AbstractBiPredicate<T, T> binaryPredicate) {
         return ComparatorHelper.compare(binaryPredicate.getFirstArg(), binaryPredicate.getSecondArg());
     }
 }

@@ -1,11 +1,11 @@
 package org.refact4j.functor.commons;
 
-import org.refact4j.functor.AbstractBinaryPredicate;
+import org.refact4j.functor.AbstractBiPredicate;
 import org.refact4j.visitor.Visitor;
 
 import java.util.regex.Pattern;
 
-class MatchRegEx extends AbstractBinaryPredicate<String, String> {
+class MatchRegEx extends AbstractBiPredicate<String, String> {
 
     @Override
     public boolean test(String arg, String pattern) {

@@ -1,9 +1,9 @@
 package org.refact4j.functor.commons;
 
-import org.refact4j.functor.AbstractBinaryPredicate;
+import org.refact4j.functor.AbstractBiPredicate;
 import org.refact4j.visitor.Visitor;
 
-public class InstanceOf extends AbstractBinaryPredicate<Object, Class<?>> {
+public class InstanceOf extends AbstractBiPredicate<Object, Class<?>> {
 
     @Override
     public boolean test(Object firstArg, Class<?> secondArg) {

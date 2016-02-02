@@ -1,9 +1,9 @@
 package org.refact4j.functor.commons;
 
-import org.refact4j.functor.AbstractBinaryPredicate;
+import org.refact4j.functor.AbstractBiPredicate;
 import org.refact4j.visitor.Visitor;
 
-public class Like extends AbstractBinaryPredicate<String, String> {
+public class Like extends AbstractBiPredicate<String, String> {
 
     private final MatchRegEx matchRegEx = new MatchRegEx();
 

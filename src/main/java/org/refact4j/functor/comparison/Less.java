@@ -11,7 +11,7 @@ import java.util.Comparator;
  * comparator will be used if the nested Comparable class' default constructor
  * is used.
  */
-public class Less<T> extends AbstractComparisonBinaryPredicate<T> {
+public class Less<T> extends AbstractComparisonBiPredicate<T> {
 
     public Less() {
         setComparator(null);

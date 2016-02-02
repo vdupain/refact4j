@@ -1,6 +1,6 @@
 package org.refact4j.functor.logical;
 
-import org.refact4j.functor.AbstractBinaryPredicate;
+import org.refact4j.functor.AbstractBiPredicate;
 import org.refact4j.visitor.Visitor;
 
 /**
@@ -8,7 +8,7 @@ import org.refact4j.visitor.Visitor;
  * arg1 and arg2 are both true.
  */
 
-public class And extends AbstractBinaryPredicate<Boolean, Boolean> {
+public class And extends AbstractBiPredicate<Boolean, Boolean> {
 
     public boolean test(Boolean arg1, Boolean arg2) {
         return arg1 && arg2;

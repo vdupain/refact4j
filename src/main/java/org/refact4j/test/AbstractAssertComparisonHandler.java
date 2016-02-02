@@ -18,7 +18,7 @@ public abstract class AbstractAssertComparisonHandler<T> implements AssertCompar
 
     protected abstract void assertion(T expected, T actual);
 
-    public Boolean apply(T expected, T actual) {
+    public boolean test(T expected, T actual) {
         assertion(expected, actual);
         return true;
     }

@@ -9,7 +9,7 @@ import java.util.Comparator;
  * object arguments arg1 and arg2 when arg1 != arg2 using the built-in equals()
  * method or an optional Comparator given at construction.
  */
-public class NotEqual<T> extends AbstractComparisonBinaryPredicate<T> {
+public class NotEqual<T> extends AbstractComparisonBiPredicate<T> {
 
     public NotEqual() {
         setComparator(null);
