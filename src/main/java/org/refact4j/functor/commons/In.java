@@ -7,6 +7,8 @@ import org.refact4j.functor.comparison.Equal;
 import org.refact4j.functor.logical.Or;
 import org.refact4j.visitor.Visitor;
 
+import java.util.function.BiFunction;
+
 /**
  * In is an Unary Predicate that returns true when its argument is contains on
  * the given values.
@@ -21,6 +23,7 @@ public class In<T> extends AbstractUnaryPredicate<T> {
     public In(Object[] values) {
         this.values = values;
         this.pred = new Bind2nd(new Equal(), values[0]);
+
         for (int i = 1; i < values.length; i++) {
             this.pred = new BinaryCompose(new Or(), pred, new Bind2nd(new Equal(), values[1]));
         }

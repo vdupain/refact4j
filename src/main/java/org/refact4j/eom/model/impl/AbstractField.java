@@ -125,7 +125,7 @@ public abstract class AbstractField implements Field {
     }
 
     public String toString() {
-        return AbstractFieldStringifierFunctor.PRETTY.stringify(this);
+        return FieldStringifier.PRETTY.stringify(this);
     }
 
     public void addProperty(Object key, Object value) {
@@ -141,7 +141,7 @@ public abstract class AbstractField implements Field {
     }
 
     public String toXmlString() {
-        return AbstractFieldStringifierFunctor.XML.stringify(this);
+        return FieldStringifier.XML.stringify(this);
     }
 
     @Override
