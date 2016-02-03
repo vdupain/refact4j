@@ -90,23 +90,9 @@ public final class EntityExpressionBuilder {
         return this;
     }
 
-    public EntityExpressionBuilder equalTo(ConstantFunction constantFunctor) {
-        this.expression.equalTo(constantFunctor);
-        return this;
-    }
-
-    public EntityExpressionBuilder equalTo(EntityObject entityObject) {
-        this.expression.equalTo(new ConstantFunction<>(entityObject.getKey()));
-        return this;
-    }
 
     public EntityExpressionBuilder equalTo(Object object) {
         this.expression.equalTo(new ConstantFunction<>(object));
-        return this;
-    }
-
-    public EntityExpressionBuilder notEqualTo(Object object) {
-        this.expression.not(equalTo(new ConstantFunction<>(object)).getExpression());
         return this;
     }
 

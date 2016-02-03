@@ -23,6 +23,7 @@ import org.refact4j.model.FooDesc;
 import org.refact4j.visitor.Visitable;
 
 import java.util.function.Function;
+import java.util.function.Predicate;
 
 import static org.junit.Assert.*;
 
@@ -56,7 +57,7 @@ public class ExpressionTest {
         assertEquals(flag2, flag3);
 
         expression = EntityExpressionBuilder.init(FooDesc.VALUE).greaterThan(10.).and(
-                (EntityExpressionBuilder.init(FooDesc.NAME).equalTo(new ConstantFunction<>("azerty"))))
+                (EntityExpressionBuilder.init(FooDesc.NAME).equalTo("azerty")))
                 .getExpression();
         beanExpression = BeanExpressionBuilder.init("Value").greaterThan(10.).and(
                 (BeanExpressionBuilder.init("Name").equalTo("azerty"))).getExpression();

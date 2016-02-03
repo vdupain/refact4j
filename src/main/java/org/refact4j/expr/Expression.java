@@ -93,6 +93,11 @@ public class Expression<T> implements Predicate<T>, Visitable {
         return this;
     }
 
+    public Expression<T> not() {
+        predicate = new UnaryCompose<>(new Not(), predicate);
+        return this;
+    }
+
     public Expression<T> not(Expression<T> expression) {
         predicate = new UnaryCompose<>(new Not(), expression.predicate);
         return this;
@@ -111,7 +116,7 @@ public class Expression<T> implements Predicate<T>, Visitable {
         return this;
     }
 
-    Expression<T> notEqualTo(ConstantFunction<Object> constantFunctor) {
+    private Expression<T> notEqualTo(ConstantFunction<Object> constantFunctor) {
         predicate = new CompositeUnaryPredicate<>(new NotEqual<>(), function, constantFunctor);
         return this;
     }
