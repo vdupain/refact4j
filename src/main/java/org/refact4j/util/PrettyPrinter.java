@@ -26,18 +26,19 @@ import org.refact4j.function.commons.StringLength.StringLengthVisitor;
 import org.refact4j.function.comparison.*;
 import org.refact4j.function.comparison.NotNull.NotNullVisitor;
 import org.refact4j.function.comparison.Null.NullVisitor;
-import org.refact4j.function.identity.Identity;
-import org.refact4j.function.identity.Identity.IdentityVisitor;
 import org.refact4j.function.logical.And;
 import org.refact4j.function.logical.LogicalVisitor;
 import org.refact4j.function.logical.Not;
 import org.refact4j.function.logical.Or;
 import org.refact4j.visitor.Visitable;
 
+import java.util.function.BiFunction;
+import java.util.function.Function;
+
 public class PrettyPrinter implements ExpressionVisitor, BinaryComposeVisitor, UnaryComposeVisitor,
         CompositeUnaryPredicateVisitor, EntityFieldComparatorVisitor, ComparisonVisitor, LogicalVisitor,
         BetweenVisitor, NullVisitor, NotNullVisitor, InVisitor, NotInVisitor, LikeVisitor, InstanceOfVisitor,
-        GetEntityFieldFunctorVisitor, GetFieldFunctionVisitor, StringLengthVisitor, IdentityVisitor {
+        GetEntityFieldFunctorVisitor, GetFieldFunctionVisitor, StringLengthVisitor {
 
     private final FieldStringifier stringifier = new FieldStringifier() {
 
@@ -70,7 +71,7 @@ public class PrettyPrinter implements ExpressionVisitor, BinaryComposeVisitor, U
     public void visitEntityFieldComparator(EntityFieldComparator fieldComparator) {
         buf.append('(');
         buf.append(this.stringifier.stringify(fieldComparator.getField()));
-        ((Visitable) fieldComparator.getBiFunction()).accept(this);
+        visit(fieldComparator.getBiFunction());
         buf.append(fieldComparator.getValue());
         buf.append(')');
     }
@@ -78,8 +79,8 @@ public class PrettyPrinter implements ExpressionVisitor, BinaryComposeVisitor, U
     public void visitCompositeUnaryPredicate(CompositeUnaryPredicate<?> compositeUnaryPredicate) {
         buf.append('(');
         java.util.function.Function<?, ?> function = compositeUnaryPredicate.getFunction();
-        ((Visitable) function).accept(this);
-        ((Visitable) compositeUnaryPredicate.getBiFunction()).accept(this);
+        visit(function);
+        visit(compositeUnaryPredicate.getBiFunction());
         buf.append(compositeUnaryPredicate.getConstantUnaryFunctor().getConstant());
         buf.append(')');
     }
@@ -94,9 +95,9 @@ public class PrettyPrinter implements ExpressionVisitor, BinaryComposeVisitor, U
 
     public void visitBinaryCompose(BinaryCompose binaryCompose) {
         buf.append('(');
-        ((Visitable) binaryCompose.getFirstFunction()).accept(this);
-        ((Visitable) binaryCompose.getBiFunction()).accept(this);
-        ((Visitable) binaryCompose.getSecondFunction()).accept(this);
+        visit(binaryCompose.getFirstFunction());
+        visit(binaryCompose.getBiFunction());
+        visit(binaryCompose.getSecondFunction());
         buf.append(')');
     }
 
@@ -106,13 +107,19 @@ public class PrettyPrinter implements ExpressionVisitor, BinaryComposeVisitor, U
         java.util.function.Function firstFunction = unaryCompose.getFunction();
         if (firstFunction instanceof Between || firstFunction instanceof In
                 || firstFunction instanceof NotIn) {
-            ((Visitable) secondFunction).accept(this);
-            ((Visitable) firstFunction).accept(this);
+            visit(secondFunction);
+            visit(firstFunction);
         } else {
-            ((Visitable) firstFunction).accept(this);
-            ((Visitable) secondFunction).accept(this);
+            visit(firstFunction);
+            visit(secondFunction);
         }
         buf.append(')');
+    }
+
+    private void visit(Object function) {
+        if (function instanceof Visitable)
+            ((Visitable) function).accept(this);
+        else buf.append(this.expression.getPropertyName());
     }
 
     public void visitEqual(Equal equal) {
@@ -169,7 +176,7 @@ public class PrettyPrinter implements ExpressionVisitor, BinaryComposeVisitor, U
 
     public void visitExpression(Expression expression) {
         this.expression = expression;
-        ((Visitable) expression.getPredicate()).accept(this);
+        visit(expression.getPredicate());
     }
 
     public void visitBetween(Between<?> between) {
@@ -199,10 +206,6 @@ public class PrettyPrinter implements ExpressionVisitor, BinaryComposeVisitor, U
 
     public void visitStringLength(StringLength stringLength) {
         buf.append(this.expression.getPropertyName()).append(".length");
-    }
-
-    public void visitIdentity(Identity ignored) {
-        buf.append(this.expression.getPropertyName());
     }
 
     private void appendValues(Object[] values) {

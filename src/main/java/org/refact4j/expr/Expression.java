@@ -3,7 +3,6 @@ package org.refact4j.expr;
 import org.refact4j.function.*;
 import org.refact4j.function.commons.*;
 import org.refact4j.function.comparison.*;
-import org.refact4j.function.identity.Identity;
 import org.refact4j.function.logical.And;
 import org.refact4j.function.logical.Not;
 import org.refact4j.function.logical.Or;
@@ -11,6 +10,7 @@ import org.refact4j.util.PrettyPrinter;
 import org.refact4j.visitor.Visitable;
 import org.refact4j.visitor.Visitor;
 
+import java.util.function.Function;
 import java.util.function.Predicate;
 
 /**
@@ -24,7 +24,7 @@ public class Expression<T> implements Predicate<T>, Visitable {
 
     private java.util.function.Function<T, Boolean> predicate;
 
-    private java.util.function.Function<T, ?> function = new Identity<>();
+    private java.util.function.Function<T, ?> function = Function.identity();
 
     public Expression() {
     }

@@ -49,6 +49,7 @@ public class AssertTest {
         } catch (Throwable e) {
             String expected = "Expected that: ((value BETWEEN 1 AND 11) AND ( NOT (value=10)))" + StringHelper.LINE_SEPARATOR;
             expected += "but value was : 10" + StringHelper.LINE_SEPARATOR;
+            e.printStackTrace();
             assertEquals(expected, e.getMessage());
         }
     }
