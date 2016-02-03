@@ -1,8 +1,8 @@
 package org.refact4j.expr;
 
 import org.refact4j.function.BinaryCompose;
+import org.refact4j.function.ComposeFunction;
 import org.refact4j.function.CompositeUnaryPredicate;
-import org.refact4j.function.UnaryCompose;
 import org.refact4j.function.commons.*;
 import org.refact4j.function.comparison.*;
 import org.refact4j.function.logical.And;
@@ -61,27 +61,27 @@ public class Expression<T> implements Predicate<T>, Visitable {
     }
 
     public Expression<T> between(Object infValue, Object supValue) {
-        predicate = new UnaryCompose(new Between<>(infValue, supValue), function);
+        predicate = new ComposeFunction(new Between<>(infValue, supValue), function);
         return this;
     }
 
     public Expression<T> isNull() {
-        predicate = new UnaryCompose(new Null<>(), function);
+        predicate = new ComposeFunction(new Null<>(), function);
         return this;
     }
 
     public Expression<T> isNotNull() {
-        predicate = new UnaryCompose(new NotNull<>(), function);
+        predicate = new ComposeFunction(new NotNull<>(), function);
         return this;
     }
 
     public Expression<T> in(Object[] objects) {
-        predicate = new UnaryCompose(new In<>(objects), function);
+        predicate = new ComposeFunction(new In<>(objects), function);
         return this;
     }
 
     public Expression<T> notIn(Object[] objects) {
-        predicate = new UnaryCompose(new NotIn<>(objects), function);
+        predicate = new ComposeFunction(new NotIn<>(objects), function);
         return this;
     }
 
@@ -96,12 +96,12 @@ public class Expression<T> implements Predicate<T>, Visitable {
     }
 
     public Expression<T> not() {
-        predicate = new UnaryCompose<>(new Not(), predicate);
+        predicate = new ComposeFunction<>(new Not(), predicate);
         return this;
     }
 
     public Expression<T> not(Expression<T> expression) {
-        predicate = new UnaryCompose<>(new Not(), expression.predicate);
+        predicate = new ComposeFunction<>(new Not(), expression.predicate);
         return this;
     }
 

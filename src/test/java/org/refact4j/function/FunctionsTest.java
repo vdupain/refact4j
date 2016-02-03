@@ -42,10 +42,14 @@ public class FunctionsTest {
         value = discountedPrice.apply(taxedPrice.apply(value));
         assertEquals(value, 96.);
 
-        UnaryCompose<Number, Number, Number> calcPrice = new UnaryCompose<>(
+        ComposeFunction<Number, Number, Number> calcPrice = new ComposeFunction<>(
                 discountedPrice, taxedPrice);
         value = 100.;
         value = calcPrice.apply(value);
+        assertEquals(value, 96.);
+
+        value = 100.;
+        value = discountedPrice.compose(taxedPrice).apply(value);
         assertEquals(value, 96.);
 
         Function<Number, Number> functor = bind2nd(new Multiplies(), 1 + taxRate);

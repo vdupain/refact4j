@@ -6,7 +6,7 @@ import org.refact4j.visitor.Visitor;
 import java.util.function.Function;
 
 /**
- * UnaryCompose is a Unary Functor that passes the results of a Unary Functor as
+ * ComposeFunction is a Unary Functor that passes the results of a Unary Functor as
  * the argument to a Unary Functor. This allows for the construction of compound
  * functors from the primitives found in the logical package. This function is a
  * "y=f(g(x))" function.
@@ -15,13 +15,12 @@ import java.util.function.Function;
  * @param <T>
  * @param <R>
  */
-public class UnaryCompose<F1, T, R> implements Visitable, Function<T, R> {
+public class ComposeFunction<F1, T, R> implements Visitable, Function<T, R> {
 
     private final Function<F1, R> function;
-
     private final Function<T, F1> before;
 
-    public UnaryCompose(Function<F1, R> function, Function<T, F1> before) {
+    public ComposeFunction(Function<F1, R> function, Function<T, F1> before) {
         this.function = function;
         this.before = before;
     }
@@ -48,7 +47,7 @@ public class UnaryCompose<F1, T, R> implements Visitable, Function<T, R> {
     }
 
     public interface UnaryComposeVisitor extends Visitor {
-        void visitUnaryCompose(UnaryCompose<?, ?, ?> unaryCompose);
+        void visitUnaryCompose(ComposeFunction<?, ?, ?> composeFunction);
     }
 
 }

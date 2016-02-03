@@ -10,12 +10,12 @@ import org.refact4j.expr.Expression;
 import org.refact4j.expr.Expression.ExpressionVisitor;
 import org.refact4j.function.BinaryCompose;
 import org.refact4j.function.BinaryCompose.BinaryComposeVisitor;
+import org.refact4j.function.ComposeFunction;
 import org.refact4j.function.CompositeUnaryPredicate;
 import org.refact4j.function.CompositeUnaryPredicate.CompositeUnaryPredicateVisitor;
 import org.refact4j.function.GetFieldFunction;
 import org.refact4j.function.GetFieldFunction.GetFieldFunctionVisitor;
-import org.refact4j.function.UnaryCompose;
-import org.refact4j.function.UnaryCompose.UnaryComposeVisitor;
+import org.refact4j.function.ComposeFunction.UnaryComposeVisitor;
 import org.refact4j.function.commons.*;
 import org.refact4j.function.commons.Between.BetweenVisitor;
 import org.refact4j.function.commons.In.InVisitor;
@@ -98,10 +98,10 @@ public class PrettyPrinter implements ExpressionVisitor, BinaryComposeVisitor, U
         buf.append(')');
     }
 
-    public void visitUnaryCompose(UnaryCompose unaryCompose) {
+    public void visitUnaryCompose(ComposeFunction composeFunction) {
         buf.append('(');
-        java.util.function.Function secondFunction = unaryCompose.getBefore();
-        java.util.function.Function firstFunction = unaryCompose.getFunction();
+        java.util.function.Function secondFunction = composeFunction.getBefore();
+        java.util.function.Function firstFunction = composeFunction.getFunction();
         if (firstFunction instanceof Between || firstFunction instanceof In
                 || firstFunction instanceof NotIn) {
             visit(secondFunction);
