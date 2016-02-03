@@ -5,7 +5,7 @@ import org.refact4j.eom.model.EntityDescriptor;
 import org.refact4j.eom.model.Field;
 import org.refact4j.eom.model.Key;
 import org.refact4j.eom.xml.writer.EntityXmlWriterHelper;
-import org.refact4j.functor.Stringifier;
+import org.refact4j.function.Stringifier;
 
 import java.util.ArrayList;
 import java.util.Iterator;

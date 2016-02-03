@@ -1,6 +1,6 @@
 package org.refact4j.expr;
 
-import org.refact4j.functor.ConstantFunction;
+import org.refact4j.function.ConstantFunction;
 
 public final class ExpressionBuilder {
     private final Expression expression;

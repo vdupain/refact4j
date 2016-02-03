@@ -1,7 +1,7 @@
 package org.refact4j.eom.model.impl;
 
 import org.refact4j.eom.model.EntityDescriptor;
-import org.refact4j.functor.Stringifier;
+import org.refact4j.function.Stringifier;
 
 public class EntityDescriptorStringifier implements Stringifier<EntityDescriptor> {
 

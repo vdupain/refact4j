@@ -1,7 +1,7 @@
 package org.refact4j.eom;
 
 import org.refact4j.eom.model.Field;
-import org.refact4j.functor.comparison.Equal;
+import org.refact4j.function.comparison.Equal;
 
 /**
  * FieldValuePredicate is an Unary Predicate that returns true if the given

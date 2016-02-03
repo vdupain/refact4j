@@ -1,7 +1,7 @@
 package org.refact4j.eom;
 
 import org.refact4j.eom.model.Field;
-import org.refact4j.functor.ConstantFunction;
+import org.refact4j.function.ConstantFunction;
 
 public final class EntityExpressionBuilder {
     private final EntityExpression expression;

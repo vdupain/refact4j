@@ -3,10 +3,10 @@ package org.refact4j.eom;
 import org.refact4j.eom.impl.EntityListImpl;
 import org.refact4j.eom.model.EntityDescriptor;
 import org.refact4j.eom.model.Field;
-import org.refact4j.functor.aggregate.AbstractAggregateFunctor;
-import org.refact4j.functor.aggregate.AggregateFunctor;
-import org.refact4j.functor.aggregate.MaxValue;
-import org.refact4j.functor.aggregate.MinValue;
+import org.refact4j.function.aggregate.AbstractAggregateFunctor;
+import org.refact4j.function.aggregate.AggregateFunctor;
+import org.refact4j.function.aggregate.MaxValue;
+import org.refact4j.function.aggregate.MinValue;
 import org.refact4j.util.ComparatorHelper;
 
 import java.util.Collection;

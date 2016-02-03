@@ -1,6 +1,6 @@
 package org.refact4j.expr;
 
-import org.refact4j.functor.GetFieldFunction;
+import org.refact4j.function.GetFieldFunction;
 
 /**
  * Expression for Java Beans. BeanExpression should be created by

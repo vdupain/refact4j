@@ -1,12 +1,12 @@
 package org.refact4j.expr;
 
-import org.refact4j.functor.*;
-import org.refact4j.functor.commons.*;
-import org.refact4j.functor.comparison.*;
-import org.refact4j.functor.identity.Identity;
-import org.refact4j.functor.logical.And;
-import org.refact4j.functor.logical.Not;
-import org.refact4j.functor.logical.Or;
+import org.refact4j.function.*;
+import org.refact4j.function.commons.*;
+import org.refact4j.function.comparison.*;
+import org.refact4j.function.identity.Identity;
+import org.refact4j.function.logical.And;
+import org.refact4j.function.logical.Not;
+import org.refact4j.function.logical.Or;
 import org.refact4j.util.PrettyPrinter;
 import org.refact4j.visitor.Visitable;
 import org.refact4j.visitor.Visitor;

@@ -2,7 +2,6 @@ package org.refact4j.util;
 
 import org.refact4j.expr.Expression;
 import org.refact4j.expr.ExpressionBuilder;
-import org.refact4j.functor.UnaryPredicate;
 
 import java.util.function.Predicate;
 

@@ -1,7 +1,7 @@
 package org.refact4j.eom.model.impl;
 
 import org.refact4j.eom.model.Field;
-import org.refact4j.functor.Stringifier;
+import org.refact4j.function.Stringifier;
 import org.refact4j.util.NotImplementedException;
 
 public interface FieldStringifier extends Stringifier<Field> {

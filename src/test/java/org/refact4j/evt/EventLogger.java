@@ -2,7 +2,7 @@ package org.refact4j.evt;
 
 import junit.framework.Assert;
 import junit.framework.ComparisonFailure;
-import org.refact4j.functor.BinaryPredicate;
+import org.refact4j.function.BinaryPredicate;
 import org.refact4j.util.StringHelper;
 import org.refact4j.util.XmlAssert;
 

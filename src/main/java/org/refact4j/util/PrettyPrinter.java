@@ -8,30 +8,30 @@ import org.refact4j.eom.model.Field;
 import org.refact4j.eom.model.impl.FieldStringifier;
 import org.refact4j.expr.Expression;
 import org.refact4j.expr.Expression.ExpressionVisitor;
-import org.refact4j.functor.BinaryCompose;
-import org.refact4j.functor.BinaryCompose.BinaryComposeVisitor;
-import org.refact4j.functor.CompositeUnaryPredicate;
-import org.refact4j.functor.CompositeUnaryPredicate.CompositeUnaryPredicateVisitor;
-import org.refact4j.functor.GetFieldFunction;
-import org.refact4j.functor.GetFieldFunction.GetFieldFunctionVisitor;
-import org.refact4j.functor.UnaryCompose;
-import org.refact4j.functor.UnaryCompose.UnaryComposeVisitor;
-import org.refact4j.functor.commons.*;
-import org.refact4j.functor.commons.Between.BetweenVisitor;
-import org.refact4j.functor.commons.In.InVisitor;
-import org.refact4j.functor.commons.InstanceOf.InstanceOfVisitor;
-import org.refact4j.functor.commons.Like.LikeVisitor;
-import org.refact4j.functor.commons.NotIn.NotInVisitor;
-import org.refact4j.functor.commons.StringLength.StringLengthVisitor;
-import org.refact4j.functor.comparison.*;
-import org.refact4j.functor.comparison.NotNull.NotNullVisitor;
-import org.refact4j.functor.comparison.Null.NullVisitor;
-import org.refact4j.functor.identity.Identity;
-import org.refact4j.functor.identity.Identity.IdentityVisitor;
-import org.refact4j.functor.logical.And;
-import org.refact4j.functor.logical.LogicalVisitor;
-import org.refact4j.functor.logical.Not;
-import org.refact4j.functor.logical.Or;
+import org.refact4j.function.BinaryCompose;
+import org.refact4j.function.BinaryCompose.BinaryComposeVisitor;
+import org.refact4j.function.CompositeUnaryPredicate;
+import org.refact4j.function.CompositeUnaryPredicate.CompositeUnaryPredicateVisitor;
+import org.refact4j.function.GetFieldFunction;
+import org.refact4j.function.GetFieldFunction.GetFieldFunctionVisitor;
+import org.refact4j.function.UnaryCompose;
+import org.refact4j.function.UnaryCompose.UnaryComposeVisitor;
+import org.refact4j.function.commons.*;
+import org.refact4j.function.commons.Between.BetweenVisitor;
+import org.refact4j.function.commons.In.InVisitor;
+import org.refact4j.function.commons.InstanceOf.InstanceOfVisitor;
+import org.refact4j.function.commons.Like.LikeVisitor;
+import org.refact4j.function.commons.NotIn.NotInVisitor;
+import org.refact4j.function.commons.StringLength.StringLengthVisitor;
+import org.refact4j.function.comparison.*;
+import org.refact4j.function.comparison.NotNull.NotNullVisitor;
+import org.refact4j.function.comparison.Null.NullVisitor;
+import org.refact4j.function.identity.Identity;
+import org.refact4j.function.identity.Identity.IdentityVisitor;
+import org.refact4j.function.logical.And;
+import org.refact4j.function.logical.LogicalVisitor;
+import org.refact4j.function.logical.Not;
+import org.refact4j.function.logical.Or;
 import org.refact4j.visitor.Visitable;
 
 public class PrettyPrinter implements ExpressionVisitor, BinaryComposeVisitor, UnaryComposeVisitor,
@@ -201,7 +201,7 @@ public class PrettyPrinter implements ExpressionVisitor, BinaryComposeVisitor, U
         buf.append(this.expression.getPropertyName()).append(".length");
     }
 
-    public void visitIdentity(Identity identityFunctor) {
+    public void visitIdentity(Identity ignored) {
         buf.append(this.expression.getPropertyName());
     }
 
