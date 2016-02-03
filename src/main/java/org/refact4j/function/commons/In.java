@@ -1,7 +1,7 @@
 package org.refact4j.function.commons;
 
 import org.refact4j.function.BinaryCompose;
-import org.refact4j.function.Bind2nd;
+import org.refact4j.function.Functions;
 import org.refact4j.function.comparison.Equal;
 import org.refact4j.function.logical.Or;
 import org.refact4j.visitor.Visitor;
@@ -19,10 +19,10 @@ public class In<T> implements org.refact4j.function.UnaryPredicate<T> {
 
     public In(Object[] values) {
         this.values = values;
-        this.pred = new Bind2nd(new Equal(), values[0]);
+        this.pred = Functions.bind2nd(new Equal(), values[0]);
 
         for (int i = 1; i < values.length; i++) {
-            this.pred = new BinaryCompose(new Or(), pred, new Bind2nd(new Equal(), values[1]));
+            this.pred = new BinaryCompose(new Or(), pred, Functions.bind2nd(new Equal(), values[1]));
         }
     }
 

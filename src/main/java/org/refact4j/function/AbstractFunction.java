@@ -2,6 +2,8 @@ package org.refact4j.function;
 
 import org.refact4j.visitor.Visitable;
 
+import java.util.function.Function;
+
 /**
  * This abstract class provides a skeletal implementation of the Function
  * interface, to minimize the effort required to implement this interface. To
@@ -10,7 +12,7 @@ import org.refact4j.visitor.Visitable;
  *
  * @param <T>
  */
-public abstract class AbstractFunction<T, R> implements Visitable, java.util.function.Function<T, R> {
+public abstract class AbstractFunction<T, R> implements Visitable, Function<T, R> {
     private T arg;
 
     protected abstract R evaluate(T arg);

@@ -16,19 +16,22 @@ import org.refact4j.model.DummyBean;
 import org.refact4j.model.FooDesc;
 import org.refact4j.util.PrettyPrinter;
 
-import static org.junit.Assert.*;
+import java.util.function.Function;
 
+import static org.junit.Assert.*;
+import static org.refact4j.function.Functions.*;
 
 public class FunctionsTest {
+
 
     @Test
     public void testConstantArgUnaryFunction() {
         double discountRate = 0.2;
         double taxRate = 0.20;
 
-        java.util.function.Function<Number, Number> discountedPrice = new Bind1st<>(new Multiplies(),
+        Function<Number, Number> discountedPrice = bind1st(new Multiplies(),
                 1 - discountRate);
-        java.util.function.Function<Number, Number> taxedPrice = new Bind1st<>(new Multiplies(), 1 + taxRate);
+        Function<Number, Number> taxedPrice = bind1st(new Multiplies(), 1 + taxRate);
 
         Number value = 100.;
         value = discountedPrice.apply(value);
@@ -46,7 +49,7 @@ public class FunctionsTest {
         value = calcPrice.apply(value);
         assertEquals(value, 96.);
 
-        java.util.function.Function<Number, Number> functor = new Bind2nd<>(new Multiplies(), 1 + taxRate);
+        Function<Number, Number> functor = bind2nd(new Multiplies(), 1 + taxRate);
         value = 100.;
         value = discountedPrice.apply(value);
         assertEquals(value, 80.);
