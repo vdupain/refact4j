@@ -24,7 +24,7 @@ public class BinaryCompose<F1, F2, T, R> implements Visitable, Function<T, R> {
     private final BiFunction<F1, F2, R> biFunction;
 
     public BinaryCompose(BiFunction<F1, F2, R> biFunction, Function<T, F1> firstFunction,
-                         java.util.function.Function<T, F2> secondFunction) {
+                         Function<T, F2> secondFunction) {
         this.biFunction = biFunction;
         this.firstFunction = firstFunction;
         this.secondFunction = secondFunction;

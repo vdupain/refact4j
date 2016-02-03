@@ -78,7 +78,7 @@ public class PrettyPrinter implements ExpressionVisitor, BinaryComposeVisitor, U
         java.util.function.Function<?, ?> function = compositeUnaryPredicate.getFunction();
         visit(function);
         visit(compositeUnaryPredicate.getBiFunction());
-        buf.append(compositeUnaryPredicate.getConstant());
+        buf.append(compositeUnaryPredicate.getValue());
         buf.append(')');
     }
 

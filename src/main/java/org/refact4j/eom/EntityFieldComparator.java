@@ -14,23 +14,18 @@ import java.util.function.BiFunction;
  */
 public class EntityFieldComparator<T> extends CompositeUnaryPredicate<EntityObject> {
 
-    private final T value;
 
     private final Field field;
 
     public EntityFieldComparator(BiFunction<T, T, Boolean> biFunction, Field field, T value) {
         super(biFunction, new GetEntityFieldFunction(field), value);
         this.field = field;
-        this.value = value;
     }
 
     public Field getField() {
         return field;
     }
 
-    public T getValue() {
-        return value;
-    }
 
     public void accept(Visitor visitor) {
         if (visitor instanceof EntityFieldComparatorVisitor) {

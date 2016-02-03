@@ -17,5 +17,4 @@ public interface BinaryPredicate<T1, T2> extends BiPredicate<T1, T2>, java.util.
         return this.test(t1, t2);
     }
 
-    ;
 }

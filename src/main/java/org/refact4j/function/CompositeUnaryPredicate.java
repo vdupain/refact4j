@@ -11,15 +11,15 @@ public class CompositeUnaryPredicate<T> implements UnaryPredicate<T> {
     private BiFunction<?, ?, Boolean> biFunction;
 
     private java.util.function.Function<T, ?> function;
-    private Object constant;
+    private Object value;
 
 
     public CompositeUnaryPredicate(BiFunction<?, ?, Boolean> biFunction, Function<T, ?> function,
-                                   Object constant) {
+                                   Object value) {
         this.biFunction = biFunction;
         this.function = function;
-        this.constant = constant;
-        this.compositeFunctor = new BinaryCompose(biFunction, function, Functions.constant(constant));
+        this.value = value;
+        this.compositeFunctor = new BinaryCompose(biFunction, function, Functions.constant(value));
     }
 
     public boolean test(T arg) {
@@ -30,7 +30,7 @@ public class CompositeUnaryPredicate<T> implements UnaryPredicate<T> {
         return biFunction;
     }
 
-    public java.util.function.Function<T, ?> getFunction() {
+    public Function<T, ?> getFunction() {
         return function;
     }
 
@@ -40,8 +40,8 @@ public class CompositeUnaryPredicate<T> implements UnaryPredicate<T> {
         }
     }
 
-    public Object getConstant() {
-        return constant;
+    public Object getValue() {
+        return value;
     }
 
     public interface CompositeUnaryPredicateVisitor extends Visitor {
