@@ -36,35 +36,17 @@ public final class BeanExpressionBuilder {
         return this;
     }
 
-    public BeanExpressionBuilder lessOrEqual(Object value) {
-        this.expression.lessOrEqual(value);
-        return this;
-    }
-
     public BeanExpressionBuilder between(Object value1, Object value2) {
         this.expression.between(value1, value2);
         return this;
     }
 
-    public BeanExpressionBuilder isNull() {
-        this.expression.isNull();
-        return this;
-    }
-
-    public BeanExpressionBuilder isNotNull() {
-        this.expression.isNotNull();
-        return this;
-    }
 
     public BeanExpressionBuilder in(Object[] values) {
         this.expression.in(values);
         return this;
     }
 
-    public BeanExpressionBuilder notIn(Object[] values) {
-        this.expression.notIn(values);
-        return this;
-    }
 
     public BeanExpressionBuilder and(BeanExpressionBuilder expression) {
         this.expression.and(expression.getExpression());
@@ -81,30 +63,11 @@ public final class BeanExpressionBuilder {
         return this;
     }
 
-    private BeanExpressionBuilder equalTo(ConstantFunction constantFunctor) {
-        this.expression.equalTo(constantFunctor);
-        return this;
-    }
-
     public BeanExpressionBuilder equalTo(Object object) {
         this.expression.equalTo(new ConstantFunction<>(object));
         return this;
     }
 
-    public BeanExpressionBuilder notEqualTo(Object object) {
-        this.expression.not(equalTo(new ConstantFunction<>(object)).getExpression());
-        return this;
-    }
-
-    public BeanExpressionBuilder maxLength(int maxLength) {
-        this.expression.maxLength(maxLength);
-        return this;
-    }
-
-    public BeanExpressionBuilder minLength(int minLength) {
-        this.expression.minLength(minLength);
-        return this;
-    }
 
     public BeanExpressionBuilder like(String regEx) {
         this.expression.like(regEx);

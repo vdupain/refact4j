@@ -1,16 +1,16 @@
 package org.refact4j.function.commons;
 
-import org.refact4j.function.AbstractFunction;
+import org.refact4j.visitor.Visitable;
 import org.refact4j.visitor.Visitor;
 
-public class StringLength extends AbstractFunction<String, Integer> {
+import java.util.function.Function;
+
+public class StringLength implements Function<String, Integer>, Visitable {
+
 
     @Override
-    protected Integer evaluate(String arg) {
-        if (arg != null) {
-            return arg.length();
-        }
-        return -1;
+    public Integer apply(String value) {
+        return value!=null?value.length():-1;
     }
 
     public void accept(Visitor visitor) {

@@ -3,6 +3,9 @@ package org.refact4j.function.commons;
 import org.refact4j.function.logical.Not;
 import org.refact4j.visitor.Visitor;
 
+import java.util.Objects;
+import java.util.function.Function;
+
 /**
  * NotIn is an Unary Predicate that returns true when its argument is not
  * contains on the given values.
@@ -24,7 +27,7 @@ public class NotIn<T> implements org.refact4j.function.UnaryPredicate<T> {
 
     @Override
     public boolean test(T arg) {
-        return new Not().compose(new In<>(values)).apply(arg);
+        return new Not().test(new In<>(values).test(arg));
     }
 
     public void accept(Visitor visitor) {

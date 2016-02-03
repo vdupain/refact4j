@@ -96,16 +96,6 @@ public final class EntityExpressionBuilder {
         return this;
     }
 
-    public EntityExpressionBuilder maxLength(int maxLength) {
-        this.expression.maxLength(maxLength);
-        return this;
-    }
-
-    public EntityExpressionBuilder minLength(int minLength) {
-        this.expression.minLength(minLength);
-        return this;
-    }
-
     public EntityExpressionBuilder like(String regEx) {
         this.expression.like(regEx);
         return this;

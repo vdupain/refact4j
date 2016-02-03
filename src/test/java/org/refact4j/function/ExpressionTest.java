@@ -227,7 +227,6 @@ public class ExpressionTest {
 
     @Test
     public void testInAndNotInExpressions() {
-
         Expression expression = EntityExpressionBuilder.init(FooDesc.VALUE).equalTo((double) 0).or(
                 EntityExpressionBuilder.init(FooDesc.VALUE).equalTo(1.)).or(
                 EntityExpressionBuilder.init(FooDesc.VALUE).equalTo(2.)).getExpression();
@@ -245,11 +244,6 @@ public class ExpressionTest {
         assertFalse(inExpression.test(dummyEntity3));
         printEquivalentExpr(expression, inExpression);
 
-        Expression inExpression2 = EntityExpressionBuilder.init(FooDesc.VALUE).in(values).getExpression();
-        assertTrue(inExpression2.test(dummyEntity1));
-        assertFalse(inExpression2.test(dummyEntity3));
-        printEquivalentExpr(expression, inExpression2);
-
         expression = EntityExpressionBuilder.init().not(
                 EntityExpressionBuilder.init(FooDesc.VALUE).equalTo(0.).or(
                         EntityExpressionBuilder.init(FooDesc.VALUE).equalTo(1.)).or(
@@ -258,9 +252,9 @@ public class ExpressionTest {
         assertFalse(expression.test(dummyEntity1));
 
         Expression notInExpression = EntityExpressionBuilder.init(FooDesc.VALUE).notIn(values).getExpression();
+        printEquivalentExpr(expression, notInExpression);
         assertTrue(notInExpression.test(dummyEntity3));
         assertFalse(notInExpression.test(dummyEntity1));
-        printEquivalentExpr(expression, notInExpression);
     }
 
 
@@ -271,27 +265,4 @@ public class ExpressionTest {
         assertFalse(expression.test("abcdef"));
         assertTrue(expression.test(null));
     }
-
-    class ExpressionVisitor implements BetweenVisitor, NullVisitor, NotNullVisitor, InVisitor, NotInVisitor {
-
-        public void visitBetween(Between between) {
-        }
-
-        public void visit(Visitable visitable) {
-        }
-
-        public void visitNull(Null nul) {
-        }
-
-        public void visitNotNull(NotNull notNull) {
-        }
-
-        public void visitIn(In in) {
-        }
-
-        public void visitNotIn(NotIn notIn) {
-        }
-
-    }
-
 }
