@@ -2,9 +2,9 @@ package org.refact4j.xml.impl;
 
 import org.refact4j.collection.Set;
 import org.refact4j.xml.DataSet2XmlConverter;
-import org.refact4j.xml.DatasetConverterHolder;
+import org.refact4j.xml.DataSetConverterHolder;
 
-public class DatasetConverterHolderImpl implements DatasetConverterHolder {
+public class DatasetConverterHolderImpl implements DataSetConverterHolder {
     private final Set dataset;
 
     private final DataSet2XmlConverter dataset2XmlConverter;

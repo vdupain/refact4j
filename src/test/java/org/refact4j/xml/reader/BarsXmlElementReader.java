@@ -1,13 +1,13 @@
 package org.refact4j.xml.reader;
 
-import org.refact4j.xml.DatasetConverterHolder;
+import org.refact4j.xml.DataSetConverterHolder;
 import org.refact4j.xml.XmlAttributes;
 import org.refact4j.xml.XmlElement;
 
 public class BarsXmlElementReader extends DefaultXmlElementReader {
 
-    public BarsXmlElementReader(DatasetConverterHolder datasetConverterHolder) {
-        super(datasetConverterHolder);
+    public BarsXmlElementReader(DataSetConverterHolder dataSetConverterHolder) {
+        super(dataSetConverterHolder);
     }
 
     @Override

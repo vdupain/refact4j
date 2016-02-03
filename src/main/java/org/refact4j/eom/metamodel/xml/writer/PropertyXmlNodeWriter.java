@@ -8,7 +8,7 @@ import org.refact4j.eom.metamodel.PropertyDesc;
 import org.refact4j.eom.model.EntityDescriptorRepository;
 import org.refact4j.eom.model.Key;
 import org.refact4j.eom.model.KeyBuilder;
-import org.refact4j.xml.DatasetConverterHolder;
+import org.refact4j.xml.DataSetConverterHolder;
 import org.refact4j.xml.XmlElementHandler;
 import org.refact4j.xml.XmlWriter;
 import org.refact4j.xml.writer.AbstractXmlElementWriter;
@@ -19,7 +19,7 @@ import java.util.stream.Collectors;
 
 class PropertyXmlNodeWriter extends AbstractXmlElementWriter {
 
-    public PropertyXmlNodeWriter(DatasetConverterHolder holder, EntityObject entityDescEntity,
+    public PropertyXmlNodeWriter(DataSetConverterHolder holder, EntityObject entityDescEntity,
                                  EntityDescriptorRepository repository) {
         super(PropertyDesc.INSTANCE.getName(), (Collection<?>) holder.getDataSet().getAll(
                 PropertyDesc.INSTANCE).stream()
@@ -27,7 +27,7 @@ class PropertyXmlNodeWriter extends AbstractXmlElementWriter {
                         .get(EntityDescriptorDesc.NAME)))).collect(Collectors.toList()), holder);
     }
 
-    public PropertyXmlNodeWriter(DatasetConverterHolder holder, EntityObject fieldEntity) {
+    public PropertyXmlNodeWriter(DataSetConverterHolder holder, EntityObject fieldEntity) {
         super(PropertyDesc.INSTANCE.getName(), (Collection<?>) holder.getDataSet().getAll(PropertyDesc.INSTANCE).stream()
                 .filter(getPropertiesForField(fieldEntity)).collect(Collectors.toList()), holder);
 

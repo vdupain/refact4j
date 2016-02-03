@@ -2,7 +2,7 @@ package org.refact4j.xml.reader;
 
 import org.refact4j.collection.Set;
 import org.refact4j.util.StringHelper;
-import org.refact4j.xml.DatasetConverterHolder;
+import org.refact4j.xml.DataSetConverterHolder;
 import org.refact4j.xml.XmlAttributes;
 import org.refact4j.xml.impl.Dataset2XmlConverterImpl;
 
@@ -18,8 +18,8 @@ class DatasetRefXmlElementReader extends DefaultXmlElementReader {
         super(dataset, dataset2XmlConverter);
     }
 
-    public DatasetRefXmlElementReader(XmlAttributes xmlAttrs, DatasetConverterHolder datasetConverterHolder) {
-        super(datasetConverterHolder);
+    public DatasetRefXmlElementReader(XmlAttributes xmlAttrs, DataSetConverterHolder dataSetConverterHolder) {
+        super(dataSetConverterHolder);
         String fileName = xmlAttrs.getValue("file");
         try {
             File datasetFile = findDatasetFile(fileName);

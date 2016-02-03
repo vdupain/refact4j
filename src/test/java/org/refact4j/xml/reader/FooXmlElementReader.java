@@ -7,19 +7,19 @@ import org.refact4j.eom.EntityObjectBuilder;
 import org.refact4j.eom.impl.EntityDataSet;
 import org.refact4j.model.BarDesc;
 import org.refact4j.model.FooDesc;
-import org.refact4j.xml.DatasetConverterHolder;
+import org.refact4j.xml.DataSetConverterHolder;
 import org.refact4j.xml.XmlAttributeNotFoundException;
 import org.refact4j.xml.XmlAttributes;
 import org.refact4j.xml.XmlHelper;
 
 public class FooXmlElementReader extends DefaultXmlElementReader {
 
-    public FooXmlElementReader(XmlAttributes xmlAttrs, DatasetConverterHolder datasetConverterHolder) {
-        super(datasetConverterHolder);
+    public FooXmlElementReader(XmlAttributes xmlAttrs, DataSetConverterHolder dataSetConverterHolder) {
+        super(dataSetConverterHolder);
 
         String name = XmlHelper.getAttrValue("name", xmlAttrs);
 
-        EntityObject fooEntity = ((EntityDataSet) datasetConverterHolder.getDataSet()).getEntityByName(FooDesc.INSTANCE,
+        EntityObject fooEntity = ((EntityDataSet) dataSetConverterHolder.getDataSet()).getEntityByName(FooDesc.INSTANCE,
                 FooDesc.NAME, name);
         if (fooEntity == null) {
             fooEntity = EntityObjectBuilder.init(FooDesc.INSTANCE).getEntity();
@@ -27,9 +27,9 @@ public class FooXmlElementReader extends DefaultXmlElementReader {
 
         try {
             final String parentName = XmlHelper.getAttrValue("parent", xmlAttrs);
-            EntityObject parentEntity = ((EntityDataSet) datasetConverterHolder.getDataSet()).getEntityByName(BarDesc.INSTANCE, BarDesc.NAME, parentName);
+            EntityObject parentEntity = ((EntityDataSet) dataSetConverterHolder.getDataSet()).getEntityByName(BarDesc.INSTANCE, BarDesc.NAME, parentName);
 
-            EntityObject parentEntity2 = ((EntityDataSet) datasetConverterHolder.getDataSet()).getEntityByPredicate(BarDesc.INSTANCE, arg -> arg.get(BarDesc.NAME).equals(parentName));
+            EntityObject parentEntity2 = ((EntityDataSet) dataSetConverterHolder.getDataSet()).getEntityByPredicate(BarDesc.INSTANCE, arg -> arg.get(BarDesc.NAME).equals(parentName));
             Assert.assertEquals(parentEntity, parentEntity2);
 
             fooEntity.set(FooDesc.BAR, parentEntity);

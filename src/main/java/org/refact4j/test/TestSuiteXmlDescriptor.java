@@ -25,7 +25,7 @@ public class TestSuiteXmlDescriptor implements XmlDescriptor {
         return Collections.singletonList(factory);
     }
 
-    public XmlElementHandler[] getXmlElementHandlers(DatasetConverterHolder holder) {
+    public XmlElementHandler[] getXmlElementHandlers(DataSetConverterHolder holder) {
         return null;
     }
 

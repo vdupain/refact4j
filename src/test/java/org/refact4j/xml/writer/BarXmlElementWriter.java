@@ -5,7 +5,7 @@ import org.refact4j.eom.EntityObject;
 import org.refact4j.eom.model.Field;
 import org.refact4j.eom.model.FieldNameComparator;
 import org.refact4j.model.BarDesc;
-import org.refact4j.xml.DatasetConverterHolder;
+import org.refact4j.xml.DataSetConverterHolder;
 import org.refact4j.xml.XmlElementHandler;
 import org.refact4j.xml.XmlWriter;
 
@@ -15,7 +15,7 @@ import java.util.List;
 
 public class BarXmlElementWriter extends AbstractXmlElementWriter {
 
-    public BarXmlElementWriter(DatasetConverterHolder holder) {
+    public BarXmlElementWriter(DataSetConverterHolder holder) {
         super("bar", holder.getDataSet().getAll(BarDesc.INSTANCE), holder);
     }
 

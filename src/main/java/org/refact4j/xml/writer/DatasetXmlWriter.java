@@ -2,14 +2,14 @@ package org.refact4j.xml.writer;
 
 import org.refact4j.collection.Set;
 import org.refact4j.core.Finder;
-import org.refact4j.xml.DatasetConverterHolder;
+import org.refact4j.xml.DataSetConverterHolder;
 import org.refact4j.xml.XmlElementHandler;
 import org.refact4j.xml.XmlWriter;
 import org.refact4j.xml.impl.Dataset2XmlConverterImpl;
 
 import java.util.Collection;
 
-public class DatasetXmlWriter implements XmlElementHandler, DatasetConverterHolder {
+public class DatasetXmlWriter implements XmlElementHandler, DataSetConverterHolder {
     private final Set dataset;
     private final Dataset2XmlConverterImpl converter;
     private final Finder finder;

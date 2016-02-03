@@ -15,8 +15,8 @@ public class DatasetXmlElementReader extends DefaultXmlElementReader {
         super(dataset, dataset2XmlConverter);
     }
 
-    private DatasetXmlElementReader(DatasetConverterHolder datasetConverterHolder) {
-        super(datasetConverterHolder);
+    private DatasetXmlElementReader(DataSetConverterHolder dataSetConverterHolder) {
+        super(dataSetConverterHolder);
     }
 
     @Override

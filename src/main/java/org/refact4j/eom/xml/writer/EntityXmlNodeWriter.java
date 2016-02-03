@@ -7,7 +7,7 @@ import org.refact4j.eom.model.EntityDescriptor;
 import org.refact4j.eom.model.EntityDescriptorRepository;
 import org.refact4j.eom.model.Field;
 import org.refact4j.eom.model.FieldNameComparator;
-import org.refact4j.xml.DatasetConverterHolder;
+import org.refact4j.xml.DataSetConverterHolder;
 import org.refact4j.xml.XmlElementHandler;
 import org.refact4j.xml.XmlWriter;
 
@@ -18,7 +18,7 @@ public class EntityXmlNodeWriter implements XmlElementHandler {
 
     private EntityObject entityObject;
 
-    public EntityXmlNodeWriter(EntityDescriptorRepository entityDescriptorRepository, DatasetConverterHolder holder) {
+    public EntityXmlNodeWriter(EntityDescriptorRepository entityDescriptorRepository, DataSetConverterHolder holder) {
         Collection<EntityObject> entityObjects = new EntityListImpl();
         for (EntityDescriptor entityDescriptor : entityDescriptorRepository) {
             entityObjects.addAll(holder.getDataSet().getAll(entityDescriptor));

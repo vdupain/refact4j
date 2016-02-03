@@ -1,6 +1,6 @@
 package org.refact4j.xml;
 
-public interface DatasetConverterHolder extends DatasetHolder {
+public interface DataSetConverterHolder extends DatasetHolder {
 
     DataSet2XmlConverter getDataset2XmlConverter();
 

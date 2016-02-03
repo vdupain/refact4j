@@ -1,7 +1,7 @@
 package org.refact4j.test.reader;
 
 import junit.framework.TestSuite;
-import org.refact4j.xml.DatasetConverterHolder;
+import org.refact4j.xml.DataSetConverterHolder;
 import org.refact4j.xml.XmlAttributes;
 import org.refact4j.xml.XmlElement;
 import org.refact4j.xml.reader.DefaultXmlElementReader;
@@ -10,8 +10,8 @@ public class TestSuiteXmlElementReader extends DefaultXmlElementReader {
 
     private TestSuite testSuite;
 
-    public TestSuiteXmlElementReader(DatasetConverterHolder datasetConverterHolder) {
-        super(datasetConverterHolder);
+    public TestSuiteXmlElementReader(DataSetConverterHolder dataSetConverterHolder) {
+        super(dataSetConverterHolder);
         this.testSuite = new TestSuite("testSuite");
         this.add(this.testSuite);
     }

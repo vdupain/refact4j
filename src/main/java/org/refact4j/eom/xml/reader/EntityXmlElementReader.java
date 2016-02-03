@@ -7,7 +7,7 @@ import org.refact4j.eom.model.EntityDescriptor;
 import org.refact4j.eom.model.EntityDescriptorRepository;
 import org.refact4j.eom.model.OneToOneRelationField;
 import org.refact4j.eom.model.RelationField;
-import org.refact4j.xml.DatasetConverterHolder;
+import org.refact4j.xml.DataSetConverterHolder;
 import org.refact4j.xml.XmlAttributes;
 import org.refact4j.xml.XmlElement;
 import org.refact4j.xml.reader.DefaultXmlElementReader;
@@ -22,7 +22,7 @@ public class EntityXmlElementReader extends DefaultXmlElementReader {
 
     public EntityXmlElementReader(EntityDescriptor entityDescriptor,
                                   EntityDescriptorRepository entityDescriptorRepository, XmlAttributes xmlAttrs,
-                                  DatasetConverterHolder holder, final EntityObject parentEntity) {
+                                  DataSetConverterHolder holder, final EntityObject parentEntity) {
         super(holder);
         this.entityDescriptorRepository = entityDescriptorRepository;
         final EntityObjectBuilder builder = EntityObjectBuilder.init(entityDescriptor);

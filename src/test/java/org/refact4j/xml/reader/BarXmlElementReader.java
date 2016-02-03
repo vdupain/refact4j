@@ -5,18 +5,18 @@ import org.refact4j.eom.EntityObject;
 import org.refact4j.eom.EntityObjectBuilder;
 import org.refact4j.eom.impl.EntityDataSet;
 import org.refact4j.model.BarDesc;
-import org.refact4j.xml.DatasetConverterHolder;
+import org.refact4j.xml.DataSetConverterHolder;
 import org.refact4j.xml.XmlAttributes;
 import org.refact4j.xml.XmlElement;
 import org.refact4j.xml.XmlHelper;
 
 public class BarXmlElementReader extends DefaultXmlElementReader {
 
-    public BarXmlElementReader(XmlAttributes xmlAttrs, DatasetConverterHolder datasetConverterHolder) {
-        super(datasetConverterHolder);
+    public BarXmlElementReader(XmlAttributes xmlAttrs, DataSetConverterHolder dataSetConverterHolder) {
+        super(dataSetConverterHolder);
         EntityObject barEntity;
         String name = XmlHelper.getAttrValue("name", xmlAttrs);
-        barEntity = ((EntityDataSet) datasetConverterHolder.getDataSet()).getEntityByName(BarDesc.INSTANCE,
+        barEntity = ((EntityDataSet) dataSetConverterHolder.getDataSet()).getEntityByName(BarDesc.INSTANCE,
                 BarDesc.NAME, name);
         if (barEntity == null) {
             barEntity = EntityObjectBuilder.init(BarDesc.INSTANCE).getEntity();

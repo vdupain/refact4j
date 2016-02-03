@@ -34,7 +34,7 @@ public class EOMXmlDescriptor implements XmlDescriptor {
     }
 
 
-    public XmlElementHandler[] getXmlElementHandlers(DatasetConverterHolder holder) {
+    public XmlElementHandler[] getXmlElementHandlers(DataSetConverterHolder holder) {
         return new XmlElementHandler[]{new DefaultXmlElementHandler("entityDescriptorRepository", new EntityDescriptorXmlNodeWriter(
                 this.repository, holder))};
 

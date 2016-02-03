@@ -3,14 +3,14 @@ package org.refact4j.eom.metamodel.xml.writer;
 import org.refact4j.eom.EntityObject;
 import org.refact4j.eom.metamodel.EntityDescriptorDesc;
 import org.refact4j.eom.metamodel.EntityStringifierDesc;
-import org.refact4j.xml.DatasetConverterHolder;
+import org.refact4j.xml.DataSetConverterHolder;
 import org.refact4j.xml.XmlElementHandler;
 import org.refact4j.xml.XmlWriter;
 import org.refact4j.xml.writer.AbstractXmlElementWriter;
 
 public class EntityStringifierXmlNodeWrite extends AbstractXmlElementWriter {
 
-    public EntityStringifierXmlNodeWrite(DatasetConverterHolder holder) {
+    public EntityStringifierXmlNodeWrite(DataSetConverterHolder holder) {
         super(EntityStringifierDesc.INSTANCE.getName(), holder.getDataSet().getAll(EntityStringifierDesc.INSTANCE),
                 holder);
     }

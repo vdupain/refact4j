@@ -36,7 +36,7 @@ public class EntityStringifierXmlDescriptor implements XmlDescriptor {
     }
 
 
-    public XmlElementHandler[] getXmlElementHandlers(DatasetConverterHolder holder) {
+    public XmlElementHandler[] getXmlElementHandlers(DataSetConverterHolder holder) {
         return new XmlElementHandler[]{new DefaultXmlElementHandler(ROOT_TAGNAME, new EntityStringifierXmlNodeWrite(holder))};
 
     }

@@ -78,7 +78,7 @@ public class Dataset2XmlConverterImpl implements DataSet2XmlConverter {
         return xmlReader;
     }
 
-    public Collection<XmlElementHandler> getXmlElementHandlers(DatasetConverterHolder holder) {
+    public Collection<XmlElementHandler> getXmlElementHandlers(DataSetConverterHolder holder) {
         List<XmlElementHandler> xmlWriters = new ArrayList<>();
         for (XmlDescriptor descriptor : xmlDescriptors) {
             xmlWriters.addAll(Arrays.asList(descriptor.getXmlElementHandlers(holder)));

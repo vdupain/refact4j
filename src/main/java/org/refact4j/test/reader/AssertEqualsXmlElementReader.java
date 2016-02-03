@@ -2,7 +2,7 @@ package org.refact4j.test.reader;
 
 import org.refact4j.test.AssertEquals;
 import org.refact4j.test.TestMethod;
-import org.refact4j.xml.DatasetConverterHolder;
+import org.refact4j.xml.DataSetConverterHolder;
 import org.refact4j.xml.XmlAttributes;
 import org.refact4j.xml.XmlElement;
 import org.refact4j.xml.reader.DefaultXmlElementReader;
@@ -10,9 +10,9 @@ import org.refact4j.xml.reader.DefaultXmlElementReader;
 public class AssertEqualsXmlElementReader extends DefaultXmlElementReader {
     private final AssertEquals assertEquals;
 
-    public AssertEqualsXmlElementReader(DatasetConverterHolder datasetConverterHolder, XmlAttributes attributes,
+    public AssertEqualsXmlElementReader(DataSetConverterHolder dataSetConverterHolder, XmlAttributes attributes,
                                         TestMethod testMethod) {
-        super(datasetConverterHolder);
+        super(dataSetConverterHolder);
 
         assertEquals = new AssertEquals();
         assertEquals.setMessage(attributes.getValue("message"));

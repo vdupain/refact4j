@@ -7,16 +7,16 @@ import org.refact4j.eom.metamodel.EntityStringifierAppenderDesc;
 import org.refact4j.eom.metamodel.EntityStringifierDesc;
 import org.refact4j.eom.model.EntityDescriptor;
 import org.refact4j.eom.model.EntityDescriptorRepository;
-import org.refact4j.xml.DatasetConverterHolder;
+import org.refact4j.xml.DataSetConverterHolder;
 import org.refact4j.xml.XmlAttributes;
 import org.refact4j.xml.XmlHelper;
 import org.refact4j.xml.reader.DefaultXmlElementReader;
 
 class EntityStringifierAppenderXmlElementReader extends DefaultXmlElementReader {
 
-    public EntityStringifierAppenderXmlElementReader(XmlAttributes xmlAttrs, DatasetConverterHolder datasetConverterHolder,
+    public EntityStringifierAppenderXmlElementReader(XmlAttributes xmlAttrs, DataSetConverterHolder dataSetConverterHolder,
                                                      EntityObject stringifierEntity, EntityDescriptorRepository repository) {
-        super(datasetConverterHolder);
+        super(dataSetConverterHolder);
         EntityObject stringifierAppender = EntityObjectBuilder.init(EntityStringifierAppenderDesc.INSTANCE).getEntity();
         stringifierAppender.set(EntityStringifierAppenderDesc.ID, Integer.parseInt(XmlHelper.getAttrValue(
                 EntityStringifierAppenderDesc.ID.getName(), xmlAttrs, null)));

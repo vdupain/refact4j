@@ -4,13 +4,13 @@ import org.refact4j.eom.EntityObject;
 import org.refact4j.eom.model.Key;
 import org.refact4j.model.BarDesc;
 import org.refact4j.model.FooDesc;
-import org.refact4j.xml.DatasetConverterHolder;
+import org.refact4j.xml.DataSetConverterHolder;
 import org.refact4j.xml.XmlElementHandler;
 import org.refact4j.xml.XmlWriter;
 
 public class FooXmlElementWriter extends AbstractXmlElementWriter {
 
-    public FooXmlElementWriter(DatasetConverterHolder holder) {
+    public FooXmlElementWriter(DataSetConverterHolder holder) {
         super("foo", holder.getDataSet().getAll(FooDesc.INSTANCE), holder);
     }
 

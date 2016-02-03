@@ -5,7 +5,7 @@ import org.refact4j.eom.EntityObjectBuilder;
 import org.refact4j.eom.metamodel.EntityDescriptorDesc;
 import org.refact4j.eom.metamodel.FieldDesc;
 import org.refact4j.eom.metamodel.PropertyDesc;
-import org.refact4j.xml.DatasetConverterHolder;
+import org.refact4j.xml.DataSetConverterHolder;
 import org.refact4j.xml.XmlAttributes;
 import org.refact4j.xml.XmlElement;
 import org.refact4j.xml.XmlHelper;
@@ -15,8 +15,8 @@ public class EntityDescriptorXmlElementReader extends DefaultXmlElementReader {
 
     private final EntityObject entityDescr;
 
-    public EntityDescriptorXmlElementReader(XmlAttributes xmlAttrs, DatasetConverterHolder datasetConverterHolder) {
-        super(datasetConverterHolder);
+    public EntityDescriptorXmlElementReader(XmlAttributes xmlAttrs, DataSetConverterHolder dataSetConverterHolder) {
+        super(dataSetConverterHolder);
         entityDescr = EntityObjectBuilder.init(EntityDescriptorDesc.INSTANCE).getEntity();
         entityDescr
                 .set(EntityDescriptorDesc.NAME, XmlHelper.getAttrValue(EntityDescriptorDesc.NAME.getName(), xmlAttrs));

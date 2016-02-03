@@ -28,7 +28,7 @@ public class DummyXmlDescriptor implements XmlDescriptor {
     }
 
 
-    public XmlElementHandler[] getXmlElementHandlers(DatasetConverterHolder holder) {
+    public XmlElementHandler[] getXmlElementHandlers(DataSetConverterHolder holder) {
 
 
         return new XmlElementHandler[]{

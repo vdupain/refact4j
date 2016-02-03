@@ -8,7 +8,7 @@ import org.refact4j.eom.metamodel.FieldDesc;
 import org.refact4j.eom.metamodel.PropertyDesc;
 import org.refact4j.eom.model.Key;
 import org.refact4j.eom.model.KeyBuilder;
-import org.refact4j.xml.DatasetConverterHolder;
+import org.refact4j.xml.DataSetConverterHolder;
 import org.refact4j.xml.XmlAttributes;
 import org.refact4j.xml.XmlElement;
 import org.refact4j.xml.XmlHelper;
@@ -18,9 +18,9 @@ public class FieldXmlElementReader extends DefaultXmlElementReader {
 
     private final EntityObject field;
 
-    public FieldXmlElementReader(XmlAttributes xmlAttrs, DatasetConverterHolder datasetConverterHolder,
+    public FieldXmlElementReader(XmlAttributes xmlAttrs, DataSetConverterHolder dataSetConverterHolder,
                                  EntityObject entityDescEntity) {
-        super(datasetConverterHolder);
+        super(dataSetConverterHolder);
 
         field = EntityObjectBuilder.init(FieldDesc.INSTANCE).getEntity();
         field.set(FieldDesc.NAME, XmlHelper.getAttrValue(FieldDesc.NAME.getName(), xmlAttrs));
