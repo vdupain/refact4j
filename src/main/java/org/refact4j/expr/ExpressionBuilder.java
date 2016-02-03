@@ -1,7 +1,5 @@
 package org.refact4j.expr;
 
-import org.refact4j.function.ConstantFunction;
-
 public final class ExpressionBuilder {
     private final Expression expression;
 
@@ -89,18 +87,8 @@ public final class ExpressionBuilder {
         return this;
     }
 
-    private ExpressionBuilder equalTo(ConstantFunction constantFunctor) {
-        this.expression.equalTo(constantFunctor);
-        return this;
-    }
-
     public ExpressionBuilder equalTo(Object object) {
-        this.expression.equalTo(new ConstantFunction<>(object));
-        return this;
-    }
-
-    public ExpressionBuilder notEqualTo(Object object) {
-        this.expression.not(equalTo(new ConstantFunction<>(object)).getExpression());
+        this.expression.equalTo(object);
         return this;
     }
 

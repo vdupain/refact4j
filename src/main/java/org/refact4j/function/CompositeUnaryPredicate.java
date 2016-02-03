@@ -3,6 +3,7 @@ package org.refact4j.function;
 import org.refact4j.visitor.Visitor;
 
 import java.util.function.BiFunction;
+import java.util.function.Function;
 
 public class CompositeUnaryPredicate<T> implements UnaryPredicate<T> {
     private BinaryCompose<?, ?, T, Boolean> compositeFunctor;
@@ -10,26 +11,15 @@ public class CompositeUnaryPredicate<T> implements UnaryPredicate<T> {
     private BiFunction<?, ?, Boolean> biFunction;
 
     private java.util.function.Function<T, ?> function;
+    private Object constant;
 
-    private ConstantFunction<?> constantUnaryFunctor;
 
-    public CompositeUnaryPredicate(BiFunction<?, ?, Boolean> biFunction, java.util.function.Function<T, ?> function,
+    public CompositeUnaryPredicate(BiFunction<?, ?, Boolean> biFunction, Function<T, ?> function,
                                    Object constant) {
-        init(biFunction, function, new ConstantFunction<>(constant));
-
-    }
-
-    public CompositeUnaryPredicate(BiFunction<?, ?, Boolean> biFunction, java.util.function.Function<T, ?> function,
-                                   ConstantFunction<?> constantUnaryFunctor) {
-        init(biFunction, function, constantUnaryFunctor);
-    }
-
-    private void init(BiFunction<?, ?, Boolean> biFunction, java.util.function.Function<T, ?> function,
-                      ConstantFunction<?> constantUnaryFunctor) {
         this.biFunction = biFunction;
         this.function = function;
-        this.constantUnaryFunctor = constantUnaryFunctor;
-        this.compositeFunctor = new BinaryCompose(biFunction, function, constantUnaryFunctor);
+        this.constant = constant;
+        this.compositeFunctor = new BinaryCompose(biFunction, function, Functions.constant(constant));
     }
 
     public boolean test(T arg) {
@@ -40,10 +30,6 @@ public class CompositeUnaryPredicate<T> implements UnaryPredicate<T> {
         return biFunction;
     }
 
-    public ConstantFunction<?> getConstantUnaryFunctor() {
-        return constantUnaryFunctor;
-    }
-
     public java.util.function.Function<T, ?> getFunction() {
         return function;
     }
@@ -52,6 +38,10 @@ public class CompositeUnaryPredicate<T> implements UnaryPredicate<T> {
         if (visitor instanceof CompositeUnaryPredicateVisitor) {
             ((CompositeUnaryPredicateVisitor) visitor).visitCompositeUnaryPredicate(this);
         }
+    }
+
+    public Object getConstant() {
+        return constant;
     }
 
     public interface CompositeUnaryPredicateVisitor extends Visitor {

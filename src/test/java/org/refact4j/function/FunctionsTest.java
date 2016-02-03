@@ -23,7 +23,6 @@ import static org.refact4j.function.Functions.*;
 
 public class FunctionsTest {
 
-
     @Test
     public void testConstantArgUnaryFunction() {
         double discountRate = 0.2;
@@ -64,11 +63,11 @@ public class FunctionsTest {
         assertFalse(func3.apply(true));
 
         java.util.function.Function<org.refact4j.model.DummyBean, Boolean> predicate = new BinaryCompose<>(
-                new Greater(), new ConstantFunction(1.), new ConstantFunction(2.));
+                new Greater(), constant(1.), constant(2.));
         assertFalse(predicate.apply(null));
 
         predicate = new BinaryCompose<>(new Greater(),
-                new GetFieldFunction("Value"), new ConstantFunction(100.));
+                new GetFieldFunction("Value"), constant(100.));
         DummyBean dummy = new DummyBean();
         dummy.setValue(99.);
         assertFalse(predicate.apply(dummy));

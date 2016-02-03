@@ -10,7 +10,7 @@ public class StringLength implements Function<String, Integer>, Visitable {
 
     @Override
     public Integer apply(String value) {
-        return value!=null?value.length():-1;
+        return value != null ? value.length() : -1;
     }
 
     public void accept(Visitor visitor) {

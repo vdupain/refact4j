@@ -32,9 +32,6 @@ import org.refact4j.function.logical.Not;
 import org.refact4j.function.logical.Or;
 import org.refact4j.visitor.Visitable;
 
-import java.util.function.BiFunction;
-import java.util.function.Function;
-
 public class PrettyPrinter implements ExpressionVisitor, BinaryComposeVisitor, UnaryComposeVisitor,
         CompositeUnaryPredicateVisitor, EntityFieldComparatorVisitor, ComparisonVisitor, LogicalVisitor,
         BetweenVisitor, NullVisitor, NotNullVisitor, InVisitor, NotInVisitor, LikeVisitor, InstanceOfVisitor,
@@ -81,7 +78,7 @@ public class PrettyPrinter implements ExpressionVisitor, BinaryComposeVisitor, U
         java.util.function.Function<?, ?> function = compositeUnaryPredicate.getFunction();
         visit(function);
         visit(compositeUnaryPredicate.getBiFunction());
-        buf.append(compositeUnaryPredicate.getConstantUnaryFunctor().getConstant());
+        buf.append(compositeUnaryPredicate.getConstant());
         buf.append(')');
     }
 

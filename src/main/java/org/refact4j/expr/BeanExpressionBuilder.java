@@ -1,7 +1,5 @@
 package org.refact4j.expr;
 
-import org.refact4j.function.ConstantFunction;
-
 public final class BeanExpressionBuilder {
     private final BeanExpression expression;
 
@@ -64,7 +62,7 @@ public final class BeanExpressionBuilder {
     }
 
     public BeanExpressionBuilder equalTo(Object object) {
-        this.expression.equalTo(new ConstantFunction<>(object));
+        this.expression.equalTo(object);
         return this;
     }
 

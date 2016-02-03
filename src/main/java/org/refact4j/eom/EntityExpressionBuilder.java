@@ -1,7 +1,6 @@
 package org.refact4j.eom;
 
 import org.refact4j.eom.model.Field;
-import org.refact4j.function.ConstantFunction;
 
 public final class EntityExpressionBuilder {
     private final EntityExpression expression;
@@ -92,7 +91,7 @@ public final class EntityExpressionBuilder {
 
 
     public EntityExpressionBuilder equalTo(Object object) {
-        this.expression.equalTo(new ConstantFunction<>(object));
+        this.expression.equalTo(object);
         return this;
     }
 

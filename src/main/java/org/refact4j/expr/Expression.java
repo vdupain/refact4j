@@ -1,6 +1,8 @@
 package org.refact4j.expr;
 
-import org.refact4j.function.*;
+import org.refact4j.function.BinaryCompose;
+import org.refact4j.function.CompositeUnaryPredicate;
+import org.refact4j.function.UnaryCompose;
 import org.refact4j.function.commons.*;
 import org.refact4j.function.comparison.*;
 import org.refact4j.function.logical.And;
@@ -104,20 +106,7 @@ public class Expression<T> implements Predicate<T>, Visitable {
     }
 
     public Expression<T> equalTo(Object value) {
-        return this.equalTo(new ConstantFunction<>(value));
-    }
-
-    public Expression<T> notEqualTo(Object value) {
-        return this.notEqualTo(new ConstantFunction<>(value));
-    }
-
-    public Expression<T> equalTo(ConstantFunction<Object> constantFunctor) {
-        predicate = new CompositeUnaryPredicate<>(new Equal<>(), function, constantFunctor);
-        return this;
-    }
-
-    private Expression<T> notEqualTo(ConstantFunction<Object> constantFunctor) {
-        predicate = new CompositeUnaryPredicate<>(new NotEqual<>(), function, constantFunctor);
+        predicate = new CompositeUnaryPredicate<>(new Equal<>(), function, value);
         return this;
     }
 
