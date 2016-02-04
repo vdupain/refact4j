@@ -55,10 +55,6 @@ public abstract class AbstractField implements Field {
         return this.fieldName;
     }
 
-    public String getFullName() {
-        return getEntityDescriptor().getName() + "." + getName();
-    }
-
     public String getPrettyName() {
         return this.prettyName;
     }
@@ -125,7 +121,7 @@ public abstract class AbstractField implements Field {
     }
 
     public String toString() {
-        return Stringifiers.PRETTY.stringify(this);
+        return Stringifiers.FIELD_PRETTY.stringify(this);
     }
 
     public void addProperty(Object key, Object value) {
@@ -138,10 +134,6 @@ public abstract class AbstractField implements Field {
 
     public Property getProperty() {
         return this.property;
-    }
-
-    public String toXmlString() {
-        return Stringifiers.XML.stringify(this);
     }
 
     @Override
@@ -167,7 +159,7 @@ public abstract class AbstractField implements Field {
 
     public EntityObject toEntity() {
         return EntityObjectBuilder.init(FieldDesc.INSTANCE)
-                .set(FieldDesc.ENTITY_DESC, this.entityDescriptor.toEntity())
+                .set(FieldDesc.ENTITY_DESC, this.getEntityDescriptor().toEntity())
                 .set(FieldDesc.NAME, this.fieldName)
                 .set(FieldDesc.PRETTY_NAME, this.prettyName)
                 .set(FieldDesc.IS_KEY, this.entityDescriptor.getKeyFields().contains(this))
@@ -181,10 +173,6 @@ public abstract class AbstractField implements Field {
 
     public boolean isKey() {
         return this.entityDescriptor.getKeyFields().contains(this);
-    }
-
-    public Expression<?> getConstraintExpression() {
-        return this.constraint;
     }
 
     public void readExternal(ObjectInput in) throws IOException, ClassNotFoundException {

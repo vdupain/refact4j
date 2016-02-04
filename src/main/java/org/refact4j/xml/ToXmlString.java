@@ -2,7 +2,7 @@ package org.refact4j.xml;
 
 /**
  * ToXmlString interface is an interface that specifies toXmlString method. This interface
- * should be implemented by all objects that can be converted to XML format.
+ * should be implemented by all objects that can be converted to FIELD_XML format.
  */
 public interface ToXmlString {
 
@@ -10,9 +10,9 @@ public interface ToXmlString {
 
 
     /**
-     * Returns a string that represents this object in XML format.
+     * Returns a string that represents this object in FIELD_XML format.
      *
-     * @return The XML as a string.
+     * @return The FIELD_XML as a string.
      */
     String toXmlString();
 }

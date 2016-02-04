@@ -12,9 +12,9 @@ public interface XMLizer<T> {
     XMLizer<ToXmlString> DEFAULT = (arg) -> (arg != null ? new XMLImpl(arg) : XML.EMPTY_XML);
 
     /**
-     * Produce a XML representation of an object.
+     * Produce a FIELD_XML representation of an object.
      *
-     * @param arg the Object for which a XML should be produced
+     * @param arg the Object for which a FIELD_XML should be produced
      * @return xml
      */
     XML xml(T arg);

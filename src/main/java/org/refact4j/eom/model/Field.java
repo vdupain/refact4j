@@ -1,7 +1,7 @@
 package org.refact4j.eom.model;
 
 import org.refact4j.eom.ToEntity;
-import org.refact4j.expr.Expression;
+import org.refact4j.eom.model.impl.Stringifiers;
 import org.refact4j.xml.ToXmlString;
 
 import java.io.Externalizable;
@@ -30,7 +30,10 @@ public interface Field extends DataType, Property, ToEntity, ToXmlString, Serial
      *
      * @return The field's full name.
      */
-    String getFullName();
+    default String getFullName() {
+        return getEntityDescriptor().getName() + "." + getName();
+    }
+
 
     /**
      * Returns the pretty name of the field.
@@ -87,6 +90,8 @@ public interface Field extends DataType, Property, ToEntity, ToXmlString, Serial
      */
     boolean isVisible();
 
-    Expression<?> getConstraintExpression();
+    default String toXmlString() {
+        return Stringifiers.FIELD_XML.stringify(this);
+    }
 
 }

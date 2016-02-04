@@ -4,6 +4,7 @@ import org.refact4j.eom.*;
 import org.refact4j.eom.model.EntityDescriptor;
 import org.refact4j.eom.model.Field;
 import org.refact4j.eom.model.FieldNameComparator;
+import org.refact4j.eom.model.impl.Stringifiers;
 import org.refact4j.xml.XML;
 import org.refact4j.xml.XMLizer;
 
@@ -94,7 +95,7 @@ public class EntityObjectImpl implements EntityObject {
     }
 
     public String toXmlString() {
-        return EntityStringifier.XML.stringify(this);
+        return Stringifiers.ENTITY_XML.stringify(this);
     }
 
     public XML toXML() {

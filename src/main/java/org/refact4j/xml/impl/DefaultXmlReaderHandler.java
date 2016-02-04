@@ -16,9 +16,9 @@ public class DefaultXmlReaderHandler implements XmlReaderHandler {
                              String qName, XmlAttributes attributes) {
         // Resetting contents buffer.
         // Assuming that tags either tag content or children, not both.
-        // This is usually the case with XML that is representing
+        // This is usually the case with FIELD_XML that is representing
         // data structures in a programming language independent way.
-        // This assumption is not typically valid where XML is being
+        // This assumption is not typically valid where FIELD_XML is being
         // used in the classical text mark up style where tagging
         // is used to style content and several styles may overlap
         // at once.
@@ -46,7 +46,7 @@ public class DefaultXmlReaderHandler implements XmlReaderHandler {
 
     public void setXmlRootElement(XmlElement xmlRootElement) {
         // This xml root element anchors the xml
-        // element to the beginning of the XML document.
+        // element to the beginning of the FIELD_XML document.
         // (before the first tag name is located).
         // By placing it first on the stack
         // all future xml element will follow

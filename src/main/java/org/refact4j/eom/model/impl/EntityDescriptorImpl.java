@@ -97,10 +97,6 @@ public class EntityDescriptorImpl implements EntityDescriptor {
         this.constraintExpression = constraintExpression;
     }
 
-    public String toString() {
-        return EntityDescriptorStringifier.DEFAULT.stringify(this);
-    }
-
     public void addProperty(Object key, Object value) {
         this.property.addProperty(key, value);
     }
@@ -144,8 +140,13 @@ public class EntityDescriptorImpl implements EntityDescriptor {
     }
 
     public String toXmlString() {
-        return EntityDescriptorStringifier.XML.stringify(this);
+        return Stringifiers.ENTITY_DESCRIPTOR_XML.stringify(this);
     }
+
+    public String toString() {
+        return Stringifiers.ENTITY_DESCRIPTOR_NAME.stringify(this);
+    }
+
 
     public EntityObject toEntity() {
         return EntityObjectBuilder.init(EntityDescriptorDesc.INSTANCE).set(EntityDescriptorDesc.NAME, this.name)

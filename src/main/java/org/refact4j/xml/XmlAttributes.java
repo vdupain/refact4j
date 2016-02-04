@@ -42,10 +42,10 @@ public interface XmlAttributes {
     String getLocalName(int index);
 
     /**
-     * Look up an attribute's XML qualified (prefixed) name by index.
+     * Look up an attribute's FIELD_XML qualified (prefixed) name by index.
      *
      * @param index The attribute index (zero-based).
-     * @return The XML qualified name, or the empty string if none is available,
+     * @return The FIELD_XML qualified name, or the empty string if none is available,
      * or null if the index is out of range.
      * @see #getLength
      */
@@ -63,7 +63,7 @@ public interface XmlAttributes {
      * <p>
      * If the parser has not read a declaration for the attribute, or if the
      * parser does not report attribute types, then it must return the value
-     * "CDATA" as stated in the XML 1.0 Recommendation (clause 3.3.3,
+     * "CDATA" as stated in the FIELD_XML 1.0 Recommendation (clause 3.3.3,
      * "Attribute-Value Normalization").
      * </p>
      * <p/>
@@ -111,7 +111,7 @@ public interface XmlAttributes {
     int getIndex(String uri, String localName);
 
     /**
-     * Look up the index of an attribute by XML qualified (prefixed) name.
+     * Look up the index of an attribute by FIELD_XML qualified (prefixed) name.
      *
      * @param qName The qualified (prefixed) name.
      * @return The index of the attribute, or -1 if it does not appear in the
@@ -136,14 +136,14 @@ public interface XmlAttributes {
     String getType(String uri, String localName);
 
     /**
-     * Look up an attribute's type by XML qualified (prefixed) name.
+     * Look up an attribute's type by FIELD_XML qualified (prefixed) name.
      * <p/>
      * <p>
      * See {@link #getType(int) getType(int)} for a description of the possible
      * types.
      * </p>
      *
-     * @param qName The XML qualified name.
+     * @param qName The FIELD_XML qualified name.
      * @return The attribute type as a string, or null if the attribute is not
      * in the list or if qualified names are not available.
      */
@@ -166,14 +166,14 @@ public interface XmlAttributes {
     String getValue(String uri, String localName);
 
     /**
-     * Look up an attribute's value by XML qualified (prefixed) name.
+     * Look up an attribute's value by FIELD_XML qualified (prefixed) name.
      * <p/>
      * <p>
      * See {@link #getValue(int) getValue(int)} for a description of the
      * possible values.
      * </p>
      *
-     * @param qName The XML qualified name.
+     * @param qName The FIELD_XML qualified name.
      * @return The attribute value as a string, or null if the attribute is not
      * in the list or if qualified names are not available.
      */

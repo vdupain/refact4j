@@ -53,7 +53,7 @@ public class PrettyPrinter implements ExpressionVisitor, BinaryComposeVisitor, U
 
     public void visitEntityFieldComparator(EntityFieldComparator fieldComparator) {
         buf.append('(');
-        buf.append(Stringifiers.FULLNAME.stringify(fieldComparator.getField()));
+        buf.append(Stringifiers.FIELD_FULLNAME.stringify(fieldComparator.getField()));
         visit(fieldComparator.getBiFunction());
         buf.append(fieldComparator.getValue());
         buf.append(')');
@@ -69,7 +69,7 @@ public class PrettyPrinter implements ExpressionVisitor, BinaryComposeVisitor, U
     }
 
     public void visitGetEntityFieldFunctor(GetEntityFieldFunction getEntityFieldFunctor) {
-        buf.append(Stringifiers.FULLNAME.stringify(getEntityFieldFunctor.getField()));
+        buf.append(Stringifiers.FIELD_FULLNAME.stringify(getEntityFieldFunctor.getField()));
     }
 
     public void visitGetFieldFunction(GetFieldFunction getFieldFunction) {

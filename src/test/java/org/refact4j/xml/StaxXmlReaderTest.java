@@ -44,12 +44,12 @@ public class StaxXmlReaderTest extends AbstractXmlReaderTest {
     protected void readXml() throws Exception {
         xmlReaderHandler.setXmlRootElement(xmlRootElement);
 
-        // Create the XML input factory
+        // Create the FIELD_XML input factory
         XMLInputFactory factory = XMLInputFactory.newInstance();
-        // Create the XML event reader
+        // Create the FIELD_XML event reader
         StringReader reader = new StringReader(xmlWithNameSpace);
         XMLStreamReader r = factory.createXMLStreamReader(reader);
-        // Loop over XML input stream and process events
+        // Loop over FIELD_XML input stream and process events
         while (r.hasNext()) {
             processEvent(r);
             r.next();

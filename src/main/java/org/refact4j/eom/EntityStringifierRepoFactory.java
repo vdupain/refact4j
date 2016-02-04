@@ -8,7 +8,7 @@ import org.refact4j.eom.model.EntityDescriptorRepositoryBuilder;
 
 /**
  * EntityStringifierRepoFactory is a factory to create EntityStringifier
- * repository from XML description.
+ * repository from FIELD_XML description.
  */
 public final class EntityStringifierRepoFactory extends AbstractEntityStringifierRepoFactory {
 

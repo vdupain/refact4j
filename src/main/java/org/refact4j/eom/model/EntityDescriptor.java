@@ -19,7 +19,7 @@ import java.util.List;
  * are represented by the Field interface. An EntityDescriptor is identify by it
  * name. EntityDescriptor objects are primarily use by the framework for mapping
  * Java beans or business objects in the application. You usually defines
- * EntityDescriptors in an EntityDescriptor Repository describing them in XML
+ * EntityDescriptors in an EntityDescriptor Repository describing them in FIELD_XML
  * format.
  */
 public interface EntityDescriptor extends Property, ToXmlString, ToEntity, Serializable, Externalizable, Visitable {

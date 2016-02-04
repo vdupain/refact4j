@@ -25,9 +25,9 @@ public class StringFieldTest extends AbstractFieldTestCase {
         checkError(field, "0123456789ab",
                 "Constraint (type.name=012345) failed: name=0123456789ab");
 
-        assertEquals("name", Stringifiers.PRETTY.stringify(field));
+        assertEquals("name", Stringifiers.FIELD_PRETTY.stringify(field));
         try {
-            Stringifiers.XML.stringify(field);
+            Stringifiers.FIELD_XML.stringify(field);
             fail("Exception Expected");
         } catch (Exception e) {
         }
