@@ -1,8 +1,6 @@
 package org.refact4j.eom.model.impl;
 
 import org.refact4j.eom.ConverterHelper;
-import org.refact4j.eom.EntityExpression;
-import org.refact4j.eom.EntityExpressionBuilder;
 import org.refact4j.eom.model.EntityDescriptor;
 import org.refact4j.eom.model.Field;
 import org.refact4j.eom.model.Key;

@@ -1,6 +1,9 @@
 package org.refact4j.eom.model.impl;
 
-import org.refact4j.eom.*;
+import org.refact4j.eom.EOMContext;
+import org.refact4j.eom.EntityObject;
+import org.refact4j.eom.EntityObjectBuilder;
+import org.refact4j.eom.EntityStringifier;
 import org.refact4j.eom.metamodel.EntityDescriptorDesc;
 import org.refact4j.eom.model.*;
 import org.refact4j.expr.Expression;

@@ -3,8 +3,6 @@ package org.refact4j.eom;
 import org.refact4j.eom.model.Field;
 import org.refact4j.expr.Expression;
 
-import java.util.function.Predicate;
-
 /**
  * Expression for EntityObject. EntityExpression should be created by
  * ExpressionBuilder.

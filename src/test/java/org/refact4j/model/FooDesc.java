@@ -1,7 +1,7 @@
 package org.refact4j.model;
 
-import org.refact4j.eom.EntityExpressionBuilder;
 import org.refact4j.eom.model.*;
+import org.refact4j.expr.ExpressionBuilder;
 
 import java.util.Date;
 
@@ -50,8 +50,8 @@ public class FooDesc {
     static {
         builder.addKeyField(ID);
         builder.addProperty("key", "value");
-        builder.setConstraint(EntityExpressionBuilder.init(ID).between(0, 10).and(
-                EntityExpressionBuilder.init(VALUE).greaterOrEqual(0.))
+        builder.setConstraint(ExpressionBuilder.initEO(ID).between(0, 10).and(
+                ExpressionBuilder.initEO(VALUE).greaterOrEqual(0.))
                 .getExpression());
 
     }

@@ -19,7 +19,7 @@ public class StringFieldTest extends AbstractFieldTestCase {
         final StringField field = FieldFactory.init(entityDescriptorBuilder, "name")
                 .createStringField();
 
-        entityDescriptorBuilder.setConstraint(EntityExpressionBuilder.init(field)
+        entityDescriptorBuilder.setConstraint(ExpressionBuilder.initEO(field)
                 .equalTo("012345").getExpression());
 
         checkError(field, "0123456789ab",
