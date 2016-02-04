@@ -1,7 +1,6 @@
 package org.refact4j.eom.xml;
 
 import org.refact4j.eom.model.EntityDescriptorRepository;
-import org.refact4j.eom.model.EntityDescriptorRepositoryHolder;
 import org.refact4j.eom.xml.reader.EntitiesXmlElementReader;
 import org.refact4j.eom.xml.writer.EntityXmlNodeWriter;
 import org.refact4j.xml.*;
@@ -10,6 +9,7 @@ import org.refact4j.xml.reader.DefaultXmlElementReader;
 
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.function.Supplier;
 
 public class EntityXmlDescriptor implements XmlDescriptor {
 
@@ -30,7 +30,7 @@ public class EntityXmlDescriptor implements XmlDescriptor {
 
     }
 
-    private class EntityXmlElementFactory implements XmlElementFactory, EntityDescriptorRepositoryHolder {
+    private class EntityXmlElementFactory implements XmlElementFactory, Supplier<EntityDescriptorRepository> {
         public XmlElement createXmlElement(DefaultXmlElementReader xmlElement) {
             return new EntitiesXmlElementReader(entityDescriptorRepository,
                     xmlElement);
@@ -40,7 +40,7 @@ public class EntityXmlDescriptor implements XmlDescriptor {
             return ROOT_TAGNAME;
         }
 
-        public EntityDescriptorRepository getEntityDescriptorRepository() {
+        public EntityDescriptorRepository get() {
             return entityDescriptorRepository;
         }
 

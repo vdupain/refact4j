@@ -10,8 +10,6 @@ public interface Repository<K, T> extends Iterable<T> {
 
     boolean containsKey(K key);
 
-    Keyifier<K, T> getKeyifier();
-
     Set<K> keySet();
 
     interface Keyifier<K, T> {

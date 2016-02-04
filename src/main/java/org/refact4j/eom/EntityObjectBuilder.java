@@ -7,7 +7,7 @@ import java.util.Collection;
 import java.util.Date;
 import java.util.function.Supplier;
 
-public final class EntityObjectBuilder implements Supplier<EntityObject>{
+public final class EntityObjectBuilder implements Supplier<EntityObject> {
 
     private EntityObjectImpl entityObject;
 

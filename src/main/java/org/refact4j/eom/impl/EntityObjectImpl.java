@@ -3,7 +3,6 @@ package org.refact4j.eom.impl;
 import org.refact4j.eom.*;
 import org.refact4j.eom.model.EntityDescriptor;
 import org.refact4j.eom.model.Field;
-import org.refact4j.eom.model.FieldNameComparator;
 import org.refact4j.eom.model.impl.Stringifiers;
 import org.refact4j.xml.XML;
 import org.refact4j.xml.XMLizer;
@@ -131,13 +130,16 @@ public class EntityObjectImpl implements EntityObject {
 
     public void writeExternal(ObjectOutput out) throws IOException {
         out.writeObject(this.entityDescriptor);
-        List<Field> keySet = new ArrayList<>(this.values.keySet());
-        Collections.sort(keySet, new FieldNameComparator());
+        Set<Field> keySet = this.values.keySet();
         out.writeInt(keySet.size());
-        for (Field field : keySet) {
-            out.writeObject(field.getName());
-            out.writeObject(this.get(field));
-        }
+        keySet.stream()
+                .sorted((a, b) -> a.getName().compareTo(b.getName()))
+                .forEach(f -> {
+                    try {
+                        out.writeObject(f.getName());
+                        out.writeObject(this.get(f));
+                    } catch (IOException ignored) {}
+        });
     }
 
     private void firePropertyChange(Field field, Object oldValue, Object newValue) {

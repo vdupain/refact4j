@@ -4,15 +4,13 @@ import org.refact4j.eom.ConverterHelper;
 import org.refact4j.eom.EntityList;
 import org.refact4j.eom.EntityObject;
 import org.refact4j.eom.model.Field;
-import org.refact4j.eom.model.FieldNameComparator;
 import org.refact4j.eom.xml.reader.EntityXmlReaderHelper;
 
 import javax.xml.stream.XMLOutputFactory;
+import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamWriter;
 import java.io.StringWriter;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 public final class EntityXmlWriterHelper {
@@ -69,21 +67,23 @@ public final class EntityXmlWriterHelper {
     }
 
     private static void dumpAttributes(EntityObject entityObject, XMLStreamWriter xmlStreamWriter,
-                                       String[] excludedFields) throws Exception {
-        List<Field> fields = new ArrayList<>(entityObject.getEntityDescriptor().getFields());
-        Collections.sort(fields, new FieldNameComparator());
-        for (Field field : fields) {
-            dumpEntityField(entityObject, field, xmlStreamWriter, excludedFields);
-        }
+                                       String[] excludedFields) {
+        entityObject.getEntityDescriptor().getFields().stream()
+                .sorted((a, b) -> a.getName().compareTo(b.getName()))
+                .forEach(f -> dumpEntityField(entityObject, f, xmlStreamWriter, excludedFields));
     }
 
     private static void dumpEntityField(EntityObject entityObject, Field field, XMLStreamWriter xmlStreamWriter,
-                                        String[] excludedFields) throws Exception {
+                                        String[] excludedFields) {
         List<String> listExcludedFields = Arrays.asList(excludedFields);
         if (!listExcludedFields.contains(field.getName())) {
             String sValue = ConverterHelper.convertValue2String(entityObject.get(field), field);
             if (sValue != null)
-                xmlStreamWriter.writeAttribute(field.getName(), sValue);
+                try {
+                    xmlStreamWriter.writeAttribute(field.getName(), sValue);
+                } catch (XMLStreamException e) {
+                    throw new RuntimeException(e);
+                }
         }
     }
 

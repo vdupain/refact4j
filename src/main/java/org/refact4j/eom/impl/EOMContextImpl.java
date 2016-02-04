@@ -30,7 +30,7 @@ public final class EOMContextImpl implements EOMContext {
         return instance;
     }
 
-    public EntityDescriptorRepository getEntityDescriptorRepository() {
+    public EntityDescriptorRepository get() {
         return this.entityDescriptorRepository;
     }
 

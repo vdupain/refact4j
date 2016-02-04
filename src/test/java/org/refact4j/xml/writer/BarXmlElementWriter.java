@@ -2,16 +2,10 @@ package org.refact4j.xml.writer;
 
 import org.refact4j.eom.ConverterHelper;
 import org.refact4j.eom.EntityObject;
-import org.refact4j.eom.model.Field;
-import org.refact4j.eom.model.FieldNameComparator;
 import org.refact4j.model.BarDesc;
 import org.refact4j.xml.DataSetConverterHolder;
 import org.refact4j.xml.XmlElementHandler;
 import org.refact4j.xml.XmlWriter;
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 
 public class BarXmlElementWriter extends AbstractXmlElementWriter {
 
@@ -20,12 +14,10 @@ public class BarXmlElementWriter extends AbstractXmlElementWriter {
     }
 
     public XmlElementHandler[] handleNext(XmlWriter xmlWriter) throws Exception {
-        EntityObject dummy = (EntityObject) next();
-        List<Field> fields = new ArrayList<>(dummy.getEntityDescriptor().getFields());
-        Collections.sort(fields, new FieldNameComparator());
-        for (Field field : fields) {
-            xmlWriter.writeAttribute(field.getName(), ConverterHelper.convertValue2String(dummy.get(field), field));
-        }
+        EntityObject entityObject = (EntityObject) next();
+        entityObject.getEntityDescriptor().getFields().stream()
+                .sorted((a, b) -> a.getName().compareTo(b.getName()))
+                .forEach(f -> xmlWriter.writeAttribute(f.getName(), ConverterHelper.convertValue2String(entityObject.get(f), f)));
         return new XmlElementHandler[0];
     }
 

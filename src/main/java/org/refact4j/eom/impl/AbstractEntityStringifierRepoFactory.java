@@ -72,7 +72,7 @@ public abstract class AbstractEntityStringifierRepoFactory implements EntityStri
                 .stream().filter(arg -> arg.get(EntityStringifierAppenderDesc.STRINGIFIER).equals(stringifier.getKey()))
                 .collect(Collectors.toList());
 
-        Collections.sort(appenders,  (o1, o2) -> ((Integer) o1.get("id")).compareTo(((Integer) o2.get("id"))));
+        Collections.sort(appenders, (o1, o2) -> ((Integer) o1.get("id")).compareTo(((Integer) o2.get("id"))));
 
         EntityStringifier stringifierFunctor = new EntityStringifier();
         String stringifierName = stringifier.get(EntityStringifierDesc.NAME);

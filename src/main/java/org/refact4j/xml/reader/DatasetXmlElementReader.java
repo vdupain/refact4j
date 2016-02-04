@@ -3,11 +3,12 @@ package org.refact4j.xml.reader;
 import org.refact4j.collection.Set;
 import org.refact4j.eom.model.EntityDescriptor;
 import org.refact4j.eom.model.EntityDescriptorRepository;
-import org.refact4j.eom.model.EntityDescriptorRepositoryHolder;
 import org.refact4j.eom.xml.EntityXmlDescriptor;
 import org.refact4j.eom.xml.reader.EntityXmlElementReader;
 import org.refact4j.xml.*;
 import org.refact4j.xml.impl.Dataset2XmlConverterImpl;
+
+import java.util.function.Supplier;
 
 public class DatasetXmlElementReader extends DefaultXmlElementReader {
 
@@ -35,8 +36,8 @@ public class DatasetXmlElementReader extends DefaultXmlElementReader {
             if (xmlFactory == null) {
                 throw new RuntimeException("No parser registered for " + localName);
             }
-            EntityDescriptorRepository entityDescriptorRepository = ((EntityDescriptorRepositoryHolder) xmlFactory)
-                    .getEntityDescriptorRepository();
+            EntityDescriptorRepository entityDescriptorRepository = ((Supplier<EntityDescriptorRepository>) xmlFactory)
+                    .get();
             try {
                 EntityDescriptor entityDescriptor = entityDescriptorRepository.getEntityDescriptor(localName);
                 return new EntityXmlElementReader(entityDescriptor, entityDescriptorRepository, attributes, this, null);

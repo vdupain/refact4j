@@ -1,7 +1,5 @@
 package org.refact4j.eom.model;
 
-import org.refact4j.eom.EntityStringifier;
-import org.refact4j.eom.EntityStringifierRepoFactory;
 import org.refact4j.eom.model.impl.EntityDescriptorImpl;
 import org.refact4j.expr.Expression;
 
