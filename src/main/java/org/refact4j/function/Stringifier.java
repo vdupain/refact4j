@@ -17,7 +17,7 @@ package org.refact4j.function;
  * @param <T>
  */
 @FunctionalInterface
-public interface Stringifier<T> /*extends java.util.function.Function<T, String>*/ {
+public interface Stringifier<T> {
 
     /**
      * Default implementation of a Stringifier calls the toString method of the

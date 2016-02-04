@@ -4,17 +4,13 @@ import org.refact4j.eom.EntityFieldComparator;
 import org.refact4j.eom.EntityFieldComparator.EntityFieldComparatorVisitor;
 import org.refact4j.eom.GetEntityFieldFunction;
 import org.refact4j.eom.GetEntityFieldFunction.GetEntityFieldFunctorVisitor;
-import org.refact4j.eom.model.Field;
-import org.refact4j.eom.model.impl.FieldStringifier;
+import org.refact4j.eom.model.impl.Stringifiers;
 import org.refact4j.expr.Expression;
 import org.refact4j.expr.Expression.ExpressionVisitor;
-import org.refact4j.function.BinaryCompose;
+import org.refact4j.function.*;
 import org.refact4j.function.BinaryCompose.BinaryComposeVisitor;
-import org.refact4j.function.ComposeFunction;
 import org.refact4j.function.ComposeFunction.UnaryComposeVisitor;
-import org.refact4j.function.CompositeUnaryPredicate;
 import org.refact4j.function.CompositeUnaryPredicate.CompositeUnaryPredicateVisitor;
-import org.refact4j.function.GetFieldFunction;
 import org.refact4j.function.GetFieldFunction.GetFieldFunctionVisitor;
 import org.refact4j.function.commons.*;
 import org.refact4j.function.commons.Between.BetweenVisitor;
@@ -35,14 +31,6 @@ public class PrettyPrinter implements ExpressionVisitor, BinaryComposeVisitor, U
         BetweenVisitor, NullVisitor, InVisitor, LikeVisitor, InstanceOfVisitor,
         GetEntityFieldFunctorVisitor, GetFieldFunctionVisitor, StringLengthVisitor {
 
-    private final FieldStringifier stringifier = new FieldStringifier() {
-
-        @Override
-        public String stringify(Field field) {
-            return field.getFullName();
-        }
-
-    };
     private StringBuffer buf;
     private Expression expression;
 
@@ -65,7 +53,7 @@ public class PrettyPrinter implements ExpressionVisitor, BinaryComposeVisitor, U
 
     public void visitEntityFieldComparator(EntityFieldComparator fieldComparator) {
         buf.append('(');
-        buf.append(this.stringifier.stringify(fieldComparator.getField()));
+        buf.append(Stringifiers.FULLNAME.stringify(fieldComparator.getField()));
         visit(fieldComparator.getBiFunction());
         buf.append(fieldComparator.getValue());
         buf.append(')');
@@ -81,7 +69,7 @@ public class PrettyPrinter implements ExpressionVisitor, BinaryComposeVisitor, U
     }
 
     public void visitGetEntityFieldFunctor(GetEntityFieldFunction getEntityFieldFunctor) {
-        buf.append(this.stringifier.stringify(getEntityFieldFunctor.getField()));
+        buf.append(Stringifiers.FULLNAME.stringify(getEntityFieldFunctor.getField()));
     }
 
     public void visitGetFieldFunction(GetFieldFunction getFieldFunction) {

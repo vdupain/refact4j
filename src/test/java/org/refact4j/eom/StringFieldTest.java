@@ -4,7 +4,7 @@ import org.junit.Test;
 import org.refact4j.eom.model.FieldFactory;
 import org.refact4j.eom.model.Property;
 import org.refact4j.eom.model.StringField;
-import org.refact4j.eom.model.impl.FieldStringifier;
+import org.refact4j.eom.model.impl.Stringifiers;
 import org.refact4j.expr.ExpressionBuilder;
 
 import static org.junit.Assert.assertEquals;
@@ -25,9 +25,9 @@ public class StringFieldTest extends AbstractFieldTestCase {
         checkError(field, "0123456789ab",
                 "Constraint (type.name=012345) failed: name=0123456789ab");
 
-        assertEquals("name", FieldStringifier.PRETTY.stringify(field));
+        assertEquals("name", Stringifiers.PRETTY.stringify(field));
         try {
-            FieldStringifier.XML.stringify(field);
+            Stringifiers.XML.stringify(field);
             fail("Exception Expected");
         } catch (Exception e) {
         }
