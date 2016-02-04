@@ -138,8 +138,9 @@ public class EntityObjectImpl implements EntityObject {
                     try {
                         out.writeObject(f.getName());
                         out.writeObject(this.get(f));
-                    } catch (IOException ignored) {}
-        });
+                    } catch (IOException ignored) {
+                    }
+                });
     }
 
     private void firePropertyChange(Field field, Object oldValue, Object newValue) {

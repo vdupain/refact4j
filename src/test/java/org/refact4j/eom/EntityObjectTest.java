@@ -182,9 +182,12 @@ public class EntityObjectTest {
     public void testSortedField() {
         Collection<Field> unsortedFields = FooDesc.INSTANCE.getFields();
         List<Field> sortedList = new ArrayList<>(unsortedFields);
-        Collections.sort(sortedList, new FieldOrderComparator());
+        Collections.sort(sortedList, (field1, field2)-> field1.getOrder().compareTo(field2.getOrder()));
 
-        sortedList.stream().filter(field -> field.getOrder() != null).forEach(field -> assertEquals(field, sortedList.get(field.getOrder() - 1)));
+        FooDesc.INSTANCE.getFields().stream()
+                .filter(field -> field.getOrder() != null)
+                .sorted((field1, field2)-> field1.getOrder().compareTo(field2.getOrder()))
+                .forEach(field -> assertEquals(field, sortedList.get(field.getOrder() - 1)));
     }
 
     @Test

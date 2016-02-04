@@ -10,6 +10,7 @@ import org.refact4j.function.aggregate.MinValue;
 import org.refact4j.util.ComparatorHelper;
 
 import java.util.Collection;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -18,9 +19,9 @@ public final class EntityAggregateFunctor implements AggregateFunctor<EntityObje
     private final AggregateFunctor<EntityObject> delegate;
 
     private EntityAggregateFunctor(final Field field, AggregateFunctor<EntityObject> aggregateFunctor) {
-        EntityComparator entityObjectComparator = (EntityComparator) (o1, o2) -> ComparatorHelper.compare(((Comparable<?>) o1.get(field)), ((Comparable<?>) o2.get(field)));
         this.delegate = aggregateFunctor;
-        ((AbstractAggregateFunctor<EntityObject>) this.delegate).setComparator(entityObjectComparator);
+        Comparator<EntityObject> comparator = (o1, o2) -> ComparatorHelper.compare(((Comparable<?>) o1.get(field)), ((Comparable<?>) o2.get(field)));
+        ((AbstractAggregateFunctor<EntityObject>) this.delegate).setComparator(comparator);
     }
 
     public static EntityObject applyMaxAggregateFunctor(Collection<EntityObject> collection, EntityDescriptor entityDescriptor,

@@ -20,7 +20,7 @@ public class EntityXmlNodeWriter implements XmlElementHandler {
     public EntityXmlNodeWriter(EntityDescriptorRepository entityDescriptorRepository, DataSetConverterHolder holder) {
         Collection<EntityObject> entityObjects = new EntityListImpl();
         StreamSupport.stream(entityDescriptorRepository.spliterator(), false)
-            .forEach(e -> entityObjects.addAll(holder.getDataSet().getAll(e)));
+                .forEach(e -> entityObjects.addAll(holder.getDataSet().getAll(e)));
         iterator = entityObjects.iterator();
     }
 

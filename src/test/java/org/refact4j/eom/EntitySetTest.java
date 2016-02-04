@@ -17,6 +17,7 @@ import org.refact4j.util.ComparatorHelper;
 
 import java.util.Collection;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
@@ -103,21 +104,21 @@ public class EntitySetTest {
     private void testGetEntitiesByEntityDescriptor(EntitySet collection1, EntitySet collection2,
                                                    EntitySet collection) {
         List<EntityObject> dummies = collection.getAll(FooDesc.INSTANCE);
-        EntityComparator entityObjectComparator = (EntityComparator) (o1, o2) -> ComparatorHelper.compare(o1.getKey(), o2.getKey());
+        Comparator<EntityObject> comparator =  (o1, o2) -> o1.getKey().compareTo(o2.getKey());
 
-        Collections.sort(dummies, entityObjectComparator);
+        Collections.sort(dummies, comparator);
         assertEquals(collection1.size(), dummies.size());
         org.refact4j.eom.EntityList list1 = new EntityListImpl(collection1);
-        Collections.sort(list1, entityObjectComparator);
+        Collections.sort(list1, comparator);
         for (int i = 0; i < dummies.size(); i++) {
             assertEquals(list1.get(i), dummies.get(i));
         }
 
         List<EntityObject> othersdummies = collection.getAll(BarDesc.INSTANCE);
-        Collections.sort(othersdummies, entityObjectComparator);
+        Collections.sort(othersdummies, comparator);
         assertEquals(collection2.size(), othersdummies.size());
         org.refact4j.eom.EntityList list2 = new EntityListImpl(collection2);
-        Collections.sort(list2, entityObjectComparator);
+        Collections.sort(list2, comparator);
         for (int i = 0; i < othersdummies.size(); i++) {
             assertEquals(list2.get(i), othersdummies.get(i));
             assertEquals(list2.get(i), list2.findByIdentifier(list2.get(i).getKey()));
