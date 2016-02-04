@@ -75,11 +75,6 @@ public class Expression<T> implements Predicate<T>, Visitable {
         return this;
     }
 
-    public Expression<T> notIn(Object[] objects) {
-        predicate = new ComposeFunction(new NotIn<>(objects), function);
-        return this;
-    }
-
     public Expression<T> and(Expression<T> expression) {
         predicate = new BinaryCompose<>(new And(), this.predicate, expression.predicate);
         return this;

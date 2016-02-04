@@ -64,11 +64,6 @@ public final class EntityExpressionBuilder {
         return this;
     }
 
-    public EntityExpressionBuilder notIn(Object[] values) {
-        this.expression.notIn(values);
-        return this;
-    }
-
     public EntityExpressionBuilder and(EntityExpressionBuilder expression) {
         this.expression.and(expression.getExpression());
         return this;

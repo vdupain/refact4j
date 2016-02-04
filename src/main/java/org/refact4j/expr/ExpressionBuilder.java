@@ -62,11 +62,6 @@ public final class ExpressionBuilder {
         return this;
     }
 
-    public ExpressionBuilder notIn(Object[] values) {
-        this.expression.notIn(values);
-        return this;
-    }
-
     public ExpressionBuilder and(ExpressionBuilder expression) {
         this.expression.and(expression.getExpression());
         return this;

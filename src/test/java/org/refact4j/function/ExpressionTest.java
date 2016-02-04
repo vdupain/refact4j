@@ -244,7 +244,7 @@ public class ExpressionTest {
         assertTrue(expression.test(dummyEntity3));
         assertFalse(expression.test(dummyEntity1));
 
-        Expression notInExpression = EntityExpressionBuilder.init(FooDesc.VALUE).notIn(values).getExpression();
+        Expression notInExpression = EntityExpressionBuilder.init(FooDesc.VALUE).in(values).not().getExpression();
         printEquivalentExpr(expression, notInExpression);
         assertTrue(notInExpression.test(dummyEntity3));
         assertFalse(notInExpression.test(dummyEntity1));

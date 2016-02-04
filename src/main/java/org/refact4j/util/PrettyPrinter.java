@@ -21,7 +21,6 @@ import org.refact4j.function.commons.Between.BetweenVisitor;
 import org.refact4j.function.commons.In.InVisitor;
 import org.refact4j.function.commons.InstanceOf.InstanceOfVisitor;
 import org.refact4j.function.commons.Like.LikeVisitor;
-import org.refact4j.function.commons.NotIn.NotInVisitor;
 import org.refact4j.function.commons.StringLength.StringLengthVisitor;
 import org.refact4j.function.comparison.*;
 import org.refact4j.function.comparison.Null.NullVisitor;
@@ -33,7 +32,7 @@ import org.refact4j.visitor.Visitable;
 
 public class PrettyPrinter implements ExpressionVisitor, BinaryComposeVisitor, UnaryComposeVisitor,
         CompositeUnaryPredicateVisitor, EntityFieldComparatorVisitor, ComparisonVisitor, LogicalVisitor,
-        BetweenVisitor, NullVisitor, InVisitor, NotInVisitor, LikeVisitor, InstanceOfVisitor,
+        BetweenVisitor, NullVisitor, InVisitor, LikeVisitor, InstanceOfVisitor,
         GetEntityFieldFunctorVisitor, GetFieldFunctionVisitor, StringLengthVisitor {
 
     private final FieldStringifier stringifier = new FieldStringifier() {
@@ -101,8 +100,7 @@ public class PrettyPrinter implements ExpressionVisitor, BinaryComposeVisitor, U
         buf.append('(');
         java.util.function.Function secondFunction = composeFunction.getBefore();
         java.util.function.Function firstFunction = composeFunction.getFunction();
-        if (firstFunction instanceof Between || firstFunction instanceof In
-                || firstFunction instanceof NotIn) {
+        if (firstFunction instanceof Between || firstFunction instanceof In) {
             visit(secondFunction);
             visit(firstFunction);
         } else {
@@ -185,11 +183,6 @@ public class PrettyPrinter implements ExpressionVisitor, BinaryComposeVisitor, U
     public void visitIn(In<?> in) {
         buf.append(" IN ");
         appendValues(in.getValues());
-    }
-
-    public void visitNotIn(NotIn<?> notIn) {
-        buf.append(" NOT IN ");
-        appendValues(notIn.getValues());
     }
 
     public void visitStringLength(StringLength stringLength) {
