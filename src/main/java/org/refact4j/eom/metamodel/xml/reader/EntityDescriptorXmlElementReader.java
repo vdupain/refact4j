@@ -17,7 +17,7 @@ public class EntityDescriptorXmlElementReader extends DefaultXmlElementReader {
 
     public EntityDescriptorXmlElementReader(XmlAttributes xmlAttrs, DataSetConverterHolder dataSetConverterHolder) {
         super(dataSetConverterHolder);
-        entityDescr = EntityObjectBuilder.init(EntityDescriptorDesc.INSTANCE).getEntity();
+        entityDescr = EntityObjectBuilder.init(EntityDescriptorDesc.INSTANCE).get();
         entityDescr
                 .set(EntityDescriptorDesc.NAME, XmlHelper.getAttrValue(EntityDescriptorDesc.NAME.getName(), xmlAttrs));
         this.add(entityDescr);

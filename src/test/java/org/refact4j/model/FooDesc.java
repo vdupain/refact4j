@@ -52,7 +52,7 @@ public class FooDesc {
         builder.addProperty("key", "value");
         builder.setConstraint(ExpressionBuilder.init(ID).between(0, 10).and(
                 ExpressionBuilder.init(VALUE).greaterOrEqual(0.))
-                .getExpression());
+                .get());
 
     }
 

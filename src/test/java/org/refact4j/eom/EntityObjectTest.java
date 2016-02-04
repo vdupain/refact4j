@@ -36,10 +36,10 @@ public class EntityObjectTest {
     @Before
     public void setUp() throws Exception {
         bar = EntityObjectBuilder.initWithDefaultValues(BarDesc.INSTANCE).set(BarDesc.ID, id99).set(BarDesc.NAME, name)
-                .set(BarDesc.VALUE, value).getEntity();
+                .set(BarDesc.VALUE, value).get();
         EntityObjectBuilder dummyEntityBuilder = EntityObjectBuilder.init(FooDesc.INSTANCE);
         foo = dummyEntityBuilder.set(FooDesc.ID, id).set(FooDesc.NAME, name).set(FooDesc.VALUE, value).set(
-                FooDesc.BEGIN_DATE, date).set(FooDesc.FLAG, flag).set(FooDesc.BAR, bar).getEntity();
+                FooDesc.BEGIN_DATE, date).set(FooDesc.FLAG, flag).set(FooDesc.BAR, bar).get();
         fooDecorated = new EntityObjectDecorator(foo);
     }
 
@@ -78,7 +78,7 @@ public class EntityObjectTest {
     public void testCheckField() {
         try {
             foo = EntityObjectBuilder.init(FooDesc.INSTANCE).set(FooDesc.ID, id).set(FooDesc.NAME, name).set(
-                    BarDesc.VALUE, value).set(FooDesc.BEGIN_DATE, date).set(FooDesc.BAR, bar).getEntity();
+                    BarDesc.VALUE, value).set(FooDesc.BEGIN_DATE, date).set(FooDesc.BAR, bar).get();
             fail("Expected RuntimeException");
         } catch (RuntimeException e) {
             assertEquals("Object type 'Foo' does not contain field 'Bar.value'", e.getMessage());
@@ -102,7 +102,7 @@ public class EntityObjectTest {
 
         try {
             EntityObjectBuilder.init(FooDesc.INSTANCE).set(FooDesc.ID, id).set(FooDesc.NAME, name).set(FooDesc.VALUE,
-                    value).getCheckEntity();
+                    value).get().checkConstraint();
             fail("Expected RuntimeException");
         } catch (RuntimeException e) {
             assertEquals("Constraint ((Foo.id BETWEEN 0 AND 10) AND (Foo.value>=0.0)) failed: id=12", e.getMessage());

@@ -31,17 +31,17 @@ public class EntityXmlElementReader extends DefaultXmlElementReader {
             Collection<RelationField> fields = entityDescriptor.getRelationFields();
             for (RelationField relationField : fields) {
                 if (relationField.getTargetEntityDescriptor().equals(parentEntity.getEntityDescriptor())) {
-                    if (builder.getEntity().get(relationField) == null) {
+                    if (builder.get().get(relationField) == null) {
                         builder.set(relationField, parentEntity.getKey());
                         if (relationField instanceof OneToOneRelationField) {
-                            parentEntity.set(relationField.getInverseRelationField(), builder.getEntity().getKey());
+                            parentEntity.set(relationField.getInverseRelationField(), builder.get().getKey());
                         }
                         break;
                     }
                 }
             }
         }
-        entityObject = builder.getEntity();
+        entityObject = builder.get();
         this.add(entityObject);
     }
 

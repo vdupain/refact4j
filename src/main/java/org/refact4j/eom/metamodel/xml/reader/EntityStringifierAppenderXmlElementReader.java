@@ -17,7 +17,7 @@ class EntityStringifierAppenderXmlElementReader extends DefaultXmlElementReader 
     public EntityStringifierAppenderXmlElementReader(XmlAttributes xmlAttrs, DataSetConverterHolder dataSetConverterHolder,
                                                      EntityObject stringifierEntity, EntityDescriptorRepository repository) {
         super(dataSetConverterHolder);
-        EntityObject stringifierAppender = EntityObjectBuilder.init(EntityStringifierAppenderDesc.INSTANCE).getEntity();
+        EntityObject stringifierAppender = EntityObjectBuilder.init(EntityStringifierAppenderDesc.INSTANCE).get();
         stringifierAppender.set(EntityStringifierAppenderDesc.ID, Integer.parseInt(XmlHelper.getAttrValue(
                 EntityStringifierAppenderDesc.ID.getName(), xmlAttrs, null)));
         stringifierAppender.set(EntityStringifierAppenderDesc.STRING, XmlHelper.getAttrValue(

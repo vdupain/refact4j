@@ -150,7 +150,7 @@ public class EntityDescriptorImpl implements EntityDescriptor {
 
     public EntityObject toEntity() {
         return EntityObjectBuilder.init(EntityDescriptorDesc.INSTANCE).set(EntityDescriptorDesc.NAME, this.name)
-                .getEntity();
+                .get();
     }
 
     @Override

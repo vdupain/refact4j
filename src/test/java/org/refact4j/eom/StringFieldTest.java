@@ -20,7 +20,7 @@ public class StringFieldTest extends AbstractFieldTestCase {
                 .createStringField();
 
         entityDescriptorBuilder.setConstraint(ExpressionBuilder.init(field)
-                .equalTo("012345").getExpression());
+                .equalTo("012345").get());
 
         checkError(field, "0123456789ab",
                 "Constraint (type.name=012345) failed: name=0123456789ab");
@@ -52,7 +52,7 @@ public class StringFieldTest extends AbstractFieldTestCase {
         StringField field = FieldFactory.init(entityDescriptorBuilder, fieldName)
                 .setConstraintExpression(
                         ExpressionBuilder.init(fieldName)
-                                .maxLength(10).getExpression()).createStringField();
+                                .maxLength(10).get()).createStringField();
         field.checkValue(null);
         field.checkValue("");
         field.checkValue("0123456789");

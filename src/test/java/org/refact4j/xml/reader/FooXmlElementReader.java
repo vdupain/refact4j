@@ -22,7 +22,7 @@ public class FooXmlElementReader extends DefaultXmlElementReader {
         EntityObject fooEntity = ((EntityDataSet) dataSetConverterHolder.getDataSet()).getEntityByName(FooDesc.INSTANCE,
                 FooDesc.NAME, name);
         if (fooEntity == null) {
-            fooEntity = EntityObjectBuilder.init(FooDesc.INSTANCE).getEntity();
+            fooEntity = EntityObjectBuilder.init(FooDesc.INSTANCE).get();
         }
 
         try {

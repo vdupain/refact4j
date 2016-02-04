@@ -16,7 +16,7 @@ class PropertyXmlElementReader extends DefaultXmlElementReader {
                                     EntityObject entityDescTypeEntity, EntityObject fieldEntity) {
         super(dataSetConverterHolder);
 
-        EntityObject property = EntityObjectBuilder.init(PropertyDesc.INSTANCE).getEntity();
+        EntityObject property = EntityObjectBuilder.init(PropertyDesc.INSTANCE).get();
 
         if (entityDescTypeEntity != null) {
             property.set(PropertyDesc.ENTITY_DESC_DESC, entityDescTypeEntity);

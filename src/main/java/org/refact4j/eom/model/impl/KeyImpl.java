@@ -131,7 +131,7 @@ public class KeyImpl implements Key {
                 exprBuilder = tmpExp;
             }
         }
-        return exprBuilder.getExpression();
+        return exprBuilder.get();
     }
 
     public void readExternal(ObjectInput in) throws IOException, ClassNotFoundException {

@@ -129,7 +129,7 @@ public final class EntitySerializerHelper {
                 };
                 field.accept(deserializerVisitor);
             }
-            return entityObjectBuilder.getEntity();
+            return entityObjectBuilder.get();
         } catch (Exception e) {
             throw new RuntimeException(e);
         }

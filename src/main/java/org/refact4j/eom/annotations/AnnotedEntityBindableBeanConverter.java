@@ -70,7 +70,7 @@ public class AnnotedEntityBindableBeanConverter<T> extends AbstractBeanConverter
                 if (field instanceof ManyToOneRelationField) {
                     Key key = (Key) this.entityObject.get(field);
                     if (key != null) {
-                        EntityObject targetEntity = EntityObjectBuilder.init(key.getEntityDescriptor()).getEntity();
+                        EntityObject targetEntity = EntityObjectBuilder.init(key.getEntityDescriptor()).get();
                         for (Field f : targetEntity.getEntityDescriptor().getFields()) {
                             targetEntity.set(f, key.getFieldValue(f));
                         }

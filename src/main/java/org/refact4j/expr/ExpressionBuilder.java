@@ -5,8 +5,9 @@ import org.refact4j.eom.model.Field;
 import org.refact4j.function.GetFieldFunction;
 
 import java.util.function.Function;
+import java.util.function.Supplier;
 
-public class ExpressionBuilder {
+public class ExpressionBuilder implements Supplier<Expression> {
     protected Expression expression;
 
     public ExpressionBuilder() {
@@ -15,10 +16,6 @@ public class ExpressionBuilder {
 
     private ExpressionBuilder(Function function) {
         this(null, function);
-    }
-
-    private ExpressionBuilder(String property) {
-        this(property, Function.identity());
     }
 
     private ExpressionBuilder(String property, Function function) {
@@ -34,7 +31,7 @@ public class ExpressionBuilder {
     }
 
     public static ExpressionBuilder init(String property) {
-        return new ExpressionBuilder(property);
+        return new ExpressionBuilder(property, Function.identity());
     }
 
     public static ExpressionBuilder initBean(String property) {
@@ -82,12 +79,12 @@ public class ExpressionBuilder {
     }
 
     public ExpressionBuilder and(ExpressionBuilder expression) {
-        this.expression.and(expression.getExpression());
+        this.expression.and(expression.get());
         return this;
     }
 
     public ExpressionBuilder or(ExpressionBuilder expression) {
-        this.expression.or(expression.getExpression());
+        this.expression.or(expression.get());
         return this;
     }
 
@@ -97,7 +94,7 @@ public class ExpressionBuilder {
     }
 
     public ExpressionBuilder not(ExpressionBuilder expression) {
-        this.expression.not(expression.getExpression());
+        this.expression.not(expression.get());
         return this;
     }
 
@@ -126,7 +123,7 @@ public class ExpressionBuilder {
         return this;
     }
 
-    public Expression getExpression() {
+    public Expression get() {
         return expression;
     }
 

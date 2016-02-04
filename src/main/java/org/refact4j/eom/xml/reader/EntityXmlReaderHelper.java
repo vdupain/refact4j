@@ -89,7 +89,7 @@ public final class EntityXmlReaderHelper {
                                       Collection<EntityObject> entityObjects) {
         EntityObjectBuilder builder = EntityObjectBuilder.init(entityDescriptor);
         parse(xmlAttrs, builder, excludedFields, entityObjects);
-        return builder.getEntity();
+        return builder.get();
     }
 
     public static void parse(XmlAttributes xmlAttrs, EntityObjectBuilder builder, Collection<EntityObject> entityObjects) {
@@ -99,7 +99,7 @@ public final class EntityXmlReaderHelper {
     private static void parse(XmlAttributes xmlAttrs, final EntityObjectBuilder builder, String[] excludedFields,
                               final Collection<EntityObject> entityObjects) {
         List<String> listExcludedFields = Arrays.asList(excludedFields);
-        EntityDescriptor entityDescriptor = builder.getEntity().getEntityDescriptor();
+        EntityDescriptor entityDescriptor = builder.get().getEntityDescriptor();
         for (int i = 0; i < xmlAttrs.getLength(); i++) {
             String name = xmlAttrs.getLocalName(i);
             final String value = xmlAttrs.getValue(i);
@@ -112,7 +112,7 @@ public final class EntityXmlReaderHelper {
                 final String2ValueFieldConverter converter = new String2ValueFieldConverter(value);
                 attribute.accept(new DefaultFieldVisitor());
                 attribute.accept(converter);
-                builder.setFieldValue(attribute, converter.getValue());
+                builder.set(attribute, converter.getValue());
             }
         }
     }

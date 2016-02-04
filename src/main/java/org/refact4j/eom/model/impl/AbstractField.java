@@ -168,7 +168,7 @@ public abstract class AbstractField implements Field {
                 .set(FieldDesc.EDITABLE, this.editable)
                 .set(FieldDesc.ORDER, this.order)
                 .set(FieldDesc.DEFAULT_VALUE, ConverterHelper.convertValue2String(defaultValue, this))
-                .getEntity();
+                .get();
     }
 
     public boolean isKey() {

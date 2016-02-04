@@ -19,7 +19,7 @@ public class BarXmlElementReader extends DefaultXmlElementReader {
         barEntity = ((EntityDataSet) dataSetConverterHolder.getDataSet()).getEntityByName(BarDesc.INSTANCE,
                 BarDesc.NAME, name);
         if (barEntity == null) {
-            barEntity = EntityObjectBuilder.init(BarDesc.INSTANCE).getEntity();
+            barEntity = EntityObjectBuilder.init(BarDesc.INSTANCE).get();
         }
         barEntity.set(BarDesc.ID, (Integer) ConverterHelper.convertString2Value(XmlHelper.getAttrValue("id", xmlAttrs),
                 BarDesc.ID));

@@ -84,7 +84,7 @@ public abstract class AbstractEntityStringifierRepoFactory implements EntityStri
         int count = 1;
         for (EntityObject appender : appenders) {
             EntityObject stringifierAppenderEntity = EntityObjectBuilder.init(EntityStringifierAppenderDesc.INSTANCE)
-                    .getEntity();
+                    .get();
             stringifierAppenderEntity.set(EntityStringifierAppenderDesc.STRING, appender
                     .get(EntityStringifierAppenderDesc.STRING));
             stringifierAppenderEntity.set(EntityStringifierAppenderDesc.ID, count++);

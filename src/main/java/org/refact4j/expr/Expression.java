@@ -29,13 +29,14 @@ public class Expression<T> implements Predicate<T>, Visitable {
     private java.util.function.Function<T, ?> function = Function.identity();
 
     public Expression() {
+        this(null, Function.identity());
     }
 
     public Expression(String name) {
-        this.name = name;
+        this(name, Function.identity());
     }
 
-    protected Expression(String name, java.util.function.Function<T, ?> function) {
+    protected Expression(String name, Function<T, ?> function) {
         this.name = name;
         this.function = function;
     }
@@ -120,7 +121,7 @@ public class Expression<T> implements Predicate<T>, Visitable {
         return this;
     }
 
-    public java.util.function.Function<T, Boolean> getPredicate() {
+    public Function<T, Boolean> getPredicate() {
         return predicate;
     }
 
@@ -131,7 +132,6 @@ public class Expression<T> implements Predicate<T>, Visitable {
     public boolean test(T arg) {
         return this.predicate.apply(arg);
     }
-
 
     public void accept(Visitor visitor) {
         if (visitor instanceof ExpressionVisitor) {
@@ -145,7 +145,7 @@ public class Expression<T> implements Predicate<T>, Visitable {
     }
 
     public interface ExpressionVisitor extends Visitor {
-        void visitExpression(Expression<?> expression);
+        void visitExpression(Expression expression);
     }
 
 }

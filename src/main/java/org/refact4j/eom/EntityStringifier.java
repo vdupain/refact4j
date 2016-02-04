@@ -67,7 +67,7 @@ public class EntityStringifier implements Stringifier<EntityObject>, ToEntity {
     public EntityObject toEntity() {
         return EntityObjectBuilder.init(EntityStringifierDesc.INSTANCE).set(EntityStringifierDesc.OBJECT_TYPE,
                 entityDescriptor != null ? entityDescriptor.toEntity().getKey() : null).set(
-                EntityStringifierDesc.NAME, name).getEntity();
+                EntityStringifierDesc.NAME, name).get();
     }
 
     @Override

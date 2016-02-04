@@ -40,10 +40,10 @@ public class EntityXmlTest {
     @Before
     public void setUp() throws Exception {
         entity2 = EntityObjectBuilder.init(BarDesc.INSTANCE).set(BarDesc.ID, id99)
-                .set(BarDesc.NAME, name).set(BarDesc.VALUE, value).getEntity();
+                .set(BarDesc.NAME, name).set(BarDesc.VALUE, value).get();
         entity1 = EntityObjectBuilder.init(FooDesc.INSTANCE).set(FooDesc.ID, id).set(
                 FooDesc.NAME, name).set(FooDesc.VALUE, value).set(FooDesc.BEGIN_DATE, date)
-                .set(FooDesc.FLAG, false).set(FooDesc.BAR, entity2).getEntity();
+                .set(FooDesc.FLAG, false).set(FooDesc.BAR, entity2).get();
     }
 
     @Test

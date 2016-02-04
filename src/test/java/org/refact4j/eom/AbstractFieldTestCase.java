@@ -16,7 +16,7 @@ public abstract class AbstractFieldTestCase {
     protected void checkError(Field field, Object value, String message) {
         try {
             EntityObjectBuilder.init(entityDescriptorBuilder.getEntityDescriptor()).set(
-                    field, value).getCheckEntity();
+                    field, value).get().checkConstraint();
             fail("Expected Exception");
         } catch (Exception e) {
             assertEquals(message, e.getMessage());

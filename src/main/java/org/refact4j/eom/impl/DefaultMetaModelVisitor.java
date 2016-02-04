@@ -58,7 +58,7 @@ public class DefaultMetaModelVisitor implements MetaModelVisitor, ToXmlString {
             }
             PropertyDesc.TypeVisitor typeVisitor = new PropertyDesc.TypeVisitor();
             typeVisitor.visit(value);
-            EntityObject propertyEntity = EntityObjectBuilder.init(PropertyDesc.INSTANCE).getEntity();
+            EntityObject propertyEntity = EntityObjectBuilder.init(PropertyDesc.INSTANCE).get();
             propertyEntity.set(PropertyDesc.KEY, key.toString());
             propertyEntity.set(PropertyDesc.DATA_TYPE, typeVisitor.dataTypeEntity);
 

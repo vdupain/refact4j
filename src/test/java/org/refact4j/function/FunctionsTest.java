@@ -87,20 +87,20 @@ public class FunctionsTest {
         PrettyPrinter printer = new PrettyPrinter();
         EntityFieldComparator<Double> fieldComparator = new EntityFieldComparator<>(new Greater(), FooDesc.VALUE,
                 100.);
-        EntityObject dummyEntity = EntityObjectBuilder.init(FooDesc.INSTANCE).setFieldValue(FooDesc.VALUE,
-                99.).getEntity();
+        EntityObject dummyEntity = EntityObjectBuilder.init(FooDesc.INSTANCE).set(FooDesc.VALUE,
+                99.).get();
         assertFalse(fieldComparator.test(dummyEntity));
 
         fieldComparator = new EntityFieldComparator<>(new GreaterEqual(), FooDesc.VALUE, 12.);
-        dummyEntity = EntityObjectBuilder.init(FooDesc.INSTANCE).setFieldValue(FooDesc.VALUE, 12.).getEntity();
+        dummyEntity = EntityObjectBuilder.init(FooDesc.INSTANCE).set(FooDesc.VALUE, 12.).get();
         assertTrue(fieldComparator.test(dummyEntity));
 
         UnaryPredicate<EntityObject> dummyWith100AsValue = new FieldValuePredicate<>(FooDesc.VALUE, 100.);
-        dummyEntity = EntityObjectBuilder.init(FooDesc.INSTANCE).setFieldValue(FooDesc.VALUE, 100.)
-                .getEntity();
+        dummyEntity = EntityObjectBuilder.init(FooDesc.INSTANCE).set(FooDesc.VALUE, 100.)
+                .get();
         assertTrue(dummyWith100AsValue.apply(dummyEntity));
-        dummyEntity = EntityObjectBuilder.init(FooDesc.INSTANCE).setFieldValue(FooDesc.VALUE, 123.)
-                .getEntity();
+        dummyEntity = EntityObjectBuilder.init(FooDesc.INSTANCE).set(FooDesc.VALUE, 123.)
+                .get();
         assertFalse(dummyWith100AsValue.apply(dummyEntity));
 
         System.out.println(">>" + printer.toString(dummyWith100AsValue));
@@ -110,19 +110,19 @@ public class FunctionsTest {
 
         BinaryCompose<Boolean, Boolean, EntityObject, Boolean> func4 = new BinaryCompose<>(
                 new And(), fc1, fc2);
-        dummyEntity = EntityObjectBuilder.init(FooDesc.INSTANCE).setFieldValue(FooDesc.VALUE, 12.).getEntity();
+        dummyEntity = EntityObjectBuilder.init(FooDesc.INSTANCE).set(FooDesc.VALUE, 12.).get();
         assertTrue(func4.apply(dummyEntity));
-        dummyEntity = EntityObjectBuilder.init(FooDesc.INSTANCE).setFieldValue(FooDesc.VALUE, 9.).getEntity();
+        dummyEntity = EntityObjectBuilder.init(FooDesc.INSTANCE).set(FooDesc.VALUE, 9.).get();
         assertFalse(func4.apply(dummyEntity));
 
         fc1 = new EntityFieldComparator<>(new GreaterEqual(), FooDesc.VALUE, 10.);
         fc2 = new EntityFieldComparator<>(new Equal(), FooDesc.NAME, "azerty");
         func4 = new BinaryCompose<>(new And(), fc1, fc2);
-        dummyEntity = EntityObjectBuilder.init(FooDesc.INSTANCE).setFieldValue(FooDesc.VALUE, 12.)
-                .setFieldValue(FooDesc.NAME, "azerty").getEntity();
+        dummyEntity = EntityObjectBuilder.init(FooDesc.INSTANCE).set(FooDesc.VALUE, 12.)
+                .set(FooDesc.NAME, "azerty").get();
         assertTrue(func4.apply(dummyEntity));
-        dummyEntity = EntityObjectBuilder.init(FooDesc.INSTANCE).setFieldValue(FooDesc.VALUE, 9.)
-                .setFieldValue(FooDesc.NAME, "azerty").getEntity();
+        dummyEntity = EntityObjectBuilder.init(FooDesc.INSTANCE).set(FooDesc.VALUE, 9.)
+                .set(FooDesc.NAME, "azerty").get();
         assertFalse(func4.apply(dummyEntity));
     }
 

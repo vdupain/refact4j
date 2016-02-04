@@ -22,7 +22,7 @@ public class FieldXmlElementReader extends DefaultXmlElementReader {
                                  EntityObject entityDescEntity) {
         super(dataSetConverterHolder);
 
-        field = EntityObjectBuilder.init(FieldDesc.INSTANCE).getEntity();
+        field = EntityObjectBuilder.init(FieldDesc.INSTANCE).get();
         field.set(FieldDesc.NAME, XmlHelper.getAttrValue(FieldDesc.NAME.getName(), xmlAttrs));
         field.set(FieldDesc.ENTITY_DESC, entityDescEntity);
         field.set(FieldDesc.PRETTY_NAME, XmlHelper.getAttrValue(FieldDesc.PRETTY_NAME.getName(), xmlAttrs, null));

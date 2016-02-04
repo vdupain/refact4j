@@ -24,7 +24,7 @@ public class AnnotedEntityBindableEntityConverter<T> extends AbstractEntityConve
             EntityBindable entityBindable = clazz.getAnnotation(EntityBindable.class);
             EntityDescriptor entityDescriptor = entityDescriptorRepository.getEntityDescriptor(entityBindable
                     .entityDescriptor());
-            entityObject = EntityObjectBuilder.init(entityDescriptor).getEntity();
+            entityObject = EntityObjectBuilder.init(entityDescriptor).get();
 
             for (Method method : clazz.getMethods()) {
                 if (annotations.hasEntityFieldAnnotation(method)) {

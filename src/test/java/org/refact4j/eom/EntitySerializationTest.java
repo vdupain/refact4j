@@ -15,10 +15,10 @@ public class EntitySerializationTest {
 
     @Test
     public void testEntitySerialization() throws Exception {
-        EntityObject bar = EntityObjectBuilder.init(BarDesc.INSTANCE).set(BarDesc.ID, 1).getEntity();
+        EntityObject bar = EntityObjectBuilder.init(BarDesc.INSTANCE).set(BarDesc.ID, 1).get();
         EntityObject expectedEntity = EntityObjectBuilder.init(FooDesc.INSTANCE).set(FooDesc.ID, 1).set(
                 FooDesc.NAME, "foo").set(FooDesc.FLAG, true).set(FooDesc.BEGIN_DATE, new Date()).set(
-                FooDesc.BAR, bar).getEntity();
+                FooDesc.BAR, bar).get();
 
         byte[] bytes = EntitySerializerHelper.serialize(expectedEntity);
         EntityObject actualEntity = EntitySerializerHelper.deserialize(bytes, DummyRepository.get());
@@ -29,7 +29,7 @@ public class EntitySerializationTest {
         }
 
         expectedEntity = EntityObjectBuilder.init(FooDesc.INSTANCE).set(FooDesc.ID, 1).set(FooDesc.NAME, "dummy")
-                .set(FooDesc.FLAG, true).set(FooDesc.BEGIN_DATE, new Date()).getEntity();
+                .set(FooDesc.FLAG, true).set(FooDesc.BEGIN_DATE, new Date()).get();
 
         bytes = EntitySerializerHelper.serialize(expectedEntity);
         actualEntity = EntitySerializerHelper.deserialize(bytes, DummyRepository.get());
