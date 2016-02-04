@@ -14,7 +14,7 @@ public class IntegerFieldTest extends AbstractFieldTestCase {
 
         IntegerField field = FieldFactory.init(entityDescriptorBuilder, "id")
                 .createIntegerField();
-        entityDescriptorBuilder.setConstraint(ExpressionBuilder.initEO(field)
+        entityDescriptorBuilder.setConstraint(ExpressionBuilder.init(field)
                 .greaterOrEqual(10).getExpression());
 
         checkError(field, 8, "Constraint (type.id>=10) failed: id=8");

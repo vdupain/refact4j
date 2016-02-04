@@ -88,4 +88,9 @@ public class EntityStringifier implements Stringifier<EntityObject>, EntityFunct
         }
         return s.toString();
     }
+
+    @Override
+    public String apply(EntityObject fields) {
+        return stringify(fields);
+    }
 }

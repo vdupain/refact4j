@@ -184,8 +184,8 @@ public class EntitySetTest {
     }
 
     private void testGetEntitiesFilteredByExprConstraint(EntitySet collection, EntityObject entityObject) {
-        Expression<EntityObject> expr = ExpressionBuilder.initEO(FooDesc.ID).equalTo(4).or(
-                ExpressionBuilder.initEO(BarDesc.NAME).equalTo("bar1")).getExpression();
+        Expression<EntityObject> expr = ExpressionBuilder.init(FooDesc.ID).equalTo(4).or(
+                ExpressionBuilder.init(BarDesc.NAME).equalTo("bar1")).getExpression();
         List<EntityObject> list = collection.stream().filter(expr).collect(Collectors.toList());
         assertEquals(2, list.size());
         assertTrue(list.contains(entityObject));

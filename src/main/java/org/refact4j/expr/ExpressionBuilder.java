@@ -41,11 +41,7 @@ public class ExpressionBuilder {
         return new ExpressionBuilder(property, new GetFieldFunction(property));
     }
 
-    public static ExpressionBuilder initEO(String fieldName) {
-        return new ExpressionBuilder(fieldName, new GetEntityFieldFunction(fieldName));
-    }
-
-    public static ExpressionBuilder initEO(Field field) {
+    public static ExpressionBuilder init(Field field) {
         return new ExpressionBuilder(field.getName(), new GetEntityFieldFunction(field));
     }
 

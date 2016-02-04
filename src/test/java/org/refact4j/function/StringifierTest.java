@@ -33,7 +33,7 @@ public class StringifierTest {
     public void testDefaultStringifier() {
         assertEquals(Integer.toString(1), Stringifier.DEFAULT.stringify(1));
         assertEquals("abcdef", Stringifier.DEFAULT.stringify("abcdef"));
-        assertEquals("abcdef", Stringifier.DEFAULT.apply("abcdef"));
+        assertEquals("abcdef", Stringifier.DEFAULT.stringify("abcdef"));
         assertEquals("null", Stringifier.DEFAULT.stringify(null));
         assertEquals(StringHelper.FILE_SEPARATOR, Stringifier.DEFAULT
                 .stringify(StringHelper.FILE_SEPARATOR));

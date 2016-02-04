@@ -123,7 +123,7 @@ public class KeyImpl implements Key {
     public Expression asExpression() {
         ExpressionBuilder exprBuilder = null;
         for (Field keyField : this.getEntityDescriptor().getKeyFields()) {
-            ExpressionBuilder tmpExp = ExpressionBuilder.initEO(keyField).equalTo(
+            ExpressionBuilder tmpExp = ExpressionBuilder.init(keyField).equalTo(
                     this.getFieldValue(keyField));
             if (exprBuilder != null) {
                 exprBuilder.and(tmpExp);
