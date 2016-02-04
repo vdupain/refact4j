@@ -2,14 +2,14 @@ package org.refact4j.function.arithmetic;
 
 /**
  * This abstract class provides a skeletal implementation of the
- * AbstractArithmeticBiFunction interface, to minimize the effort required to
+ * AbstractArithmeticBinaryOperator interface, to minimize the effort required to
  * implement this interface. To implement an arithmetic binary function, the
  * programmer needs only to extend this class and provide implementation for the
  * apply method.
  *
  * @param <T>
  */
-abstract class AbstractArithmeticBiFunction<T extends Number> implements ArithmeticBiFunction<T> {
+abstract class AbstractArithmeticBinaryOperator<T extends Number> implements ArithmeticBinaryOperator<T> {
 
     private final ArithmeticMathHolder<T> arithmeticMathHolder = new ArithmeticMathHolder<>();
 

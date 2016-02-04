@@ -6,7 +6,7 @@ package org.refact4j.function.arithmetic;
  *
  * @param <T>
  */
-public class Multiplies<T extends Number> extends AbstractArithmeticBiFunction<T> {
+public class Multiplies<T extends Number> extends AbstractArithmeticBinaryOperator<T> {
 
     @Override
     protected T evaluate(T firstArg, T secondArg) {

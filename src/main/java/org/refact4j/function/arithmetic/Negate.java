@@ -6,7 +6,7 @@ package org.refact4j.function.arithmetic;
  *
  * @param <T>
  */
-public class Negate<T extends Number> extends AbstractArithmeticFunction<T> {
+public class Negate<T extends Number> extends AbstractArithmeticUnaryOperator<T> {
 
     @Override
     protected T evaluate(T arg) {
