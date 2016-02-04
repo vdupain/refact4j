@@ -8,6 +8,8 @@ import org.refact4j.eom.model.Key;
 import org.refact4j.eom.model.KeyBuilder;
 import org.refact4j.eom.model.impl.KeyImpl;
 import org.refact4j.eom.xml.reader.EntityXmlReaderHelper;
+import org.refact4j.expr.Expression;
+import org.refact4j.expr.ExpressionBuilder;
 import org.refact4j.model.BarDesc;
 import org.refact4j.model.DummyRepository;
 import org.refact4j.model.FooDesc;
@@ -182,8 +184,8 @@ public class EntitySetTest {
     }
 
     private void testGetEntitiesFilteredByExprConstraint(EntitySet collection, EntityObject entityObject) {
-        EntityExpression expr = EntityExpressionBuilder.init(FooDesc.ID).equalTo(4).or(
-                EntityExpressionBuilder.init(BarDesc.NAME).equalTo("bar1")).getExpression();
+        Expression<EntityObject> expr = ExpressionBuilder.initEO(FooDesc.ID).equalTo(4).or(
+                ExpressionBuilder.initEO(BarDesc.NAME).equalTo("bar1")).getExpression();
         List<EntityObject> list = collection.stream().filter(expr).collect(Collectors.toList());
         assertEquals(2, list.size());
         assertTrue(list.contains(entityObject));

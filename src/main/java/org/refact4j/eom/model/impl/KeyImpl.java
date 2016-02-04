@@ -6,6 +6,8 @@ import org.refact4j.eom.EntityExpressionBuilder;
 import org.refact4j.eom.model.EntityDescriptor;
 import org.refact4j.eom.model.Field;
 import org.refact4j.eom.model.Key;
+import org.refact4j.expr.Expression;
+import org.refact4j.expr.ExpressionBuilder;
 import org.refact4j.util.ComparatorHelper;
 
 import java.io.IOException;
@@ -120,10 +122,10 @@ public class KeyImpl implements Key {
         return keys.size() == 1;
     }
 
-    public EntityExpression asExpression() {
-        EntityExpressionBuilder exprBuilder = null;
+    public Expression asExpression() {
+        ExpressionBuilder exprBuilder = null;
         for (Field keyField : this.getEntityDescriptor().getKeyFields()) {
-            EntityExpressionBuilder tmpExp = EntityExpressionBuilder.init(keyField).equalTo(
+            ExpressionBuilder tmpExp = ExpressionBuilder.initEO(keyField).equalTo(
                     this.getFieldValue(keyField));
             if (exprBuilder != null) {
                 exprBuilder.and(tmpExp);

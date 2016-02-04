@@ -91,9 +91,9 @@ public class ExpressionTest {
         assertTrue(expression.test(dummyEntity));
         assertTrue(beanExpression.test(dummy));
 
-        expression = EntityExpressionBuilder.init().not(EntityExpressionBuilder.init(FooDesc.VALUE).greaterThan(10.))
+        expression = ExpressionBuilder.init().not(ExpressionBuilder.initEO(FooDesc.VALUE).greaterThan(10.))
                 .and(
-                        (EntityExpressionBuilder.init(FooDesc.NAME).like("azert*")).or(EntityExpressionBuilder.init(
+                        (ExpressionBuilder.initEO(FooDesc.NAME).like("azert*")).or(ExpressionBuilder.initEO(
                                 FooDesc.NAME).equalTo("qwerty"))).getExpression();
         beanExpression = ExpressionBuilder.init().not(ExpressionBuilder.initBean("Value").greaterThan(10.))
                 .and(
@@ -109,7 +109,7 @@ public class ExpressionTest {
         assertTrue(expression.test(dummyEntity));
         assertTrue(beanExpression.test(dummy));
 
-        Expression otherExpression = EntityExpressionBuilder.init().not(
+        Expression otherExpression = ExpressionBuilder.init().not(
                 EntityExpressionBuilder.init(FooDesc.VALUE).greaterThan(10.)).and(
                 EntityExpressionBuilder.init(FooDesc.NAME).like("azert*").or(
                         EntityExpressionBuilder.init(FooDesc.NAME).equalTo("qwerty"))).getExpression();
@@ -165,7 +165,7 @@ public class ExpressionTest {
     @Test
     public void testBetweenExpression() {
         Expression expression = EntityExpressionBuilder.init(FooDesc.VALUE).greaterOrEqual((double) 0).and(
-                EntityExpressionBuilder.init(FooDesc.VALUE).lessOrEqual(10.)).getExpression();
+                ExpressionBuilder.initEO(FooDesc.VALUE).lessOrEqual(10.)).getExpression();
         EntityObject dummyEntity8 = EntityObjectBuilder.init(FooDesc.INSTANCE).setFieldValue(FooDesc.VALUE, 8.)
                 .getEntity();
 
@@ -206,11 +206,11 @@ public class ExpressionTest {
         assertFalse(isNullExpression.test(dummyEntity12));
         printEquivalentExpr(expression, isNullExpression);
 
-        expression = EntityExpressionBuilder.init().not(
-                EntityExpressionBuilder.init(FooDesc.VALUE).equalTo((Number) null)).getExpression();
+        expression = ExpressionBuilder.init().not(
+                ExpressionBuilder.initEO(FooDesc.VALUE).equalTo((Number) null)).getExpression();
         assertFalse(expression.test(dummyEntityNull));
         assertTrue(expression.test(dummyEntity12));
-        Expression isNotNullExpression = EntityExpressionBuilder.init(FooDesc.VALUE).isNull().not().getExpression();
+        Expression isNotNullExpression = ExpressionBuilder.initEO(FooDesc.VALUE).isNull().not().getExpression();
         assertFalse(isNotNullExpression.test(dummyEntityNull));
         assertTrue(isNotNullExpression.test(dummyEntity12));
         printEquivalentExpr(expression, isNotNullExpression);
@@ -236,8 +236,8 @@ public class ExpressionTest {
         assertFalse(inExpression.test(dummyEntity3));
         printEquivalentExpr(expression, inExpression);
 
-        expression = EntityExpressionBuilder.init().not(
-                EntityExpressionBuilder.init(FooDesc.VALUE).equalTo(0.).or(
+        expression = ExpressionBuilder.init().not(
+                ExpressionBuilder.initEO(FooDesc.VALUE).equalTo(0.).or(
                         EntityExpressionBuilder.init(FooDesc.VALUE).equalTo(1.)).or(
                         EntityExpressionBuilder.init(FooDesc.VALUE).equalTo(2.))).getExpression();
         assertTrue(expression.test(dummyEntity3));

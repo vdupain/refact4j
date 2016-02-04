@@ -1,5 +1,7 @@
 package org.refact4j.expr;
 
+import org.refact4j.eom.GetEntityFieldFunction;
+import org.refact4j.eom.model.Field;
 import org.refact4j.function.GetFieldFunction;
 
 import java.util.function.Function;
@@ -39,6 +41,13 @@ public class ExpressionBuilder {
         return new ExpressionBuilder(property, new GetFieldFunction(property));
     }
 
+    public static ExpressionBuilder initEO(String fieldName) {
+        return new ExpressionBuilder(fieldName, new GetEntityFieldFunction(fieldName));
+    }
+
+    public static ExpressionBuilder initEO(Field field) {
+        return new ExpressionBuilder(field.getName(), new GetEntityFieldFunction(field));
+    }
 
     public ExpressionBuilder greaterThan(Object value) {
         this.expression.greaterThan(value);
@@ -47,6 +56,11 @@ public class ExpressionBuilder {
 
     public ExpressionBuilder greaterOrEqual(Object value) {
         this.expression.greaterOrEqual(value);
+        return this;
+    }
+
+    public ExpressionBuilder lessOrEqual(Object value) {
+        this.expression.lessOrEqual(value);
         return this;
     }
 
@@ -78,6 +92,11 @@ public class ExpressionBuilder {
 
     public ExpressionBuilder or(ExpressionBuilder expression) {
         this.expression.or(expression.getExpression());
+        return this;
+    }
+
+    public ExpressionBuilder not() {
+        this.expression.not(expression);
         return this;
     }
 

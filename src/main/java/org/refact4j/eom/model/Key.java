@@ -1,6 +1,7 @@
 package org.refact4j.eom.model;
 
 import org.refact4j.eom.EntityExpression;
+import org.refact4j.expr.Expression;
 
 import java.io.Externalizable;
 import java.io.Serializable;
@@ -21,5 +22,5 @@ public interface Key extends Comparable<Key>, Serializable, Externalizable {
 
     boolean isCompound();
 
-    EntityExpression asExpression();
+    Expression asExpression();
 }

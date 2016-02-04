@@ -4,6 +4,7 @@ import org.refact4j.eom.EOMContext;
 import org.refact4j.eom.EntityExpression;
 import org.refact4j.eom.EntityStringifier;
 import org.refact4j.eom.ToEntity;
+import org.refact4j.expr.Expression;
 import org.refact4j.visitor.Visitable;
 import org.refact4j.visitor.Visitor;
 import org.refact4j.xml.ToXmlString;
@@ -53,7 +54,7 @@ public interface EntityDescriptor extends Property, ToXmlString, ToEntity, Seria
      *
      * @return The constraint expression.
      */
-    EntityExpression getConstraintExpression();
+    Expression getConstraintExpression();
 
     /**
      * Returns a list containing all of the EntityDescriptor's fields that

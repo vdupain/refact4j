@@ -4,6 +4,7 @@ import org.junit.Test;
 import org.refact4j.eom.model.FieldFactory;
 import org.refact4j.eom.model.IntegerField;
 import org.refact4j.eom.model.NumericField;
+import org.refact4j.expr.ExpressionBuilder;
 
 
 public class IntegerFieldTest extends AbstractFieldTestCase {
@@ -13,7 +14,7 @@ public class IntegerFieldTest extends AbstractFieldTestCase {
 
         IntegerField field = FieldFactory.init(entityDescriptorBuilder, "id")
                 .createIntegerField();
-        entityDescriptorBuilder.setConstraint(EntityExpressionBuilder.init(field)
+        entityDescriptorBuilder.setConstraint(ExpressionBuilder.initEO(field)
                 .greaterOrEqual(10).getExpression());
 
         checkError(field, 8, "Constraint (type.id>=10) failed: id=8");
