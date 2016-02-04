@@ -7,8 +7,7 @@ import org.refact4j.function.comparison.Less.LessVisitor;
 import org.refact4j.function.comparison.LessEqual.LessEqualVisitor;
 import org.refact4j.function.comparison.Max.MaxVisitor;
 import org.refact4j.function.comparison.Min.MinVisitor;
-import org.refact4j.function.comparison.NotEqual.NotEqualVisitor;
 
-public interface ComparisonVisitor<T> extends EqualVisitor<T>, NotEqualVisitor<T>, LessVisitor<T>, GreaterVisitor<T>,
+public interface ComparisonVisitor<T> extends EqualVisitor<T>, LessVisitor<T>, GreaterVisitor<T>,
         LessEqualVisitor<T>, GreaterEqualVisitor<T>, MinVisitor<T>, MaxVisitor<T> {
 }

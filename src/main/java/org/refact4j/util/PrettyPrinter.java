@@ -130,10 +130,6 @@ public class PrettyPrinter implements ExpressionVisitor, BinaryComposeVisitor, U
         buf.append(">=");
     }
 
-    public void visitNotEqual(NotEqual notEqual) {
-        buf.append("!=");
-    }
-
     public void visitLess(Less less) {
         buf.append("<");
     }

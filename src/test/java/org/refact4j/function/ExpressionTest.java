@@ -9,21 +9,14 @@ import org.refact4j.expr.BeanExpressionBuilder;
 import org.refact4j.expr.Expression;
 import org.refact4j.expr.ExpressionBuilder;
 import org.refact4j.function.commons.Between;
-import org.refact4j.function.commons.Between.BetweenVisitor;
-import org.refact4j.function.commons.In;
-import org.refact4j.function.commons.In.InVisitor;
-import org.refact4j.function.commons.NotIn;
-import org.refact4j.function.commons.NotIn.NotInVisitor;
-import org.refact4j.function.comparison.*;
-import org.refact4j.function.comparison.NotNull.NotNullVisitor;
-import org.refact4j.function.comparison.Null.NullVisitor;
+import org.refact4j.function.comparison.Equal;
+import org.refact4j.function.comparison.Greater;
+import org.refact4j.function.comparison.GreaterEqual;
 import org.refact4j.function.logical.And;
 import org.refact4j.model.DummyBean;
 import org.refact4j.model.FooDesc;
-import org.refact4j.visitor.Visitable;
 
 import java.util.function.Function;
-import java.util.function.Predicate;
 
 import static org.junit.Assert.*;
 

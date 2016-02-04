@@ -14,10 +14,6 @@ public class ComparatorComparisonVisitor<T> extends AbstractComparisonVisitor<T>
         setResult(comparator.compare(equal.getFirstArg(), equal.getSecondArg()) == 0);
     }
 
-    public void visitNotEqual(NotEqual<T> equal) {
-        setResult(comparator.compare(equal.getFirstArg(), equal.getSecondArg()) != 0);
-    }
-
     public void visitLess(Less<T> equal) {
         setResult(comparator.compare(equal.getFirstArg(), equal.getSecondArg()) < 0);
     }

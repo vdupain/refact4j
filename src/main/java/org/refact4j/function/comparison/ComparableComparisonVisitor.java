@@ -9,10 +9,6 @@ public class ComparableComparisonVisitor<T extends Object & Comparable<? super T
         setResult(compare(equal) == 0);
     }
 
-    public void visitNotEqual(NotEqual<T> notEqual) {
-        setResult(compare(notEqual) != 0);
-    }
-
     public void visitLess(Less<T> less) {
         setResult(compare(less) < 0);
     }

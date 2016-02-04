@@ -21,16 +21,12 @@ public class ComparisonFunctionsTest {
     Comparator comparator = (o1, o2) -> ComparatorHelper.compare(((Comparable) o1), ((Comparable) o2));
 
     @Test
-    public void testEqualAndNotEqual() {
+    public void testEqual() {
         Equal equal = new Equal();
-        NotEqual notEqual = new NotEqual();
-
-        assertEqualAndNotEqual(equal, notEqual);
+        assertEqual(equal);
 
         equal = new Equal(comparator);
-        notEqual = new NotEqual(comparator);
-        assertEqualAndNotEqual(equal, notEqual);
-
+        assertEqual(equal);
     }
 
     @Test
@@ -66,15 +62,11 @@ public class ComparisonFunctionsTest {
         assertMinAndMax(min, max);
     }
 
-    private void assertEqualAndNotEqual(Equal equal, NotEqual notEqual) {
+    private void assertEqual(Equal equal) {
         assertTrue(equal.apply(d1, d1));
         assertFalse(equal.apply(d1, d2));
         assertTrue(equal.apply(s1, s1));
         assertFalse(equal.apply(s1, s2));
-        assertFalse(notEqual.apply(d1, d1));
-        assertTrue(notEqual.apply(d1, d2));
-        assertFalse(notEqual.apply(s1, s1));
-        assertTrue(notEqual.apply(s1, s2));
     }
 
     private void assertLessAndLessEqual(Less less, LessEqual lessEqual) {
