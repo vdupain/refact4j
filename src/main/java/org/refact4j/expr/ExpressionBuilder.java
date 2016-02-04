@@ -1,13 +1,15 @@
 package org.refact4j.expr;
 
-public final class ExpressionBuilder {
-    private final Expression expression;
+import java.util.function.Function;
 
-    private ExpressionBuilder() {
+public class ExpressionBuilder {
+    protected Expression expression;
+
+    public ExpressionBuilder() {
         expression = new Expression();
     }
 
-    private ExpressionBuilder(java.util.function.Function function) {
+    private ExpressionBuilder(Function function) {
         expression = new Expression(null, function);
     }
 
@@ -19,7 +21,7 @@ public final class ExpressionBuilder {
         return new ExpressionBuilder();
     }
 
-    public static ExpressionBuilder init(java.util.function.Function function) {
+    public static ExpressionBuilder init(Function function) {
         return new ExpressionBuilder(function);
     }
 
@@ -42,10 +44,6 @@ public final class ExpressionBuilder {
         return this;
     }
 
-    public ExpressionBuilder lessOrEqual(Object value) {
-        this.expression.lessOrEqual(value);
-        return this;
-    }
 
     public ExpressionBuilder between(Object value1, Object value2) {
         this.expression.between(value1, value2);
