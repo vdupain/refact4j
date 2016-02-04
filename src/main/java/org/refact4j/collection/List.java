@@ -10,15 +10,18 @@ public class List<T, ID, TYPE> extends ArrayList<T> implements
 
 
     public T findByIdentifier(ID id) {
-        return this.stream().filter(p -> getIdResolver().getId(p).equals(id)).findFirst().get();
+        return this.stream()
+                .filter(p -> getIdResolver().getId(p).equals(id)).findFirst().get();
     }
 
     public T findByIdentifier(TYPE type, ID id) {
-        return this.getAll(type).stream().filter(p -> getIdResolver().getId(p).equals(id)).findFirst().get();
+        return this.getAll(type).stream()
+                .filter(p -> getIdResolver().getId(p).equals(id)).findFirst().get();
     }
 
     public java.util.List<T> getAll(final TYPE type) {
-        return this.stream().filter(t -> getTypeResolver().isSameType(type, getTypeResolver().getTypeOf(t))).collect(Collectors.toList());
+        return this.stream()
+                .filter(t -> getTypeResolver().isSameType(type, getTypeResolver().getTypeOf(t))).collect(Collectors.toList());
 
     }
 
