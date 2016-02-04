@@ -28,7 +28,8 @@ public class DummyStringifierRepository {
     static {
         EntityStringifierRepo repository1 = EntityStringifierRepoBuilder.init().add(FooDesc.INSTANCE, FOO_STRINGIFIER)
                 .getStringifierRepository();
-        repository = EntityStringifierRepoBuilder.init(repository1).add(BarDesc.INSTANCE, BAR_STRINGIFIER)
+        repository = EntityStringifierRepoBuilder.init(repository1)
+                .add(BarDesc.INSTANCE, BAR_STRINGIFIER)
                 .getStringifierRepository();
     }
 

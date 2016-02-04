@@ -4,7 +4,9 @@ import org.refact4j.eom.model.Field;
 import org.refact4j.visitor.Visitable;
 import org.refact4j.visitor.Visitor;
 
-public class GetEntityFieldFunction implements EntityFunction<Object>, Visitable {
+import java.util.function.Function;
+
+public class GetEntityFieldFunction implements Function<EntityObject, Object>, Visitable {
 
     private final String fieldName;
 
