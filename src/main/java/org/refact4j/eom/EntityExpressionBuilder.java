@@ -59,11 +59,6 @@ public final class EntityExpressionBuilder {
         return this;
     }
 
-    public EntityExpressionBuilder isNotNull() {
-        this.expression.isNotNull();
-        return this;
-    }
-
     public EntityExpressionBuilder in(Object[] values) {
         this.expression.in(values);
         return this;
@@ -84,6 +79,11 @@ public final class EntityExpressionBuilder {
         return this;
     }
 
+
+    public EntityExpressionBuilder not() {
+        this.not(this);
+        return this;
+    }
     public EntityExpressionBuilder not(EntityExpressionBuilder expression) {
         this.expression.not(expression.getExpression());
         return this;

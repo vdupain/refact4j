@@ -11,11 +11,11 @@ import org.refact4j.expr.Expression.ExpressionVisitor;
 import org.refact4j.function.BinaryCompose;
 import org.refact4j.function.BinaryCompose.BinaryComposeVisitor;
 import org.refact4j.function.ComposeFunction;
+import org.refact4j.function.ComposeFunction.UnaryComposeVisitor;
 import org.refact4j.function.CompositeUnaryPredicate;
 import org.refact4j.function.CompositeUnaryPredicate.CompositeUnaryPredicateVisitor;
 import org.refact4j.function.GetFieldFunction;
 import org.refact4j.function.GetFieldFunction.GetFieldFunctionVisitor;
-import org.refact4j.function.ComposeFunction.UnaryComposeVisitor;
 import org.refact4j.function.commons.*;
 import org.refact4j.function.commons.Between.BetweenVisitor;
 import org.refact4j.function.commons.In.InVisitor;
@@ -24,7 +24,6 @@ import org.refact4j.function.commons.Like.LikeVisitor;
 import org.refact4j.function.commons.NotIn.NotInVisitor;
 import org.refact4j.function.commons.StringLength.StringLengthVisitor;
 import org.refact4j.function.comparison.*;
-import org.refact4j.function.comparison.NotNull.NotNullVisitor;
 import org.refact4j.function.comparison.Null.NullVisitor;
 import org.refact4j.function.logical.And;
 import org.refact4j.function.logical.LogicalVisitor;
@@ -34,7 +33,7 @@ import org.refact4j.visitor.Visitable;
 
 public class PrettyPrinter implements ExpressionVisitor, BinaryComposeVisitor, UnaryComposeVisitor,
         CompositeUnaryPredicateVisitor, EntityFieldComparatorVisitor, ComparisonVisitor, LogicalVisitor,
-        BetweenVisitor, NullVisitor, NotNullVisitor, InVisitor, NotInVisitor, LikeVisitor, InstanceOfVisitor,
+        BetweenVisitor, NullVisitor, InVisitor, NotInVisitor, LikeVisitor, InstanceOfVisitor,
         GetEntityFieldFunctorVisitor, GetFieldFunctionVisitor, StringLengthVisitor {
 
     private final FieldStringifier stringifier = new FieldStringifier() {
@@ -185,10 +184,6 @@ public class PrettyPrinter implements ExpressionVisitor, BinaryComposeVisitor, U
 
     public void visitNull(Null<?> nul) {
         buf.append(" IS NULL ");
-    }
-
-    public void visitNotNull(NotNull<?> notNull) {
-        buf.append(" IS NOT NULL ");
     }
 
     public void visitIn(In<?> in) {

@@ -13,7 +13,6 @@ import org.refact4j.visitor.Visitable;
  */
 public abstract class AbstractBiPredicate<T1, T2> implements BinaryPredicate<T1, T2>, Visitable {
     private T1 firstArg;
-
     private T2 secondArg;
 
     public Boolean apply(T1 firstArg, T2 secondArg) {

@@ -70,11 +70,6 @@ public class Expression<T> implements Predicate<T>, Visitable {
         return this;
     }
 
-    public Expression<T> isNotNull() {
-        predicate = new ComposeFunction(new NotNull<>(), function);
-        return this;
-    }
-
     public Expression<T> in(Object[] objects) {
         predicate = new ComposeFunction(new In<>(objects), function);
         return this;

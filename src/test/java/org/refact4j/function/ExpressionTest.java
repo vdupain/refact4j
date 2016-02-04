@@ -218,7 +218,7 @@ public class ExpressionTest {
                 EntityExpressionBuilder.init(FooDesc.VALUE).equalTo((Number) null)).getExpression();
         assertFalse(expression.test(dummyEntityNull));
         assertTrue(expression.test(dummyEntity12));
-        Expression isNotNullExpression = EntityExpressionBuilder.init(FooDesc.VALUE).isNotNull().getExpression();
+        Expression isNotNullExpression = EntityExpressionBuilder.init(FooDesc.VALUE).isNull().not().getExpression();
         assertFalse(isNotNullExpression.test(dummyEntityNull));
         assertTrue(isNotNullExpression.test(dummyEntity12));
         printEquivalentExpr(expression, isNotNullExpression);

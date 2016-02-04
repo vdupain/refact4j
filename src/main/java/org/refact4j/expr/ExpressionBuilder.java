@@ -57,11 +57,6 @@ public final class ExpressionBuilder {
         return this;
     }
 
-    public ExpressionBuilder isNotNull() {
-        this.expression.isNotNull();
-        return this;
-    }
-
     public ExpressionBuilder in(Object[] values) {
         this.expression.in(values);
         return this;

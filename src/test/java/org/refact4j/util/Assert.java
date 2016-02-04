@@ -41,10 +41,6 @@ public class Assert extends org.junit.Assert {
         return ExpressionBuilder.init("value").isNull().getExpression();
     }
 
-    public static Expression<Object> isNotNull() {
-        return ExpressionBuilder.init("value").isNotNull().getExpression();
-    }
-
     public static Expression<Object> and(Expression<Object> expr1, Expression<Object> expr2) {
         return expr1.and(expr2);
     }

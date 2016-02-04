@@ -39,8 +39,8 @@ public class AssertTest {
         assertThat(12, not(between(0, 10)));
         assertThat(5, between(0, 10).and(equalTo(5)));
         assertThat(5, between(0, 10).and(not(equalTo(1))));
-        assertThat(5, between(0, 10).and(not(equalTo(1))).and(isNotNull()));
-        assertThat(5, and(between(0, 10).and(not(equalTo(1))), isNotNull()));
+        assertThat(5, between(0, 10).and(not(equalTo(1))).and(not(isNull())));
+        assertThat(5, and(between(0, 10).and(not(equalTo(1))),not(isNull())));
         assertThat(5, or(equalTo(5), equalTo(6)));
 
         try {
@@ -55,14 +55,14 @@ public class AssertTest {
 
     @Test
     public void testAssertThatSomethingMatchesNullNotNullConstraint() {
-        assertThat(1, isNotNull());
-        assertThat("abc", isNotNull());
+        assertThat(1, not(isNull()));
+        assertThat("abc", not(isNull()));
         assertThat(null, isNull());
         try {
-            assertThat(null, isNotNull());
+            assertThat(null, not(isNull()));
             fail();
         } catch (Throwable e) {
-            String expected = "Expected that: ( IS NOT NULL value)" + StringHelper.LINE_SEPARATOR;
+            String expected = "Expected that: ( NOT ( IS NULL value))" + StringHelper.LINE_SEPARATOR;
             expected += "but value was : null" + StringHelper.LINE_SEPARATOR;
             assertEquals(expected, e.getMessage());
         }
