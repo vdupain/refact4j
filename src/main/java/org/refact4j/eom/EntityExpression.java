@@ -9,7 +9,7 @@ import java.util.function.Predicate;
  * Expression for EntityObject. EntityExpression should be created by
  * ExpressionBuilder.
  */
-public class EntityExpression extends Expression<EntityObject> implements Predicate<EntityObject> {
+public class EntityExpression extends Expression<EntityObject> {
 
     public EntityExpression() {
         super();

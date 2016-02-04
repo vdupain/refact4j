@@ -5,7 +5,6 @@ import org.refact4j.eom.EntityExpressionBuilder;
 import org.refact4j.eom.EntityFieldComparator;
 import org.refact4j.eom.EntityObject;
 import org.refact4j.eom.EntityObjectBuilder;
-import org.refact4j.expr.BeanExpressionBuilder;
 import org.refact4j.expr.Expression;
 import org.refact4j.expr.ExpressionBuilder;
 import org.refact4j.function.commons.Between;
@@ -34,7 +33,7 @@ public class ExpressionTest {
     @Test
     public void testExpressions() {
         Expression expression = EntityExpressionBuilder.init(FooDesc.VALUE).greaterThan(10.).getExpression();
-        Expression beanExpression = BeanExpressionBuilder.init("Value").greaterThan(10.).getExpression();
+        Expression beanExpression = ExpressionBuilder.initBean("Value").greaterThan(10.).getExpression();
 
         EntityFieldComparator<Double> fc = new EntityFieldComparator<>(new Greater(), FooDesc.VALUE, 10.);
         EntityObject dummyEntity = EntityObjectBuilder.init(FooDesc.INSTANCE).setFieldValue(FooDesc.VALUE, 12.)
@@ -52,8 +51,8 @@ public class ExpressionTest {
         expression = EntityExpressionBuilder.init(FooDesc.VALUE).greaterThan(10.).and(
                 (EntityExpressionBuilder.init(FooDesc.NAME).equalTo("azerty")))
                 .getExpression();
-        beanExpression = BeanExpressionBuilder.init("Value").greaterThan(10.).and(
-                (BeanExpressionBuilder.init("Name").equalTo("azerty"))).getExpression();
+        beanExpression = ExpressionBuilder.initBean("Value").greaterThan(10.).and(
+                (ExpressionBuilder.initBean("Name").equalTo("azerty"))).getExpression();
         EntityFieldComparator fc1 = new EntityFieldComparator(new GreaterEqual(), FooDesc.VALUE, 10.);
         EntityFieldComparator fc2 = new EntityFieldComparator(new Equal(), FooDesc.NAME, "azerty");
         java.util.function.Function<EntityObject, Boolean> func3 = new BinaryCompose(new And(), fc1, fc2);
@@ -76,18 +75,18 @@ public class ExpressionTest {
                 EntityExpressionBuilder.init(FooDesc.VALUE).lessThan(20.)).and(
                 (EntityExpressionBuilder.init(FooDesc.NAME).equalTo("azerty"))).or(
                 (EntityExpressionBuilder.init(FooDesc.NAME).equalTo("azerty"))).getExpression();
-        beanExpression = BeanExpressionBuilder.init("Value").greaterThan(10.).and(
-                BeanExpressionBuilder.init("Value").lessThan(20.)).and((BeanExpressionBuilder.init("Name").equalTo("azerty")))
-                .or((BeanExpressionBuilder.init("Name").equalTo("azerty"))).getExpression();
+        beanExpression = ExpressionBuilder.initBean("Value").greaterThan(10.).and(
+                ExpressionBuilder.initBean("Value").lessThan(20.)).and((ExpressionBuilder.initBean("Name").equalTo("azerty")))
+                .or((ExpressionBuilder.initBean("Name").equalTo("azerty"))).getExpression();
         System.out.println(">>" + expression);
         System.out.println(">>" + beanExpression);
 
         expression = EntityExpressionBuilder.init(FooDesc.VALUE).greaterThan(10.).and(
                 (EntityExpressionBuilder.init(FooDesc.NAME).equalTo("azerty")).or((EntityExpressionBuilder
                         .init(FooDesc.NAME).equalTo("qwerty")))).getExpression();
-        beanExpression = BeanExpressionBuilder.init("Value").greaterThan(10.).and(
-                (BeanExpressionBuilder.init("Name").equalTo("azerty"))
-                        .or((BeanExpressionBuilder.init("Name").equalTo("qwerty")))).getExpression();
+        beanExpression = ExpressionBuilder.initBean("Value").greaterThan(10.).and(
+                (ExpressionBuilder.initBean("Name").equalTo("azerty"))
+                        .or((ExpressionBuilder.initBean("Name").equalTo("qwerty")))).getExpression();
         System.out.println(">>" + expression);
         assertTrue(expression.test(dummyEntity));
         assertTrue(beanExpression.test(dummy));
@@ -96,9 +95,9 @@ public class ExpressionTest {
                 .and(
                         (EntityExpressionBuilder.init(FooDesc.NAME).like("azert*")).or(EntityExpressionBuilder.init(
                                 FooDesc.NAME).equalTo("qwerty"))).getExpression();
-        beanExpression = BeanExpressionBuilder.init().not(BeanExpressionBuilder.init("Value").greaterThan(10.))
+        beanExpression = ExpressionBuilder.init().not(ExpressionBuilder.initBean("Value").greaterThan(10.))
                 .and(
-                        (BeanExpressionBuilder.init("Name").equalTo("azerty")).or(BeanExpressionBuilder.init("Name").equalTo(
+                        (ExpressionBuilder.initBean("Name").equalTo("azerty")).or(ExpressionBuilder.initBean("Name").equalTo(
                                 "qwerty"))).getExpression();
         System.out.println(">>" + expression);
         System.out.println(">>" + beanExpression);
@@ -114,8 +113,8 @@ public class ExpressionTest {
                 EntityExpressionBuilder.init(FooDesc.VALUE).greaterThan(10.)).and(
                 EntityExpressionBuilder.init(FooDesc.NAME).like("azert*").or(
                         EntityExpressionBuilder.init(FooDesc.NAME).equalTo("qwerty"))).getExpression();
-        beanExpression = BeanExpressionBuilder.init().not(BeanExpressionBuilder.init("Value").greaterThan(10.)).and(
-                BeanExpressionBuilder.init("Name").equalTo("azerty").or(BeanExpressionBuilder.init("Name").equalTo("qwerty")))
+        beanExpression = ExpressionBuilder.init().not(ExpressionBuilder.initBean("Value").greaterThan(10.)).and(
+                ExpressionBuilder.initBean("Name").equalTo("azerty").or(ExpressionBuilder.initBean("Name").equalTo("qwerty")))
                 .getExpression();
         assertTrue(otherExpression.test(dummyEntity));
         assertTrue(beanExpression.test(dummy));
@@ -150,7 +149,7 @@ public class ExpressionTest {
     @Test
     public void testSimpleExpression() {
         Double value100 = (double) 100;
-        Expression exprGreaterOrEqual100 = BeanExpressionBuilder.init().greaterOrEqual(value100).getExpression();
+        Expression exprGreaterOrEqual100 = ExpressionBuilder.init().greaterOrEqual(value100).getExpression();
 
         assertFalse(exprGreaterOrEqual100.test(99.));
         assertTrue(exprGreaterOrEqual100.test(101.));
@@ -159,7 +158,7 @@ public class ExpressionTest {
     @Test
     public void testLikeExpression() {
         String regEx = "abcde";
-        Expression exprLike = BeanExpressionBuilder.init().like(regEx).getExpression();
+        Expression exprLike = ExpressionBuilder.init().like(regEx).getExpression();
         assertTrue(exprLike.test("abcde"));
     }
 

@@ -1,5 +1,7 @@
 package org.refact4j.expr;
 
+import org.refact4j.function.GetFieldFunction;
+
 import java.util.function.Function;
 
 public class ExpressionBuilder {
@@ -10,11 +12,15 @@ public class ExpressionBuilder {
     }
 
     private ExpressionBuilder(Function function) {
-        expression = new Expression(null, function);
+        this(null, function);
     }
 
     private ExpressionBuilder(String property) {
-        expression = new Expression(property);
+        this(property, Function.identity());
+    }
+
+    private ExpressionBuilder(String property, Function function) {
+        expression = new Expression(property, function);
     }
 
     public static ExpressionBuilder init() {
@@ -28,6 +34,11 @@ public class ExpressionBuilder {
     public static ExpressionBuilder init(String property) {
         return new ExpressionBuilder(property);
     }
+
+    public static ExpressionBuilder initBean(String property) {
+        return new ExpressionBuilder(property, new GetFieldFunction(property));
+    }
+
 
     public ExpressionBuilder greaterThan(Object value) {
         this.expression.greaterThan(value);
