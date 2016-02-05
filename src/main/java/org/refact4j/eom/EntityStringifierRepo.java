@@ -8,7 +8,7 @@ import org.refact4j.xml.ToXmlString;
 
 public interface EntityStringifierRepo extends Repository<EntityDescriptor, EntityStringifier>, Visitable, ToXmlString {
 
-    void add(EntityDescriptor entityDescriptor, EntityStringifier stringifier);
+    EntityStringifier put(EntityDescriptor entityDescriptor, EntityStringifier stringifier);
 
     EntityStringifier lookup(EntityDescriptor entityDescriptor);
 

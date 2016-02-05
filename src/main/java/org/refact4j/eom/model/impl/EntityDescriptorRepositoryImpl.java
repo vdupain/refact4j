@@ -19,10 +19,9 @@ public class EntityDescriptorRepositoryImpl extends RepositoryImpl<String, Entit
         this.context = EOMContextImpl.newInstance(this);
     }
 
-    @Override
-    public void add(String key, EntityDescriptor object) {
-        super.add(key, object);
+    public EntityDescriptor put(String key, EntityDescriptor object) {
         ((EntityDescriptorImpl) object).setContext(context);
+        return super.put(key, object);
     }
 
     public EntityDescriptor getEntityDescriptor(String name) {

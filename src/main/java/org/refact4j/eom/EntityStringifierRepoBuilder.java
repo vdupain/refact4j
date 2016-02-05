@@ -28,7 +28,7 @@ public final class EntityStringifierRepoBuilder implements EntityDescriptorRepos
     }
 
     public EntityStringifierRepoBuilder add(EntityDescriptor entityDescriptor, EntityStringifier stringifier) {
-        stringifierRepositoryImpl.add(entityDescriptor, stringifier);
+        stringifierRepositoryImpl.put(entityDescriptor, stringifier);
         return this;
     }
 
