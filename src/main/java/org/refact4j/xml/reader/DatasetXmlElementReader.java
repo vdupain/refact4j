@@ -12,7 +12,7 @@ import java.util.function.Supplier;
 
 public class DatasetXmlElementReader extends DefaultXmlElementReader {
 
-    public DatasetXmlElementReader(Set dataset, Dataset2XmlConverter dataset2XmlConverter) {
+    public DatasetXmlElementReader(Set dataset, DataSet2XmlConverter dataset2XmlConverter) {
         super(dataset, dataset2XmlConverter);
     }
 

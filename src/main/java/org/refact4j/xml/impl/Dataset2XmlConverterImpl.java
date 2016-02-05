@@ -17,7 +17,7 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 
-public class Dataset2XmlConverterImpl implements Dataset2XmlConverter {
+public class Dataset2XmlConverterImpl implements DataSet2XmlConverter {
 
     private static final String XMLSCHEMA_INSTANCE = "xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"";
 
