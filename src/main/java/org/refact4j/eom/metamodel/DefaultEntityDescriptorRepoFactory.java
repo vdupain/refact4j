@@ -143,20 +143,6 @@ public class DefaultEntityDescriptorRepoFactory implements EntityDescriptorRepos
         }
     }
 
-    private PropertyDesc.KeyValuePair getKeyValuePair(EntitySet entityObjectSet, EntityObject entityObject) {
-        PropertyDesc.KeyValuePair keyValuePair = new PropertyDesc.KeyValuePair();
-        keyValuePair.key = entityObject.get(PropertyDesc.KEY);
-        String sValue = entityObject.get(PropertyDesc.VALUE);
-        Key keyDataType = entityObject.get(PropertyDesc.DATA_TYPE);
-        DataTypeEntity dataTypeEntity = (DataTypeEntity) entityObjectSet.findByIdentifier(keyDataType);
-        DataType dataType = dataTypeEntity.getDataType();
-        DataTypeConverter converter = new DataTypeConverter();
-        converter.getString2ValueConverter().setStringValue(sValue);
-        dataType.accept(converter);
-        keyValuePair.value = converter.getString2ValueConverter().getValue();
-        return keyValuePair;
-    }
-
     private void createRelationFields(final EntityDescriptorRepository repository, EntityDescriptorBuilder builder,
                                       List<EntityObject> fields) {
         FieldBuilder fieldBuilder = (fieldEntity, fieldFactory) -> {

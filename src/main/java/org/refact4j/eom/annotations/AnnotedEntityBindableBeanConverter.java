@@ -1,9 +1,9 @@
 package org.refact4j.eom.annotations;
 
-import org.refact4j.eom.EntityFinder;
 import org.refact4j.eom.EntityObject;
 import org.refact4j.eom.EntityObjectBuilder;
 import org.refact4j.eom.impl.AbstractBeanConverter;
+import org.refact4j.eom.impl.EntitySet;
 import org.refact4j.eom.model.Field;
 import org.refact4j.eom.model.Key;
 import org.refact4j.eom.model.ManyToOneRelationField;
@@ -17,7 +17,7 @@ public class AnnotedEntityBindableBeanConverter<T> extends AbstractBeanConverter
 
     private final EntityAnnotationsHelper annotations = new EntityAnnotationsHelper();
 
-    private EntityFinder finder;
+    private EntitySet entitySet;
 
     @SuppressWarnings("unchecked")
     @Override
@@ -39,8 +39,8 @@ public class AnnotedEntityBindableBeanConverter<T> extends AbstractBeanConverter
         return object;
     }
 
-    public void setEntityFinder(EntityFinder finder) {
-        this.finder = finder;
+    public void setEntitySet(EntitySet entitySet) {
+        this.entitySet = entitySet;
     }
 
     public EntityAnnotationsHelper getAnnotations() {
@@ -75,12 +75,12 @@ public class AnnotedEntityBindableBeanConverter<T> extends AbstractBeanConverter
                             targetEntity.set(f, key.getFieldValue(f));
                         }
                         AnnotedEntityBindableBeanConverter<?> functor = new AnnotedEntityBindableBeanConverter<>();
-                        if (finder != null) {
-                            EntityObject target = finder.findByIdentifier(targetEntity.getKey());
+                        if (entitySet != null) {
+                            EntityObject target = entitySet.findByIdentifier(targetEntity.getKey());
                             if (target != null) {
                                 targetEntity = target;
                             }
-                            functor.setEntityFinder(finder);
+                            functor.setEntitySet(entitySet);
                         }
                         result = functor.convert(targetEntity);
                     }

@@ -4,11 +4,11 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.refact4j.eom.EOMContext;
-import org.refact4j.eom.EntityFinder;
 import org.refact4j.eom.EntityObject;
 import org.refact4j.eom.EntitySetBuilder;
 import org.refact4j.eom.impl.EOMContextImpl;
 import org.refact4j.eom.impl.EntityList;
+import org.refact4j.eom.impl.EntitySet;
 import org.refact4j.eom.metamodel.EOMMetaModelRepository;
 import org.refact4j.eom.model.EntityDescriptorRepository;
 import org.refact4j.eom.model.impl.EntityDescriptorRepositoryImpl;
@@ -51,8 +51,8 @@ public class EntityAnnotationTest {
 
         AnnotedEntityBindableBeanConverter beanTransformer = new AnnotedEntityBindableBeanConverter();
 
-        EntityFinder entityObjectFinder = EntitySetBuilder.init().addAll(entityObjects).get();
-        beanTransformer.setEntityFinder(entityObjectFinder);
+        EntitySet entitySet = EntitySetBuilder.init().addAll(entityObjects).get();
+        beanTransformer.setEntitySet(entitySet);
 
         Foo actualFoo = (Foo) beanTransformer.convert(fooEntity);
         System.err.println(actualFoo.toString());
