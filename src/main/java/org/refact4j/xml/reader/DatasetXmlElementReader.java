@@ -10,20 +10,20 @@ import org.refact4j.xml.impl.Dataset2XmlConverterImpl;
 
 import java.util.function.Supplier;
 
-public class DataSetXmlElementReader extends DefaultXmlElementReader {
+public class DatasetXmlElementReader extends DefaultXmlElementReader {
 
-    public DataSetXmlElementReader(Set dataset, DataSet2XmlConverter dataset2XmlConverter) {
+    public DatasetXmlElementReader(Set dataset, Dataset2XmlConverter dataset2XmlConverter) {
         super(dataset, dataset2XmlConverter);
     }
 
-    private DataSetXmlElementReader(DatasetConverterHolder dataSetConverterHolder) {
+    private DatasetXmlElementReader(DatasetConverterHolder dataSetConverterHolder) {
         super(dataSetConverterHolder);
     }
 
     @Override
     public XmlElement createChildXmlElement(String localName, String qName, XmlAttributes attributes) {
         if (localName.equals("dataset")) {
-            return new DataSetXmlElementReader(this);
+            return new DatasetXmlElementReader(this);
         } else if (localName.equals("datasetRef")) {
             return new DataSetRefXmlElementReader(attributes, this);
         }

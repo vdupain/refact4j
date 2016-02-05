@@ -3,7 +3,7 @@ package org.refact4j.xml.impl;
 import org.refact4j.collection.Set;
 import org.refact4j.xml.*;
 import org.refact4j.xml.impl.sax.DefaultSaxErrorHandler;
-import org.refact4j.xml.reader.DataSetXmlElementReader;
+import org.refact4j.xml.reader.DatasetXmlElementReader;
 import org.refact4j.xml.writer.DatasetXmlWriter;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
@@ -17,7 +17,7 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 
-public class Dataset2XmlConverterImpl implements DataSet2XmlConverter {
+public class Dataset2XmlConverterImpl implements Dataset2XmlConverter {
 
     private static final String XMLSCHEMA_INSTANCE = "xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"";
 
@@ -47,7 +47,7 @@ public class Dataset2XmlConverterImpl implements DataSet2XmlConverter {
     public void unmarshal(Reader reader, Set dataset) {
         try {
             org.xml.sax.XMLReader xmlReader = createXMLReader();
-            final DataSetXmlElementReader datasetXmlNodeReader = new DataSetXmlElementReader(dataset, this);
+            final DatasetXmlElementReader datasetXmlNodeReader = new DatasetXmlElementReader(dataset, this);
             XmlParserHelper.parse(xmlReader, new InputSource(reader), (localName, name, attributes) -> {
                 if (localName.equals(DATASET_TAGNAME)) {
                     return datasetXmlNodeReader;

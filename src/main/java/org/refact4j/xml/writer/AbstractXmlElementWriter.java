@@ -2,7 +2,7 @@ package org.refact4j.xml.writer;
 
 import org.refact4j.collection.Set;
 import org.refact4j.xml.AbstractIteratorXmlElementHandler;
-import org.refact4j.xml.DataSet2XmlConverter;
+import org.refact4j.xml.Dataset2XmlConverter;
 import org.refact4j.xml.DatasetConverterHolder;
 
 import java.util.Collection;
@@ -20,7 +20,7 @@ public abstract class AbstractXmlElementWriter extends AbstractIteratorXmlElemen
         return this.holder.getDataSet();
     }
 
-    public DataSet2XmlConverter getDataset2XmlConverter() {
+    public Dataset2XmlConverter getDataset2XmlConverter() {
         return this.holder.getDataset2XmlConverter();
     }
 
