@@ -1,8 +1,8 @@
 package org.refact4j.eom;
 
 import org.refact4j.eom.model.Field;
-import org.refact4j.util.EqualsHelper;
 
+import java.util.Objects;
 import java.util.function.Predicate;
 
 /**
@@ -23,7 +23,7 @@ public class EntityFieldValuePredicate implements Predicate<EntityObject> {
     }
 
     public boolean test(EntityObject arg) {
-        return EqualsHelper.equals(arg.get(field), value);
+        return Objects.equals(arg.get(field), value);
     }
 
 }

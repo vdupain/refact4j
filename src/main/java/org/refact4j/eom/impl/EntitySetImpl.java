@@ -8,10 +8,10 @@ import org.refact4j.eom.EntitySet;
 import org.refact4j.eom.model.EntityDescriptor;
 import org.refact4j.eom.model.Field;
 import org.refact4j.eom.model.Key;
-import org.refact4j.util.EqualsHelper;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class EntitySetImpl extends Set<EntityObject, Key, EntityDescriptor> implements EntitySet {
@@ -28,7 +28,7 @@ public class EntitySetImpl extends Set<EntityObject, Key, EntityDescriptor> impl
     }
 
     public List<EntityObject> getEntities(EntityDescriptor entityDescriptor, final Field field, final Object value) {
-        return this.stream().filter(e -> EqualsHelper.equals(e.get(field), value)).collect(Collectors.toList());
+        return this.stream().filter(e -> Objects.equals(e.get(field), value)).collect(Collectors.toList());
     }
 
     @Override

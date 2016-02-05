@@ -5,6 +5,7 @@ import org.refact4j.eom.model.FieldFactory;
 import org.refact4j.eom.model.IntegerField;
 import org.refact4j.eom.model.NumericField;
 import org.refact4j.expr.ExpressionBuilder;
+import static org.junit.Assert.*;
 
 
 public class IntegerFieldTest extends AbstractFieldTestCase {
@@ -28,22 +29,23 @@ public class IntegerFieldTest extends AbstractFieldTestCase {
         checkFieldValue(field, null, null);
     }
 
-    // TODO ???
-//    public void testFieldConstraint() {
-//        String fieldName = "id";
-//        IntegerField field = FieldFactory.init(entityDescriptorBuilder, fieldName)
-//                .setConstraintExpression(
-//                        ExpressionBuilder.init(fieldName)
-//                                .greaterOrEqual(10).get()).createIntegerField();
-//
-//        checkFieldValue(field, 8, "(id>=10)");
-//
-//        try {
-//            field.toXmlString();
-//            fail();
-//        } catch (NotImplementedException e) {
-//        }
-//    }
+    @Test
+    public void testFieldConstraint() {
+        String fieldName = "id";
+        IntegerField field = FieldFactory.init(entityDescriptorBuilder, fieldName)
+                .setConstraintExpression(
+                        ExpressionBuilder.init(fieldName)
+                                .greaterOrEqual(10).get()).createIntegerField();
+
+        checkFieldValue(field, 8, "(id>=10)");
+
+        try {
+            field.toXmlString();
+            fail();
+        } catch (RuntimeException e) {
+            assertEquals("Not Implemented", e.getMessage());
+        }
+    }
 
     @Test
     public void testMinMaxValueFieldConstraint() {

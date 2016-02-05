@@ -7,11 +7,11 @@ import org.refact4j.eom.model.EntityDescriptor;
 import org.refact4j.eom.model.Field;
 import org.refact4j.eom.model.Key;
 import org.refact4j.eom.model.StringField;
-import org.refact4j.util.EqualsHelper;
 import org.refact4j.xml.DatasetHolder;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.Objects;
 import java.util.function.Predicate;
 
 public class EntityDataSet extends EntitySetImpl implements DatasetHolder {
@@ -38,7 +38,7 @@ public class EntityDataSet extends EntitySetImpl implements DatasetHolder {
     public EntityObject getEntityByName(EntityDescriptor entityDescriptor, final StringField stringField,
                                         final String value) {
         return getAll(entityDescriptor).stream()
-                .filter(arg -> EqualsHelper.equals(arg.get(stringField), value))
+                .filter(arg -> Objects.equals(arg.get(stringField), value))
                 .findFirst().orElse(null);
     }
 

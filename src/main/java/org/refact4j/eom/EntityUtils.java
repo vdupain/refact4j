@@ -3,12 +3,12 @@ package org.refact4j.eom;
 import org.refact4j.eom.model.EntityDescriptor;
 import org.refact4j.eom.model.Field;
 import org.refact4j.eom.model.Key;
-import org.refact4j.util.EqualsHelper;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * This class provides static methods to manipulate {@link EntityObject}
@@ -73,7 +73,7 @@ public final class EntityUtils {
      * @return true if equals, false otherwise
      */
     public static boolean equals(EntityObject entityObject1, EntityObject entityObject2) {
-        return EqualsHelper.equals(entityObject1, entityObject2);
+        return Objects.equals(entityObject1, entityObject2);
     }
 
     /**
