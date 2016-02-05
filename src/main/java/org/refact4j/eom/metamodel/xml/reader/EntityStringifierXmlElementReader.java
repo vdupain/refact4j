@@ -8,7 +8,7 @@ import org.refact4j.eom.metamodel.EntityStringifierDesc;
 import org.refact4j.eom.model.EntityDescriptorRepository;
 import org.refact4j.eom.model.Key;
 import org.refact4j.eom.model.KeyBuilder;
-import org.refact4j.xml.DataSetConverterHolder;
+import org.refact4j.xml.DatasetConverterHolder;
 import org.refact4j.xml.XmlAttributes;
 import org.refact4j.xml.XmlElement;
 import org.refact4j.xml.XmlHelper;
@@ -19,7 +19,7 @@ public class EntityStringifierXmlElementReader extends DefaultXmlElementReader {
     private final EntityDescriptorRepository repository;
     private final EntityObject stringifier;
 
-    public EntityStringifierXmlElementReader(XmlAttributes xmlAttrs, DataSetConverterHolder dataSetConverterHolder,
+    public EntityStringifierXmlElementReader(XmlAttributes xmlAttrs, DatasetConverterHolder dataSetConverterHolder,
                                              EntityDescriptorRepository repository) {
         super(dataSetConverterHolder);
         this.repository = repository;

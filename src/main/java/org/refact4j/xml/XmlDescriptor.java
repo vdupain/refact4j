@@ -6,7 +6,7 @@ public interface XmlDescriptor {
 
     Collection<XmlElementFactory> getXmlElementFactories();
 
-    XmlElementHandler[] getXmlElementHandlers(DataSetConverterHolder holder);
+    XmlElementHandler[] getXmlElementHandlers(DatasetConverterHolder holder);
 
 
 }

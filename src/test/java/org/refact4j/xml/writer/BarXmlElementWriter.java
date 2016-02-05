@@ -3,13 +3,13 @@ package org.refact4j.xml.writer;
 import org.refact4j.eom.ConverterHelper;
 import org.refact4j.eom.EntityObject;
 import org.refact4j.model.BarDesc;
-import org.refact4j.xml.DataSetConverterHolder;
+import org.refact4j.xml.DatasetConverterHolder;
 import org.refact4j.xml.XmlElementHandler;
 import org.refact4j.xml.XmlWriter;
 
 public class BarXmlElementWriter extends AbstractXmlElementWriter {
 
-    public BarXmlElementWriter(DataSetConverterHolder holder) {
+    public BarXmlElementWriter(DatasetConverterHolder holder) {
         super("bar", holder.getDataSet().getAll(BarDesc.INSTANCE), holder);
     }
 

@@ -5,14 +5,14 @@ import org.refact4j.eom.EntityObjectBuilder;
 import org.refact4j.eom.metamodel.DataTypeType;
 import org.refact4j.eom.metamodel.PropertyDesc;
 import org.refact4j.eom.model.KeyBuilder;
-import org.refact4j.xml.DataSetConverterHolder;
+import org.refact4j.xml.DatasetConverterHolder;
 import org.refact4j.xml.XmlAttributes;
 import org.refact4j.xml.XmlHelper;
 import org.refact4j.xml.reader.DefaultXmlElementReader;
 
 class PropertyXmlElementReader extends DefaultXmlElementReader {
 
-    public PropertyXmlElementReader(XmlAttributes xmlAttrs, DataSetConverterHolder dataSetConverterHolder,
+    public PropertyXmlElementReader(XmlAttributes xmlAttrs, DatasetConverterHolder dataSetConverterHolder,
                                     EntityObject entityDescTypeEntity, EntityObject fieldEntity) {
         super(dataSetConverterHolder);
 

@@ -7,14 +7,14 @@ import org.refact4j.eom.EntityObjectBuilder;
 import org.refact4j.eom.impl.EntityDataSet;
 import org.refact4j.model.BarDesc;
 import org.refact4j.model.FooDesc;
-import org.refact4j.xml.DataSetConverterHolder;
+import org.refact4j.xml.DatasetConverterHolder;
 import org.refact4j.xml.XmlAttributeNotFoundException;
 import org.refact4j.xml.XmlAttributes;
 import org.refact4j.xml.XmlHelper;
 
 public class FooXmlElementReader extends DefaultXmlElementReader {
 
-    public FooXmlElementReader(XmlAttributes xmlAttrs, DataSetConverterHolder dataSetConverterHolder) {
+    public FooXmlElementReader(XmlAttributes xmlAttrs, DatasetConverterHolder dataSetConverterHolder) {
         super(dataSetConverterHolder);
 
         String name = XmlHelper.getAttrValue("name", xmlAttrs);

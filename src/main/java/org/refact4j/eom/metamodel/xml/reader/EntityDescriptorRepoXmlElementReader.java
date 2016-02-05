@@ -1,14 +1,14 @@
 package org.refact4j.eom.metamodel.xml.reader;
 
 import org.refact4j.eom.metamodel.EntityDescriptorDesc;
-import org.refact4j.xml.DataSetConverterHolder;
+import org.refact4j.xml.DatasetConverterHolder;
 import org.refact4j.xml.XmlAttributes;
 import org.refact4j.xml.XmlElement;
 import org.refact4j.xml.reader.DefaultXmlElementReader;
 
 public class EntityDescriptorRepoXmlElementReader extends DefaultXmlElementReader {
 
-    public EntityDescriptorRepoXmlElementReader(DataSetConverterHolder dataSetConverterHolder) {
+    public EntityDescriptorRepoXmlElementReader(DatasetConverterHolder dataSetConverterHolder) {
         super(dataSetConverterHolder);
     }
 
