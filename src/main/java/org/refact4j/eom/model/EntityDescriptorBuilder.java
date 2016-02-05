@@ -28,11 +28,6 @@ public final class EntityDescriptorBuilder {
         return this;
     }
 
-    public EntityDescriptorBuilder addProperty(Object key, Object value) {
-        this.entityDescriptor.addProperty(key, value);
-        return this;
-    }
-
     public EntityDescriptorBuilder setConstraint(Expression expression) {
         this.entityDescriptor.setConstraintExpression(expression);
         return this;

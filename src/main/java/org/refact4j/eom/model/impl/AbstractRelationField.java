@@ -2,7 +2,10 @@ package org.refact4j.eom.model.impl;
 
 import org.refact4j.eom.EntityObject;
 import org.refact4j.eom.metamodel.FieldDesc;
-import org.refact4j.eom.model.*;
+import org.refact4j.eom.model.EntityDescriptor;
+import org.refact4j.eom.model.Key;
+import org.refact4j.eom.model.KeyBuilder;
+import org.refact4j.eom.model.RelationField;
 import org.refact4j.expr.Expression;
 
 import java.io.IOException;

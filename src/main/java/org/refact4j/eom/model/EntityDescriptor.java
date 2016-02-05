@@ -22,7 +22,7 @@ import java.util.List;
  * EntityDescriptors in an EntityDescriptor Repository describing them in FIELD_XML
  * format.
  */
-public interface EntityDescriptor extends Property, ToXmlString, ToEntity, Serializable, Externalizable, Visitable {
+public interface EntityDescriptor extends ToXmlString, ToEntity, Serializable, Externalizable, Visitable {
 
     /**
      * Returns The name of the EntityDescriptor.

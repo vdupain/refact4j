@@ -190,14 +190,6 @@ public class EntityObjectTest {
                 .forEach(field -> assertEquals(field, sortedList.get(field.getOrder() - 1)));
     }
 
-    @Test
-    public void testEntityDescriptorProperty() {
-        Property property = foo.getEntityDescriptor().getProperty();
-        assertEquals("value", property.getProperty("key"));
-        assertEquals("value", foo.getEntityDescriptor().getProperty("key"));
-        assertEquals(null, bar.getEntityDescriptor().getProperty("???"));
-        assertEquals(property, property.getProperty());
-    }
 
     @Test
     public void testClone() throws CloneNotSupportedException {

@@ -2,7 +2,6 @@ package org.refact4j.eom;
 
 import org.junit.Test;
 import org.refact4j.eom.model.FieldFactory;
-import org.refact4j.eom.model.Property;
 import org.refact4j.eom.model.StringField;
 import org.refact4j.eom.model.impl.Stringifiers;
 import org.refact4j.expr.ExpressionBuilder;

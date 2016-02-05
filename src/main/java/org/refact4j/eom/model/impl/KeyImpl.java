@@ -54,7 +54,7 @@ public class KeyImpl implements Key {
         buffer.append(entityDescriptor.getName());
         buffer.append("[");
         List<Entry<Field, Object>> entrySet = new ArrayList<>(keys.entrySet());
-        Collections.sort(entrySet, (o1, o2) ->  o1.getKey().getName().compareTo(o2.getKey().getName()));
+        Collections.sort(entrySet, (o1, o2) -> o1.getKey().getName().compareTo(o2.getKey().getName()));
         for (Iterator<Map.Entry<Field, Object>> iter = entrySet.iterator(); iter.hasNext(); ) {
             Map.Entry<Field, Object> entry = iter.next();
             buffer.append(entry.getKey().getName());

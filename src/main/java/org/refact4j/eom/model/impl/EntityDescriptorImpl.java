@@ -5,7 +5,10 @@ import org.refact4j.eom.EntityObject;
 import org.refact4j.eom.EntityObjectBuilder;
 import org.refact4j.eom.EntityStringifier;
 import org.refact4j.eom.metamodel.EntityDescriptorDesc;
-import org.refact4j.eom.model.*;
+import org.refact4j.eom.model.DataField;
+import org.refact4j.eom.model.EntityDescriptor;
+import org.refact4j.eom.model.Field;
+import org.refact4j.eom.model.RelationField;
 import org.refact4j.expr.Expression;
 import org.refact4j.visitor.Visitor;
 
@@ -18,7 +21,6 @@ import java.util.stream.StreamSupport;
 
 public class EntityDescriptorImpl implements EntityDescriptor {
     private final List<Field> orderedFields = new ArrayList<>();
-    private final Property property = new PropertyImpl();
     private String name;
     private Map<String, Field> fields = new TreeMap<>();
     private List<Field> keyFields = new ArrayList<>();
@@ -95,18 +97,6 @@ public class EntityDescriptorImpl implements EntityDescriptor {
 
     public void setConstraintExpression(Expression constraintExpression) {
         this.constraintExpression = constraintExpression;
-    }
-
-    public void addProperty(Object key, Object value) {
-        this.property.addProperty(key, value);
-    }
-
-    public Object getProperty(Object key) {
-        return this.property.getProperty(key);
-    }
-
-    public Property getProperty() {
-        return this.property;
     }
 
     public void accept(Visitor visitor) {

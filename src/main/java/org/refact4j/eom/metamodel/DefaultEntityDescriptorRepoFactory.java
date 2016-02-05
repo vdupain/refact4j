@@ -88,18 +88,6 @@ public class DefaultEntityDescriptorRepoFactory implements EntityDescriptorRepos
                     .collect(Collectors.toList());
             createInverseRelationships(repository, relations);
         }
-
-        // field properties
-        for (final EntityDescriptor entityDescriptor : repository) {
-            List<EntityObject> entityDescProperties = metaModelSet.getAll(PropertyDesc.INSTANCE).stream()
-                    .filter(PropertyDesc.getPropertiesForEntityDescriptor(entityDescriptor))
-                    .collect(Collectors.toList());
-            for (EntityObject entityObject : entityDescProperties) {
-                PropertyDesc.KeyValuePair keyValuePair = getKeyValuePair(metaModelSet, entityObject);
-                entityDescriptor.addProperty(keyValuePair.key, keyValuePair.value);
-            }
-
-        }
         return repository;
     }
 

@@ -5,7 +5,6 @@ import org.refact4j.eom.EntityObject;
 import org.refact4j.eom.metamodel.FieldDesc;
 import org.refact4j.eom.model.EntityDescriptor;
 import org.refact4j.eom.model.NumericField;
-import org.refact4j.eom.model.Property;
 import org.refact4j.expr.Expression;
 
 public abstract class AbstractNumberField extends AbstractField implements NumericField {

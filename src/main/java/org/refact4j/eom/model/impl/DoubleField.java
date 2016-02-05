@@ -6,7 +6,6 @@ import org.refact4j.eom.metamodel.FieldDesc;
 import org.refact4j.eom.model.DataTypeVisitor;
 import org.refact4j.eom.model.EntityDescriptor;
 import org.refact4j.eom.model.FieldVisitor;
-import org.refact4j.eom.model.Property;
 import org.refact4j.expr.Expression;
 
 @SuppressWarnings("serial")

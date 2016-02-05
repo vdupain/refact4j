@@ -48,7 +48,6 @@ public class FooDesc {
 
     static {
         builder.addKeyField(ID);
-        builder.addProperty("key", "value");
         builder.setConstraint(ExpressionBuilder.init(ID).between(0, 10).and(
                 ExpressionBuilder.init(VALUE).greaterOrEqual(0.))
                 .get());
