@@ -1,9 +1,13 @@
 package org.refact4j.eom.metamodel;
 
 import org.refact4j.collection.Set;
-import org.refact4j.eom.*;
+import org.refact4j.eom.ConverterHelper;
+import org.refact4j.eom.EntityObject;
+import org.refact4j.eom.EntitySetBuilder;
+import org.refact4j.eom.EntityUtils;
 import org.refact4j.eom.impl.EntityDataSet;
 import org.refact4j.eom.impl.EntityList;
+import org.refact4j.eom.impl.EntitySet;
 import org.refact4j.eom.metamodel.xml.EOMXmlDescriptor;
 import org.refact4j.eom.model.*;
 import org.refact4j.eom.model.impl.AbstractRelationField;

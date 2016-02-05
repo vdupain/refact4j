@@ -3,7 +3,7 @@ package org.refact4j.eom;
 import org.junit.Test;
 import org.refact4j.eom.impl.EntityDataSet;
 import org.refact4j.eom.impl.EntityList;
-import org.refact4j.eom.impl.EntitySetImpl;
+import org.refact4j.eom.impl.EntitySet;
 import org.refact4j.eom.model.Key;
 import org.refact4j.eom.model.KeyBuilder;
 import org.refact4j.eom.model.impl.KeyImpl;
@@ -90,7 +90,7 @@ public class EntitySetTest {
                 .get();
 
         testGetEntitiesByEntityDescriptor(entityObjectSet1, entityObjectSet2, entityObjectSet);
-        EntitySet entitySet = new EntitySetImpl(entityObjectSet);
+        EntitySet entitySet = new EntitySet(entityObjectSet);
         testGetEntitiesByEntityDescriptor(entityObjectSet1, entityObjectSet2, entitySet);
         EntityDataSet entityObjectDataSet = new EntityDataSet(entityObjectSet);
         testGetEntitiesByEntityDescriptor(entityObjectSet1, entityObjectSet2, entityObjectDataSet);
@@ -129,7 +129,7 @@ public class EntitySetTest {
         entityObjectSet.add(entityObject);
 
         testGetEntitiesByEntityDescriptorAndUnaryPredicate(entityObjectSet, entityObject);
-        EntitySet entitySet = new EntitySetImpl(entityObjectSet);
+        EntitySet entitySet = new EntitySet(entityObjectSet);
         testGetEntitiesByEntityDescriptorAndUnaryPredicate(entitySet, entityObject);
         EntityDataSet entityObjectDataSet = new EntityDataSet(entityObjectSet);
         testGetEntitiesByEntityDescriptorAndUnaryPredicate(entityObjectDataSet, entityObject);
@@ -151,7 +151,7 @@ public class EntitySetTest {
         entityObjectSet.add(entityObject);
 
         testGetEntitiesFilteredByUnaryPredicate(entityObjectSet, entityObject);
-        EntitySet entitySet = new EntitySetImpl(entityObjectSet);
+        EntitySet entitySet = new EntitySet(entityObjectSet);
         testGetEntitiesFilteredByUnaryPredicate(entitySet, entityObject);
         EntityDataSet entityObjectDataSet = new EntityDataSet(entityObjectSet);
         testGetEntitiesFilteredByUnaryPredicate(entityObjectDataSet, entityObject);
@@ -172,7 +172,7 @@ public class EntitySetTest {
         entityObjectSet.add(entityObject);
 
         testGetEntitiesFilteredByExprConstraint(entityObjectSet, entityObject);
-        EntitySet entitySet = new EntitySetImpl(entityObjectSet);
+        EntitySet entitySet = new EntitySet(entityObjectSet);
         testGetEntitiesFilteredByExprConstraint(entitySet, entityObject);
         EntityDataSet entityObjectDataSet = new EntityDataSet(entityObjectSet);
         testGetEntitiesFilteredByExprConstraint(entityObjectDataSet, entityObject);
@@ -194,7 +194,7 @@ public class EntitySetTest {
     public void testEntitySetContainsEntity() {
         EntitySet entityObjectSet = createEntitySetWithDummies();
         testEntitySetContainsEntity(entityObjectSet);
-        EntitySet entitySet = new EntitySetImpl(entityObjectSet);
+        EntitySet entitySet = new EntitySet(entityObjectSet);
         testEntitySetContainsEntity(entitySet);
         EntityDataSet entityObjectDataSet = new EntityDataSet(entityObjectSet);
         testEntitySetContainsEntity(entityObjectDataSet);
@@ -213,7 +213,7 @@ public class EntitySetTest {
     public void testEntitySetApplyfunctor() {
         final EntitySet entityObjectSet = createEntitySet();
         testEntitySetApplyfunctor(entityObjectSet);
-        EntitySet entityObjects = new EntitySetImpl(entityObjectSet);
+        EntitySet entityObjects = new EntitySet(entityObjectSet);
         testEntitySetApplyfunctor(entityObjects);
         EntityDataSet entityObjectDataSet = new EntityDataSet(entityObjectSet);
         testEntitySetApplyfunctor(entityObjectDataSet);
@@ -234,7 +234,7 @@ public class EntitySetTest {
     public void testEntitySetGetEntitiesByEntityDescriptorFieldAndValue() {
         final EntitySet entityObjectSet = createEntitySet();
         testEntitySetGetEntitiesByEntityDescriptorFieldAndValue(entityObjectSet);
-        EntitySet readOnlyEntitySet = new EntitySetImpl(entityObjectSet);
+        EntitySet readOnlyEntitySet = new EntitySet(entityObjectSet);
         testEntitySetGetEntitiesByEntityDescriptorFieldAndValue(readOnlyEntitySet);
         EntityDataSet entityObjectDataSet = new EntityDataSet(entityObjectSet);
         testEntitySetGetEntitiesByEntityDescriptorFieldAndValue(entityObjectDataSet);

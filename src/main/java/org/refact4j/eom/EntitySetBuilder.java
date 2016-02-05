@@ -1,6 +1,6 @@
 package org.refact4j.eom;
 
-import org.refact4j.eom.impl.EntitySetImpl;
+import org.refact4j.eom.impl.EntitySet;
 
 import java.util.Collection;
 
@@ -10,10 +10,10 @@ import java.util.Collection;
  */
 public final class EntitySetBuilder {
 
-    private final EntitySetImpl entityObjectSet;
+    private final EntitySet entityObjectSet;
 
     private EntitySetBuilder() {
-        this.entityObjectSet = new EntitySetImpl();
+        this.entityObjectSet = new EntitySet();
     }
 
     public static EntitySetBuilder init() {

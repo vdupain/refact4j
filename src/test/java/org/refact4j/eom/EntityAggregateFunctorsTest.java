@@ -2,6 +2,7 @@ package org.refact4j.eom;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.refact4j.eom.impl.EntitySet;
 import org.refact4j.eom.metamodel.DefaultEntityDescriptorRepoFactory;
 import org.refact4j.eom.metamodel.EOMMetaModelRepository;
 import org.refact4j.eom.model.EntityDescriptor;

@@ -3,21 +3,21 @@ package org.refact4j.eom.impl;
 import org.refact4j.collection.Set;
 import org.refact4j.core.IdResolver;
 import org.refact4j.core.TypeResolver;
+import org.refact4j.eom.EntityFinder;
 import org.refact4j.eom.EntityObject;
-import org.refact4j.eom.EntitySet;
 import org.refact4j.eom.model.EntityDescriptor;
 import org.refact4j.eom.model.Key;
 
 import java.util.Collection;
 
-public class EntitySetImpl extends Set<EntityObject, Key, EntityDescriptor> implements EntitySet {
+public class EntitySet extends Set<EntityObject, Key, EntityDescriptor> implements EntityFinder {
 
 
-    public EntitySetImpl() {
+    public EntitySet() {
         super();
     }
 
-    public EntitySetImpl(Collection<EntityObject> entityObjects) {
+    public EntitySet(Collection<EntityObject> entityObjects) {
         this();
         this.addAll(entityObjects);
     }
@@ -29,6 +29,7 @@ public class EntitySetImpl extends Set<EntityObject, Key, EntityDescriptor> impl
     }
 
 
+    
     public IdResolver<EntityObject, Key> getIdResolver() {
         return new EntityIdResolver();
     }

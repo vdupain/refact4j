@@ -6,7 +6,7 @@ import org.refact4j.collection.ChangeSetDelta;
 import org.refact4j.collection.ChangeSetImpl;
 import org.refact4j.collection.List;
 import org.refact4j.eom.impl.ChangeSetEntityObjectListener;
-import org.refact4j.eom.impl.EntitySetImpl;
+import org.refact4j.eom.impl.EntitySet;
 import org.refact4j.eom.model.KeyBuilder;
 import org.refact4j.eom.xml.reader.EntityXmlReaderHelper;
 import org.refact4j.evt.EventLogger;
@@ -24,7 +24,7 @@ public class EntityChangeSetTest extends AbstractChangeSetTest {
     }
 
     protected void generateDelta() {
-        EntitySet entitySet = new EntitySetImpl();
+        EntitySet entitySet = new EntitySet();
         entitySet.addAll(collectionDecorator.getCollection());
         for (EntityObject e : entitySet) {
             e.registerListener(new ChangeSetEntityObjectListener((ChangeSetImpl<EntityObject>) changeSet));
