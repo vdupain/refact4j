@@ -25,7 +25,7 @@ public final class EntityDescriptorRepositoryBuilder {
     }
 
     public EntityDescriptorRepositoryBuilder add(EntityDescriptor entityDescriptor) {
-        entityDescRepoImpl.add(entityDescriptor);
+        entityDescRepoImpl.add(entityDescriptor.getName(), entityDescriptor);
         return this;
     }
 

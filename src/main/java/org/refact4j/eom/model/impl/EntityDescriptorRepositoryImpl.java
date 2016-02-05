@@ -15,7 +15,6 @@ public class EntityDescriptorRepositoryImpl extends RepositoryImpl<String, Entit
     private final EOMContext context;
 
     public EntityDescriptorRepositoryImpl() {
-        setKeyifier(EntityDescriptor::getName);
         this.context = EOMContextImpl.newInstance(this);
     }
 

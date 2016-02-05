@@ -4,8 +4,4 @@ import java.util.Map;
 
 public interface Repository<K, V> extends Map<K, V> {
 
-    interface Keyifier<K, T> {
-        K keyify(T object);
-    }
-
 }

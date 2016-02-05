@@ -9,7 +9,6 @@ public class XmlElementFactoryRepositoryImpl extends RepositoryImpl<String, XmlE
         XmlElementFactoryRepository {
 
     public XmlElementFactoryRepositoryImpl() {
-        setKeyifier(XmlElementFactory::getXmlElementTagName);
     }
 
     public XmlElementFactory getXmlElementFactory(String xmlTagName) {
@@ -21,7 +20,8 @@ public class XmlElementFactoryRepositoryImpl extends RepositoryImpl<String, XmlE
     }
 
     public void register(XmlDescriptor xmlDescriptor) {
-        xmlDescriptor.getXmlElementFactories().forEach(this::add);
+        xmlDescriptor.getXmlElementFactories()
+                .forEach(e-> add(e.getXmlElementTagName(), e));
     }
 
 }
