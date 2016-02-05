@@ -6,7 +6,7 @@ import org.refact4j.core.Converter;
 import org.refact4j.eom.EntityObject;
 import org.refact4j.eom.EntityObjectBuilder;
 import org.refact4j.eom.EntityUtils;
-import org.refact4j.eom.impl.EntityListImpl;
+import org.refact4j.eom.impl.EntityList;
 import org.refact4j.eom.model.Field;
 import org.refact4j.eom.xml.reader.EntityXmlReaderHelper;
 import org.refact4j.eom.xml.writer.EntityXmlWriterHelper;
@@ -48,7 +48,7 @@ public class EntityXmlTest {
 
     @Test
     public void testNominal() throws Exception {
-        org.refact4j.eom.EntityList list = EntityXmlReaderHelper.parse(FooDesc.INSTANCE, "<DummyBean id='1' value='1.1'/>"
+        List<EntityObject> list = EntityXmlReaderHelper.parse(FooDesc.INSTANCE, "<DummyBean id='1' value='1.1'/>"
                 + "<DummyBean id='2'/>");
         assertEquals(2, list.size());
         assertEquals(1.1, getFieldValue(list, 0, FooDesc.VALUE));
@@ -57,14 +57,14 @@ public class EntityXmlTest {
 
     @Test
     public void testDateField() throws Exception {
-        org.refact4j.eom.EntityList list = EntityXmlReaderHelper.parse(FooDesc.INSTANCE, "<DummyBean id='1' beginDate='10/10/00'/>");
+        List<EntityObject> list = EntityXmlReaderHelper.parse(FooDesc.INSTANCE, "<DummyBean id='1' beginDate='10/10/00'/>");
         assertEquals(1, list.size());
         assertEquals(EntityUtils.parseDate("10/10/00"), getFieldValue(list, 0, FooDesc.BEGIN_DATE));
     }
 
     @Test
     public void testTimestampField() throws Exception {
-        org.refact4j.eom.EntityList list = EntityXmlReaderHelper.parse(FooDesc.INSTANCE,
+        List<EntityObject> list = EntityXmlReaderHelper.parse(FooDesc.INSTANCE,
                 "<DummyBean id='1' timestampDate='11/27/78-15:40:20'/>");
         assertEquals(1, list.size());
         assertEquals(EntityUtils.parseTimestamp("11/27/78-15:40:20"), getFieldValue(list, 0, FooDesc.TIMESTAMP));
@@ -72,7 +72,7 @@ public class EntityXmlTest {
 
     @Test
     public void testBooleanField() throws Exception {
-        org.refact4j.eom.EntityList list = EntityXmlReaderHelper.parse(FooDesc.INSTANCE, "<DummyBean id='1' flag='true'/>"
+        List<EntityObject> list = EntityXmlReaderHelper.parse(FooDesc.INSTANCE, "<DummyBean id='1' flag='true'/>"
                 + "<DummyBean id='2' flag='false'/>");
 
         assertEquals(2, list.size());
@@ -82,7 +82,7 @@ public class EntityXmlTest {
 
     @Test
     public void testWithMultipleTypes() throws Exception {
-        org.refact4j.eom.EntityList list = EntityXmlReaderHelper.parse(DummyRepository.get(), "<Foo id='1' flag='true'/>"
+        List<EntityObject> list = EntityXmlReaderHelper.parse(DummyRepository.get(), "<Foo id='1' flag='true'/>"
                 + "<Bar id='1' name='abcdef' />");
         assertEquals(2, list.size());
         EntityObject firstEntity = list.get(0);
@@ -114,14 +114,14 @@ public class EntityXmlTest {
     }
 
     public void testEntityXmlReader(String rootTag) {
-        org.refact4j.eom.EntityList expectedEntityList = new EntityListImpl();
+        List<EntityObject> expectedEntityList = new EntityList();
         expectedEntityList.add(entity1);
         expectedEntityList.add(entity2);
         String expectedXmlData;
 
         expectedXmlData = EntityXmlWriterHelper.dump(expectedEntityList, rootTag);
 
-        org.refact4j.eom.EntityList actualEntityList;
+        List<EntityObject> actualEntityList;
         actualEntityList = EntityXmlReaderHelper.parse(DummyRepository.get(), expectedXmlData);
         for (int i = 0; i < expectedEntityList.size(); i++) {
             EntityObject expectedEntity = expectedEntityList.get(i);

@@ -3,15 +3,18 @@ package org.refact4j.xml;
 import org.junit.Before;
 import org.junit.Test;
 import org.refact4j.collection.Set;
+import org.refact4j.eom.EntityObject;
 import org.refact4j.eom.EntityTestUtils;
 import org.refact4j.eom.impl.EntityDataSet;
-import org.refact4j.eom.impl.EntityListImpl;
+import org.refact4j.eom.impl.EntityList;
 import org.refact4j.eom.metamodel.DefaultEntityDescriptorRepoFactory;
 import org.refact4j.eom.metamodel.EOMMetaModelRepository;
 import org.refact4j.eom.model.EntityDescriptorRepository;
 import org.refact4j.eom.xml.EntityXmlDescriptor;
 import org.refact4j.eom.xml.reader.EntityXmlReaderHelper;
 import org.refact4j.xml.impl.Dataset2XmlConverterImpl;
+
+import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
@@ -54,9 +57,9 @@ public class DatasetRefXmlTest {
         String expectedXml = "<bar name='bar1' id='11'/>"
                 + "<bar name='bar2' id='22'/>" + "<foo name='foo1' id='1'/> "
                 + "<foo name='foo2' id='2'/>";
-        org.refact4j.eom.EntityList expectedEntities = EntityXmlReaderHelper.parse(entityDescriptorRepository,
+        List<EntityObject> expectedEntities = EntityXmlReaderHelper.parse(entityDescriptorRepository,
                 expectedXml);
-        EntityTestUtils.assertEquals(expectedEntities, new EntityListImpl(dataset));
+        EntityTestUtils.assertEquals(expectedEntities, new EntityList(dataset));
 
     }
 

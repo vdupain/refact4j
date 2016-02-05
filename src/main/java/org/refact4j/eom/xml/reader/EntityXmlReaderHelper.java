@@ -5,7 +5,7 @@ import org.refact4j.eom.EntityObject;
 import org.refact4j.eom.EntityObjectBuilder;
 import org.refact4j.eom.String2ValueFieldConverter;
 import org.refact4j.eom.impl.EntityDataSet;
-import org.refact4j.eom.impl.EntityListImpl;
+import org.refact4j.eom.impl.EntityList;
 import org.refact4j.eom.model.DefaultFieldVisitor;
 import org.refact4j.eom.model.EntityDescriptor;
 import org.refact4j.eom.model.EntityDescriptorRepository;
@@ -31,37 +31,37 @@ public final class EntityXmlReaderHelper {
 
     }
 
-    public static org.refact4j.eom.EntityList unmarshal(final EntityDescriptorRepository repository, String xmlData) {
+    public static List<EntityObject> unmarshal(final EntityDescriptorRepository repository, String xmlData) {
         Dataset2XmlConverterImpl dataset2XmlConverter = new Dataset2XmlConverterImpl();
         Set dataset = new EntityDataSet();
         dataset2XmlConverter.register(new EntityXmlDescriptor(repository));
         dataset2XmlConverter.unmarshal(xmlData, dataset);
-        return new EntityListImpl(dataset);
+        return new EntityList(dataset);
     }
 
-    public static org.refact4j.eom.EntityList parse(final EntityDescriptorRepository repository, String xmlData) {
+    public static List<EntityObject> parse(final EntityDescriptorRepository repository, String xmlData) {
         return unmarshal(repository::getEntityDescriptor, xmlData, ENTITIES_TAGNAME, EMPTY_EXCLUDED_FIELDS);
     }
 
-    public static org.refact4j.eom.EntityList parse(EntityDescriptor entityDescriptor, String xmlData) {
+    public static List<EntityObject> parse(EntityDescriptor entityDescriptor, String xmlData) {
         return parse(entityDescriptor, xmlData, ENTITIES_TAGNAME, EMPTY_EXCLUDED_FIELDS);
     }
 
-    public static org.refact4j.eom.EntityList parse(EntityDescriptor entityDescriptor, String expectedXmlData, String rootTag) {
+    public static List<EntityObject> parse(EntityDescriptor entityDescriptor, String expectedXmlData, String rootTag) {
         return parse(entityDescriptor, expectedXmlData, rootTag, EMPTY_EXCLUDED_FIELDS);
     }
 
-    private static org.refact4j.eom.EntityList parse(final EntityDescriptor entityDescriptor, String xmlData, String rootTag,
+    private static List<EntityObject> parse(final EntityDescriptor entityDescriptor, String xmlData, String rootTag,
                                                      String[] excludedFields) {
         return unmarshal(name -> entityDescriptor, xmlData, rootTag, excludedFields);
     }
 
-    private static org.refact4j.eom.EntityList unmarshal(final GetEntityDescriptor functor, String xmlData, String rootTag,
+    private static List<EntityObject> unmarshal(final GetEntityDescriptor functor, String xmlData, String rootTag,
                                                          final String[] excludedFields) {
         if (rootTag == null)
             rootTag = ENTITIES_TAGNAME;
         final String rootTagName = rootTag;
-        final org.refact4j.eom.EntityList entityObjects = new EntityListImpl();
+        final List<EntityObject> entityObjects = new EntityList();
         try {
             XmlParserHelper.parse(new StringReader("<" + rootTag + ">" + xmlData + "</" + rootTag + ">"),
                     new XmlElement() {

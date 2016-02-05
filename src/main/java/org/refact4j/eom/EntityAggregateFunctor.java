@@ -1,6 +1,6 @@
 package org.refact4j.eom;
 
-import org.refact4j.eom.impl.EntityListImpl;
+import org.refact4j.eom.impl.EntityList;
 import org.refact4j.eom.model.EntityDescriptor;
 import org.refact4j.eom.model.Field;
 import org.refact4j.function.aggregate.AbstractAggregateFunctor;
@@ -48,7 +48,7 @@ public final class EntityAggregateFunctor implements AggregateFunctor<EntityObje
                                                                      final EntityDescriptor entityDescriptor) {
         List<EntityObject> list = collection.stream().filter(p -> p.getEntityDescriptor().equals(entityDescriptor))
                 .collect(Collectors.toList());
-        return new EntityListImpl(list);
+        return new EntityList(list);
     }
 
     public EntityObject apply(Collection<? extends EntityObject> arg) {

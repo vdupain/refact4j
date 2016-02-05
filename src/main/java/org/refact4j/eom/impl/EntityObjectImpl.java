@@ -112,7 +112,6 @@ public class EntityObjectImpl implements EntityObject {
         checkField(field);
         Object oldValue = this.values.put(field, value);
         this.firePropertyChange(field, oldValue, value);
-
         return this;
     }
 

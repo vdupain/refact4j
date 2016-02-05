@@ -74,10 +74,6 @@ public final class EntityObjectBuilder implements Supplier<EntityObject> {
         return this;
     }
 
-    public EntityObjectBuilder set(OneToManyRelationType field, Collection<EntityObject> values) {
-        throw new UnsupportedOperationException();
-    }
-
     public EntityObjectBuilder set(Field field, Object value) {
         this.entityObject.set(field, value);
         return this;

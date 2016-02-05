@@ -8,6 +8,7 @@ import org.refact4j.eom.xml.reader.EntityXmlReaderHelper;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.List;
 
 import static org.junit.Assert.*;
 
@@ -23,7 +24,7 @@ public class EntityUtilsTest {
 
         String dataXml = "<entities><foo id='1' field1='foo1' field2='true'/>" + "<foo id='2' field1='foo2'/>"
                 + "<foo id='3' field2='true'/></entities>";
-        EntityList dataEntities = EntityXmlReaderHelper.parse(builder.getEntityDescriptor(), dataXml);
+        List<EntityObject> dataEntities = EntityXmlReaderHelper.parse(builder.getEntityDescriptor(), dataXml);
         dataEntities.stream().forEach(EntityUtils::applyEmptyDefaultValues);
 
         String expected = "<entities>" +
@@ -31,7 +32,7 @@ public class EntityUtilsTest {
                 "<foo field1='foo2' field2='false' id='2'/>" +
                 "<foo field1='default for field1' field2='true' id='3'/>" +
                 "</entities>";
-        EntityList expectedEntities = EntityXmlReaderHelper.parse(builder.getEntityDescriptor(), expected);
+        List<EntityObject> expectedEntities = EntityXmlReaderHelper.parse(builder.getEntityDescriptor(), expected);
         EntityTestUtils.assertEquals(expectedEntities, dataEntities);
     }
 
@@ -45,14 +46,14 @@ public class EntityUtilsTest {
 
         String dataXml = "<entities><foo id='1' field1='foo1' field2='true'/>" + "<foo id='2' field1='foo2'/>"
                 + "<foo id='3' field2='true'/></entities>";
-        EntityList dataEntities = EntityXmlReaderHelper.parse(builder.getEntityDescriptor(), dataXml);
+        List<EntityObject> dataEntities = EntityXmlReaderHelper.parse(builder.getEntityDescriptor(), dataXml);
         dataEntities.stream().forEach(EntityUtils::applyDefaultValues);
         String expected = "<entities>" +
                 "<foo field1='default for field1' field2='false' id='null'/>" +
                 "<foo field1='default for field1' field2='false' id='null'/>" +
                 "<foo field1='default for field1' field2='false' id='null'/>" +
                 "</entities>";
-        EntityList expectedEntities = EntityXmlReaderHelper.parse(builder.getEntityDescriptor(), expected);
+        List<EntityObject> expectedEntities = EntityXmlReaderHelper.parse(builder.getEntityDescriptor(), expected);
         EntityTestUtils.assertEquals(expectedEntities, dataEntities);
     }
 

@@ -1,7 +1,6 @@
 package org.refact4j.eom.xml.writer;
 
 import org.refact4j.eom.ConverterHelper;
-import org.refact4j.eom.EntityList;
 import org.refact4j.eom.EntityObject;
 import org.refact4j.eom.model.Field;
 import org.refact4j.eom.xml.reader.EntityXmlReaderHelper;
@@ -22,15 +21,15 @@ public final class EntityXmlWriterHelper {
     private EntityXmlWriterHelper() {
     }
 
-    public static String dump(EntityList entityObjects) {
+    public static String dump(List<EntityObject> entityObjects) {
         return dump(entityObjects, ROOT_TAG, EMPTY_EXCLUDED_FIELDS);
     }
 
-    public static String dump(EntityList entityObjects, String rootTag) {
+    public static String dump(List<EntityObject> entityObjects, String rootTag) {
         return dump(entityObjects, rootTag, EMPTY_EXCLUDED_FIELDS);
     }
 
-    public static String dump(EntityList entityObjects, String rootTag, String[] excludedFields) {
+    public static String dump(List<EntityObject> entityObjects, String rootTag, String[] excludedFields) {
         if (rootTag == null) {
             rootTag = ROOT_TAG;
         }

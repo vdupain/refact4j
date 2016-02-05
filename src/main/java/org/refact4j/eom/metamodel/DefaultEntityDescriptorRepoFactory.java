@@ -3,7 +3,7 @@ package org.refact4j.eom.metamodel;
 import org.refact4j.collection.Set;
 import org.refact4j.eom.*;
 import org.refact4j.eom.impl.EntityDataSet;
-import org.refact4j.eom.impl.EntityListImpl;
+import org.refact4j.eom.impl.EntityList;
 import org.refact4j.eom.metamodel.xml.EOMXmlDescriptor;
 import org.refact4j.eom.model.*;
 import org.refact4j.eom.model.impl.AbstractRelationField;
@@ -56,7 +56,7 @@ public class DefaultEntityDescriptorRepoFactory implements EntityDescriptorRepos
         converter.register(new EntityXmlDescriptor(EOMMetaModelRepository.get()));
         converter.register(new EOMXmlDescriptor(metaModelEntityDescriptorRepository));
         converter.unmarshal(xmlMetaModel, actualDataset);
-        metaModelSet = EntitySetBuilder.init().addAll(new EntityListImpl(actualDataset))
+        metaModelSet = EntitySetBuilder.init().addAll(new EntityList(actualDataset))
                 .addAll(DataTypeType.DATA_TYPES).getEntitySet();
         EntityDescriptorRepositoryBuilder repoBuilder = EntityDescriptorRepositoryBuilder
                 .init(initialEntityDescriptorRepository);

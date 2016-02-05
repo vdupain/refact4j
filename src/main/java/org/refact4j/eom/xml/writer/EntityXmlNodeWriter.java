@@ -2,7 +2,7 @@ package org.refact4j.eom.xml.writer;
 
 import org.refact4j.eom.ConverterHelper;
 import org.refact4j.eom.EntityObject;
-import org.refact4j.eom.impl.EntityListImpl;
+import org.refact4j.eom.impl.EntityList;
 import org.refact4j.eom.model.EntityDescriptorRepository;
 import org.refact4j.xml.DatasetConverterHolder;
 import org.refact4j.xml.XmlElementHandler;
@@ -18,7 +18,7 @@ public class EntityXmlNodeWriter implements XmlElementHandler {
     private EntityObject entityObject;
 
     public EntityXmlNodeWriter(EntityDescriptorRepository entityDescriptorRepository, DatasetConverterHolder holder) {
-        Collection<EntityObject> entityObjects = new EntityListImpl();
+        Collection<EntityObject> entityObjects = new EntityList();
         StreamSupport.stream(entityDescriptorRepository.values().spliterator(), false)
                 .forEach(e -> entityObjects.addAll(holder.getDataSet().getAll(e)));
         iterator = entityObjects.iterator();

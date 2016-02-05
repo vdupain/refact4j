@@ -7,7 +7,7 @@ import org.refact4j.eom.*;
 import org.refact4j.eom.impl.DefaultEntityStringifierRepoVisitor;
 import org.refact4j.eom.impl.DefaultMetaModelVisitor;
 import org.refact4j.eom.impl.EntityDataSet;
-import org.refact4j.eom.impl.EntityListImpl;
+import org.refact4j.eom.impl.EntityList;
 import org.refact4j.eom.metamodel.DefaultEntityDescriptorRepoFactory;
 import org.refact4j.eom.metamodel.EOMMetaModelRepository;
 import org.refact4j.eom.metamodel.EntityStringifierXmlDescriptor;
@@ -17,6 +17,8 @@ import org.refact4j.eom.model.EntityDescriptorRepository;
 import org.refact4j.eom.model.impl.Stringifiers;
 import org.refact4j.eom.xml.reader.EntityXmlReaderHelper;
 import org.refact4j.xml.impl.Dataset2XmlConverterImpl;
+
+import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
@@ -90,7 +92,7 @@ public class MetaModelTest {
                 + "<version id='1' name='v1' beginDate='01/01/07' endDate='12/31/07'/>"
                 + "<version id='2' name='v2' beginDate='06/01/07' endDate='06/30/07' foo='2'/>"
                 + "</dataset>";
-        org.refact4j.eom.EntityList dataEntities = EntityXmlReaderHelper.unmarshal(repository, DATA_XML);
+        List<EntityObject> dataEntities = EntityXmlReaderHelper.unmarshal(repository, DATA_XML);
         EntitySet entityObjectSet = EntitySetBuilder.init().addAll(dataEntities).getEntitySet();
         EntityFieldValuePredicate getEntityByKeyPredicate = new EntityFieldValuePredicate();
         getEntityByKeyPredicate.setField(repository.getEntityDescriptor("version").getField("id"));
@@ -148,7 +150,7 @@ public class MetaModelTest {
         Dataset2XmlConverterImpl converter = new Dataset2XmlConverterImpl();
         converter.register(new EOMXmlDescriptor(EOMMetaModelRepository.get()));
         converter.unmarshal(visitor.toXmlString(), actualDataset);
-        EntityTestUtils.assertEquals(new EntityListImpl(initialDataset), new EntityListImpl(actualDataset));
+        EntityTestUtils.assertEquals(new EntityList(initialDataset), new EntityList(actualDataset));
     }
 
     @Test
@@ -161,7 +163,7 @@ public class MetaModelTest {
         Dataset2XmlConverterImpl converter = new Dataset2XmlConverterImpl();
         converter.register(new EntityStringifierXmlDescriptor(this.repository));
         converter.unmarshal(visitor.toXmlString(), actualDataset);
-        EntityTestUtils.assertEquals(new EntityListImpl(initialDataset), new EntityListImpl(actualDataset));
+        EntityTestUtils.assertEquals(new EntityList(initialDataset), new EntityList(actualDataset));
     }
 
 }
