@@ -9,13 +9,13 @@ import org.refact4j.xml.impl.Dataset2XmlConverterImpl;
 
 import java.util.Collection;
 
-public class DataSetXmlWriter implements XmlElementHandler, DatasetConverterHolder {
+public class DatasetXmlWriter implements XmlElementHandler, DatasetConverterHolder {
     private final Set dataset;
     private final Dataset2XmlConverterImpl converter;
     private final Finder finder;
     private String tagName = "dataset";
 
-    public DataSetXmlWriter(Set dataset, Finder finder, Dataset2XmlConverterImpl converter) {
+    public DatasetXmlWriter(Set dataset, Finder finder, Dataset2XmlConverterImpl converter) {
         this.dataset = dataset;
         this.finder = finder;
         this.converter = converter;
