@@ -5,7 +5,6 @@ import org.refact4j.eom.model.EntityDescriptor;
 import org.refact4j.eom.model.Field;
 import org.refact4j.eom.model.impl.Stringifiers;
 import org.refact4j.xml.XML;
-import org.refact4j.xml.XMLizer;
 
 import java.beans.PropertyChangeSupport;
 import java.io.IOException;
@@ -98,7 +97,7 @@ public class EntityObjectImpl implements EntityObject {
     }
 
     public XML toXML() {
-        return XMLizer.DEFAULT.xml(this);
+        return XML.DEFAULT.convert(this);
     }
 
     public Object clone() {

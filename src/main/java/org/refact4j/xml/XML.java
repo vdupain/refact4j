@@ -1,10 +1,13 @@
 package org.refact4j.xml;
 
+import org.refact4j.core.Converter;
 import org.refact4j.xml.impl.XMLImpl;
 
 import java.io.Serializable;
 
 public interface XML extends ToXmlString, Serializable {
+
+    Converter<ToXmlString, XML> DEFAULT = (arg) -> (arg != null ? new XMLImpl(arg) : XML.EMPTY_XML);
 
     XML EMPTY_XML = new XMLImpl(ToXmlString.EMPTY_TO_XML);
 

@@ -1,8 +1,9 @@
 package org.refact4j.xml.impl;
 
 import org.refact4j.xml.ToXmlString;
+import org.refact4j.xml.XML;
 
-public class XMLImpl extends AbstractXMLImpl {
+public class XMLImpl implements XML {
 
     private final String xml;
 
@@ -17,4 +18,9 @@ public class XMLImpl extends AbstractXMLImpl {
     public String toXmlString() {
         return this.xml;
     }
+
+    public String toString() {
+        return this.toXmlString();
+    }
+
 }
