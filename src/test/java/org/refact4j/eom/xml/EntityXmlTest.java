@@ -2,10 +2,10 @@ package org.refact4j.eom.xml;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.refact4j.core.Converter;
 import org.refact4j.eom.EntityObject;
 import org.refact4j.eom.EntityObjectBuilder;
 import org.refact4j.eom.EntityUtils;
-import org.refact4j.eom.XmlEntityConverter;
 import org.refact4j.eom.impl.EntityListImpl;
 import org.refact4j.eom.model.Field;
 import org.refact4j.eom.xml.reader.EntityXmlReaderHelper;
@@ -102,9 +102,8 @@ public class EntityXmlTest {
 
     @Test
     public void testDummyXml2Entity() {
-        XmlEntityConverter functor = new XmlEntityConverter();
-        functor.setEntityDescriptorRepository(DummyRepository.get());
-        EntityObject entityObject = functor.convert(DUMMY_XML);
+        Converter<String, EntityObject> converter = s -> EntityXmlReaderHelper.parse(DummyRepository.get(), s).get(0);
+        EntityObject entityObject = converter.convert(DUMMY_XML);
         assertEquals(DUMMY_XML, entityObject.toXmlString());
     }
 
