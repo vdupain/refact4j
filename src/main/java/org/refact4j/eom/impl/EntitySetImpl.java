@@ -12,7 +12,6 @@ import java.util.Collection;
 
 public class EntitySetImpl extends Set<EntityObject, Key, EntityDescriptor> implements EntitySet {
 
-    private static final long serialVersionUID = 5875020382043001900L;
 
     public EntitySetImpl() {
         super();
@@ -23,11 +22,12 @@ public class EntitySetImpl extends Set<EntityObject, Key, EntityDescriptor> impl
         this.addAll(entityObjects);
     }
 
-
-    @Override
     public EntityObject findByIdentifier(Key key) {
-        return super.findByIdentifier(key.getEntityDescriptor(), key);
+        return this.stream()
+                .filter(p -> p.getKey().equals(key))
+                .findFirst().get();
     }
+
 
     public IdResolver<EntityObject, Key> getIdResolver() {
         return new EntityIdResolver();

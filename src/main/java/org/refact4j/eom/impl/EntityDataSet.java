@@ -27,11 +27,6 @@ public class EntityDataSet extends EntitySetImpl implements DatasetHolder {
         this.addAll(entityObjects);
     }
 
-    public List<EntityObject> getEntities(EntityDescriptor entityDescriptor, Field field, Object value) {
-        return EntitySetBuilder.init().addAll(this).get().stream()
-                .filter(e -> Objects.equals(e.get(field), value))
-                .collect(Collectors.toList());
-    }
 
     public Set<EntityObject, Key, EntityDescriptor> getDataSet() {
         return this;
@@ -39,13 +34,15 @@ public class EntityDataSet extends EntitySetImpl implements DatasetHolder {
 
     public EntityObject getEntityByName(EntityDescriptor entityDescriptor, final StringField stringField,
                                         final String value) {
-        return getAll(entityDescriptor).stream()
+        return stream()
+                .filter(arg -> arg.getEntityDescriptor().equals(entityDescriptor))
                 .filter(arg -> Objects.equals(arg.get(stringField), value))
                 .findFirst().orElse(null);
     }
 
     public EntityObject getEntityByPredicate(EntityDescriptor entityDescriptor, Predicate<EntityObject> entityObjectPredicate) {
-        return getAll(entityDescriptor).stream()
+        return stream()
+                .filter(arg -> arg.getEntityDescriptor().equals(entityDescriptor))
                 .filter(entityObjectPredicate)
                 .findFirst().orElse(null);
     }
