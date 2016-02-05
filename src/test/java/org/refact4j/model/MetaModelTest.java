@@ -78,7 +78,7 @@ public class MetaModelTest {
                         .createEntityStringifierRepository();
         fooEntityDescriptor = repository.getEntityDescriptor("foo");
     }
-    
+
     @Test
     public void testNominal() {
         String DATA_XML = "<dataset>" + "<foo id='1' field1='foo1' field2='a' />"

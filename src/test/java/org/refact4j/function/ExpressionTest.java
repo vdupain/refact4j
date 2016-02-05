@@ -21,12 +21,12 @@ import static org.junit.Assert.*;
 public class ExpressionTest {
 
 
-    private void printEquivalentExpr(Expression expression1, Expression expression2) {
-        System.out.println(">>" + expression1 + " SAME AS: " + expression2);
-    }
-
     public static void assertEqualsExpr(Expression expression1, Expression expression2) {
         assertEquals(expression1.toString(), expression2.toString());
+    }
+
+    private void printEquivalentExpr(Expression expression1, Expression expression2) {
+        System.out.println(">>" + expression1 + " SAME AS: " + expression2);
     }
 
     @Test

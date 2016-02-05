@@ -17,9 +17,7 @@ public final class EntityDescriptorRepositoryBuilder {
     public static EntityDescriptorRepositoryBuilder init(EntityDescriptorRepository entityDescriptorRepository) {
         EntityDescriptorRepositoryBuilder entityDescriptorRepositoryBuilder = new EntityDescriptorRepositoryBuilder();
         if (entityDescriptorRepository != null) {
-            for (EntityDescriptor entityDescriptor : entityDescriptorRepository.values()) {
-                entityDescriptorRepositoryBuilder.add(entityDescriptor);
-            }
+            entityDescriptorRepository.values().stream().forEach(e -> entityDescriptorRepositoryBuilder.add(e));
         }
         return entityDescriptorRepositoryBuilder;
     }
@@ -30,9 +28,7 @@ public final class EntityDescriptorRepositoryBuilder {
     }
 
     public EntityDescriptorRepositoryBuilder add(EntityDescriptorRepository entityDescriptorRepository) {
-        for (EntityDescriptor entityDescriptor : entityDescriptorRepository.values()) {
-            this.add(entityDescriptor);
-        }
+        entityDescriptorRepository.values().stream().forEach(e -> add(e));
         return this;
     }
 

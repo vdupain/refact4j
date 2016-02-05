@@ -40,7 +40,7 @@ public class AssertTest {
         assertThat(5, between(0, 10).and(equalTo(5)));
         assertThat(5, between(0, 10).and(not(equalTo(1))));
         assertThat(5, between(0, 10).and(not(equalTo(1))).and(not(isNull())));
-        assertThat(5, and(between(0, 10).and(not(equalTo(1))),not(isNull())));
+        assertThat(5, and(between(0, 10).and(not(equalTo(1))), not(isNull())));
         assertThat(5, or(equalTo(5), equalTo(6)));
 
         try {

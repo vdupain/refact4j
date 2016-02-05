@@ -5,7 +5,9 @@ import org.refact4j.eom.model.FieldFactory;
 import org.refact4j.eom.model.IntegerField;
 import org.refact4j.eom.model.NumericField;
 import org.refact4j.expr.ExpressionBuilder;
-import static org.junit.Assert.*;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
 
 
 public class IntegerFieldTest extends AbstractFieldTestCase {

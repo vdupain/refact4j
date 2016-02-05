@@ -8,14 +8,14 @@ import org.refact4j.function.Stringifier;
 
 public interface Stringifiers {
 
-    Stringifier<Field> FIELD_FULLNAME = field -> field.getFullName();
-    Stringifier<Field> FIELD_NAME = field -> field.getName();
+    Stringifier<Field> FIELD_FULLNAME = Field::getFullName;
+    Stringifier<Field> FIELD_NAME = Field::getName;
     Stringifier<Field> FIELD_PRETTY = field -> field.getPrettyName() != null ? field.getPrettyName() : field.getName();
     Stringifier<Field> FIELD_XML = field -> {
         throw new RuntimeException("Not Implemented");
     };
     Stringifier<EntityDescriptor> ENTITY_DESCRIPTOR_XML = entityDescriptor -> entityDescriptor.toEntity().toXmlString();
-    Stringifier<EntityDescriptor> ENTITY_DESCRIPTOR_NAME = entityDescriptor -> entityDescriptor.getName();
-    Stringifier<EntityObject> ENTITY_XML = e -> EntityXmlWriterHelper.dump(e);
+    Stringifier<EntityDescriptor> ENTITY_DESCRIPTOR_NAME = EntityDescriptor::getName;
+    Stringifier<EntityObject> ENTITY_XML = EntityXmlWriterHelper::dump;
 
 }

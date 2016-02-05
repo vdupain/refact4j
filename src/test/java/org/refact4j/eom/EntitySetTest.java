@@ -13,7 +13,6 @@ import org.refact4j.expr.ExpressionBuilder;
 import org.refact4j.model.BarDesc;
 import org.refact4j.model.DummyRepository;
 import org.refact4j.model.FooDesc;
-import org.refact4j.util.ComparatorHelper;
 
 import java.util.Collection;
 import java.util.Collections;
@@ -104,7 +103,7 @@ public class EntitySetTest {
     private void testGetEntitiesByEntityDescriptor(EntitySet collection1, EntitySet collection2,
                                                    EntitySet collection) {
         List<EntityObject> dummies = collection.getAll(FooDesc.INSTANCE);
-        Comparator<EntityObject> comparator =  (o1, o2) -> o1.getKey().compareTo(o2.getKey());
+        Comparator<EntityObject> comparator = (o1, o2) -> o1.getKey().compareTo(o2.getKey());
 
         Collections.sort(dummies, comparator);
         assertEquals(collection1.size(), dummies.size());
