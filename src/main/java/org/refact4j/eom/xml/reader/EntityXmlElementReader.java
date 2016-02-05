@@ -46,7 +46,7 @@ public class EntityXmlElementReader extends DefaultXmlElementReader {
     }
 
     public XmlElement createChildXmlElement(String localName, String qName, XmlAttributes attributes) {
-        for (EntityDescriptor entityDescriptor : entityDescriptorRepository) {
+        for (EntityDescriptor entityDescriptor : entityDescriptorRepository.values()) {
             if (localName.equals(entityDescriptor.getName())) {
                 return new EntityXmlElementReader(entityDescriptor, entityDescriptorRepository, attributes,
                         this, entityObject);

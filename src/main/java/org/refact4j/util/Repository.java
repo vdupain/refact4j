@@ -1,16 +1,8 @@
 package org.refact4j.util;
 
-import java.util.Set;
+import java.util.Map;
 
-public interface Repository<K, T> extends Iterable<T> {
-
-    T get(K key);
-
-    boolean contains(T object);
-
-    boolean containsKey(K key);
-
-    Set<K> keySet();
+public interface Repository<K, V> extends Map<K, V> {
 
     interface Keyifier<K, T> {
         K keyify(T object);

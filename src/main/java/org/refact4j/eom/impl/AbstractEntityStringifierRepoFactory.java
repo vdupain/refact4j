@@ -53,7 +53,7 @@ public abstract class AbstractEntityStringifierRepoFactory implements EntityStri
             final Key keyEntityDescriptor = stringifier.get(EntityStringifierDesc.OBJECT_TYPE);
             EntityDescriptor entityDescriptor;
             if (keyEntityDescriptor == null && stringifiers.size() == 1) {
-                entityDescriptor = entityDescriptorRepository.iterator().next();
+                entityDescriptor = entityDescriptorRepository.values().iterator().next();
             } else {
                 entityDescriptor = entityDescriptorRepository.getEntityDescriptor(keyEntityDescriptor.getFieldValue(
                         objectEntityDescriptor.getField("name")).toString());

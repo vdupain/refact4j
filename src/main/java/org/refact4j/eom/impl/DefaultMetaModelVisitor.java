@@ -15,7 +15,7 @@ public class DefaultMetaModelVisitor implements MetaModelVisitor, ToXmlString {
 
     public void visitEntityDescriptorRepository(EntityDescriptorRepository entityDescriptorRepository) {
         this.entityDescriptorRepository = entityDescriptorRepository;
-        for (EntityDescriptor entityDescriptor : entityDescriptorRepository) {
+        for (EntityDescriptor entityDescriptor : entityDescriptorRepository.values()) {
             entityDescriptor.accept(this);
             for (Field field : entityDescriptor.getFields()) {
                 field.accept(this);

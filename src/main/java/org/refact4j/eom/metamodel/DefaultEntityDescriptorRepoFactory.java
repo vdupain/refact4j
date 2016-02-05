@@ -75,14 +75,14 @@ public class DefaultEntityDescriptorRepoFactory implements EntityDescriptorRepos
         }
         EntityDescriptorRepository repository = repoBuilder.getEntityDescriptorsRepository();
 
-        for (final EntityDescriptor entityDescriptor : repository) {
+        for (final EntityDescriptor entityDescriptor : repository.values()) {
             EntityDescriptorBuilder builder = entityDescBuilderMap.get(entityDescriptor);
             List<EntityObject> relations = metaModelSet.getAll(FieldDesc.INSTANCE).stream()
                     .filter(FieldDesc.getRelationFieldsForEntityDescriptor(entityDescriptor.getName()))
                     .collect(Collectors.toList());
             createRelationFields(repository, builder, relations);
         }
-        for (final EntityDescriptor entityDescriptor : repository) {
+        for (final EntityDescriptor entityDescriptor : repository.values()) {
             List<EntityObject> relations = metaModelSet.getAll(FieldDesc.INSTANCE).stream()
                     .filter(FieldDesc.getRelationFieldsForEntityDescriptor(entityDescriptor.getName()))
                     .collect(Collectors.toList());
