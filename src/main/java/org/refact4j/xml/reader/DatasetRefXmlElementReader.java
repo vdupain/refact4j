@@ -12,13 +12,13 @@ import java.io.InputStream;
 import java.net.URI;
 import java.net.URL;
 
-class DatasetRefXmlElementReader extends DefaultXmlElementReader {
+class DataSetRefXmlElementReader extends DefaultXmlElementReader {
 
-    public DatasetRefXmlElementReader(Set dataset, Dataset2XmlConverterImpl dataset2XmlConverter) {
+    public DataSetRefXmlElementReader(Set dataset, Dataset2XmlConverterImpl dataset2XmlConverter) {
         super(dataset, dataset2XmlConverter);
     }
 
-    public DatasetRefXmlElementReader(XmlAttributes xmlAttrs, DataSetConverterHolder dataSetConverterHolder) {
+    public DataSetRefXmlElementReader(XmlAttributes xmlAttrs, DataSetConverterHolder dataSetConverterHolder) {
         super(dataSetConverterHolder);
         String fileName = xmlAttrs.getValue("file");
         try {

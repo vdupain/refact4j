@@ -5,13 +5,13 @@ import org.refact4j.xml.DataSet2XmlConverter;
 import org.refact4j.xml.DataSetConverterHolder;
 import org.refact4j.xml.XmlAttributes;
 import org.refact4j.xml.XmlElement;
-import org.refact4j.xml.impl.DatasetConverterHolderImpl;
+import org.refact4j.xml.impl.DataSetConverterHolderImpl;
 
 public class DefaultXmlElementReader implements XmlElement, DataSetConverterHolder {
     private final DataSetConverterHolder dataSetConverterHolder;
 
     DefaultXmlElementReader(Set dataset, DataSet2XmlConverter dataset2XmlConverter) {
-        this.dataSetConverterHolder = new DatasetConverterHolderImpl(dataset, dataset2XmlConverter);
+        this.dataSetConverterHolder = new DataSetConverterHolderImpl(dataset, dataset2XmlConverter);
     }
 
     public DefaultXmlElementReader(DataSetConverterHolder dataSetConverterHolder) {

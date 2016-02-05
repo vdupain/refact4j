@@ -10,22 +10,22 @@ import org.refact4j.xml.impl.Dataset2XmlConverterImpl;
 
 import java.util.function.Supplier;
 
-public class DatasetXmlElementReader extends DefaultXmlElementReader {
+public class DataSetXmlElementReader extends DefaultXmlElementReader {
 
-    public DatasetXmlElementReader(Set dataset, DataSet2XmlConverter dataset2XmlConverter) {
+    public DataSetXmlElementReader(Set dataset, DataSet2XmlConverter dataset2XmlConverter) {
         super(dataset, dataset2XmlConverter);
     }
 
-    private DatasetXmlElementReader(DataSetConverterHolder dataSetConverterHolder) {
+    private DataSetXmlElementReader(DataSetConverterHolder dataSetConverterHolder) {
         super(dataSetConverterHolder);
     }
 
     @Override
     public XmlElement createChildXmlElement(String localName, String qName, XmlAttributes attributes) {
         if (localName.equals("dataset")) {
-            return new DatasetXmlElementReader(this);
+            return new DataSetXmlElementReader(this);
         } else if (localName.equals("datasetRef")) {
-            return new DatasetRefXmlElementReader(attributes, this);
+            return new DataSetRefXmlElementReader(attributes, this);
         }
 
         XmlElementFactory xmlFactory = ((Dataset2XmlConverterImpl) getDataset2XmlConverter())

@@ -8,13 +8,13 @@ import org.refact4j.eom.model.Field;
 import org.refact4j.eom.model.Key;
 import org.refact4j.eom.model.StringField;
 import org.refact4j.util.EqualsHelper;
-import org.refact4j.xml.DatasetHolder;
+import org.refact4j.xml.DataSetHolder;
 
 import java.util.Collection;
 import java.util.List;
 import java.util.function.Predicate;
 
-public class EntityDataSet extends EntitySetImpl implements DatasetHolder {
+public class EntityDataSet extends EntitySetImpl implements DataSetHolder {
 
     private static final long serialVersionUID = 7143433867762051132L;
 

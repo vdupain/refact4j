@@ -3,8 +3,8 @@ package org.refact4j.xml.impl;
 import org.refact4j.collection.Set;
 import org.refact4j.xml.*;
 import org.refact4j.xml.impl.sax.DefaultSaxErrorHandler;
-import org.refact4j.xml.reader.DatasetXmlElementReader;
-import org.refact4j.xml.writer.DatasetXmlWriter;
+import org.refact4j.xml.reader.DataSetXmlElementReader;
+import org.refact4j.xml.writer.DataSetXmlWriter;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 
@@ -47,7 +47,7 @@ public class Dataset2XmlConverterImpl implements DataSet2XmlConverter {
     public void unmarshal(Reader reader, Set dataset) {
         try {
             org.xml.sax.XMLReader xmlReader = createXMLReader();
-            final DatasetXmlElementReader datasetXmlNodeReader = new DatasetXmlElementReader(dataset, this);
+            final DataSetXmlElementReader datasetXmlNodeReader = new DataSetXmlElementReader(dataset, this);
             XmlParserHelper.parse(xmlReader, new InputSource(reader), (localName, name, attributes) -> {
                 if (localName.equals(DATASET_TAGNAME)) {
                     return datasetXmlNodeReader;
@@ -90,7 +90,7 @@ public class Dataset2XmlConverterImpl implements DataSet2XmlConverter {
     public String marshal(Set dataset) {
         try {
             StringWriter result = new StringWriter();
-            XmlWriterHelper.build(result, new DatasetXmlWriter(dataset, null, this));
+            XmlWriterHelper.build(result, new DataSetXmlWriter(dataset, null, this));
             return result.toString();
         } catch (Exception e) {
             throw new RuntimeException(e);
