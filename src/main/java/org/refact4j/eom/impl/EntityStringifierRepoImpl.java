@@ -5,10 +5,10 @@ import org.refact4j.eom.EntityStringifierRepo;
 import org.refact4j.eom.model.EntityDescriptor;
 import org.refact4j.eom.model.EntityDescriptorRepository;
 import org.refact4j.eom.model.EntityDescriptorRepositoryAware;
-import org.refact4j.util.RepositoryImpl;
+import org.refact4j.util.Repository;
 import org.refact4j.visitor.Visitor;
 
-public class EntityStringifierRepoImpl extends RepositoryImpl<EntityDescriptor, EntityStringifier> implements
+public class EntityStringifierRepoImpl extends Repository<EntityDescriptor, EntityStringifier> implements
         EntityStringifierRepo, EntityDescriptorRepositoryAware {
 
     private EntityDescriptorRepository entityDescriptorRepository;

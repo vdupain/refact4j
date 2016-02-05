@@ -5,11 +5,11 @@ import org.refact4j.eom.impl.DefaultMetaModelVisitor;
 import org.refact4j.eom.impl.EOMContextImpl;
 import org.refact4j.eom.model.EntityDescriptor;
 import org.refact4j.eom.model.EntityDescriptorRepository;
-import org.refact4j.util.RepositoryImpl;
+import org.refact4j.util.Repository;
 import org.refact4j.util.StringHelper;
 import org.refact4j.visitor.Visitor;
 
-public class EntityDescriptorRepositoryImpl extends RepositoryImpl<String, EntityDescriptor> implements
+public class EntityDescriptorRepositoryImpl extends Repository<String, EntityDescriptor> implements
         EntityDescriptorRepository {
 
     private final EOMContext context;

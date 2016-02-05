@@ -1,8 +1,8 @@
 package org.refact4j.xml;
 
-import org.refact4j.util.Repository;
+import java.util.Map;
 
-public interface XmlElementFactoryRepository extends Repository<String, XmlElementFactory> {
+public interface XmlElementFactoryRepository extends Map<String, XmlElementFactory> {
 
     void register(XmlDescriptor xmlDescriptor);
 

@@ -58,16 +58,6 @@ public final class StringHelper {
         }
     }
 
-    public static String getStringFromUTF8File(String fileName) {
-        try {
-            File file = new File(fileName);
-            InputStream is = new FileInputStream(file);
-            return read(new InputStreamReader(is, "UTF-8"));
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
     public static String getStringFromUTF8File(InputStream is) {
         try {
             return read(new InputStreamReader(is, "UTF-8"));
