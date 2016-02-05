@@ -3,7 +3,6 @@ package org.refact4j.eom;
 import org.refact4j.eom.impl.EntityObjectImpl;
 import org.refact4j.eom.model.*;
 
-import java.util.Collection;
 import java.util.Date;
 import java.util.function.Supplier;
 

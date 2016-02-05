@@ -58,7 +58,7 @@ class FieldXmlNodeWriter extends AbstractXmlElementWriter {
             xmlWriter.writeAttribute(FieldDesc.MIN_LENGTH.getName(), value.toString());
         }
 
-        return new XmlElementHandler[]{new PropertyXmlNodeWriter(this, fieldEntity)};
+        return new XmlElementHandler[0];
     }
 
 

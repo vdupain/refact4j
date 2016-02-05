@@ -52,12 +52,12 @@ public final class EntityXmlReaderHelper {
     }
 
     private static List<EntityObject> parse(final EntityDescriptor entityDescriptor, String xmlData, String rootTag,
-                                                     String[] excludedFields) {
+                                            String[] excludedFields) {
         return unmarshal(name -> entityDescriptor, xmlData, rootTag, excludedFields);
     }
 
     private static List<EntityObject> unmarshal(final GetEntityDescriptor functor, String xmlData, String rootTag,
-                                                         final String[] excludedFields) {
+                                                final String[] excludedFields) {
         if (rootTag == null)
             rootTag = ENTITIES_TAGNAME;
         final String rootTagName = rootTag;

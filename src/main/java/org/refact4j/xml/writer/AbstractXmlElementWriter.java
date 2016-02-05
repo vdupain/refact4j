@@ -24,8 +24,4 @@ public abstract class AbstractXmlElementWriter extends AbstractIteratorXmlElemen
         return this.holder.getDataset2XmlConverter();
     }
 
-    public DatasetConverterHolder getDatasetConverterHolder() {
-        return this.holder;
-    }
-
 }

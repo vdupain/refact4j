@@ -17,7 +17,7 @@ public final class EntityDescriptorRepositoryBuilder {
     public static EntityDescriptorRepositoryBuilder init(EntityDescriptorRepository entityDescriptorRepository) {
         EntityDescriptorRepositoryBuilder entityDescriptorRepositoryBuilder = new EntityDescriptorRepositoryBuilder();
         if (entityDescriptorRepository != null) {
-            entityDescriptorRepository.values().stream().forEach(e -> entityDescriptorRepositoryBuilder.add(e));
+            entityDescriptorRepository.values().stream().forEach(entityDescriptorRepositoryBuilder::add);
         }
         return entityDescriptorRepositoryBuilder;
     }

@@ -51,9 +51,6 @@ public class FieldDesc {
     public static final ManyToOneRelationField INVERSE_RELATION_FIELD = FieldFactory.init(BUILDER, "inverseRelation")
             .createManyToOneRelationField(FieldDesc.INSTANCE);
 
-    public static final OneToManyRelationField FIELD_TYPE = FieldFactory.init(BUILDER, "properties")
-            .createOneToManyRelationField(PropertyDesc.INSTANCE);
-
     static {
         BUILDER.addKeyField(NAME);
         BUILDER.addKeyField(ENTITY_DESC);

@@ -5,12 +5,10 @@ import org.refact4j.eom.EntityObjectBuilder;
 import org.refact4j.eom.metamodel.DataTypeType;
 import org.refact4j.eom.metamodel.EntityDescriptorDesc;
 import org.refact4j.eom.metamodel.FieldDesc;
-import org.refact4j.eom.metamodel.PropertyDesc;
 import org.refact4j.eom.model.Key;
 import org.refact4j.eom.model.KeyBuilder;
 import org.refact4j.xml.DatasetConverterHolder;
 import org.refact4j.xml.XmlAttributes;
-import org.refact4j.xml.XmlElement;
 import org.refact4j.xml.XmlHelper;
 import org.refact4j.xml.reader.DefaultXmlElementReader;
 
@@ -64,14 +62,6 @@ public class FieldXmlElementReader extends DefaultXmlElementReader {
                     .getKey());
         }
         this.add(field);
-    }
-
-    @Override
-    public XmlElement createChildXmlElement(String localName, String qName, XmlAttributes attributes) {
-        if (localName.equals(PropertyDesc.INSTANCE.getName())) {
-            return new PropertyXmlElementReader(attributes, this, null, this.field);
-        }
-        return super.createChildXmlElement(localName, qName, attributes);
     }
 
 }

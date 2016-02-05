@@ -11,7 +11,7 @@ public class Assert extends org.junit.Assert {
         if (!matcher.test(something)) {
             StringBuilder message = new StringBuilder("Expected that: ");
             message.append(matcher);
-            message.append(StringHelper.LINE_SEPARATOR + "but value was : ").append(something).append(
+            message.append(StringHelper.LINE_SEPARATOR).append("but value was : ").append(something).append(
                     StringHelper.LINE_SEPARATOR);
             fail(message.toString());
         }
