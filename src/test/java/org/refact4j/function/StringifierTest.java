@@ -9,6 +9,7 @@ import org.refact4j.model.FooDesc;
 import org.refact4j.util.StringHelper;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.fail;
 
 public class StringifierTest {
@@ -17,16 +18,10 @@ public class StringifierTest {
     public void testStringifierRepository() {
         EntityStringifierRepo stringifierRepository = DummyStringifierRepository.get();
         assertEquals(DummyStringifierRepository.FOO_STRINGIFIER, stringifierRepository
-                .lookup(FooDesc.INSTANCE));
+                .get(FooDesc.INSTANCE));
         assertEquals(DummyStringifierRepository.BAR_STRINGIFIER, stringifierRepository
-                .lookup(BarDesc.INSTANCE));
-        try {
-            stringifierRepository.lookup(new EntityDescriptorImpl("?"));
-            fail("Exception Expected");
-        } catch (Exception e) {
-            assertEquals("Missing Stringifier for EntityDescriptor '?' in repository", e.getMessage());
-        }
-
+                .get(BarDesc.INSTANCE));
+        assertNull(stringifierRepository.get(new EntityDescriptorImpl("?")));
     }
 
     @Test

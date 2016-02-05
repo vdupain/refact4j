@@ -5,22 +5,14 @@ import org.refact4j.eom.EntityStringifierRepo;
 import org.refact4j.eom.model.EntityDescriptor;
 import org.refact4j.eom.model.EntityDescriptorRepository;
 import org.refact4j.eom.model.EntityDescriptorRepositoryAware;
-import org.refact4j.util.Repository;
 import org.refact4j.visitor.Visitor;
 
-public class EntityStringifierRepoImpl extends Repository<EntityDescriptor, EntityStringifier> implements
+import java.util.HashMap;
+
+public class EntityStringifierRepoImpl extends HashMap<EntityDescriptor, EntityStringifier> implements
         EntityStringifierRepo, EntityDescriptorRepositoryAware {
 
     private EntityDescriptorRepository entityDescriptorRepository;
-
-    public EntityStringifier lookup(EntityDescriptor entityDescriptor) {
-        try {
-            return this.get(entityDescriptor);
-        } catch (Exception e) {
-            throw new RuntimeException("Missing Stringifier for EntityDescriptor '" + entityDescriptor
-                    + "' in repository");
-        }
-    }
 
     public void accept(Visitor visitor) {
         if (visitor instanceof EntityStringifierRepoVisitor) {

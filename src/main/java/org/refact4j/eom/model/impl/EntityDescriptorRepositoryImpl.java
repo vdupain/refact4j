@@ -5,11 +5,12 @@ import org.refact4j.eom.impl.DefaultMetaModelVisitor;
 import org.refact4j.eom.impl.EOMContextImpl;
 import org.refact4j.eom.model.EntityDescriptor;
 import org.refact4j.eom.model.EntityDescriptorRepository;
-import org.refact4j.util.Repository;
 import org.refact4j.util.StringHelper;
 import org.refact4j.visitor.Visitor;
 
-public class EntityDescriptorRepositoryImpl extends Repository<String, EntityDescriptor> implements
+import java.util.HashMap;
+
+public class EntityDescriptorRepositoryImpl extends HashMap<String, EntityDescriptor> implements
         EntityDescriptorRepository {
 
     private final EOMContext context;
@@ -24,11 +25,7 @@ public class EntityDescriptorRepositoryImpl extends Repository<String, EntityDes
     }
 
     public EntityDescriptor getEntityDescriptor(String name) {
-        try {
-            return this.get(name);
-        } catch (Exception e) {
-            throw new RuntimeException("Missing EntityDescriptor '" + name + "'");
-        }
+        return this.get(name);
     }
 
     public void accept(Visitor visitor) {

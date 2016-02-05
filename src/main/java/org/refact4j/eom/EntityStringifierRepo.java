@@ -11,8 +11,6 @@ public interface EntityStringifierRepo extends Map<EntityDescriptor, EntityStrin
 
     EntityStringifier put(EntityDescriptor entityDescriptor, EntityStringifier stringifier);
 
-    EntityStringifier lookup(EntityDescriptor entityDescriptor);
-
     interface EntityStringifierRepoVisitor extends Visitor {
         void visitEntityStringifierRepository(EntityStringifierRepo entityObjectStringifierRepository);
     }

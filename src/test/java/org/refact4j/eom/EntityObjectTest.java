@@ -204,13 +204,8 @@ public class EntityObjectTest {
     }
 
     @Test
-    public void testEntityDescriptorNotFoundException() {
-        try {
-            DummyRepository.get().getEntityDescriptor("???");
-            fail("Exception Expected");
-        } catch (Exception e) {
-            assertEquals("Missing EntityDescriptor '???'", e.getMessage());
-        }
+    public void testUnknownEntityDescriptor() {
+        assertNull(DummyRepository.get().getEntityDescriptor("???"));
     }
 
     @Test

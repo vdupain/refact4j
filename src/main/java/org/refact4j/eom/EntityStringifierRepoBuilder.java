@@ -21,7 +21,7 @@ public final class EntityStringifierRepoBuilder implements EntityDescriptorRepos
         EntityStringifierRepoBuilder stringifierRepositoryBuilder = new EntityStringifierRepoBuilder();
         if (stringifierRepository != null) {
             for (EntityDescriptor entityDescriptor : stringifierRepository.keySet()) {
-                stringifierRepositoryBuilder.add(entityDescriptor, stringifierRepository.lookup(entityDescriptor));
+                stringifierRepositoryBuilder.add(entityDescriptor, stringifierRepository.get(entityDescriptor));
             }
         }
         return stringifierRepositoryBuilder;
@@ -38,7 +38,7 @@ public final class EntityStringifierRepoBuilder implements EntityDescriptorRepos
 
     public EntityStringifierRepoBuilder add(EntityStringifierRepo initalEntityStringifierRepository) {
         for (EntityDescriptor entityDescriptor : initalEntityStringifierRepository.keySet()) {
-            this.add(entityDescriptor, initalEntityStringifierRepository.lookup(entityDescriptor));
+            this.add(entityDescriptor, initalEntityStringifierRepository.get(entityDescriptor));
         }
         return this;
     }

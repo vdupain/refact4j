@@ -101,7 +101,7 @@ public class MetaModelTest {
         assertEquals(
                 "<version beginDate=\"06/01/07\" endDate=\"06/30/07\" foo=\"2\" id=\"2\" name=\"v2\"/>",
                 Stringifiers.ENTITY_XML.stringify(version2));
-        assertEquals("version n°2-v2 du 06/01/07 au 06/30/07", stringifierRepository.lookup(
+        assertEquals("version n°2-v2 du 06/01/07 au 06/30/07", stringifierRepository.get(
                 repository.getEntityDescriptor("version")).stringify(version2));
         getEntityByKeyPredicate.setField(fooEntityDescriptor.getField("id"));
         getEntityByKeyPredicate.setValue(1);
@@ -109,7 +109,7 @@ public class MetaModelTest {
                 .filter(getEntityByKeyPredicate).findFirst().get();
         assertEquals("<foo field1=\"foo1\" field2=\"a\" id=\"1\" timestampDate=\"null\"/>",
                 Stringifiers.ENTITY_XML.stringify(foo1));
-        assertEquals("id=1, field1=foo1", stringifierRepository.lookup(foo1.getEntityDescriptor())
+        assertEquals("id=1, field1=foo1", stringifierRepository.get(foo1.getEntityDescriptor())
                 .stringify(foo1));
         getEntityByKeyPredicate.setField(fooEntityDescriptor.getField("id"));
         getEntityByKeyPredicate.setValue(3);
@@ -117,7 +117,7 @@ public class MetaModelTest {
                 .filter(getEntityByKeyPredicate).findFirst().get();
         assertEquals("<foo field1=\"null\" field2=\"null\" id=\"3\" timestampDate=\"null\"/>",
                 Stringifiers.ENTITY_XML.stringify(foo3));
-        assertEquals("id=3, field1=null", stringifierRepository.lookup(foo1.getEntityDescriptor())
+        assertEquals("id=3, field1=null", stringifierRepository.get(foo1.getEntityDescriptor())
                 .stringify(foo3));
         getEntityByKeyPredicate.setField(repository.getEntityDescriptor("bar").getField("id"));
         getEntityByKeyPredicate.setValue(11);
@@ -127,7 +127,7 @@ public class MetaModelTest {
         assertEquals("<bar field1=\"bar11_1\" field2=\"bar11_2\" foo=\"2\" id=\"11\"/>",
                 Stringifiers.ENTITY_XML.stringify(bar11));
         assertEquals("f1=bar11_1, f2=bar11_2", stringifierRepository
-                .lookup(bar11.getEntityDescriptor()).stringify(bar11));
+                .get(bar11.getEntityDescriptor()).stringify(bar11));
         getEntityByKeyPredicate.setField(repository.getEntityDescriptor("bar").getField("id"));
         getEntityByKeyPredicate.setValue(13);
         EntityObject bar13 =
@@ -136,7 +136,7 @@ public class MetaModelTest {
         assertEquals("<bar field1=\"bar13_1\" field2=\"bar12_2\" foo=\"null\" id=\"13\"/>",
                 Stringifiers.ENTITY_XML.stringify(bar13));
         assertEquals("f1=bar13_1, f2=bar12_2", stringifierRepository
-                .lookup(bar13.getEntityDescriptor()).stringify(bar13));
+                .get(bar13.getEntityDescriptor()).stringify(bar13));
     }
 
     @Test
