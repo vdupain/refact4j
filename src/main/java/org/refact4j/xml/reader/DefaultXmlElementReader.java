@@ -14,12 +14,12 @@ public class DefaultXmlElementReader implements XmlElement, DatasetConverterHold
         this.dataSetConverterHolder = new DatasetConverterHolderImpl(dataset, dataset2XmlConverter);
     }
 
-    public DefaultXmlElementReader(DatasetConverterHolder dataSetConverterHolder) {
+    protected DefaultXmlElementReader(DatasetConverterHolder dataSetConverterHolder) {
         this(dataSetConverterHolder.getDataSet(), dataSetConverterHolder
                 .getDataset2XmlConverter());
     }
 
-    public void add(Object object) {
+    protected void add(Object object) {
         this.dataSetConverterHolder.getDataSet().add(object);
     }
 

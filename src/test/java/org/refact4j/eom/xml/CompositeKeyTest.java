@@ -18,7 +18,7 @@ import static org.junit.Assert.assertEquals;
 
 public class CompositeKeyTest {
 
-    String metaModelXml = "<dataset>"
+    private final String metaModelXml = "<dataset>"
             + "<entityDescriptor name='foo'>"
             + "        <field name='id1' isKey='true' dataType='integer'/>"
             + "        <field name='id2' isKey='true' dataType='string'/>"
@@ -31,7 +31,7 @@ public class CompositeKeyTest {
             + "</entityDescriptor>"
             + "</dataset>";
 
-    String dataXml = "<dataset>"
+    private final String dataXml = "<dataset>"
             + "    <foo id1='1' id2='1' field1='foo11' />"
             + "    <foo id1='1' id2='2' field1='foo12' >"
             + "        <bar id='1' field1='bar1' />"
@@ -42,9 +42,9 @@ public class CompositeKeyTest {
             + "    <bar id='4' field1='bar4' foo='foo[id1=1,id2=abc]' />"
             + "</dataset>";
 
-    EntityDescriptorRepository repository;
+    private EntityDescriptorRepository repository;
 
-    EntitySet entityObjects;
+    private EntitySet entityObjects;
 
     @Before
     public void setUp() throws Exception {

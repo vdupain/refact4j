@@ -15,7 +15,7 @@ import static org.junit.Assert.assertEquals;
 
 
 public class EntityAggregateFunctorsTest {
-    String metaModelXml = "<dataset>"
+    private final String metaModelXml = "<dataset>"
             + "<entityDescriptor name='foo'>"
             + "    <field name='id' isKey='true' dataType='integer'/>"
             + "    <field name='field1' dataType='string'/>"
@@ -29,7 +29,7 @@ public class EntityAggregateFunctorsTest {
             + "    <field name='foo' dataType='manyToOne' target='foo' prettyName='ToOne Relation to Foo Object'/>"
             + "</entityDescriptor>" + "</dataset>";
 
-    String dataXml = "<dataset>" + "<foo id='1' field1='b' value='9'/>"
+    private final String dataXml = "<dataset>" + "<foo id='1' field1='b' value='9'/>"
             + "<foo id='2' field1='c' value='8' >"
             + "    <bar id='11' field1='bar11_1' field2='bar11_2'/>"
             + "    <bar id='12' field1='x_bar12_1' field2='bar12_2'/>" + "</foo>"

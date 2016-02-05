@@ -22,7 +22,7 @@ import java.util.function.Predicate;
  */
 public class Expression<T> implements Predicate<T>, Visitable {
 
-    private String name;
+    private final String name;
 
     private java.util.function.Function<T, Boolean> predicate;
 
@@ -36,7 +36,7 @@ public class Expression<T> implements Predicate<T>, Visitable {
         this(name, Function.identity());
     }
 
-    protected Expression(String name, Function<T, ?> function) {
+    Expression(String name, Function<T, ?> function) {
         this.name = name;
         this.function = function;
     }

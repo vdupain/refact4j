@@ -10,7 +10,7 @@ import java.io.StringReader;
 
 public class StaxXmlReaderTest extends AbstractXmlReaderTest {
 
-    DefaultXmlReaderHandler xmlReaderHandler = new DefaultXmlReaderHandler();
+    private final DefaultXmlReaderHandler xmlReaderHandler = new DefaultXmlReaderHandler();
 
     private void processEvent(XMLStreamReader xmlr) {
         switch (xmlr.getEventType()) {

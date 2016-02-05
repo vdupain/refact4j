@@ -151,7 +151,7 @@ public class XmlComparisonTest {
         try {
             XmlAssert.assertXmlEquivalent(xml1, xml2);
             fail();
-        } catch (Throwable e) {
+        } catch (Throwable ignored) {
         }
     }
 
@@ -160,7 +160,7 @@ public class XmlComparisonTest {
         try {
             XmlAssert.assertXmlEquals(xml1, xml2);
             fail();
-        } catch (Throwable e) {
+        } catch (Throwable ignored) {
         }
     }
 

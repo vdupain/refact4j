@@ -100,7 +100,8 @@ public class EntityObjectImpl implements EntityObject {
         return XML.DEFAULT.convert(this);
     }
 
-    public Object clone() {
+    public Object clone() throws CloneNotSupportedException {
+        super.clone();
         return new EntityObjectImpl(this.entityDescriptor, this.values);
     }
 

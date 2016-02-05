@@ -5,15 +5,13 @@ import org.refact4j.expr.ExpressionBuilder;
 
 import java.util.function.Predicate;
 
-public class Assert extends org.junit.Assert {
+class Assert extends org.junit.Assert {
 
     public static void assertThat(Object something, Predicate<Object> matcher) {
         if (!matcher.test(something)) {
-            StringBuilder message = new StringBuilder("Expected that: ");
-            message.append(matcher);
-            message.append(StringHelper.LINE_SEPARATOR).append("but value was : ").append(something).append(
-                    StringHelper.LINE_SEPARATOR);
-            fail(message.toString());
+            String message = "Expected that: " + matcher +
+                    StringHelper.LINE_SEPARATOR + "but value was : " + something + StringHelper.LINE_SEPARATOR;
+            fail(message);
         }
     }
 

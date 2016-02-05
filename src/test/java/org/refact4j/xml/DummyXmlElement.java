@@ -8,7 +8,7 @@ public class DummyXmlElement implements XmlElement {
     String value;
     String qName;
     String sAttributes = "";
-    List<DummyXmlElement> xmlElements = new ArrayList<>();
+    final List<DummyXmlElement> xmlElements = new ArrayList<>();
 
     public XmlElement createChildXmlElement(String localName, String qName, XmlAttributes attributes) {
         DummyXmlElement xmlElement = new DummyXmlElement();

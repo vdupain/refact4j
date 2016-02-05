@@ -8,9 +8,9 @@ import java.util.function.Function;
 import java.util.function.Supplier;
 
 public class ExpressionBuilder implements Supplier<Expression> {
-    protected Expression expression;
+    private final Expression expression;
 
-    public ExpressionBuilder() {
+    private ExpressionBuilder() {
         expression = new Expression();
     }
 

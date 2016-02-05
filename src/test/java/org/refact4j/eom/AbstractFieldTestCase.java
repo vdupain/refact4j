@@ -10,10 +10,10 @@ import static org.junit.Assert.fail;
 
 
 public abstract class AbstractFieldTestCase {
-    protected final EntityDescriptorBuilder entityDescriptorBuilder = EntityDescriptorBuilder
+    final EntityDescriptorBuilder entityDescriptorBuilder = EntityDescriptorBuilder
             .init("type");
 
-    protected void checkError(Field field, Object value, String message) {
+    void checkError(Field field, Object value, String message) {
         try {
             EntityObjectBuilder.init(entityDescriptorBuilder.getEntityDescriptor()).set(
                     field, value).get().checkConstraint();
@@ -23,7 +23,7 @@ public abstract class AbstractFieldTestCase {
         }
     }
 
-    protected void checkFieldValue(Field field, Object value, String message) {
+    void checkFieldValue(Field field, Object value, String message) {
         try {
             field.checkValue(value);
             fail("Expected Exception");

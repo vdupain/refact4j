@@ -41,7 +41,7 @@ public class PrettyPrinter implements ExpressionVisitor, BinaryComposeVisitor, U
         this.buf = null;
     }
 
-    public String toString(Object object) {
+    private String toString(Object object) {
         if (object instanceof Visitable) {
             return toString((Visitable) object);
         }

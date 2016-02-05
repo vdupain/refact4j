@@ -17,10 +17,10 @@ import static org.junit.Assert.assertTrue;
 
 public class LogicalPredicateTest {
 
-    BinaryPredicate<Boolean, Boolean> and = new And();
-    BinaryPredicate<Boolean, Boolean> or = new Or();
-    UnaryPredicate<Boolean> not = new Not();
-    String XML_TEST_SUITE =
+    private final BinaryPredicate<Boolean, Boolean> and = new And();
+    private final BinaryPredicate<Boolean, Boolean> or = new Or();
+    private final UnaryPredicate<Boolean> not = new Not();
+    private final String XML_TEST_SUITE =
             "<testSuite>" +
                     "   <testCase name='LogicalPredicateTest'>" +
                     "       <test name='testLogicalAnd'>" +

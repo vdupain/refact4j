@@ -28,7 +28,7 @@ public class StringFieldTest extends AbstractFieldTestCase {
         try {
             Stringifiers.FIELD_XML.stringify(field);
             fail("Exception Expected");
-        } catch (Exception e) {
+        } catch (Exception ignored) {
         }
 
     }

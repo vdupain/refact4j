@@ -9,7 +9,7 @@ public class DummyStringifierRepository {
 
     private static final EntityStringifierRepo repository;
 
-    public static EntityStringifier FOO_STRINGIFIER = new EntityStringifier() {
+    public static final EntityStringifier FOO_STRINGIFIER = new EntityStringifier() {
 
         @Override
         public String stringify(EntityObject arg) {
@@ -17,7 +17,7 @@ public class DummyStringifierRepository {
         }
     };
 
-    public static EntityStringifier BAR_STRINGIFIER = new EntityStringifier() {
+    public static final EntityStringifier BAR_STRINGIFIER = new EntityStringifier() {
 
         @Override
         public String stringify(EntityObject arg) {

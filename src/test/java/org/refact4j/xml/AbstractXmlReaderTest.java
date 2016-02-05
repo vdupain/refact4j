@@ -4,7 +4,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 public abstract class AbstractXmlReaderTest {
-    protected final String xmlWithNameSpace =
+    final String xmlWithNameSpace =
             "<xmlRoot xmlns='http://xml.refact4j.org' " +
                     "   xmlns:dummy='http://dummy.xml.refact4j.org'" +
                     "   xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'" +
@@ -16,7 +16,7 @@ public abstract class AbstractXmlReaderTest {
                     "   </dummy:b>" +
                     "</xmlRoot>";
 
-    protected DummyXmlElement xmlRootElement = new DummyXmlElement();
+    final DummyXmlElement xmlRootElement = new DummyXmlElement();
 
     protected abstract void readXml() throws Exception;
 

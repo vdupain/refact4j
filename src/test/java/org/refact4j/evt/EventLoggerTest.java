@@ -6,7 +6,7 @@ import org.refact4j.util.AssertionFailureNotDetectedError;
 
 
 public class EventLoggerTest {
-    EventLogger eventLogger = new EventLogger();
+    private final EventLogger eventLogger = new EventLogger();
 
     @Test
     public void testEventWithoutArgs() throws Exception {
@@ -87,7 +87,7 @@ public class EventLoggerTest {
         try {
             eventLogger.assertEquals("");
             throw new AssertionFailureNotDetectedError();
-        } catch (AssertionFailedError e) {
+        } catch (AssertionFailedError ignored) {
         }
     }
 
@@ -102,7 +102,7 @@ public class EventLoggerTest {
         try {
             eventLogger.assertEmpty();
             throw new AssertionFailureNotDetectedError();
-        } catch (AssertionFailedError e) {
+        } catch (AssertionFailedError ignored) {
         }
     }
 
@@ -123,7 +123,7 @@ public class EventLoggerTest {
         try {
             eventLogger.assertEquals(expected);
             throw new AssertionFailureNotDetectedError();
-        } catch (AssertionFailedError e) {
+        } catch (AssertionFailedError ignored) {
         }
     }
 
@@ -138,7 +138,7 @@ public class EventLoggerTest {
         try {
             eventLogger.assertEquals(expected);
             throw new AssertionFailureNotDetectedError();
-        } catch (AssertionFailedError e) {
+        } catch (AssertionFailedError ignored) {
         }
     }
 
@@ -146,7 +146,7 @@ public class EventLoggerTest {
         try {
             eventLogger.assertEquals(s);
             throw new AssertionFailureNotDetectedError();
-        } catch (AssertionFailedError e) {
+        } catch (AssertionFailedError ignored) {
         }
     }
 }

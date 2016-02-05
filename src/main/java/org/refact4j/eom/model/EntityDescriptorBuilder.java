@@ -4,7 +4,7 @@ import org.refact4j.eom.model.impl.EntityDescriptorImpl;
 import org.refact4j.expr.Expression;
 
 public final class EntityDescriptorBuilder {
-    private EntityDescriptorImpl entityDescriptor;
+    private final EntityDescriptorImpl entityDescriptor;
 
     private EntityDescriptorBuilder(String name) {
         entityDescriptor = new EntityDescriptorImpl(name);

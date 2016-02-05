@@ -6,7 +6,7 @@ public class DataTypeEntity extends EntityObjectImpl implements DataType {
 
     private StringField field;
 
-    DataTypeEntity() {
+    public DataTypeEntity() {
 
     }
 

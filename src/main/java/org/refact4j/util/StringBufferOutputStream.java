@@ -3,7 +3,7 @@ package org.refact4j.util;
 import java.io.IOException;
 import java.io.OutputStream;
 
-public class StringBufferOutputStream extends OutputStream {
+class StringBufferOutputStream extends OutputStream {
     private final StringBuffer stringBuffer;
 
     public StringBufferOutputStream(StringBuffer stringBuffer) {

@@ -22,16 +22,16 @@ import static org.junit.Assert.assertTrue;
 
 
 public class EntityXmlTest {
-    static Date date = new Date();
-    static final String DUMMY_XML =
+    private static final Date date = new Date();
+    private static final String DUMMY_XML =
             "<Foo bar=\"99\" bar2=\"null\" beginDate=\"" + EntityUtils.formatDate(date)
                     + "\" endDate=\"null\" flag=\"false\" id=\"1\" name=\"dummy\" timestampDate=\"null\" value=\"1.23\"/>";
-    EntityObject entity1;
-    EntityObject entity2;
-    Integer id = 1;
-    Integer id99 = 99;
-    String name = "dummy";
-    Double value = 1.23;
+    private EntityObject entity1;
+    private EntityObject entity2;
+    private final Integer id = 1;
+    private final Integer id99 = 99;
+    private final String name = "dummy";
+    private final Double value = 1.23;
 
     private static Object getFieldValue(List<EntityObject> list, int entityObjectIndex, Field field) {
         return list.get(entityObjectIndex).get(field);
@@ -113,7 +113,7 @@ public class EntityXmlTest {
         testEntityXmlReader("entities");
     }
 
-    public void testEntityXmlReader(String rootTag) {
+    private void testEntityXmlReader(String rootTag) {
         List<EntityObject> expectedEntityList = new EntityList();
         expectedEntityList.add(entity1);
         expectedEntityList.add(entity2);

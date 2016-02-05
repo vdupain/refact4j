@@ -14,8 +14,9 @@ import org.refact4j.model.DummyRepository;
 import org.refact4j.model.FooDesc;
 
 public class EntityChangeSetTest extends AbstractChangeSetTest {
-    EntityObject foo, foo3;
-    EventLogger eventLogger = new EventLogger();
+    private EntityObject foo;
+    private EntityObject foo3;
+    private final EventLogger eventLogger = new EventLogger();
 
     protected List populateInitial() {
         List list = new List();
@@ -56,7 +57,6 @@ public class EntityChangeSetTest extends AbstractChangeSetTest {
     protected void assertDelta() {
         final EventLogger actualEventLogger = new EventLogger();
         java.util.List<EntityObject> updated = changeSet.getUpdatedObjects();
-        String log = "<log>";
         for (EntityObject entityObject : updated) {
             for (Object o : changeSet.getDeltas(entityObject)) {
                 ChangeSetDelta<EntityObject> delta = (ChangeSetDelta<EntityObject>) o;

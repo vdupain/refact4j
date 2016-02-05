@@ -2,13 +2,13 @@ package org.refact4j.model;
 
 import org.refact4j.eom.model.*;
 
-public class EmployeeInfoDesc {
+class EmployeeInfoDesc {
 
     private static final EntityDescriptorBuilder builder = EntityDescriptorBuilder.init("EmployeeInfo");
 
     public static final EntityDescriptor INSTANCE = builder.getEntityDescriptor();
 
-    public static final IntegerField ID = FieldFactory.init(builder, "id").createIntegerField();
+    private static final IntegerField ID = FieldFactory.init(builder, "id").createIntegerField();
 
     public static final StringField FIRST_NAME = FieldFactory.init(builder, "firstName").createStringField();
 

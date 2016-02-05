@@ -8,7 +8,7 @@ import java.util.function.Supplier;
 
 public final class EntityObjectBuilder implements Supplier<EntityObject> {
 
-    private EntityObjectImpl entityObject;
+    private final EntityObjectImpl entityObject;
 
     private EntityObjectBuilder(EntityDescriptor entityDescriptor) {
         this.entityObject = new EntityObjectImpl(entityDescriptor);

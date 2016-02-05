@@ -1,6 +1,6 @@
 package org.refact4j.xml;
 
-public interface XmlWriterCallback {
+interface XmlWriterCallback {
 
     void doWithXmlWriter(XmlWriter xmlWriter);
 }

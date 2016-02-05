@@ -12,7 +12,7 @@ import org.refact4j.xml.XmlAttributes;
 import org.refact4j.xml.XmlHelper;
 import org.refact4j.xml.reader.DefaultXmlElementReader;
 
-public class FieldXmlElementReader extends DefaultXmlElementReader {
+class FieldXmlElementReader extends DefaultXmlElementReader {
 
     private final EntityObject field;
 

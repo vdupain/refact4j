@@ -27,7 +27,8 @@ public class KeyBuilderTest {
 
         EqualsHashCodeAssert.assertEqualsHashCodeCoherent(key_1a, key_1a);
         EqualsHashCodeAssert.assertEqualsIsSymmetric(key_1a, key_1a);
-        EqualsHashCodeAssert.assertEqualsNullComparisonReturnsFalse(key_1a);
+        assertNotNull(key_1a);
+
         assertFalse(key_1a.equals(""));
         assertTrue(key_1a.isCompound());
         assertFalse(key_1a.isUnique());
@@ -36,7 +37,7 @@ public class KeyBuilderTest {
     @Test
     public void testKeyInvalidField() {
         try {
-            Key key_1a = KeyBuilder.init(CompoundKeyFooDesc.INSTANCE).set(FooDesc.ID, 1).set(
+            KeyBuilder.init(CompoundKeyFooDesc.INSTANCE).set(FooDesc.ID, 1).set(
                     CompoundKeyFooDesc.NAME, "a").getKey();
             fail("Expected Exception");
         } catch (Exception e) {

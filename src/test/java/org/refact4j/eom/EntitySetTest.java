@@ -22,7 +22,7 @@ import static org.junit.Assert.*;
 
 public class EntitySetTest {
 
-    public static EntitySet createEntitySetWithDummies() {
+    private static EntitySet createEntitySetWithDummies() {
         String xmlData = "";
         xmlData += "<Foo name='foo1' id='1'/>";
         xmlData += "<Foo name='foo2' id='2'/>";
@@ -32,7 +32,7 @@ public class EntitySetTest {
         return EntitySetBuilder.init().addAll(entityObjects).get();
     }
 
-    public static EntitySet createEntitySetWithAnotherDummies() {
+    private static EntitySet createEntitySetWithAnotherDummies() {
         String xmlData = "";
         xmlData += "<Bar name='bar1' id='1'/>";
         xmlData += "<Bar name='bar2' id='2'/>";

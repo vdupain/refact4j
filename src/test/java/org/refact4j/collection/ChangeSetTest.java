@@ -6,7 +6,7 @@ import java.util.Iterator;
 
 
 public class ChangeSetTest extends AbstractChangeSetTest {
-    MyBean bean1;
+    private MyBean bean1;
 
     protected List populateInitial() {
         List collection = new List();

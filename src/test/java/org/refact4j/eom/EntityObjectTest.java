@@ -15,23 +15,23 @@ import java.util.*;
 import static org.junit.Assert.*;
 
 public class EntityObjectTest {
-    EntityObject foo;
+    private EntityObject foo;
 
-    EntityObject fooDecorated;
+    private EntityObject fooDecorated;
 
-    EntityObject bar;
+    private EntityObject bar;
 
-    Integer id = 1;
+    private Integer id = 1;
 
-    Integer id99 = 99;
+    private final Integer id99 = 99;
 
-    String name = "foo";
+    private String name = "foo";
 
-    Date date = new Date();
+    private final Date date = new Date();
 
-    Double value = 1.23;
+    private final Double value = 1.23;
 
-    Boolean flag = false;
+    private final Boolean flag = false;
 
     @Before
     public void setUp() throws Exception {
@@ -67,11 +67,12 @@ public class EntityObjectTest {
 
     private void testEquality(EntityObject entityObject) {
         EqualsHashCodeAssert.assertEqualsIsReflexive(entityObject);
-        EqualsHashCodeAssert.assertEqualsNullComparisonReturnsFalse(entityObject);
+        assertNotNull(entityObject);
+
         assertTrue(entityObject.equals(entityObject));
         assertFalse(entityObject.equals(bar));
         assertFalse(entityObject.equals(""));
-        assertFalse(entityObject.equals(null));
+        assertNotNull(entityObject);
     }
 
     @Test

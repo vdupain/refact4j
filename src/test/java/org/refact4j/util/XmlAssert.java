@@ -14,24 +14,12 @@ public class XmlAssert extends Assert {
         XMLUnit.setNormalizeWhitespace(true);
     }
 
-    public static void assertXmlEquivalent(XML expected, XML actual) {
-        assertXmlEquivalent(expected, actual);
-    }
-
     public static void assertXmlEquals(ToXmlString expected, ToXmlString actual) {
         if (expected == null && actual == null)
             return;
         if (expected != null && expected.equals(actual))
             return;
         assertXmlEquals(expected.toXmlString(), actual.toXmlString());
-    }
-
-    public static void assertXmlEquivalent(ToXmlString expected, ToXmlString actual) {
-        if (expected == null && actual == null)
-            return;
-        if (expected != null && expected.equals(actual))
-            return;
-        assertXmlEquivalent(expected.toXmlString(), actual.toXmlString());
     }
 
     public static void assertXmlEquals(String expected, String actual) {

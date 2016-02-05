@@ -6,12 +6,12 @@ import java.util.function.BiFunction;
 import java.util.function.Function;
 
 public class CompositeUnaryPredicate<T> implements UnaryPredicate<T> {
-    private BinaryCompose<?, ?, T, Boolean> compositeFunctor;
+    private final BinaryCompose<?, ?, T, Boolean> compositeFunctor;
 
-    private BiFunction<?, ?, Boolean> biFunction;
+    private final BiFunction<?, ?, Boolean> biFunction;
 
-    private java.util.function.Function<T, ?> function;
-    private Object value;
+    private final java.util.function.Function<T, ?> function;
+    private final Object value;
 
 
     public CompositeUnaryPredicate(BiFunction<?, ?, Boolean> biFunction, Function<T, ?> function,

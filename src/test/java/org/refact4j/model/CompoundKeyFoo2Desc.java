@@ -4,21 +4,21 @@ import org.refact4j.eom.model.*;
 
 import java.util.Date;
 
-public class CompoundKeyFoo2Desc {
+class CompoundKeyFoo2Desc {
 
     private static final EntityDescriptorBuilder builder = EntityDescriptorBuilder.init("CompoundKeyFoo2Desc");
 
     public static final EntityDescriptor INSTANCE = builder.getEntityDescriptor();
 
-    public static final IntegerField ID = FieldFactory.init(builder, "id").setOrder(6).createIntegerField();
+    private static final IntegerField ID = FieldFactory.init(builder, "id").setOrder(6).createIntegerField();
 
-    public static final StringField NAME = FieldFactory.init(builder, "name").setOrder(2).setPrettyName("The Name")
+    private static final StringField NAME = FieldFactory.init(builder, "name").setOrder(2).setPrettyName("The Name")
             .setNullable(false).setDefaultValue("").setMaxLength(20).createStringField();
 
-    public static final DoubleField VALUE = FieldFactory.init(builder, "value").setOrder(4).setNullable(true)
+    private static final DoubleField VALUE = FieldFactory.init(builder, "value").setOrder(4).setNullable(true)
             .createDoubleField();
 
-    public static final DateField BEGIN_DATE = FieldFactory.init(builder, "beginDate").setOrder(3).setDefaultValue(
+    private static final DateField BEGIN_DATE = FieldFactory.init(builder, "beginDate").setOrder(3).setDefaultValue(
             new Date()).createDateField();
 
     public static final DateField END_DATE = FieldFactory.init(builder, "endDate").setOrder(7).createDateField();
@@ -28,7 +28,7 @@ public class CompoundKeyFoo2Desc {
 
     public static final BooleanField FLAG = FieldFactory.init(builder, "flag").setOrder(1).createBooleanField();
 
-    public static final ManyToOneRelationField BAR = FieldFactory.init(builder, "bar").setOrder(5)
+    private static final ManyToOneRelationField BAR = FieldFactory.init(builder, "bar").setOrder(5)
             .createManyToOneRelationField(BarDesc.INSTANCE);
 
     public static final ManyToOneRelationField BAR_2 = FieldFactory.init(builder, "bar2").setOrder(9)

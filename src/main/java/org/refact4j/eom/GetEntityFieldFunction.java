@@ -17,7 +17,7 @@ public class GetEntityFieldFunction implements Function<EntityObject, Object>, V
         this.field = field;
     }
 
-    public GetEntityFieldFunction(String fieldName) {
+    private GetEntityFieldFunction(String fieldName) {
         this.fieldName = fieldName;
     }
 

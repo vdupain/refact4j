@@ -13,12 +13,12 @@ import static org.junit.Assert.assertEquals;
 
 
 public class AggregateFunctionsTest {
-    Integer expectedMinValue = 1;
-    Integer expectedMaxValue = 10;
+    private final Integer expectedMinValue = 1;
+    private final Integer expectedMaxValue = 10;
 
-    Collection<Integer> values;
+    private Collection<Integer> values;
 
-    Comparator<Integer> comparator = Integer::compareTo;
+    private final Comparator<Integer> comparator = Integer::compareTo;
 
     @Before
     public void setUp() {

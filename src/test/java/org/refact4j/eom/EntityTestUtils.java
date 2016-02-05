@@ -21,8 +21,8 @@ public class EntityTestUtils {
         assertEquals(entityObjects, xmlDescription, rooTag, EntityXmlReaderHelper.EMPTY_EXCLUDED_FIELDS);
     }
 
-    public static void assertEquals(List<EntityObject> expectedEntities, String actualXmlDescription, String rootTag,
-                                    String[] excludedFields) {
+    private static void assertEquals(List<EntityObject> expectedEntities, String actualXmlDescription, String rootTag,
+                                     String[] excludedFields) {
         String expected = EntityXmlWriterHelper.dump(expectedEntities, rootTag, excludedFields);
         XmlAssert.assertXmlEquivalent(expected, actualXmlDescription);
     }

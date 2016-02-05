@@ -8,9 +8,9 @@ import org.refact4j.util.XmlAssert;
 
 public class EventLogger {
 
-    StringBuilder buffer = new StringBuilder();
+    private final StringBuilder buffer = new StringBuilder();
 
-    Log lastLog;
+    private Log lastLog;
 
     public EventLogger() {
         reset();
@@ -57,7 +57,7 @@ public class EventLogger {
         assertEquals("<log/>");
     }
 
-    public void reset() {
+    private void reset() {
         buffer.setLength(0);
         buffer.append("<log>").append(StringHelper.LINE_SEPARATOR);
         lastLog = null;

@@ -2,7 +2,7 @@ package org.refact4j.eom.annotations;
 
 
 @EntityBindable(entityDescriptor = "Bar")
-public interface Bar {
+interface Bar {
 
     @EntityField(name = "idBar", prettyName = "the id", isKey = true)
     Integer getId();

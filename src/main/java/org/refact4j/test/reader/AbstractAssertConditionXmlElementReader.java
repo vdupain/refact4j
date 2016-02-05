@@ -17,18 +17,5 @@ public class AbstractAssertConditionXmlElementReader extends DefaultXmlElementRe
 
         testMethod.addAssertion(assertConditionHandler);
     }
-
-    @Override
-    public XmlElement createChildXmlElement(String localName, String qName, XmlAttributes attributes) {
-//        if (localName.equals("condition")) {
-//            return new DefaultXmlElementReader(this) {
-//                @Override
-//                public void setStringValue(String value) {
-//                    assertCondition.setCondition(Boolean.valueOf(value));
-//                }
-//            };
-//        }
-        return super.createChildXmlElement(localName, qName, attributes);
-    }
-
+    
 }

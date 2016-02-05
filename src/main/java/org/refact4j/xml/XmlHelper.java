@@ -44,36 +44,4 @@ public abstract class XmlHelper {
         return Boolean.valueOf(attrValue);
     }
 
-    public static int getIntAttrValue(String xmlAttrName, XmlAttributes xmlAttributes, int defaultValue)
-            throws NumberFormatException {
-        String attrValue = getAttrValue(xmlAttrName, xmlAttributes, Integer.toString(defaultValue));
-        return Integer.valueOf(attrValue);
-    }
-
-    public static double getDoubleAttrValue(String xmlAttrName, XmlAttributes xmlAttributes, double defaultValue)
-            throws NumberFormatException {
-        String attrValue = getAttrValue(xmlAttrName, xmlAttributes, Double.toString(defaultValue));
-        return Double.valueOf(attrValue);
-    }
-
-    public static String prettyPrint(String xml) {
-        Writer writer = new StringWriter();
-        try {
-            DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-            InputSource is = new InputSource(new StringReader(xml));
-            Document document = dbf.newDocumentBuilder().parse(is);
-            XMLSerializer serializer = new XMLSerializer(writer, DEFAULT_FORMAT);
-            serializer.serialize(document);
-            return writer.toString();
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        } finally {
-            try {
-                writer.close();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-        }
-    }
-
 }

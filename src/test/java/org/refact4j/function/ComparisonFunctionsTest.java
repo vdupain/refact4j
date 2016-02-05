@@ -10,15 +10,15 @@ import static org.junit.Assert.*;
 
 
 public class ComparisonFunctionsTest {
-    Double d1 = 1.2345;
+    private final Double d1 = 1.2345;
 
-    Double d2 = 6.789;
+    private final Double d2 = 6.789;
 
-    String s1 = "azerty";
+    private final String s1 = "azerty";
 
-    String s2 = "qwerty";
+    private final String s2 = "qwerty";
 
-    Comparator comparator = (o1, o2) -> ComparatorHelper.compare(((Comparable) o1), ((Comparable) o2));
+    private final Comparator comparator = (o1, o2) -> ComparatorHelper.compare(((Comparable) o1), ((Comparable) o2));
 
     @Test
     public void testEqual() {

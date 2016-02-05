@@ -11,7 +11,7 @@ import java.util.Collections;
 
 public class DummyXmlDescriptor implements XmlDescriptor {
 
-    XmlElementFactory factory = new XmlElementFactory() {
+    private final XmlElementFactory factory = new XmlElementFactory() {
 
         public XmlElement createXmlElement(DefaultXmlElementReader xmlElement) {
             return new FooBarsXmlElementReader(xmlElement);

@@ -2,7 +2,7 @@ package org.refact4j.util;
 
 import java.io.*;
 
-public final class SerializerHelper {
+final class SerializerHelper {
 
     private SerializerHelper() {
     }

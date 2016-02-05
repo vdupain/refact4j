@@ -9,7 +9,7 @@ import java.util.Enumeration;
 
 public class XmlTestCaseTest {
 
-    private static String XML_TEST_SUITE =
+    private static final String XML_TEST_SUITE =
             "<testSuite>" +
                     "   <testCase name='testCase1'>" +
                     "      <before handler='" + PrinterBeforeTestHandler.class.getName() + "'/>" +

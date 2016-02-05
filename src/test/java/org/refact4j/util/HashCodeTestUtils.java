@@ -16,8 +16,8 @@ public class HashCodeTestUtils {
         checkHashCode(equals1, equals2);
     }
 
-    public static void checkHashCode(Object equals1,
-                                     Object equals2) {
+    private static void checkHashCode(Object equals1,
+                                      Object equals2) {
         Assert.assertEquals(equals1.hashCode(), equals2.hashCode());
     }
 }

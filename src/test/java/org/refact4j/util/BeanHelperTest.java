@@ -71,7 +71,7 @@ public class BeanHelperTest {
         Assert.assertEquals("value", BeanHelper.getPropertyName("setValue"));
     }
 
-    interface Dummy {
+    private interface Dummy {
 
         String getValue();
 

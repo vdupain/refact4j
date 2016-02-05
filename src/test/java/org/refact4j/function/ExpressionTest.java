@@ -21,7 +21,7 @@ import static org.junit.Assert.*;
 public class ExpressionTest {
 
 
-    public static void assertEqualsExpr(Expression expression1, Expression expression2) {
+    private static void assertEqualsExpr(Expression expression1, Expression expression2) {
         assertEquals(expression1.toString(), expression2.toString());
     }
 
@@ -195,7 +195,7 @@ public class ExpressionTest {
     public void testIsNullAndIsNotNullExpressions() {
         EntityObject dummyEntityNull = EntityObjectBuilder.init(FooDesc.INSTANCE).set(FooDesc.VALUE, null)
                 .get();
-        Expression expression = ExpressionBuilder.init(FooDesc.VALUE).equalTo((Number) null).get();
+        Expression expression = ExpressionBuilder.init(FooDesc.VALUE).equalTo(null).get();
         assertTrue(expression.test(dummyEntityNull));
         EntityObject dummyEntity12 = EntityObjectBuilder.init(FooDesc.INSTANCE).set(FooDesc.VALUE, 12.)
                 .get();
@@ -206,7 +206,7 @@ public class ExpressionTest {
         printEquivalentExpr(expression, isNullExpression);
 
         expression = ExpressionBuilder.init().not(
-                ExpressionBuilder.init(FooDesc.VALUE).equalTo((Number) null)).get();
+                ExpressionBuilder.init(FooDesc.VALUE).equalTo(null)).get();
         assertFalse(expression.test(dummyEntityNull));
         assertTrue(expression.test(dummyEntity12));
         Expression isNotNullExpression = ExpressionBuilder.init(FooDesc.VALUE).isNull().not().get();

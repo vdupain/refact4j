@@ -28,7 +28,7 @@ public final class EntityDescriptorRepositoryBuilder {
     }
 
     public EntityDescriptorRepositoryBuilder add(EntityDescriptorRepository entityDescriptorRepository) {
-        entityDescriptorRepository.values().stream().forEach(e -> add(e));
+        entityDescriptorRepository.values().stream().forEach(this::add);
         return this;
     }
 

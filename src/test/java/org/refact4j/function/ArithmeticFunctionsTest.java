@@ -6,10 +6,10 @@ import org.refact4j.function.arithmetic.*;
 import static org.junit.Assert.assertEquals;
 
 public class ArithmeticFunctionsTest {
-    double d1 = 12345.;
-    double d2 = 6789.;
-    int i1 = 12345;
-    int i2 = 6789;
+    private final double d1 = 12345.;
+    private final double d2 = 6789.;
+    private final int i1 = 12345;
+    private final int i2 = 6789;
 
     @Test
     public void testMultiplies() {

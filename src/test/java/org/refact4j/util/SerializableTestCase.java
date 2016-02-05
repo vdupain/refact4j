@@ -13,7 +13,7 @@ public abstract class SerializableTestCase {
 
     private Serializable serializable;
 
-    public SerializableTestCase() {
+    protected SerializableTestCase() {
         super();
     }
 
