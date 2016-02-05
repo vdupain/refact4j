@@ -57,7 +57,7 @@ public class DefaultEntityDescriptorRepoFactory implements EntityDescriptorRepos
         converter.register(new EOMXmlDescriptor(metaModelEntityDescriptorRepository));
         converter.unmarshal(xmlMetaModel, actualDataset);
         metaModelSet = EntitySetBuilder.init().addAll(new EntityList(actualDataset))
-                .addAll(DataTypeType.DATA_TYPES).getEntitySet();
+                .addAll(DataTypeType.DATA_TYPES).get();
         EntityDescriptorRepositoryBuilder repoBuilder = EntityDescriptorRepositoryBuilder
                 .init(initialEntityDescriptorRepository);
         List<EntityObject> entityDescs = metaModelSet.getAll(EntityDescriptorDesc.INSTANCE);

@@ -14,10 +14,7 @@ import org.refact4j.model.BarDesc;
 import org.refact4j.model.DummyRepository;
 import org.refact4j.model.FooDesc;
 
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
@@ -32,7 +29,7 @@ public class EntitySetTest {
         xmlData += "<Foo name='foo3' id='3'/>";
 
         List<EntityObject> entityObjects = EntityXmlReaderHelper.parse(DummyRepository.get(), xmlData);
-        return EntitySetBuilder.init().addAll(entityObjects).getEntitySet();
+        return EntitySetBuilder.init().addAll(entityObjects).get();
     }
 
     public static EntitySet createEntitySetWithAnotherDummies() {
@@ -41,14 +38,14 @@ public class EntitySetTest {
         xmlData += "<Bar name='bar2' id='2'/>";
 
         List<EntityObject> entityObjects = EntityXmlReaderHelper.parse(DummyRepository.get(), xmlData);
-        return EntitySetBuilder.init().addAll(entityObjects).getEntitySet();
+        return EntitySetBuilder.init().addAll(entityObjects).get();
     }
 
     private static EntitySet createEntitySet() {
         EntitySet entityObjectSet1 = createEntitySetWithDummies();
         EntitySet entityObjectSet2 = createEntitySetWithAnotherDummies();
         return EntitySetBuilder.init().addAll(entityObjectSet1).addAll(entityObjectSet2)
-                .getEntitySet();
+                .get();
     }
 
     public static EntitySet createSampleEntitySet() {
@@ -60,7 +57,7 @@ public class EntitySetTest {
         xmlData += "<Foo bar='2' name='foo3' id='3'/>";
 
         List<EntityObject> entityObjects = EntityXmlReaderHelper.parse(DummyRepository.get(), xmlData);
-        return EntitySetBuilder.init().addAll(entityObjects).getEntitySet();
+        return EntitySetBuilder.init().addAll(entityObjects).get();
     }
 
     @Test
@@ -71,7 +68,7 @@ public class EntitySetTest {
 
         List<EntityObject> entityObjects = EntityXmlReaderHelper.parse(DummyRepository.get(), xmlData);
         EntityObject entityObject = EntityXmlReaderHelper.parse(FooDesc.INSTANCE, "<Foo name='foo3' id='3'/>").get(0);
-        EntitySet entityObjectSet = EntitySetBuilder.init().addAll(entityObjects).add(entityObject).getEntitySet();
+        EntitySet entityObjectSet = EntitySetBuilder.init().addAll(entityObjects).add(entityObject).get();
 
         assertTrue(entityObjectSet.containsAll(entityObjects));
         assertTrue(entityObjectSet.contains(entityObject));
@@ -90,7 +87,7 @@ public class EntitySetTest {
         EntitySet entityObjectSet1 = createEntitySetWithDummies();
         EntitySet entityObjectSet2 = createEntitySetWithAnotherDummies();
         EntitySet entityObjectSet = EntitySetBuilder.init().addAll(entityObjectSet1).addAll(entityObjectSet2)
-                .getEntitySet();
+                .get();
 
         testGetEntitiesByEntityDescriptor(entityObjectSet1, entityObjectSet2, entityObjectSet);
         EntitySet entitySet = new EntitySetImpl(entityObjectSet);
@@ -127,7 +124,7 @@ public class EntitySetTest {
     @Test
     public void testGetEntitiesByEntityDescriptorAndUnaryPredicate() {
         EntitySet entityObjectSet1 = createEntitySetWithDummies();
-        EntitySet entityObjectSet = EntitySetBuilder.init().addAll(entityObjectSet1).getEntitySet();
+        EntitySet entityObjectSet = EntitySetBuilder.init().addAll(entityObjectSet1).get();
         EntityObject entityObject = EntityXmlReaderHelper.parse(FooDesc.INSTANCE, "<FooDesc name='dummy4' id='4'/>").get(0);
         entityObjectSet.add(entityObject);
 
@@ -244,7 +241,9 @@ public class EntitySetTest {
     }
 
     private void testEntitySetGetEntitiesByEntityDescriptorFieldAndValue(EntitySet entityObjectSet) {
-        Collection<EntityObject> entityObjects = entityObjectSet.getEntities(FooDesc.INSTANCE, FooDesc.NAME, "foo1");
+        Collection<EntityObject> entityObjects = entityObjectSet.stream()
+                .filter(e -> Objects.equals(e.get(FooDesc.NAME), "foo1"))
+                .collect(Collectors.toList());
         Key key = KeyBuilder.init(FooDesc.INSTANCE).set(FooDesc.ID, 1).getKey();
         EntityObject entityObject = entityObjectSet.findByIdentifier(key);
         assertEquals(entityObject, entityObjects.iterator().next());

@@ -13,6 +13,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Objects;
 import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 public class EntityDataSet extends EntitySetImpl implements DatasetHolder {
 
@@ -27,8 +28,9 @@ public class EntityDataSet extends EntitySetImpl implements DatasetHolder {
     }
 
     public List<EntityObject> getEntities(EntityDescriptor entityDescriptor, Field field, Object value) {
-//        return EntitySetBuilder.init().addAll(this).getEntitySet().getEntities(entityDescriptor, field, value);
-        return EntitySetBuilder.init().addAll(this).getEntitySet().getEntities(entityDescriptor, field, value);
+        return EntitySetBuilder.init().addAll(this).get().stream()
+                .filter(e -> Objects.equals(e.get(field), value))
+                .collect(Collectors.toList());
     }
 
     public Set<EntityObject, Key, EntityDescriptor> getDataSet() {

@@ -42,7 +42,7 @@ public abstract class AbstractEntityStringifierRepoFactory implements EntityStri
 
     private void init(EntityStringifierRepo initalEntityStringifierRepository) {
         entityObjectSet = EntitySetBuilder.init().addAll(
-                EntityXmlReaderHelper.unmarshal(metaModelRepository, xmlStringifier)).getEntitySet();
+                EntityXmlReaderHelper.unmarshal(metaModelRepository, xmlStringifier)).get();
         stringifierRepositoryBuilder = EntityStringifierRepoBuilder.init(initalEntityStringifierRepository);
         stringifierRepositoryBuilder.setEntityDescriptorRepository(this.entityDescriptorRepository);
     }

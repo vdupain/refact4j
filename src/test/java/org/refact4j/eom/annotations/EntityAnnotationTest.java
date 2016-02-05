@@ -51,7 +51,7 @@ public class EntityAnnotationTest {
 
         AnnotedEntityBindableBeanConverter beanTransformer = new AnnotedEntityBindableBeanConverter();
 
-        EntityFinder entityObjectFinder = EntitySetBuilder.init().addAll(entityObjects).getEntitySet();
+        EntityFinder entityObjectFinder = EntitySetBuilder.init().addAll(entityObjects).get();
         beanTransformer.setEntityFinder(entityObjectFinder);
 
         Foo actualFoo = (Foo) beanTransformer.convert(fooEntity);

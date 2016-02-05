@@ -93,7 +93,7 @@ public class MetaModelTest {
                 + "<version id='2' name='v2' beginDate='06/01/07' endDate='06/30/07' foo='2'/>"
                 + "</dataset>";
         List<EntityObject> dataEntities = EntityXmlReaderHelper.unmarshal(repository, DATA_XML);
-        EntitySet entityObjectSet = EntitySetBuilder.init().addAll(dataEntities).getEntitySet();
+        EntitySet entityObjectSet = EntitySetBuilder.init().addAll(dataEntities).get();
         EntityFieldValuePredicate getEntityByKeyPredicate = new EntityFieldValuePredicate();
         getEntityByKeyPredicate.setField(repository.getEntityDescriptor("version").getField("id"));
         getEntityByKeyPredicate.setValue(2);

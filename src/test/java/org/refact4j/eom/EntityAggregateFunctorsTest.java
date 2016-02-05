@@ -51,7 +51,7 @@ public class EntityAggregateFunctorsTest {
         fooEntityDescriptor = repository.getEntityDescriptor("foo");
         barEntityDescriptor = repository.getEntityDescriptor("bar");
         entityObjects = EntitySetBuilder.init().addAll(
-                EntityXmlReaderHelper.unmarshal(repository, dataXml)).getEntitySet();
+                EntityXmlReaderHelper.unmarshal(repository, dataXml)).get();
     }
 
     @Test

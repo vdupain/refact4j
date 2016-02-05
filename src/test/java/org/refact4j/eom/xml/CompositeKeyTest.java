@@ -52,7 +52,7 @@ public class CompositeKeyTest {
                 EOMMetaModelRepository.get(), metaModelXml, null)
                 .createEntityDescriptorRepository();
         entityObjects = EntitySetBuilder.init().addAll(
-                EntityXmlReaderHelper.unmarshal(repository, dataXml)).getEntitySet();
+                EntityXmlReaderHelper.unmarshal(repository, dataXml)).get();
 
     }
 

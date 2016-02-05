@@ -30,7 +30,7 @@ public final class EntitySetBuilder {
         return this;
     }
 
-    public EntitySet getEntitySet() {
+    public EntitySet get() {
         return this.entityObjectSet;
     }
 
