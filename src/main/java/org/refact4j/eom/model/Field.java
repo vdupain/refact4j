@@ -14,7 +14,7 @@ import java.io.Serializable;
  * DataField (IntegerField, DoubleField, BooleanField, StringField, DateField)
  * and RelationField (ToOneRelationField, ToManyRelationField).
  */
-public interface Field extends DataType, Property, ToEntity, ToXmlString, Serializable, Externalizable {
+public interface Field extends DataType, ToEntity, ToXmlString, Serializable, Externalizable {
 
     /**
      * Returns the internal name of the field. The internal name must be unique

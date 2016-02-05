@@ -18,8 +18,7 @@ public class FooDesc {
 
     public static final StringField NAME = FieldFactory.init(builder, "name")
             .setOrder(2).setPrettyName("The Name").setNullable(false)
-            .setDefaultValue("").setMaxLength(20).addProperty("key1", "value1")
-            .addProperty("key2", "value2").createStringField();
+            .setDefaultValue("").setMaxLength(20).createStringField();
 
     public static final DoubleField VALUE = FieldFactory.init(builder, "value")
             .setOrder(4).setNullable(true).createDoubleField();

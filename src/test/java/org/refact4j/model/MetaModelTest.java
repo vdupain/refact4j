@@ -27,14 +27,7 @@ public class MetaModelTest {
             "<dataset>"
                     + "<entityDescriptorRepository>"
                     + "<entityDescriptor name='foo'>"
-                    + "    <property key='aKey1' value='1' dataType='integer'/>"
-                    + " <property key='aKey2' value='bar.name' dataType='string'/>"
-                    + " <property key='aKey3' value='07/10/2003' dataType='date'/>"
-                    + " <property key='aKey4' value='xxx' dataType='string'/>"
-                    + "    <field name='id' order='2' isKey='true' dataType='integer' defaultValue='-1'>"
-                    + "        <property key='key1' value='true' dataType='boolean'/>"
-                    + "        <property key='key2' value='1.23' dataType='double'/>"
-                    + "    </field>"
+                    + "    <field name='id' order='2' isKey='true' dataType='integer' defaultValue='-1'/>"
                     + "     <field name='timestampDate' dataType='date'/>"
                     + "    <field name='field1' prettyName='a field #1' dataType='string' defaultValue='azerty'/>"
                     + "    <field name='field2' dataType='string' minLength='3' maxLength='5' />"
@@ -85,18 +78,7 @@ public class MetaModelTest {
                         .createEntityStringifierRepository();
         fooEntityDescriptor = repository.getEntityDescriptor("foo");
     }
-
-    @Test
-    public void testProperties() {
-        assertEquals(1, fooEntityDescriptor.getProperty("aKey1"));
-        assertEquals("bar.name", fooEntityDescriptor.getProperty("aKey2"));
-        assertEquals(EntityUtils.parseDate("07/10/2003"), fooEntityDescriptor.getProperty("aKey3"));
-        assertEquals(true, fooEntityDescriptor.getField("id").getProperty("key1"));
-        assertEquals(1.23, fooEntityDescriptor.getField("id").getProperty("key2"));
-        assertEquals(false, fooEntityDescriptor.getField("bars").getProperty("key1"));
-        assertEquals("value2", fooEntityDescriptor.getField("bars").getProperty("key2"));
-    }
-
+    
     @Test
     public void testNominal() {
         String DATA_XML = "<dataset>" + "<foo id='1' field1='foo1' field2='a' />"

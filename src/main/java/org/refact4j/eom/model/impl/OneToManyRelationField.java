@@ -20,9 +20,9 @@ public class OneToManyRelationField extends AbstractRelationField implements org
     public OneToManyRelationField(String fieldName, String prettyName, EntityDescriptor entityDescriptor,
                                   EntityDescriptor targetEntityDescriptor, ManyToOneRelationField inverseRelationField,
                                   Collection<EntityObject> defaultValue, boolean nullable, boolean visible, boolean editable, Integer order,
-                                  Property property, Expression<Collection<EntityObject>> constraint) {
+                                  Expression<Collection<EntityObject>> constraint) {
         super(fieldName, prettyName, entityDescriptor, targetEntityDescriptor, inverseRelationField, defaultValue,
-                nullable, visible, editable, order, property, constraint);
+                nullable, visible, editable, order, constraint);
     }
 
     public void accept(DataTypeVisitor dataTypeVisitor) {

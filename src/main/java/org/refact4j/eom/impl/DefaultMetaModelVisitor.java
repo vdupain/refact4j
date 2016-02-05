@@ -44,8 +44,6 @@ public class DefaultMetaModelVisitor implements MetaModelVisitor, ToXmlString {
 
     public void visitField(Field field) {
         dataSet.add(field.toEntity());
-        org.refact4j.eom.EntityList properties = getPropertiesAsEntityList((PropertyImpl) field.getProperty(), null, field.toEntity());
-        dataSet.addAll(properties);
     }
 
     private org.refact4j.eom.EntityList getPropertiesAsEntityList(PropertyImpl property, EntityObject entityDescEntity,

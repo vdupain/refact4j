@@ -87,35 +87,4 @@ public class StringFieldTest extends AbstractFieldTestCase {
         checkFieldValue(field, "12345678901",
                 "((name.length>=5) AND (name.length<=10))");
     }
-
-    @Test
-    public void testFieldProperty() {
-        StringField field = FieldFactory.init(entityDescriptorBuilder, "name")
-                .addProperty("key1", "value1").addProperty("key2", "value2")
-                .createStringField();
-        Property property = field.getProperty();
-        assertEquals("value1", property.getProperty("key1"));
-        assertEquals("value1", field.getProperty("key1"));
-        assertEquals("value2", property.getProperty("key2"));
-        assertEquals("value2", field.getProperty("key2"));
-        assertEquals(null, field.getProperty("???"));
-        assertEquals(property, property.getProperty());
-
-        field.addProperty("key3", "value3");
-        assertEquals("value3", property.getProperty("key3"));
-        assertEquals("value3", field.getProperty("key3"));
-    }
-
-    @Test
-    public void testFieldPropertyWithDoublonKeys() {
-        try {
-            FieldFactory.init(entityDescriptorBuilder, "name").addProperty("key1",
-                    "value").addProperty("key1", "value2").createStringField();
-            fail("RuntimeException Expected");
-        } catch (Exception e) {
-            assertEquals("Property with key 'key1' already exists", e
-                    .getMessage());
-        }
-    }
-
 }

@@ -29,15 +29,13 @@ public abstract class AbstractField implements Field {
 
     private Integer order;
 
-    private Property property;
-
     private Expression<?> constraint;
 
     AbstractField() {
     }
 
     AbstractField(String fieldName, String prettyName, EntityDescriptor entityDescriptor, Object defaultValue,
-                  boolean nullable, boolean visible, boolean editable, Integer order, Property property,
+                  boolean nullable, boolean visible, boolean editable, Integer order,
                   Expression<?> constraint) {
         this.fieldName = fieldName;
         this.prettyName = prettyName;
@@ -47,7 +45,6 @@ public abstract class AbstractField implements Field {
         this.visible = visible;
         this.editable = editable;
         this.order = order;
-        this.property = property;
         this.constraint = constraint;
     }
 
@@ -122,18 +119,6 @@ public abstract class AbstractField implements Field {
 
     public String toString() {
         return Stringifiers.FIELD_PRETTY.stringify(this);
-    }
-
-    public void addProperty(Object key, Object value) {
-        this.property.addProperty(key, value);
-    }
-
-    public Object getProperty(Object key) {
-        return this.property.getProperty(key);
-    }
-
-    public Property getProperty() {
-        return this.property;
     }
 
     @Override

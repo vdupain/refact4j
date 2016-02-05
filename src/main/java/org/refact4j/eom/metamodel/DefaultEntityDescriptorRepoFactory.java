@@ -99,14 +99,6 @@ public class DefaultEntityDescriptorRepoFactory implements EntityDescriptorRepos
                 entityDescriptor.addProperty(keyValuePair.key, keyValuePair.value);
             }
 
-            for (Field field : entityDescriptor.getFields()) {
-                List<EntityObject> properties = metaModelSet.getAll(PropertyDesc.INSTANCE).stream()
-                        .filter(PropertyDesc.getPropertiesForField(field)).collect(Collectors.toList());
-                for (EntityObject entityObject : properties) {
-                    PropertyDesc.KeyValuePair keyValuePair = getKeyValuePair(metaModelSet, entityObject);
-                    field.addProperty(keyValuePair.key, keyValuePair.value);
-                }
-            }
         }
         return repository;
     }

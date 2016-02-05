@@ -200,17 +200,6 @@ public class EntityObjectTest {
     }
 
     @Test
-    public void testFieldProperty() {
-        Property property = FooDesc.NAME.getProperty();
-        assertEquals("value1", property.getProperty("key1"));
-        assertEquals("value1", FooDesc.NAME.getProperty("key1"));
-        assertEquals("value2", property.getProperty("key2"));
-        assertEquals("value2", FooDesc.NAME.getProperty("key2"));
-        assertEquals(null, FooDesc.VALUE.getProperty("???"));
-        assertEquals(property, property.getProperty());
-    }
-
-    @Test
     public void testClone() throws CloneNotSupportedException {
         testClone(foo);
         testClone(fooDecorated);

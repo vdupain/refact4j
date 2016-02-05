@@ -3,7 +3,10 @@ package org.refact4j.eom.model.impl;
 import org.refact4j.eom.EntityObject;
 import org.refact4j.eom.metamodel.DataTypeType;
 import org.refact4j.eom.metamodel.FieldDesc;
-import org.refact4j.eom.model.*;
+import org.refact4j.eom.model.DataTypeVisitor;
+import org.refact4j.eom.model.EntityDescriptor;
+import org.refact4j.eom.model.FieldVisitor;
+import org.refact4j.eom.model.IntegerField;
 import org.refact4j.expr.Expression;
 
 @SuppressWarnings("serial")
@@ -15,8 +18,8 @@ public class IntegerFieldImpl extends AbstractNumberField implements IntegerFiel
 
     public IntegerFieldImpl(String fieldName, String prettyName, EntityDescriptor entityDescriptor,
                             Integer defaultValue, boolean nullable, boolean visible, boolean editable, Integer order,
-                            Property property, Expression<Integer> constraint) {
-        super(fieldName, prettyName, entityDescriptor, defaultValue, nullable, visible, editable, order, property,
+                            Expression<Integer> constraint) {
+        super(fieldName, prettyName, entityDescriptor, defaultValue, nullable, visible, editable, order,
                 constraint);
     }
 

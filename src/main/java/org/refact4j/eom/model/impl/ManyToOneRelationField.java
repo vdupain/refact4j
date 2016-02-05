@@ -14,10 +14,10 @@ public class ManyToOneRelationField extends AbstractRelationField implements org
 
     public ManyToOneRelationField(String fieldName, String prettyName, EntityDescriptor entityDescriptor,
                                   EntityDescriptor targetEntityDesc, OneToManyRelationField inverseRelationField, Key defaultValue,
-                                  boolean nullable, boolean visible, boolean editable, Integer order, Property property,
+                                  boolean nullable, boolean visible, boolean editable, Integer order,
                                   Expression<Key> constraint) {
         super(fieldName, prettyName, entityDescriptor, targetEntityDesc, inverseRelationField, defaultValue, nullable,
-                visible, editable, order, property, constraint);
+                visible, editable, order, constraint);
     }
 
     public void accept(DataTypeVisitor dataTypeVisitor) {

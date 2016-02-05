@@ -17,9 +17,9 @@ public abstract class AbstractNumberField extends AbstractField implements Numer
     }
 
     AbstractNumberField(String fieldName, String prettyName, EntityDescriptor entityDesc, Number defaultValue,
-                        boolean nullable, boolean visible, boolean editable, Integer order, Property property,
+                        boolean nullable, boolean visible, boolean editable, Integer order,
                         Expression<? extends Number> constraint) {
-        super(fieldName, prettyName, entityDesc, defaultValue, nullable, visible, editable, order, property, constraint);
+        super(fieldName, prettyName, entityDesc, defaultValue, nullable, visible, editable, order, constraint);
     }
 
     @Override
