@@ -65,9 +65,9 @@ public class DatasetRefXmlTest {
 
     @Test
     public void testDatasetRefFileNotFound() {
-        XML = XML.replace("test_datasetref.xml", "unkown.xml");
+        String xml = XML.replace("test_datasetref.xml", "unkown.xml");
         try {
-            dataset2XmlConverter.unmarshal(XML, dataset);
+            dataset2XmlConverter.unmarshal(xml, dataset);
             fail("RuntimeException Expected");
         } catch (RuntimeException e) {
             assertEquals(
