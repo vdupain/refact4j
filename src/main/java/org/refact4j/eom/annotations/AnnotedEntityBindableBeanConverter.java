@@ -74,15 +74,19 @@ public class AnnotedEntityBindableBeanConverter<T> extends AbstractBeanConverter
                         for (Field f : targetEntity.getEntityDescriptor().getFields()) {
                             targetEntity.set(f, key.getFieldValue(f));
                         }
-                        AnnotedEntityBindableBeanConverter<?> functor = new AnnotedEntityBindableBeanConverter<>();
+                        AnnotedEntityBindableBeanConverter<?> converter = new AnnotedEntityBindableBeanConverter<>();
                         if (entitySet != null) {
-                            EntityObject target = entitySet.findByIdentifier(targetEntity.getKey());
+                            final Key targetKey = targetEntity.getKey();
+                            EntityObject target = entitySet.stream()
+                                    .filter(p -> p.getKey().equals(targetKey))
+                                    .findFirst().get();
+
                             if (target != null) {
                                 targetEntity = target;
                             }
-                            functor.setEntitySet(entitySet);
+                            converter.setEntitySet(entitySet);
                         }
-                        result = functor.convert(targetEntity);
+                        result = converter.convert(targetEntity);
                     }
                 } else {
                     result = this.entityObject.get(field);

@@ -165,7 +165,9 @@ public class DefaultEntityDescriptorRepoFactory implements EntityDescriptorRepos
     private void createFields(EntityDescriptorBuilder builder, List<EntityObject> fields) {
         FieldBuilder fieldBuilder = (fieldEntity, fieldFactory) -> {
             Key keyDataType = fieldEntity.get(FieldDesc.DATA_TYPE);
-            DataTypeEntity dataTypeEntity = (DataTypeEntity) metaModelSet.findByIdentifier(keyDataType);
+            DataTypeEntity dataTypeEntity = (DataTypeEntity) metaModelSet.stream()
+                    .filter(p -> p.getKey().equals(keyDataType))
+                    .findFirst().get();
             DataType dataType = dataTypeEntity.getDataType();
             dataType.accept(fieldFactory);
             return fieldFactory.getField();

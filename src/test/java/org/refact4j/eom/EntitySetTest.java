@@ -187,7 +187,9 @@ public class EntitySetTest {
         assertTrue(list.contains(entityObject));
         KeyImpl key = new KeyImpl(BarDesc.INSTANCE);
         key.add(BarDesc.ID, 1);
-        assertTrue(list.contains(collection.findByIdentifier(key)));
+        assertTrue(list.contains(collection.stream()
+                .filter(p -> p.getKey().equals(key))
+                .findFirst().get()));
     }
 
     @Test
@@ -204,7 +206,9 @@ public class EntitySetTest {
     private void testEntitySetContainsEntity(EntitySet entityObjectSet) {
         KeyImpl key = new KeyImpl(FooDesc.INSTANCE);
         key.add(FooDesc.ID, 1);
-        EntityObject entityObject = entityObjectSet.findByIdentifier(key);
+        EntityObject entityObject = entityObjectSet.stream()
+                .filter(p -> p.getKey().equals(key))
+                .findFirst().get();
         assertTrue(entityObjectSet.contains(entityObject));
         assertFalse(createEntitySetWithAnotherDummies().contains(entityObject));
     }
@@ -245,7 +249,9 @@ public class EntitySetTest {
                 .filter(e -> Objects.equals(e.get(FooDesc.NAME), "foo1"))
                 .collect(Collectors.toList());
         Key key = KeyBuilder.init(FooDesc.INSTANCE).set(FooDesc.ID, 1).getKey();
-        EntityObject entityObject = entityObjectSet.findByIdentifier(key);
+        EntityObject entityObject = entityObjectSet.stream()
+                .filter(p -> p.getKey().equals(key))
+                .findFirst().get();
         assertEquals(entityObject, entityObjects.iterator().next());
     }
 

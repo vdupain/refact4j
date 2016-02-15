@@ -42,7 +42,10 @@ public class EntityChangeSetTest extends AbstractChangeSetTest {
             });
         }
 
-        foo3 = entitySet.findByIdentifier(KeyBuilder.init(FooDesc.INSTANCE).set(FooDesc.ID, 3).getKey());
+        foo3 = entitySet.stream()
+                .filter(p -> p.getKey().equals(KeyBuilder.init(FooDesc.INSTANCE).set(FooDesc.ID, 3).getKey()))
+                .findFirst().get();
+
         // update
         foo3.set(FooDesc.VALUE, 1.2345);
         foo3.set(FooDesc.FLAG, true);

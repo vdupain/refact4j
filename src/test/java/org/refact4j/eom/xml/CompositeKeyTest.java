@@ -63,10 +63,14 @@ public class CompositeKeyTest {
 
         Key bar4Key = KeyBuilder.init(barType).set(barType.getField("id"), 4)
                 .getKey();
-        EntityObject bar4 = entityObjects.findByIdentifier(bar4Key);
+        EntityObject bar4 = entityObjects.stream()
+                .filter(p -> p.getKey().equals(bar4Key))
+                .findFirst().get();
         Key foo1Key = KeyBuilder.init(fooType).set(fooType.getField("id1"), 1)
                 .set(fooType.getField("id2"), "abc").getKey();
-        EntityObject foo1 = entityObjects.findByIdentifier(foo1Key);
+        EntityObject foo1 = entityObjects.stream()
+                .filter(p -> p.getKey().equals(foo1Key))
+                .findFirst().get();
         assertEquals(bar4.get(barType.getField("foo")), foo1.getKey());
     }
 }

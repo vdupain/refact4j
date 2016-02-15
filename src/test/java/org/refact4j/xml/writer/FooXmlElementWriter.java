@@ -1,6 +1,7 @@
 package org.refact4j.xml.writer;
 
 import org.refact4j.eom.EntityObject;
+import org.refact4j.eom.impl.EntityList;
 import org.refact4j.eom.model.Key;
 import org.refact4j.model.BarDesc;
 import org.refact4j.model.FooDesc;
@@ -20,7 +21,10 @@ public class FooXmlElementWriter extends AbstractXmlElementWriter {
         xmlWriter.writeAttribute(FooDesc.NAME.getName(), dummy.get(FooDesc.NAME));
         Key parent = dummy.get(FooDesc.BAR);
         if (parent != null) {
-            EntityObject parentEntity = (EntityObject) this.getDataSet().findByIdentifier(parent);
+            EntityList list = new EntityList(this.getDataSet());
+            EntityObject parentEntity = list.stream()
+                    .filter(p -> p.getKey().equals(parent))
+                    .findFirst().get();
             if (parentEntity != null) {
                 xmlWriter.writeAttribute("parent", parentEntity.get(BarDesc.NAME));
             }
