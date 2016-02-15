@@ -15,7 +15,7 @@ public abstract class AbstractChangeSetTest {
         changeSet = collectionDecorator.getChangeSet();
     }
 
-    protected abstract List populateInitial();
+    protected abstract java.util.List populateInitial();
 
     protected abstract void generateDelta();
 

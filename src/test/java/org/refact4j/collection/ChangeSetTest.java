@@ -2,14 +2,15 @@ package org.refact4j.collection;
 
 import org.junit.Assert;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 
 
 public class ChangeSetTest extends AbstractChangeSetTest {
     private MyBean bean1;
 
-    protected List populateInitial() {
-        List collection = new List();
+    protected java.util.List populateInitial() {
+        java.util.List collection = new ArrayList();
         collection.add("a1");
         collection.add("a2");
         collection.add("a3");

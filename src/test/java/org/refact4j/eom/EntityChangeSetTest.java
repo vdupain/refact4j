@@ -4,7 +4,6 @@ import org.junit.Assert;
 import org.refact4j.collection.AbstractChangeSetTest;
 import org.refact4j.collection.ChangeSetDelta;
 import org.refact4j.collection.ChangeSetImpl;
-import org.refact4j.collection.List;
 import org.refact4j.eom.impl.ChangeSetEntityObjectListener;
 import org.refact4j.eom.impl.EntitySet;
 import org.refact4j.eom.model.KeyBuilder;
@@ -13,13 +12,15 @@ import org.refact4j.evt.EventLogger;
 import org.refact4j.model.DummyRepository;
 import org.refact4j.model.FooDesc;
 
+import java.util.ArrayList;
+
 public class EntityChangeSetTest extends AbstractChangeSetTest {
     private EntityObject foo;
     private EntityObject foo3;
     private final EventLogger eventLogger = new EventLogger();
 
-    protected List populateInitial() {
-        List list = new List();
+    protected java.util.List populateInitial() {
+        java.util.List list = new ArrayList();
         list.addAll(EntitySetTest.createSampleEntitySet());
         return list;
     }

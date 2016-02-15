@@ -13,10 +13,6 @@ public class Set<T, ID, TYPE> extends HashSet<T> implements Finder<T, ID, TYPE> 
         return this.stream().filter(p -> getIdResolver().getId(p).equals(id)).findFirst().get();
     }
 
-    public T findByIdentifier(TYPE type, ID id) {
-        return this.getAll(type).stream().filter(p -> getIdResolver().getId(p).equals(id)).findFirst().get();
-    }
-
     public List<T> getAll(final TYPE type) {
         return this.stream().filter(t -> getTypeResolver().isSameType(type, getTypeResolver().getTypeOf(t)))
                 .collect(Collectors.toList());
