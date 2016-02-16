@@ -24,7 +24,7 @@ public class EntityDataSet extends EntitySet implements DatasetHolder {
     }
 
 
-    public Set<EntityObject, Key, EntityDescriptor> getDataSet() {
+    public Set<EntityObject> getDataSet() {
         return this;
     }
 

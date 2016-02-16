@@ -9,7 +9,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class EntitySet extends Set<EntityObject, Key, EntityDescriptor> {
+public class EntitySet extends Set<EntityObject> {
 
 
     public EntitySet() {
