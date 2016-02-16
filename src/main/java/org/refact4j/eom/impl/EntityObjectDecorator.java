@@ -157,10 +157,6 @@ public class EntityObjectDecorator implements EntityObject {
         return this.entityObject.toString();
     }
 
-    public Key getId() {
-        return this.entityObject.getId();
-    }
-
     public void readExternal(ObjectInput in) throws IOException, ClassNotFoundException {
         this.entityObject.readExternal(in);
     }

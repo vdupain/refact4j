@@ -1,6 +1,5 @@
 package org.refact4j.eom;
 
-import org.refact4j.core.Identifiable;
 import org.refact4j.eom.model.*;
 import org.refact4j.evt.Listenable;
 import org.refact4j.expr.Expression;
@@ -20,7 +19,7 @@ import java.util.Date;
  */
 
 public interface EntityObject extends Cloneable, ToXML, ToXmlString, Serializable, Externalizable, Iterable<Field>,
-        Identifiable<Key>, Listenable<EntityObjectListener> {
+        Listenable<EntityObjectListener> {
 
     /**
      * Returns the EntityDescriptor associated with the EntityObject.
@@ -38,11 +37,6 @@ public interface EntityObject extends Cloneable, ToXML, ToXmlString, Serializabl
         KeyBuilder keyBuilder = KeyBuilder.init(this.getEntityDescriptor());
         this.getEntityDescriptor().getKeyFields().stream().forEach(field -> keyBuilder.set(field, get(field)));
         return keyBuilder.getKey();
-    }
-
-    @Override
-    default Key getId() {
-        return this.getKey();
     }
 
     /**

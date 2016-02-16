@@ -33,7 +33,7 @@ public class EntityChangeSetTest extends AbstractChangeSetTest {
             e.registerListener(new EntityObjectListener() {
 
                 public void notifyEntityObjectChange(EntityObjectEvent event, ChangeSetDelta<EntityObject> delta) {
-                    eventLogger.log("delta").add("source", event.getSource().getId()).add("property",
+                    eventLogger.log("delta").add("source", event.getSource().getKey()).add("property",
                             delta.getProperty()).add("old", delta.getOldValue()).add("new", delta.getNewValue());
                 }
 
@@ -64,7 +64,7 @@ public class EntityChangeSetTest extends AbstractChangeSetTest {
         for (EntityObject entityObject : updated) {
             for (Object o : changeSet.getDeltas(entityObject)) {
                 ChangeSetDelta<EntityObject> delta = (ChangeSetDelta<EntityObject>) o;
-                actualEventLogger.log("delta").add("source", delta.getSource().getId()).add("property",
+                actualEventLogger.log("delta").add("source", delta.getSource().getKey()).add("property",
                         delta.getProperty()).add("old", delta.getOldValue()).add("new", delta.getNewValue());
             }
         }
