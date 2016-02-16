@@ -18,10 +18,6 @@ public final class EntityObjectBuilder implements Supplier<EntityObject> {
         return new EntityObjectBuilder(entityDescriptor);
     }
 
-    public static EntityObjectBuilder init(EntityObject entityObject) {
-        return new EntityObjectBuilder(entityObject.getEntityDescriptor());
-    }
-
     public static EntityObjectBuilder initWithDefaultValues(EntityDescriptor entityDescriptor) {
         EntityObjectBuilder builder = new EntityObjectBuilder(entityDescriptor);
         EntityUtils.applyDefaultValues(builder.entityObject);
