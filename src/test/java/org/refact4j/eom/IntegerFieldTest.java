@@ -14,7 +14,6 @@ public class IntegerFieldTest extends AbstractFieldTestCase {
 
     @Test
     public void testCheckValues() throws Exception {
-
         IntegerField field = FieldFactory.init(entityDescriptorBuilder, "id")
                 .createIntegerField();
         entityDescriptorBuilder.setConstraint(ExpressionBuilder.init(field)

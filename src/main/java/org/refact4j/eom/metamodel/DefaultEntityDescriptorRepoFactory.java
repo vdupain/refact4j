@@ -2,10 +2,8 @@ package org.refact4j.eom.metamodel;
 
 import org.refact4j.eom.ConverterHelper;
 import org.refact4j.eom.EntityObject;
-import org.refact4j.eom.EntitySetBuilder;
 import org.refact4j.eom.EntityUtils;
 import org.refact4j.eom.impl.EntityDataSet;
-import org.refact4j.eom.impl.EntityList;
 import org.refact4j.eom.impl.EntitySet;
 import org.refact4j.eom.metamodel.xml.EOMXmlDescriptor;
 import org.refact4j.eom.model.*;
@@ -60,8 +58,8 @@ public class DefaultEntityDescriptorRepoFactory implements EntityDescriptorRepos
         converter.register(new EntityXmlDescriptor(EOMMetaModelRepository.get()));
         converter.register(new EOMXmlDescriptor(metaModelEntityDescriptorRepository));
         converter.unmarshal(xmlMetaModel, actualDataset);
-        metaModelSet = EntitySetBuilder.init().addAll(new EntityList(actualDataset))
-                .addAll(DataTypeType.DATA_TYPES).get();
+        metaModelSet = new EntitySet(actualDataset);
+        metaModelSet.addAll(DataTypeType.DATA_TYPES);
         EntityDescriptorRepositoryBuilder repoBuilder = EntityDescriptorRepositoryBuilder
                 .init(initialEntityDescriptorRepository);
         List<EntityObject> entityDescs = metaModelSet.stream()
@@ -172,7 +170,7 @@ public class DefaultEntityDescriptorRepoFactory implements EntityDescriptorRepos
                     .findFirst().get();
             DataType dataType = dataTypeEntity.getDataType();
             dataType.accept(fieldFactory);
-            return fieldFactory.getField();
+            return fieldFactory.get();
         };
         this.createFields(builder, fields, fieldBuilder);
     }

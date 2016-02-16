@@ -5,7 +5,6 @@ import org.junit.Before;
 import org.junit.Test;
 import org.refact4j.eom.EOMContext;
 import org.refact4j.eom.EntityObject;
-import org.refact4j.eom.EntitySetBuilder;
 import org.refact4j.eom.impl.EOMContextImpl;
 import org.refact4j.eom.impl.EntityList;
 import org.refact4j.eom.impl.EntitySet;
@@ -51,8 +50,7 @@ public class EntityAnnotationTest {
 
         AnnotedEntityBindableBeanConverter beanTransformer = new AnnotedEntityBindableBeanConverter();
 
-        EntitySet entitySet = EntitySetBuilder.init().addAll(entityObjects).get();
-        beanTransformer.setEntitySet(entitySet);
+        beanTransformer.setEntitySet(new EntitySet((entityObjects)));
 
         Foo actualFoo = (Foo) beanTransformer.convert(fooEntity);
         System.err.println(actualFoo.toString());

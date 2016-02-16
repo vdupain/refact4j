@@ -163,9 +163,6 @@ public final class FieldFactory implements DataTypeVisitor {
     }
 
 
-    public void visitDataType(DataType dataType) {
-    }
-
     public void visitIntegerType(IntegerType integerType) {
         field = this.createIntegerField();
     }
@@ -195,7 +192,7 @@ public final class FieldFactory implements DataTypeVisitor {
     public void visitOneToOneRelationType(OneToOneRelationType oneToOneRelationType) {
     }
 
-    public Field getField() {
+    public Field get() {
         return field;
     }
 

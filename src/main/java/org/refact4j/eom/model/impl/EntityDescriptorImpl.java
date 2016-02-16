@@ -17,7 +17,6 @@ import java.io.ObjectInput;
 import java.io.ObjectOutput;
 import java.util.*;
 import java.util.stream.Collectors;
-import java.util.stream.StreamSupport;
 
 public class EntityDescriptorImpl implements EntityDescriptor {
     private final List<Field> orderedFields = new ArrayList<>();
@@ -36,11 +35,6 @@ public class EntityDescriptorImpl implements EntityDescriptor {
 
     public EntityDescriptorImpl(String name) {
         this.name = name;
-    }
-
-    public static <T> java.util.List<T> toList(final Iterable<T> iterable) {
-        return StreamSupport.stream(iterable.spliterator(), false)
-                .collect(Collectors.toList());
     }
 
     public String getName() {

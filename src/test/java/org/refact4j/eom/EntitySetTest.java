@@ -28,8 +28,7 @@ public class EntitySetTest {
         xmlData += "<Foo name='foo2' id='2'/>";
         xmlData += "<Foo name='foo3' id='3'/>";
 
-        List<EntityObject> entityObjects = EntityXmlReaderHelper.parse(DummyRepository.get(), xmlData);
-        return EntitySetBuilder.init().addAll(entityObjects).get();
+        return new EntitySet(EntityXmlReaderHelper.parse(DummyRepository.get(), xmlData));
     }
 
     private static EntitySet createEntitySetWithAnotherDummies() {
@@ -37,15 +36,14 @@ public class EntitySetTest {
         xmlData += "<Bar name='bar1' id='1'/>";
         xmlData += "<Bar name='bar2' id='2'/>";
 
-        List<EntityObject> entityObjects = EntityXmlReaderHelper.parse(DummyRepository.get(), xmlData);
-        return EntitySetBuilder.init().addAll(entityObjects).get();
+        return new EntitySet(EntityXmlReaderHelper.parse(DummyRepository.get(), xmlData));
     }
 
     private static EntitySet createEntitySet() {
         EntitySet entityObjectSet1 = createEntitySetWithDummies();
         EntitySet entityObjectSet2 = createEntitySetWithAnotherDummies();
-        return EntitySetBuilder.init().addAll(entityObjectSet1).addAll(entityObjectSet2)
-                .get();
+        entityObjectSet1.addAll(entityObjectSet2);
+        return entityObjectSet1;
     }
 
     public static EntitySet createSampleEntitySet() {
@@ -56,8 +54,7 @@ public class EntitySetTest {
         xmlData += "<Foo bar='1' name='foo2' id='2'/>";
         xmlData += "<Foo bar='2' name='foo3' id='3'/>";
 
-        List<EntityObject> entityObjects = EntityXmlReaderHelper.parse(DummyRepository.get(), xmlData);
-        return EntitySetBuilder.init().addAll(entityObjects).get();
+        return new EntitySet((EntityXmlReaderHelper.parse(DummyRepository.get(), xmlData)));
     }
 
     @Test
@@ -68,7 +65,8 @@ public class EntitySetTest {
 
         List<EntityObject> entityObjects = EntityXmlReaderHelper.parse(DummyRepository.get(), xmlData);
         EntityObject entityObject = EntityXmlReaderHelper.parse(FooDesc.INSTANCE, "<Foo name='foo3' id='3'/>").get(0);
-        EntitySet entityObjectSet = EntitySetBuilder.init().addAll(entityObjects).add(entityObject).get();
+        EntitySet entityObjectSet = new EntitySet(entityObjects);
+        entityObjectSet.add(entityObject);
 
         assertTrue(entityObjectSet.containsAll(entityObjects));
         assertTrue(entityObjectSet.contains(entityObject));
@@ -86,8 +84,8 @@ public class EntitySetTest {
     public void testGetEntitiesByEntityDescriptor() {
         EntitySet entityObjectSet1 = createEntitySetWithDummies();
         EntitySet entityObjectSet2 = createEntitySetWithAnotherDummies();
-        EntitySet entityObjectSet = EntitySetBuilder.init().addAll(entityObjectSet1).addAll(entityObjectSet2)
-                .get();
+        EntitySet entityObjectSet = new EntitySet(entityObjectSet1);
+        entityObjectSet.addAll(entityObjectSet2);
 
         testGetEntitiesByEntityDescriptor(entityObjectSet1, entityObjectSet2, entityObjectSet);
         EntitySet entitySet = new EntitySet(entityObjectSet);
@@ -124,7 +122,7 @@ public class EntitySetTest {
     @Test
     public void testGetEntitiesByEntityDescriptorAndUnaryPredicate() {
         EntitySet entityObjectSet1 = createEntitySetWithDummies();
-        EntitySet entityObjectSet = EntitySetBuilder.init().addAll(entityObjectSet1).get();
+        EntitySet entityObjectSet = new EntitySet(entityObjectSet1);
         EntityObject entityObject = EntityXmlReaderHelper.parse(FooDesc.INSTANCE, "<FooDesc name='dummy4' id='4'/>").get(0);
         entityObjectSet.add(entityObject);
 

@@ -3,7 +3,6 @@ package org.refact4j.eom.xml;
 import org.junit.Before;
 import org.junit.Test;
 import org.refact4j.eom.EntityObject;
-import org.refact4j.eom.EntitySetBuilder;
 import org.refact4j.eom.impl.EntitySet;
 import org.refact4j.eom.metamodel.DefaultEntityDescriptorRepoFactory;
 import org.refact4j.eom.metamodel.EOMMetaModelRepository;
@@ -51,9 +50,7 @@ public class CompositeKeyTest {
         repository = DefaultEntityDescriptorRepoFactory.init(
                 EOMMetaModelRepository.get(), metaModelXml, null)
                 .createEntityDescriptorRepository();
-        entityObjects = EntitySetBuilder.init().addAll(
-                EntityXmlReaderHelper.unmarshal(repository, dataXml)).get();
-
+        entityObjects = new EntitySet(EntityXmlReaderHelper.unmarshal(repository, dataXml));
     }
 
     @Test

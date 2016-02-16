@@ -25,7 +25,6 @@ public class DataTypeEntity extends EntityObjectImpl implements DataType {
     }
 
     public void accept(DataTypeVisitor dataTypeVisitor) {
-        dataTypeVisitor.visitDataType(this);
     }
 
     public static class IntegerDataTypeEntity extends DataTypeEntity implements IntegerType {

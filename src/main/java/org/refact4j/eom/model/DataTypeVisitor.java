@@ -10,5 +10,5 @@ import org.refact4j.eom.model.StringType.StringTypeVisitor;
 public interface DataTypeVisitor extends IntegerTypeVisitor, StringTypeVisitor, DoubleTypeVisitor, DateTypeVisitor,
         BooleanTypeVisitor, ManyToOneRelationType.ManyToOneRelationTypeVisitor, OneToManyRelationTypeVisitor,
         OneToOneRelationType.OneToOneRelationTypeVisitor {
-    void visitDataType(DataType dataType);
+
 }

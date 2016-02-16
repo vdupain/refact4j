@@ -11,6 +11,9 @@ import org.refact4j.eom.model.Field;
 import org.refact4j.eom.model.KeyBuilder;
 import org.refact4j.eom.xml.reader.EntityXmlReaderHelper;
 
+import java.util.Collections;
+import java.util.List;
+
 import static org.junit.Assert.assertEquals;
 
 
@@ -51,8 +54,7 @@ public class EntityAggregateFunctorsTest {
                 .createEntityDescriptorRepository();
         fooEntityDescriptor = repository.getEntityDescriptor("foo");
         barEntityDescriptor = repository.getEntityDescriptor("bar");
-        entityObjects = EntitySetBuilder.init().addAll(
-                EntityXmlReaderHelper.unmarshal(repository, dataXml)).get();
+        entityObjects = new EntitySet(EntityXmlReaderHelper.unmarshal(repository, dataXml));
     }
 
     @Test
