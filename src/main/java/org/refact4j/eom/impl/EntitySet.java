@@ -1,11 +1,11 @@
 package org.refact4j.eom.impl;
 
-import org.refact4j.collection.Set;
 import org.refact4j.eom.EntityObject;
 
 import java.util.Collection;
+import java.util.HashSet;
 
-public class EntitySet extends Set<EntityObject> {
+public class EntitySet extends HashSet<EntityObject> {
 
 
     public EntitySet() {
