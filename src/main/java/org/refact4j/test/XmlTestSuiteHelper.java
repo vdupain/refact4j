@@ -1,10 +1,10 @@
 package org.refact4j.test;
 
 import junit.framework.TestSuite;
+import org.refact4j.xml.impl.Dataset2XmlConverterImpl;
 
 import java.util.HashSet;
 import java.util.Set;
-import org.refact4j.xml.impl.Dataset2XmlConverterImpl;
 
 public class XmlTestSuiteHelper {
 

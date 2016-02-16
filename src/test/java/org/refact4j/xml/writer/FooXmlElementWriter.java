@@ -15,7 +15,7 @@ public class FooXmlElementWriter extends AbstractXmlElementWriter {
 
     public FooXmlElementWriter(DatasetConverterHolder holder) {
         super("foo", ((java.util.Set<EntityObject>) holder.getDataSet()).stream()
-                .filter(p->p.getEntityDescriptor().equals(FooDesc.INSTANCE))
+                .filter(p -> p.getEntityDescriptor().equals(FooDesc.INSTANCE))
                 .collect(Collectors.toList()), holder);
     }
 

@@ -15,9 +15,9 @@ import org.refact4j.model.FooDesc;
 import java.util.ArrayList;
 
 public class EntityChangeSetTest extends AbstractChangeSetTest {
+    private final EventLogger eventLogger = new EventLogger();
     private EntityObject foo;
     private EntityObject foo3;
-    private final EventLogger eventLogger = new EventLogger();
 
     protected java.util.List populateInitial() {
         java.util.List list = new ArrayList();

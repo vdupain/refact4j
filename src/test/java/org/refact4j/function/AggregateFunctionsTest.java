@@ -15,10 +15,8 @@ import static org.junit.Assert.assertEquals;
 public class AggregateFunctionsTest {
     private final Integer expectedMinValue = 1;
     private final Integer expectedMaxValue = 10;
-
-    private Collection<Integer> values;
-
     private final Comparator<Integer> comparator = Integer::compareTo;
+    private Collection<Integer> values;
 
     @Before
     public void setUp() {

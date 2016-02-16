@@ -1,6 +1,5 @@
 package org.refact4j.eom.xml.reader;
 
-import java.util.Set;
 import org.refact4j.eom.EntityObject;
 import org.refact4j.eom.EntityObjectBuilder;
 import org.refact4j.eom.String2ValueFieldConverter;
@@ -20,6 +19,7 @@ import java.io.StringReader;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
+import java.util.Set;
 
 public final class EntityXmlReaderHelper {
 

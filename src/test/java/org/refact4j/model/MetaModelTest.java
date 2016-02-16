@@ -2,7 +2,6 @@ package org.refact4j.model;
 
 import org.junit.Before;
 import org.junit.Test;
-import java.util.Set;
 import org.refact4j.eom.*;
 import org.refact4j.eom.impl.*;
 import org.refact4j.eom.metamodel.DefaultEntityDescriptorRepoFactory;
@@ -16,6 +15,7 @@ import org.refact4j.eom.xml.reader.EntityXmlReaderHelper;
 import org.refact4j.xml.impl.Dataset2XmlConverterImpl;
 
 import java.util.List;
+import java.util.Set;
 
 import static org.junit.Assert.assertEquals;
 
@@ -93,7 +93,7 @@ public class MetaModelTest {
         getEntityByKeyPredicate.setValue(2);
         EntityObject version2 =
                 entityObjectSet.stream()
-                        .filter(p->p.getEntityDescriptor().equals(repository.getEntityDescriptor("version")))
+                        .filter(p -> p.getEntityDescriptor().equals(repository.getEntityDescriptor("version")))
                         .filter(getEntityByKeyPredicate).findFirst().get();
         assertEquals(
                 "<version beginDate=\"06/01/07\" endDate=\"06/30/07\" foo=\"2\" id=\"2\" name=\"v2\"/>",
@@ -103,7 +103,7 @@ public class MetaModelTest {
         getEntityByKeyPredicate.setField(fooEntityDescriptor.getField("id"));
         getEntityByKeyPredicate.setValue(1);
         EntityObject foo1 = entityObjectSet.stream()
-                .filter(p->p.getEntityDescriptor().equals(fooEntityDescriptor))
+                .filter(p -> p.getEntityDescriptor().equals(fooEntityDescriptor))
                 .filter(getEntityByKeyPredicate).findFirst().get();
         assertEquals("<foo field1=\"foo1\" field2=\"a\" id=\"1\" timestampDate=\"null\"/>",
                 Stringifiers.ENTITY_XML.stringify(foo1));
@@ -112,7 +112,7 @@ public class MetaModelTest {
         getEntityByKeyPredicate.setField(fooEntityDescriptor.getField("id"));
         getEntityByKeyPredicate.setValue(3);
         EntityObject foo3 = entityObjectSet.stream()
-                .filter(p->p.getEntityDescriptor().equals(fooEntityDescriptor))
+                .filter(p -> p.getEntityDescriptor().equals(fooEntityDescriptor))
                 .filter(getEntityByKeyPredicate).findFirst().get();
         assertEquals("<foo field1=\"null\" field2=\"null\" id=\"3\" timestampDate=\"null\"/>",
                 Stringifiers.ENTITY_XML.stringify(foo3));
@@ -122,7 +122,7 @@ public class MetaModelTest {
         getEntityByKeyPredicate.setValue(11);
         EntityObject bar11 =
                 entityObjectSet.stream()
-                        .filter(p->p.getEntityDescriptor().equals(repository.getEntityDescriptor("bar")))
+                        .filter(p -> p.getEntityDescriptor().equals(repository.getEntityDescriptor("bar")))
                         .filter(getEntityByKeyPredicate).findFirst().get();
         assertEquals("<bar field1=\"bar11_1\" field2=\"bar11_2\" foo=\"2\" id=\"11\"/>",
                 Stringifiers.ENTITY_XML.stringify(bar11));
@@ -132,7 +132,7 @@ public class MetaModelTest {
         getEntityByKeyPredicate.setValue(13);
         EntityObject bar13 =
                 entityObjectSet.stream()
-                        .filter(p->p.getEntityDescriptor().equals(repository.getEntityDescriptor("bar")))
+                        .filter(p -> p.getEntityDescriptor().equals(repository.getEntityDescriptor("bar")))
                         .filter(getEntityByKeyPredicate).findFirst().get();
         assertEquals("<bar field1=\"bar13_1\" field2=\"bar12_2\" foo=\"null\" id=\"13\"/>",
                 Stringifiers.ENTITY_XML.stringify(bar13));

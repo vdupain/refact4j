@@ -1,12 +1,12 @@
 package org.refact4j.xml.writer;
 
-import java.util.Set;
 import org.refact4j.xml.DatasetConverterHolder;
 import org.refact4j.xml.XmlElementHandler;
 import org.refact4j.xml.XmlWriter;
 import org.refact4j.xml.impl.Dataset2XmlConverterImpl;
 
 import java.util.Collection;
+import java.util.Set;
 
 public class DatasetXmlWriter implements XmlElementHandler, DatasetConverterHolder {
     private final Set dataset;

@@ -4,11 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DummyXmlElement implements XmlElement {
+    final List<DummyXmlElement> xmlElements = new ArrayList<>();
     String localName;
     String value;
     String qName;
     String sAttributes = "";
-    final List<DummyXmlElement> xmlElements = new ArrayList<>();
 
     public XmlElement createChildXmlElement(String localName, String qName, XmlAttributes attributes) {
         DummyXmlElement xmlElement = new DummyXmlElement();

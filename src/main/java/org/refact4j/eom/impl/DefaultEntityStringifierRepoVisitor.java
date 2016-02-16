@@ -1,6 +1,5 @@
 package org.refact4j.eom.impl;
 
-import java.util.Set;
 import org.refact4j.eom.EntityObject;
 import org.refact4j.eom.EntityStringifier;
 import org.refact4j.eom.EntityStringifierRepo;
@@ -15,6 +14,7 @@ import org.refact4j.xml.ToXmlString;
 import org.refact4j.xml.impl.Dataset2XmlConverterImpl;
 
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 public class DefaultEntityStringifierRepoVisitor implements EntityStringifierRepoVisitor, ToXmlString {

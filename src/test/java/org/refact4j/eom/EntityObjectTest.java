@@ -15,23 +15,15 @@ import java.util.*;
 import static org.junit.Assert.*;
 
 public class EntityObjectTest {
-    private EntityObject foo;
-
-    private EntityObject fooDecorated;
-
-    private EntityObject bar;
-
-    private Integer id = 1;
-
     private final Integer id99 = 99;
-
-    private String name = "foo";
-
     private final Date date = new Date();
-
     private final Double value = 1.23;
-
     private final Boolean flag = false;
+    private EntityObject foo;
+    private EntityObject fooDecorated;
+    private EntityObject bar;
+    private Integer id = 1;
+    private String name = "foo";
 
     @Before
     public void setUp() throws Exception {

@@ -9,7 +9,7 @@ public class EntitySet extends HashSet<EntityObject> {
 
 
     public EntitySet() {
-        super();
+
     }
 
     public EntitySet(Collection<EntityObject> entityObjects) {

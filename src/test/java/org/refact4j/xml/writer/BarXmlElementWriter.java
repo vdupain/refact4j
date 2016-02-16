@@ -13,7 +13,7 @@ public class BarXmlElementWriter extends AbstractXmlElementWriter {
 
     public BarXmlElementWriter(DatasetConverterHolder holder) {
         super("bar", ((java.util.Set<EntityObject>) holder.getDataSet()).stream()
-                .filter(p->p.getEntityDescriptor().equals(BarDesc.INSTANCE))
+                .filter(p -> p.getEntityDescriptor().equals(BarDesc.INSTANCE))
                 .collect(Collectors.toList()), holder);
     }
 

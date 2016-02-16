@@ -7,8 +7,6 @@ import org.refact4j.eom.EntityStringifierRepoBuilder;
 
 public class DummyStringifierRepository {
 
-    private static final EntityStringifierRepo repository;
-
     public static final EntityStringifier FOO_STRINGIFIER = new EntityStringifier() {
 
         @Override
@@ -16,7 +14,6 @@ public class DummyStringifierRepository {
             return arg.get(FooDesc.NAME);
         }
     };
-
     public static final EntityStringifier BAR_STRINGIFIER = new EntityStringifier() {
 
         @Override
@@ -24,6 +21,7 @@ public class DummyStringifierRepository {
             return arg.get(BarDesc.NAME);
         }
     };
+    private static final EntityStringifierRepo repository;
 
     static {
         EntityStringifierRepo repository1 = EntityStringifierRepoBuilder.init().add(FooDesc.INSTANCE, FOO_STRINGIFIER)

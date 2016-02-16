@@ -1,6 +1,5 @@
 package org.refact4j.eom.metamodel;
 
-import java.util.Set;
 import org.refact4j.eom.ConverterHelper;
 import org.refact4j.eom.EntityObject;
 import org.refact4j.eom.EntitySetBuilder;
@@ -17,6 +16,7 @@ import org.refact4j.xml.impl.Dataset2XmlConverterImpl;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 public class DefaultEntityDescriptorRepoFactory implements EntityDescriptorRepositoryFactory {

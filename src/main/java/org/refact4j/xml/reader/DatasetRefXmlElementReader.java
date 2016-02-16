@@ -1,6 +1,5 @@
 package org.refact4j.xml.reader;
 
-import java.util.Set;
 import org.refact4j.util.StringHelper;
 import org.refact4j.xml.DatasetConverterHolder;
 import org.refact4j.xml.XmlAttributes;
@@ -11,6 +10,7 @@ import java.io.FileInputStream;
 import java.io.InputStream;
 import java.net.URI;
 import java.net.URL;
+import java.util.Set;
 
 class DataSetRefXmlElementReader extends DefaultXmlElementReader {
 

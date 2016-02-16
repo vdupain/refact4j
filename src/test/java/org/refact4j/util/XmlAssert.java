@@ -5,7 +5,6 @@ import org.custommonkey.xmlunit.Diff;
 import org.custommonkey.xmlunit.ElementNameAndAttributeQualifier;
 import org.custommonkey.xmlunit.XMLUnit;
 import org.refact4j.xml.ToXmlString;
-import org.refact4j.xml.XML;
 
 public class XmlAssert extends Assert {
 
