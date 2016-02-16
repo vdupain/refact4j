@@ -1,9 +1,7 @@
 package org.refact4j.eom.impl;
 
-import org.refact4j.collection.Set;
 import org.refact4j.eom.EntityObject;
 import org.refact4j.eom.model.EntityDescriptor;
-import org.refact4j.eom.model.Key;
 import org.refact4j.eom.model.StringField;
 import org.refact4j.xml.DatasetHolder;
 
@@ -24,7 +22,7 @@ public class EntityDataSet extends EntitySet implements DatasetHolder {
     }
 
 
-    public Set<EntityObject> getDataSet() {
+    public java.util.Set getDataSet() {
         return this;
     }
 

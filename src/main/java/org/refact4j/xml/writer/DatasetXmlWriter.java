@@ -39,7 +39,7 @@ public class DatasetXmlWriter implements XmlElementHandler, DatasetConverterHold
         return this.converter;
     }
 
-    public Set getDataSet() {
+    public java.util.Set getDataSet() {
         return this.dataset;
     }
 

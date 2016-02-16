@@ -1,6 +1,5 @@
 package org.refact4j.xml.reader;
 
-import org.refact4j.collection.Set;
 import org.refact4j.xml.DataSet2XmlConverter;
 import org.refact4j.xml.DatasetConverterHolder;
 import org.refact4j.xml.XmlAttributes;
@@ -10,7 +9,7 @@ import org.refact4j.xml.impl.DatasetConverterHolderImpl;
 public class DefaultXmlElementReader implements XmlElement, DatasetConverterHolder {
     private final DatasetConverterHolder dataSetConverterHolder;
 
-    DefaultXmlElementReader(Set dataset, DataSet2XmlConverter dataset2XmlConverter) {
+    DefaultXmlElementReader(java.util.Set dataset, DataSet2XmlConverter dataset2XmlConverter) {
         this.dataSetConverterHolder = new DatasetConverterHolderImpl(dataset, dataset2XmlConverter);
     }
 
@@ -23,7 +22,7 @@ public class DefaultXmlElementReader implements XmlElement, DatasetConverterHold
         this.dataSetConverterHolder.getDataSet().add(object);
     }
 
-    public Set getDataSet() {
+    public java.util.Set getDataSet() {
         return this.dataSetConverterHolder.getDataSet();
     }
 

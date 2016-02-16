@@ -3,7 +3,6 @@ package org.refact4j.xml.writer;
 import org.refact4j.eom.ConverterHelper;
 import org.refact4j.eom.EntityObject;
 import org.refact4j.model.BarDesc;
-import org.refact4j.model.FooDesc;
 import org.refact4j.xml.DatasetConverterHolder;
 import org.refact4j.xml.XmlElementHandler;
 import org.refact4j.xml.XmlWriter;

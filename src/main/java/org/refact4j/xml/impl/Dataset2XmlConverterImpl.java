@@ -27,7 +27,7 @@ public class Dataset2XmlConverterImpl implements DataSet2XmlConverter {
 
     private final List<XmlDescriptor> xmlDescriptors = new ArrayList<>();
 
-    public void unmarshal(String xml, Set dataset) {
+    public void unmarshal(String xml, java.util.Set dataset) {
         if (xml.contains(XMLSCHEMA_INSTANCE)) {
             validate(new StringReader(xml));
         }
@@ -44,7 +44,7 @@ public class Dataset2XmlConverterImpl implements DataSet2XmlConverter {
         }
     }
 
-    public void unmarshal(Reader reader, Set dataset) {
+    public void unmarshal(Reader reader, java.util.Set dataset) {
         try {
             org.xml.sax.XMLReader xmlReader = createXMLReader();
             final DatasetXmlElementReader datasetXmlNodeReader = new DatasetXmlElementReader(dataset, this);
