@@ -9,7 +9,9 @@ import org.refact4j.xml.XmlElementHandler;
 import org.refact4j.xml.XmlWriter;
 
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.Iterator;
+import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
 public class EntityXmlNodeWriter implements XmlElementHandler {
@@ -19,8 +21,9 @@ public class EntityXmlNodeWriter implements XmlElementHandler {
 
     public EntityXmlNodeWriter(EntityDescriptorRepository entityDescriptorRepository, DatasetConverterHolder holder) {
         Collection<EntityObject> entityObjects = new EntityList();
+        java.util.Set<EntityObject> set = new HashSet<>(holder.getDataSet());
         StreamSupport.stream(entityDescriptorRepository.values().spliterator(), false)
-                .forEach(e -> entityObjects.addAll(holder.getDataSet().getAll(e)));
+                .forEach(e -> entityObjects.addAll(set.stream().filter(p -> p.getEntityDescriptor().equals(e)).collect(Collectors.toList())));
         iterator = entityObjects.iterator();
     }
 

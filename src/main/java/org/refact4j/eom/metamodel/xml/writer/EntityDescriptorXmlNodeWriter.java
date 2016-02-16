@@ -8,10 +8,14 @@ import org.refact4j.xml.XmlElementHandler;
 import org.refact4j.xml.XmlWriter;
 import org.refact4j.xml.writer.AbstractXmlElementWriter;
 
+import java.util.stream.Collectors;
+
 public class EntityDescriptorXmlNodeWriter extends AbstractXmlElementWriter {
 
     public EntityDescriptorXmlNodeWriter(EntityDescriptorRepository repository, DatasetConverterHolder holder) {
-        super(EntityDescriptorDesc.INSTANCE.getName(), holder.getDataSet().getAll(EntityDescriptorDesc.INSTANCE),
+        super(EntityDescriptorDesc.INSTANCE.getName(), ((java.util.Set<EntityObject>) holder.getDataSet()).stream()
+                        .filter(p -> p.getEntityDescriptor().equals(EntityDescriptorDesc.INSTANCE))
+                        .collect(Collectors.toList()),
                 holder);
     }
 

@@ -64,12 +64,14 @@ public class DefaultEntityDescriptorRepoFactory implements EntityDescriptorRepos
                 .addAll(DataTypeType.DATA_TYPES).get();
         EntityDescriptorRepositoryBuilder repoBuilder = EntityDescriptorRepositoryBuilder
                 .init(initialEntityDescriptorRepository);
-        List<EntityObject> entityDescs = metaModelSet.getAll(EntityDescriptorDesc.INSTANCE);
+        List<EntityObject> entityDescs = metaModelSet.stream()
+                .filter(t -> t.getEntityDescriptor().equals(EntityDescriptorDesc.INSTANCE))
+                .collect(Collectors.toList());
         Map<EntityDescriptor, EntityDescriptorBuilder> entityDescBuilderMap = new HashMap<>();
         for (EntityObject entityDescEntity : entityDescs) {
             final String entityDescName = entityDescEntity.get(EntityDescriptorDesc.NAME);
             EntityDescriptorBuilder entityDescriptorBuilder = EntityDescriptorBuilder.init(entityDescName);
-            List<EntityObject> fields = metaModelSet.getAll(FieldDesc.INSTANCE).stream()
+            List<EntityObject> fields = metaModelSet.stream()
                     .filter(FieldDesc.getFieldsForEntityDescriptor(entityDescName))
                     .collect(Collectors.toList());
             createFields(entityDescriptorBuilder, fields);
@@ -81,13 +83,13 @@ public class DefaultEntityDescriptorRepoFactory implements EntityDescriptorRepos
 
         for (final EntityDescriptor entityDescriptor : repository.values()) {
             EntityDescriptorBuilder builder = entityDescBuilderMap.get(entityDescriptor);
-            List<EntityObject> relations = metaModelSet.getAll(FieldDesc.INSTANCE).stream()
+            List<EntityObject> relations = metaModelSet.stream()
                     .filter(FieldDesc.getRelationFieldsForEntityDescriptor(entityDescriptor.getName()))
                     .collect(Collectors.toList());
             createRelationFields(repository, builder, relations);
         }
         for (final EntityDescriptor entityDescriptor : repository.values()) {
-            List<EntityObject> relations = metaModelSet.getAll(FieldDesc.INSTANCE).stream()
+            List<EntityObject> relations = metaModelSet.stream()
                     .filter(FieldDesc.getRelationFieldsForEntityDescriptor(entityDescriptor.getName()))
                     .collect(Collectors.toList());
             createInverseRelationships(repository, relations);

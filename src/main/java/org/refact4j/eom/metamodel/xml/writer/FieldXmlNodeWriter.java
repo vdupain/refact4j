@@ -16,7 +16,7 @@ import java.util.stream.Collectors;
 class FieldXmlNodeWriter extends AbstractXmlElementWriter {
 
     public FieldXmlNodeWriter(DatasetConverterHolder holder, EntityObject entityDescEntity) {
-        super(FieldDesc.INSTANCE.getName(), (Collection<?>) holder.getDataSet().getAll(FieldDesc.INSTANCE).stream()
+        super(FieldDesc.INSTANCE.getName(), (Collection<?>) holder.getDataSet().stream()
                         .filter(FieldDesc.getAllFieldsForEntityDescriptor(entityDescEntity.get(EntityDescriptorDesc.NAME)))
                         .collect(Collectors.toList())
                 , holder);

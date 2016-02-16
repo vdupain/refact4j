@@ -90,7 +90,7 @@ public class Dataset2XmlConverterImpl implements DataSet2XmlConverter {
     public String marshal(Set dataset) {
         try {
             StringWriter result = new StringWriter();
-            XmlWriterHelper.build(result, new DatasetXmlWriter(dataset, null, this));
+            XmlWriterHelper.build(result, new DatasetXmlWriter(dataset, this));
             return result.toString();
         } catch (Exception e) {
             throw new RuntimeException(e);

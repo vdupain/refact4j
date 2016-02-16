@@ -9,10 +9,15 @@ import org.refact4j.xml.DatasetConverterHolder;
 import org.refact4j.xml.XmlElementHandler;
 import org.refact4j.xml.XmlWriter;
 
+import java.util.Collections;
+import java.util.stream.Collectors;
+
 public class FooXmlElementWriter extends AbstractXmlElementWriter {
 
     public FooXmlElementWriter(DatasetConverterHolder holder) {
-        super("foo", holder.getDataSet().getAll(FooDesc.INSTANCE), holder);
+        super("foo", ((java.util.Set<EntityObject>) holder.getDataSet()).stream()
+                .filter(p->p.getEntityDescriptor().equals(FooDesc.INSTANCE))
+                .collect(Collectors.toList()), holder);
     }
 
     public XmlElementHandler[] handleNext(XmlWriter xmlWriter) throws Exception {

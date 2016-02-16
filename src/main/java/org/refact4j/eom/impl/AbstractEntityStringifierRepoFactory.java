@@ -48,7 +48,9 @@ public abstract class AbstractEntityStringifierRepoFactory implements EntityStri
     }
 
     private EntityStringifierRepo createStringifiers() {
-        Collection<EntityObject> stringifiers = entityObjectSet.getAll(EntityStringifierDesc.INSTANCE);
+        Collection<EntityObject> stringifiers = entityObjectSet.stream()
+                .filter(p -> p.getEntityDescriptor().equals(EntityStringifierDesc.INSTANCE))
+                .collect(Collectors.toList());
         for (final EntityObject stringifier : stringifiers) {
             final Key keyEntityDescriptor = stringifier.get(EntityStringifierDesc.OBJECT_TYPE);
             EntityDescriptor entityDescriptor;
@@ -68,8 +70,8 @@ public abstract class AbstractEntityStringifierRepoFactory implements EntityStri
     }
 
     private EntityStringifier createStringifier(final EntityObject stringifier, EntityDescriptor entityDescriptor) {
-        final List<EntityObject> appenders = entityObjectSet.getAll(EntityStringifierAppenderDesc.INSTANCE)
-                .stream().filter(arg -> arg.get(EntityStringifierAppenderDesc.STRINGIFIER).equals(stringifier.getKey()))
+        final List<EntityObject> appenders = entityObjectSet.stream()
+                .filter(arg -> arg.getEntityDescriptor().equals(EntityStringifierAppenderDesc.INSTANCE) && arg.get(EntityStringifierAppenderDesc.STRINGIFIER).equals(stringifier.getKey()))
                 .collect(Collectors.toList());
 
         Collections.sort(appenders, (o1, o2) -> ((Integer) o1.get("id")).compareTo(((Integer) o2.get("id"))));

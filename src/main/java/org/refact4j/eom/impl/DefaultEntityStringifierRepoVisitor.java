@@ -29,9 +29,11 @@ public class DefaultEntityStringifierRepoVisitor implements EntityStringifierRep
     public String toXmlString() {
         Dataset2XmlConverterImpl converter = new Dataset2XmlConverterImpl();
         converter.register(new EntityStringifierXmlDescriptor(this.entityDescriptorRepository));
-        List<EntityObject> entityObjects = dataSet.getAll(EntityStringifierDesc.INSTANCE).stream()
-                .filter(arg -> arg.get(EntityStringifierDesc.OBJECT_TYPE) == null
-                        && arg.get(EntityStringifierDesc.NAME) == null).collect(Collectors.toList());
+        List<EntityObject> entityObjects = dataSet.stream()
+                .filter(arg -> arg.getEntityDescriptor().equals(EntityStringifierDesc.INSTANCE)
+                        && arg.get(EntityStringifierDesc.OBJECT_TYPE) == null
+                        && arg.get(EntityStringifierDesc.NAME) == null)
+                .collect(Collectors.toList());
         dataSet.removeAll(entityObjects);
         return converter.marshal(dataSet);
     }

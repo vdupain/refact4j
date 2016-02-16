@@ -64,15 +64,18 @@ public class FieldDesc {
         return arg -> {
             Key key = KeyBuilder.init(EntityDescriptorDesc.INSTANCE).set(EntityDescriptorDesc.NAME, entityDescName)
                     .getKey();
-            return key.equals(arg.get(FieldDesc.ENTITY_DESC));
+            return arg.getEntityDescriptor().equals(FieldDesc.INSTANCE)
+                    && key.equals(arg.get(FieldDesc.ENTITY_DESC));
         };
     }
 
     public static Predicate<EntityObject> getFieldsForEntityDescriptor(final String entityDescName) {
         return arg -> {
+
             Key key = KeyBuilder.init(EntityDescriptorDesc.INSTANCE).set(EntityDescriptorDesc.NAME, entityDescName)
                     .getKey();
-            return key.equals(arg.get(FieldDesc.ENTITY_DESC))
+            return arg.getEntityDescriptor().equals(FieldDesc.INSTANCE)
+                    && key.equals(arg.get(FieldDesc.ENTITY_DESC))
                     && !arg.get(FieldDesc.DATA_TYPE).equals(DataTypeType.MANY_TO_ONE_RELATION_DATA_TYPE.getKey())
                     && !arg.get(FieldDesc.DATA_TYPE).equals(DataTypeType.ONE_TO_MANY_RELATION_DATA_TYPE.getKey());
         };
@@ -82,7 +85,8 @@ public class FieldDesc {
         return arg -> {
             Key key = KeyBuilder.init(EntityDescriptorDesc.INSTANCE).set(EntityDescriptorDesc.NAME, entityDescName)
                     .getKey();
-            return key.equals(arg.get(FieldDesc.ENTITY_DESC))
+            return arg.getEntityDescriptor().equals(FieldDesc.INSTANCE)
+                    && key.equals(arg.get(FieldDesc.ENTITY_DESC))
                     && (arg.get(FieldDesc.DATA_TYPE).equals(DataTypeType.MANY_TO_ONE_RELATION_DATA_TYPE.getKey()) || arg
                     .get(FieldDesc.DATA_TYPE).equals(DataTypeType.ONE_TO_MANY_RELATION_DATA_TYPE.getKey()));
         };

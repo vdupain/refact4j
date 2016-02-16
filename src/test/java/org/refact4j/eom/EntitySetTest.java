@@ -99,7 +99,7 @@ public class EntitySetTest {
 
     private void testGetEntitiesByEntityDescriptor(EntitySet collection1, EntitySet collection2,
                                                    EntitySet collection) {
-        List<EntityObject> dummies = collection.getAll(FooDesc.INSTANCE);
+        List<EntityObject> dummies = collection.stream().filter(p -> p.getEntityDescriptor().equals(FooDesc.INSTANCE)).collect(Collectors.toList());
         Comparator<EntityObject> comparator = (o1, o2) -> o1.getKey().compareTo(o2.getKey());
 
         Collections.sort(dummies, comparator);
@@ -110,7 +110,7 @@ public class EntitySetTest {
             assertEquals(list1.get(i), dummies.get(i));
         }
 
-        List<EntityObject> othersdummies = collection.getAll(BarDesc.INSTANCE);
+        List<EntityObject> othersdummies = collection.stream().filter(p -> p.getEntityDescriptor().equals(BarDesc.INSTANCE)).collect(Collectors.toList());
         Collections.sort(othersdummies, comparator);
         assertEquals(collection2.size(), othersdummies.size());
         EntityList list2 = new EntityList(collection2);
@@ -138,8 +138,9 @@ public class EntitySetTest {
 
     private void testGetEntitiesByEntityDescriptorAndUnaryPredicate(EntitySet collection,
                                                                     EntityObject entityObject) {
-        List<EntityObject> list = collection.getAll(FooDesc.INSTANCE).stream()
-                .filter(arg -> arg.get(FooDesc.ID) == 4).collect(Collectors.toList());
+        List<EntityObject> list = collection.stream()
+                .filter(arg -> arg.getEntityDescriptor().equals(FooDesc.INSTANCE) && arg.get(FooDesc.ID) == 4)
+                .collect(Collectors.toList());
         assertEquals(1, list.size());
         assertEquals(entityObject, list.get(0));
     }

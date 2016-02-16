@@ -17,14 +17,15 @@ class EntityStringifierAppenderXmlNodeWriter extends AbstractXmlElementWriter {
 
     public EntityStringifierAppenderXmlNodeWriter(DatasetConverterHolder holder, EntityObject stringifierEntity) {
         super(EntityStringifierAppenderDesc.INSTANCE.getName(),
-                (Collection<?>) holder.getDataSet().getAll(EntityStringifierAppenderDesc.INSTANCE).stream()
+                (Collection<?>) holder.getDataSet().stream()
                         .filter(filterEntityStringifierAppenders(stringifierEntity.getKey()))
                         .collect(Collectors.toList()),
                 holder);
     }
 
     private static Predicate<EntityObject> filterEntityStringifierAppenders(final Key key) {
-        return arg -> key.equals(arg.get(EntityStringifierAppenderDesc.STRINGIFIER));
+        return arg -> arg.getEntityDescriptor().equals(EntityStringifierAppenderDesc.INSTANCE)
+                && key.equals(arg.get(EntityStringifierAppenderDesc.STRINGIFIER));
     }
 
     public XmlElementHandler[] handleNext(XmlWriter xmlWriter) throws Exception {

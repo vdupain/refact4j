@@ -4,7 +4,6 @@ import org.refact4j.test.AssertConditionHandler;
 import org.refact4j.test.TestMethod;
 import org.refact4j.xml.DatasetConverterHolder;
 import org.refact4j.xml.XmlAttributes;
-import org.refact4j.xml.XmlElement;
 import org.refact4j.xml.reader.DefaultXmlElementReader;
 
 public class AbstractAssertConditionXmlElementReader extends DefaultXmlElementReader {
@@ -17,5 +16,5 @@ public class AbstractAssertConditionXmlElementReader extends DefaultXmlElementRe
 
         testMethod.addAssertion(assertConditionHandler);
     }
-    
+
 }
