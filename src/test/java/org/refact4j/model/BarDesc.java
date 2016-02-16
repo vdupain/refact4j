@@ -8,7 +8,7 @@ public class BarDesc {
 
     private static final EntityDescriptorBuilder builder = EntityDescriptorBuilder.init("Bar");
 
-    public static final EntityDescriptor INSTANCE = builder.getEntityDescriptor();
+    public static final EntityDescriptor INSTANCE = builder.get();
 
     public static final IntegerField ID = FieldFactory.init(builder, "id").createIntegerField();
 

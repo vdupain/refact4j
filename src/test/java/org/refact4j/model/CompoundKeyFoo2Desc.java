@@ -8,7 +8,7 @@ class CompoundKeyFoo2Desc {
 
     private static final EntityDescriptorBuilder builder = EntityDescriptorBuilder.init("CompoundKeyFoo2Desc");
 
-    public static final EntityDescriptor INSTANCE = builder.getEntityDescriptor();
+    public static final EntityDescriptor INSTANCE = builder.get();
     public static final DateField END_DATE = FieldFactory.init(builder, "endDate").setOrder(7).createDateField();
     public static final DateField TIMESTAMP = FieldFactory.init(builder, "timestampDate").setOrder(8).isTimestamp(true)
             .createDateField();

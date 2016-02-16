@@ -41,13 +41,15 @@ public class EntityDescriptorImpl implements EntityDescriptor {
         return this.name;
     }
 
-    public void addField(Field field) {
+    public EntityDescriptorImpl addField(Field field) {
         this.fields.put(field.getName(), field);
         this.orderedFields.add(field);
+        return this;
     }
 
-    public void addKeyField(Field field) {
+    public EntityDescriptorImpl addKeyField(Field field) {
         this.keyFields.add(field);
+        return this;
     }
 
     public Collection<Field> getFields() {
@@ -89,8 +91,9 @@ public class EntityDescriptorImpl implements EntityDescriptor {
         return this.constraintExpression;
     }
 
-    public void setConstraintExpression(Expression constraintExpression) {
+    public EntityDescriptorImpl setConstraintExpression(Expression constraintExpression) {
         this.constraintExpression = constraintExpression;
+        return this;
     }
 
     public void accept(Visitor visitor) {

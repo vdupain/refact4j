@@ -11,7 +11,7 @@ public class FooDesc {
     private static final EntityDescriptorBuilder builder = EntityDescriptorBuilder
             .init("Foo");
 
-    public static final EntityDescriptor INSTANCE = builder.getEntityDescriptor();
+    public static final EntityDescriptor INSTANCE = builder.get();
 
     public static final IntegerField ID = FieldFactory.init(builder, "id")
             .setOrder(6).createIntegerField();

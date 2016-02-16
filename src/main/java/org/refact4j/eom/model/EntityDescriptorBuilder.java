@@ -10,11 +10,12 @@ public final class EntityDescriptorBuilder {
         entityDescriptor = new EntityDescriptorImpl(name);
     }
 
+
     public static EntityDescriptorBuilder init(String name) {
         return new EntityDescriptorBuilder(name);
     }
 
-    public EntityDescriptor getEntityDescriptor() {
+    public EntityDescriptor get() {
         return entityDescriptor;
     }
 

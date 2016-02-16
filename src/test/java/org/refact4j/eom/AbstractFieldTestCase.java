@@ -1,9 +1,7 @@
 package org.refact4j.eom;
 
-import org.refact4j.eom.model.EntityDescriptorBuilder;
-import org.refact4j.eom.model.Field;
-import org.refact4j.eom.model.InvalidFieldValueException;
-import org.refact4j.eom.model.NullFieldValueNotAllowedException;
+import org.refact4j.eom.model.*;
+import org.refact4j.eom.model.impl.EntityDescriptorImpl;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
@@ -14,8 +12,9 @@ public abstract class AbstractFieldTestCase {
             .init("type");
 
     void checkError(Field field, Object value, String message) {
+
         try {
-            EntityObjectBuilder.init(entityDescriptorBuilder.getEntityDescriptor()).set(
+            EntityObjectBuilder.init(entityDescriptorBuilder.get()).set(
                     field, value).get().checkConstraint();
             fail("Expected Exception");
         } catch (Exception e) {

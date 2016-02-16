@@ -6,7 +6,7 @@ public class EntityStringifierAppenderDesc {
 
     private static final EntityDescriptorBuilder BUILDER = EntityDescriptorBuilder.init("append");
 
-    public static final EntityDescriptor INSTANCE = BUILDER.getEntityDescriptor();
+    public static final EntityDescriptor INSTANCE = BUILDER.get();
 
     public static final IntegerField ID = FieldFactory.init(BUILDER, "id").createIntegerField();
 

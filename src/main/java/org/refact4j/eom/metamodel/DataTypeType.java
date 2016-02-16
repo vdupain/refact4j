@@ -19,7 +19,7 @@ public class DataTypeType {
     private static final String ONE_TO_MANY_RELATION_TYPE = "oneToMany";
     private static final String ONE_TO_ONE_RELATION_TYPE = "oneToOne";
     private static final EntityDescriptorBuilder BUILDER = EntityDescriptorBuilder.init("dataType");
-    public static final EntityDescriptor INSTANCE = BUILDER.getEntityDescriptor();
+    public static final EntityDescriptor INSTANCE = BUILDER.get();
     public static final StringField NAME = FieldFactory.init(BUILDER, "name").createStringField();
     public static final DataTypeEntity INTEGER_DATA_TYPE = new DataTypeEntity.IntegerDataTypeEntity(NAME, INTEGER_TYPE,
             BUILDER);

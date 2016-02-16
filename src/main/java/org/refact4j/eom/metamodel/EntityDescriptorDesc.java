@@ -6,7 +6,7 @@ public class EntityDescriptorDesc {
 
     private static final EntityDescriptorBuilder BUILDER = EntityDescriptorBuilder.init("entityDescriptor");
 
-    public static final EntityDescriptor INSTANCE = BUILDER.getEntityDescriptor();
+    public static final EntityDescriptor INSTANCE = BUILDER.get();
 
     public static final StringField NAME = FieldFactory.init(BUILDER, "name").createStringField();
 

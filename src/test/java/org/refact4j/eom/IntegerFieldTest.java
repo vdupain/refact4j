@@ -6,6 +6,8 @@ import org.refact4j.eom.model.IntegerField;
 import org.refact4j.eom.model.NumericField;
 import org.refact4j.expr.ExpressionBuilder;
 
+import java.util.function.Supplier;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 

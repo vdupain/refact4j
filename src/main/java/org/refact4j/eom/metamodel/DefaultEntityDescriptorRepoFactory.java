@@ -73,7 +73,7 @@ public class DefaultEntityDescriptorRepoFactory implements EntityDescriptorRepos
                     .filter(FieldDesc.getFieldsForEntityDescriptor(entityDescName))
                     .collect(Collectors.toList());
             createFields(entityDescriptorBuilder, fields);
-            EntityDescriptor entityDescriptor = entityDescriptorBuilder.getEntityDescriptor();
+            EntityDescriptor entityDescriptor = entityDescriptorBuilder.get();
             repoBuilder.add(entityDescriptor);
             entityDescBuilderMap.put(entityDescriptor, entityDescriptorBuilder);
         }

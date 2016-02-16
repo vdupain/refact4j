@@ -36,7 +36,7 @@ public final class FieldFactory implements DataTypeVisitor {
 
     public StringField createStringField() {
         org.refact4j.eom.model.impl.StringField field = new org.refact4j.eom.model.impl.StringField(fieldName, prettyName, entityDescriptorBuilder
-                .getEntityDescriptor(), (String) defaultValue, nullable, visible, editable, order,
+                .get(), (String) defaultValue, nullable, visible, editable, order,
                 constraintExpression);
         field.setMaxLength(maxLength);
         field.setMinLength(minLength);
@@ -46,7 +46,7 @@ public final class FieldFactory implements DataTypeVisitor {
 
     public DoubleField createDoubleField() {
         org.refact4j.eom.model.impl.DoubleField field = new org.refact4j.eom.model.impl.DoubleField(fieldName, prettyName, entityDescriptorBuilder
-                .getEntityDescriptor(), (Double) defaultValue, nullable, visible, editable, order,
+                .get(), (Double) defaultValue, nullable, visible, editable, order,
                 constraintExpression);
         field.setMaxValue(maxValue);
         field.setMinValue(minValue);
@@ -56,7 +56,7 @@ public final class FieldFactory implements DataTypeVisitor {
 
     public IntegerField createIntegerField() {
         IntegerFieldImpl field = new IntegerFieldImpl(fieldName, prettyName, entityDescriptorBuilder
-                .getEntityDescriptor(), (Integer) defaultValue, nullable, visible, editable, order,
+                .get(), (Integer) defaultValue, nullable, visible, editable, order,
                 constraintExpression);
         field.setMaxValue(maxValue);
         field.setMinValue(minValue);
@@ -65,14 +65,14 @@ public final class FieldFactory implements DataTypeVisitor {
     }
 
     public DateField createDateField() {
-        DateField field = new org.refact4j.eom.model.impl.DateField(fieldName, prettyName, entityDescriptorBuilder.getEntityDescriptor(),
+        DateField field = new org.refact4j.eom.model.impl.DateField(fieldName, prettyName, entityDescriptorBuilder.get(),
                 isTimestamp, (Date) defaultValue, nullable, visible, editable, order, constraintExpression);
         entityDescriptorBuilder.addField(field);
         return field;
     }
 
     public BooleanField createBooleanField() {
-        BooleanField field = new org.refact4j.eom.model.impl.BooleanField(fieldName, prettyName, entityDescriptorBuilder.getEntityDescriptor(),
+        BooleanField field = new org.refact4j.eom.model.impl.BooleanField(fieldName, prettyName, entityDescriptorBuilder.get(),
                 (Boolean) defaultValue, nullable, visible, editable, order, constraintExpression);
         entityDescriptorBuilder.addField(field);
         return field;
@@ -80,7 +80,7 @@ public final class FieldFactory implements DataTypeVisitor {
 
     public ManyToOneRelationField createManyToOneRelationField(EntityDescriptor entityDescriptor) {
         ManyToOneRelationField field = new org.refact4j.eom.model.impl.ManyToOneRelationField(fieldName, prettyName, entityDescriptorBuilder
-                .getEntityDescriptor(), entityDescriptor, null, (Key) defaultValue, nullable, visible, editable, order,
+                .get(), entityDescriptor, null, (Key) defaultValue, nullable, visible, editable, order,
                 constraintExpression);
         entityDescriptorBuilder.addField(field);
         return field;
@@ -88,7 +88,7 @@ public final class FieldFactory implements DataTypeVisitor {
 
     public OneToManyRelationField createOneToManyRelationField(EntityDescriptor entityDescriptor) {
         OneToManyRelationField field = new org.refact4j.eom.model.impl.OneToManyRelationField(fieldName, prettyName, entityDescriptorBuilder
-                .getEntityDescriptor(), entityDescriptor, null, (Collection<EntityObject>) defaultValue, nullable, visible,
+                .get(), entityDescriptor, null, (Collection<EntityObject>) defaultValue, nullable, visible,
                 editable, order, constraintExpression);
         entityDescriptorBuilder.addField(field);
         return field;
@@ -96,7 +96,7 @@ public final class FieldFactory implements DataTypeVisitor {
 
     public OneToOneRelationField createOneToOneRelationField(EntityDescriptor entityDescriptor) {
         OneToOneRelationField field = new org.refact4j.eom.model.impl.OneToOneRelationField(fieldName, prettyName, entityDescriptorBuilder
-                .getEntityDescriptor(), entityDescriptor, null, (Key) defaultValue, nullable, visible,
+                .get(), entityDescriptor, null, (Key) defaultValue, nullable, visible,
                 editable, order, constraintExpression);
         entityDescriptorBuilder.addField(field);
         return field;
