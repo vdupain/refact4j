@@ -1,6 +1,6 @@
 package org.refact4j.eom.impl;
 
-import org.refact4j.collection.Set;
+import java.util.Set;
 import org.refact4j.eom.EntityObject;
 import org.refact4j.eom.EntityStringifier;
 import org.refact4j.eom.EntityStringifierRepo;

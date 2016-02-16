@@ -2,7 +2,7 @@ package org.refact4j.xml;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.refact4j.collection.Set;
+import java.util.Set;
 import org.refact4j.eom.EntityObject;
 import org.refact4j.eom.EntityTestUtils;
 import org.refact4j.eom.impl.EntityDataSet;

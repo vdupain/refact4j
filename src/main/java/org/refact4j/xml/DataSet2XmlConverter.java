@@ -1,6 +1,7 @@
 package org.refact4j.xml;
 
-import org.refact4j.collection.Set;
+
+import java.util.Set;
 
 @SuppressWarnings("unchecked")
 public interface DataSet2XmlConverter {

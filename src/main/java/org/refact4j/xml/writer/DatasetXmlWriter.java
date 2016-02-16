@@ -1,6 +1,6 @@
 package org.refact4j.xml.writer;
 
-import org.refact4j.collection.Set;
+import java.util.Set;
 import org.refact4j.xml.DatasetConverterHolder;
 import org.refact4j.xml.XmlElementHandler;
 import org.refact4j.xml.XmlWriter;

@@ -1,6 +1,5 @@
 package org.refact4j.xml.impl;
 
-import org.refact4j.collection.Set;
 import org.refact4j.xml.*;
 import org.refact4j.xml.impl.sax.DefaultSaxErrorHandler;
 import org.refact4j.xml.reader.DatasetXmlElementReader;
@@ -12,10 +11,7 @@ import javax.xml.parsers.ParserConfigurationException;
 import java.io.Reader;
 import java.io.StringReader;
 import java.io.StringWriter;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.List;
+import java.util.*;
 
 public class Dataset2XmlConverterImpl implements DataSet2XmlConverter {
 

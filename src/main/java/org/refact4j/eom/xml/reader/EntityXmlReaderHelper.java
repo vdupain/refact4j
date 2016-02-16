@@ -1,6 +1,6 @@
 package org.refact4j.eom.xml.reader;
 
-import org.refact4j.collection.Set;
+import java.util.Set;
 import org.refact4j.eom.EntityObject;
 import org.refact4j.eom.EntityObjectBuilder;
 import org.refact4j.eom.String2ValueFieldConverter;

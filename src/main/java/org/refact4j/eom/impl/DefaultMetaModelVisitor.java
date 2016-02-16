@@ -1,6 +1,5 @@
 package org.refact4j.eom.impl;
 
-import org.refact4j.collection.Set;
 import org.refact4j.eom.metamodel.xml.EOMXmlDescriptor;
 import org.refact4j.eom.model.EntityDescriptor;
 import org.refact4j.eom.model.EntityDescriptorRepository;
@@ -8,6 +7,8 @@ import org.refact4j.eom.model.Field;
 import org.refact4j.eom.model.MetaModelVisitor;
 import org.refact4j.xml.ToXmlString;
 import org.refact4j.xml.impl.Dataset2XmlConverterImpl;
+
+import java.util.Set;
 
 public class DefaultMetaModelVisitor implements MetaModelVisitor, ToXmlString {
     private final Set dataSet = new EntityDataSet();

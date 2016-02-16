@@ -2,7 +2,6 @@ package org.refact4j.xml;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.refact4j.collection.Set;
 import org.refact4j.eom.EntityObject;
 import org.refact4j.eom.EntityTestUtils;
 import org.refact4j.eom.impl.EntityDataSet;
@@ -15,6 +14,7 @@ import org.refact4j.eom.xml.reader.EntityXmlReaderHelper;
 import org.refact4j.xml.impl.Dataset2XmlConverterImpl;
 
 import java.util.List;
+import java.util.Set;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
