@@ -16,6 +16,7 @@ import org.refact4j.model.FooDesc;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -126,7 +127,7 @@ public class EntityXmlTest {
         for (int i = 0; i < expectedEntityList.size(); i++) {
             EntityObject expectedEntity = expectedEntityList.get(i);
             EntityObject actualManagedObject = actualEntityList.get(i);
-            assertTrue(EntityUtils.equals(expectedEntity, actualManagedObject));
+            assertTrue(Objects.equals(expectedEntity, actualManagedObject));
             assertTrue(expectedEntity.equals(actualManagedObject));
         }
 
@@ -137,7 +138,7 @@ public class EntityXmlTest {
         for (int i = 0; i < expectedEntityList.size(); i++) {
             EntityObject expectedEntity = expectedEntityList.get(i);
             EntityObject actualManagedObject = actualEntityList.get(i);
-            assertTrue(EntityUtils.equals(expectedEntity, actualManagedObject));
+            assertTrue(Objects.equals(expectedEntity, actualManagedObject));
             assertTrue(expectedEntity.equals(actualManagedObject));
         }
 

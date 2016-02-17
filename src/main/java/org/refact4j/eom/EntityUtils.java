@@ -25,9 +25,8 @@ public final class EntityUtils {
      * @param entityObject The EntityObject to generate default values from
      */
     public static void applyDefaultValues(EntityObject entityObject) {
-        for (Field field : entityObject.getEntityDescriptor().getFields()) {
-            entityObject.set(field, field.getDefaultValue());
-        }
+        entityObject.getEntityDescriptor().getFields().stream()
+                .forEach(field-> entityObject.set(field, field.getDefaultValue()));
     }
 
     /**
@@ -37,7 +36,9 @@ public final class EntityUtils {
      * @param entityObject entityObject to generate default values from
      */
     public static void applyEmptyDefaultValues(EntityObject entityObject) {
-        entityObject.getEntityDescriptor().getFields().stream().filter(field -> entityObject.get(field) == null).forEach(field -> entityObject.set(field, field.getDefaultValue()));
+        entityObject.getEntityDescriptor().getFields().stream()
+                .filter(field -> entityObject.get(field) == null)
+                .forEach(field -> entityObject.set(field, field.getDefaultValue()));
     }
 
     /**
@@ -63,17 +64,6 @@ public final class EntityUtils {
             throw new RuntimeException("Entity  '" + entityDescriptor.getName() + "' should have only one key");
         }
         return keys.get(0);
-    }
-
-    /**
-     * Test equality between two {@link EntityObject}
-     *
-     * @param entityObject1 first {@link EntityObject} to compare
-     * @param entityObject2 second {@link EntityObject} to compare
-     * @return true if equals, false otherwise
-     */
-    public static boolean equals(EntityObject entityObject1, EntityObject entityObject2) {
-        return Objects.equals(entityObject1, entityObject2);
     }
 
     /**

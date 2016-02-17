@@ -1,16 +1,18 @@
 package org.refact4j.collection;
 
+import java.util.List;
+
 public interface ChangeSet<T> {
 
     void startRecordChanges();
 
     void stopRecordChanges();
 
-    java.util.List<T> getUpdatedObjects();
+    List<T> getUpdatedObjects();
 
-    java.util.List<T> getCreatedObjects();
+    List<T> getCreatedObjects();
 
-    java.util.List<T> getDeletedObjects();
+    List<T> getDeletedObjects();
 
-    java.util.List<ChangeSetDelta<T>> getDeltas(T t);
+    List<ChangeSetDelta<T>> getDeltas(T t);
 }
