@@ -10,7 +10,6 @@ import org.refact4j.eom.impl.EntityList;
 import org.refact4j.eom.impl.EntitySet;
 import org.refact4j.eom.metamodel.EOMMetaModelRepository;
 import org.refact4j.eom.model.EntityDescriptorRepository;
-import org.refact4j.eom.model.impl.EntityDescriptorRepositoryImpl;
 import org.refact4j.eom.xml.reader.EntityXmlReaderHelper;
 
 import java.util.ArrayList;
@@ -21,7 +20,7 @@ import java.util.stream.Collectors;
 
 
 public class EntityAnnotationTest {
-    private EntityDescriptorRepository repository = new EntityDescriptorRepositoryImpl();
+    private EntityDescriptorRepository repository = new EntityDescriptorRepository();
 
     private FooImpl foo;
 

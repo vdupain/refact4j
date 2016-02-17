@@ -10,7 +10,7 @@ public final class EOMMetaModelRepository {
         REPO = EntityDescriptorRepositoryBuilder.init().add(EntityDescriptorDesc.INSTANCE)
                 .add(FieldDesc.INSTANCE).add(DataTypeType.INSTANCE).add(
                         EntityStringifierDesc.INSTANCE).add(EntityStringifierAppenderDesc.INSTANCE)
-                .getEntityDescriptorsRepository();
+                .get();
     }
 
     private EOMMetaModelRepository() {

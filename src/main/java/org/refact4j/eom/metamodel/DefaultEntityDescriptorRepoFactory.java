@@ -77,7 +77,7 @@ public class DefaultEntityDescriptorRepoFactory implements EntityDescriptorRepos
             repoBuilder.add(entityDescriptor);
             entityDescBuilderMap.put(entityDescriptor, entityDescriptorBuilder);
         }
-        EntityDescriptorRepository repository = repoBuilder.getEntityDescriptorsRepository();
+        EntityDescriptorRepository repository = repoBuilder.get();
 
         for (final EntityDescriptor entityDescriptor : repository.values()) {
             EntityDescriptorBuilder builder = entityDescBuilderMap.get(entityDescriptor);

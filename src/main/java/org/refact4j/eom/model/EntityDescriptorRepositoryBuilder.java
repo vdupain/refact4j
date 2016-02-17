@@ -1,13 +1,11 @@
 package org.refact4j.eom.model;
 
-import org.refact4j.eom.model.impl.EntityDescriptorRepositoryImpl;
-
 public final class EntityDescriptorRepositoryBuilder {
 
-    private final EntityDescriptorRepositoryImpl entityDescRepoImpl;
+    private final EntityDescriptorRepository entityDescRepo;
 
     private EntityDescriptorRepositoryBuilder() {
-        entityDescRepoImpl = new EntityDescriptorRepositoryImpl();
+        entityDescRepo = new EntityDescriptorRepository();
     }
 
     public static EntityDescriptorRepositoryBuilder init() {
@@ -23,7 +21,7 @@ public final class EntityDescriptorRepositoryBuilder {
     }
 
     public EntityDescriptorRepositoryBuilder add(EntityDescriptor entityDescriptor) {
-        entityDescRepoImpl.putIfAbsent(entityDescriptor.getName(), entityDescriptor);
+        entityDescRepo.putIfAbsent(entityDescriptor.getName(), entityDescriptor);
         return this;
     }
 
@@ -32,8 +30,8 @@ public final class EntityDescriptorRepositoryBuilder {
         return this;
     }
 
-    public EntityDescriptorRepository getEntityDescriptorsRepository() {
-        return this.entityDescRepoImpl;
+    public EntityDescriptorRepository get() {
+        return this.entityDescRepo;
 
     }
 

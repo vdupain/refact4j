@@ -31,7 +31,7 @@ public final class EntityStringifierRepoFactory extends AbstractEntityStringifie
 
     public static EntityStringifierRepositoryFactory init(EntityDescriptor entityDescriptor, String xmlStringifier) {
         return new EntityStringifierRepoFactory(EntityDescriptorRepositoryBuilder.init().add(entityDescriptor)
-                .getEntityDescriptorsRepository(), xmlStringifier, EOMMetaModelRepository.get());
+                .get(), xmlStringifier, EOMMetaModelRepository.get());
     }
 
 }

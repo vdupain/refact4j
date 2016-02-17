@@ -9,7 +9,7 @@ public class DummyRepository {
 
     static {
         EntityDescriptorRepository dummyRepository = EntityDescriptorRepositoryBuilder.init().add(FooDesc.INSTANCE)
-                .getEntityDescriptorsRepository();
+                .get();
 
         repository = EntityDescriptorRepositoryBuilder.init(dummyRepository)
                 .add(BarDesc.INSTANCE)
@@ -17,7 +17,7 @@ public class DummyRepository {
                 .add(CompoundKeyFoo2Desc.INSTANCE)
                 .add(EmployeeDesc.INSTANCE)
                 .add(EmployeeInfoDesc.INSTANCE)
-                .getEntityDescriptorsRepository();
+                .get();
     }
 
     public static EntityDescriptorRepository get() {
