@@ -2,15 +2,16 @@ package org.refact4j.eom.annotations;
 
 import org.refact4j.eom.EntityObject;
 import org.refact4j.eom.EntityObjectBuilder;
-import org.refact4j.eom.impl.AbstractEntityConverter;
 import org.refact4j.eom.model.EntityDescriptor;
+import org.refact4j.eom.model.EntityDescriptorRepository;
 import org.refact4j.eom.model.ManyToOneRelationField;
 
 import java.lang.reflect.Method;
 
-public class AnnotedEntityBindableEntityConverter<T> extends AbstractEntityConverter<T> {
+public class AnnotedEntityBindableEntityConverter<T> implements org.refact4j.core.Converter<T,EntityObject>, org.refact4j.eom.model.EntityDescriptorRepositoryAware {
 
     private final EntityAnnotationsHelper annotations = new EntityAnnotationsHelper();
+    protected EntityDescriptorRepository entityDescriptorRepository;
 
     @Override
     public EntityObject convert(T t) {
@@ -48,4 +49,7 @@ public class AnnotedEntityBindableEntityConverter<T> extends AbstractEntityConve
         return entityObject;
     }
 
+    public void setEntityDescriptorRepository(EntityDescriptorRepository entityDescriptorRepository) {
+        this.entityDescriptorRepository = entityDescriptorRepository;
+    }
 }
