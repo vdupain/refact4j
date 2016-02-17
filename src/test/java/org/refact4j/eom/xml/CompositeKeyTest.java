@@ -59,12 +59,12 @@ public class CompositeKeyTest {
         EntityDescriptor barType = repository.getEntityDescriptor("bar");
 
         Key bar4Key = KeyBuilder.init(barType).set(barType.getField("id"), 4)
-                .getKey();
+                .get();
         EntityObject bar4 = entityObjects.stream()
                 .filter(p -> p.getKey().equals(bar4Key))
                 .findFirst().get();
         Key foo1Key = KeyBuilder.init(fooType).set(fooType.getField("id1"), 1)
-                .set(fooType.getField("id2"), "abc").getKey();
+                .set(fooType.getField("id2"), "abc").get();
         EntityObject foo1 = entityObjects.stream()
                 .filter(p -> p.getKey().equals(foo1Key))
                 .findFirst().get();

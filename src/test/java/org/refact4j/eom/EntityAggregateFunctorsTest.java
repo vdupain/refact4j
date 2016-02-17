@@ -11,9 +11,6 @@ import org.refact4j.eom.model.Field;
 import org.refact4j.eom.model.KeyBuilder;
 import org.refact4j.eom.xml.reader.EntityXmlReaderHelper;
 
-import java.util.Collections;
-import java.util.List;
-
 import static org.junit.Assert.assertEquals;
 
 
@@ -64,29 +61,29 @@ public class EntityAggregateFunctorsTest {
         Field fooField = fooKeyfield;
         EntityObject entityObject = EntityAggregateFunctor.applyMinAggregateFunctor(entityObjects,
                 fooField);
-        assertEquals(fooKeyBuilder.set(fooKeyfield, 1).getKey(), entityObject.getKey());
+        assertEquals(fooKeyBuilder.set(fooKeyfield, 1).get(), entityObject.getKey());
 
         fooField = fooEntityDescriptor.getField("field1");
         entityObject = EntityAggregateFunctor.applyMinAggregateFunctor(entityObjects, fooField);
-        assertEquals(fooKeyBuilder.set(fooKeyfield, 3).getKey(), entityObject.getKey());
+        assertEquals(fooKeyBuilder.set(fooKeyfield, 3).get(), entityObject.getKey());
 
         entityObject = EntityAggregateFunctor.applyMinAggregateFunctor(entityObjects, fooEntityDescriptor,
                 "value");
-        assertEquals(fooKeyBuilder.set(fooKeyfield, 3).getKey(), entityObject.getKey());
+        assertEquals(fooKeyBuilder.set(fooKeyfield, 3).get(), entityObject.getKey());
 
         KeyBuilder barKeyBuilder = KeyBuilder.init(barEntityDescriptor);
         Field barKeyfield = barEntityDescriptor.getField("id");
         Field barField = barKeyfield;
         entityObject = EntityAggregateFunctor.applyMinAggregateFunctor(entityObjects, barField);
-        assertEquals(barKeyBuilder.set(barKeyfield, 11).getKey(), entityObject.getKey());
+        assertEquals(barKeyBuilder.set(barKeyfield, 11).get(), entityObject.getKey());
 
         barField = barEntityDescriptor.getField("field1");
         entityObject = EntityAggregateFunctor.applyMinAggregateFunctor(entityObjects, barField);
-        assertEquals(barKeyBuilder.set(barKeyfield, 13).getKey(), entityObject.getKey());
+        assertEquals(barKeyBuilder.set(barKeyfield, 13).get(), entityObject.getKey());
 
         entityObject = EntityAggregateFunctor.applyMinAggregateFunctor(entityObjects, barEntityDescriptor,
                 "foo");
-        assertEquals(barKeyBuilder.set(barKeyfield, 13).getKey(), entityObject.getKey());
+        assertEquals(barKeyBuilder.set(barKeyfield, 13).get(), entityObject.getKey());
 
     }
 
@@ -97,25 +94,25 @@ public class EntityAggregateFunctorsTest {
         Field fooField = fooKeyfield;
         EntityObject entityObject = EntityAggregateFunctor.applyMaxAggregateFunctor(entityObjects,
                 fooField);
-        assertEquals(fooKeyBuilder.set(fooKeyfield, 3).getKey(), entityObject.getKey());
+        assertEquals(fooKeyBuilder.set(fooKeyfield, 3).get(), entityObject.getKey());
 
         fooField = fooEntityDescriptor.getField("field1");
         entityObject = EntityAggregateFunctor.applyMaxAggregateFunctor(entityObjects, fooField);
-        assertEquals(fooKeyBuilder.set(fooKeyfield, 2).getKey(), entityObject.getKey());
+        assertEquals(fooKeyBuilder.set(fooKeyfield, 2).get(), entityObject.getKey());
 
         entityObject = EntityAggregateFunctor.applyMaxAggregateFunctor(entityObjects, fooEntityDescriptor,
                 "value");
-        assertEquals(fooKeyBuilder.set(fooKeyfield, 1).getKey(), entityObject.getKey());
+        assertEquals(fooKeyBuilder.set(fooKeyfield, 1).get(), entityObject.getKey());
 
         KeyBuilder barKeyBuilder = KeyBuilder.init(barEntityDescriptor);
         Field barKeyfield = barEntityDescriptor.getField("id");
         Field barField = barKeyfield;
         entityObject = EntityAggregateFunctor.applyMaxAggregateFunctor(entityObjects, barField);
-        assertEquals(barKeyBuilder.set(barKeyfield, 14).getKey(), entityObject.getKey());
+        assertEquals(barKeyBuilder.set(barKeyfield, 14).get(), entityObject.getKey());
 
         barField = barEntityDescriptor.getField("field1");
         entityObject = EntityAggregateFunctor.applyMaxAggregateFunctor(entityObjects, barField);
-        assertEquals(barKeyBuilder.set(barKeyfield, 12).getKey(), entityObject.getKey());
+        assertEquals(barKeyBuilder.set(barKeyfield, 12).get(), entityObject.getKey());
 
     }
 

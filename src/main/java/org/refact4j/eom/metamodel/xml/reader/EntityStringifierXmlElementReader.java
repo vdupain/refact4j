@@ -26,7 +26,7 @@ public class EntityStringifierXmlElementReader extends DefaultXmlElementReader {
         stringifier = EntityObjectBuilder.init(EntityStringifierDesc.INSTANCE).get();
         String entityDescName = XmlHelper.getAttrValue(EntityStringifierDesc.OBJECT_TYPE.getName(), xmlAttrs);
         Key entityDescKey = KeyBuilder.init(EntityDescriptorDesc.INSTANCE).set(EntityDescriptorDesc.NAME,
-                entityDescName).getKey();
+                entityDescName).get();
         stringifier.set(EntityStringifierDesc.OBJECT_TYPE, entityDescKey);
         stringifier.set(EntityStringifierDesc.NAME, XmlHelper.getAttrValue(EntityStringifierDesc.NAME.getName(),
                 xmlAttrs));

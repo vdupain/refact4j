@@ -13,11 +13,7 @@ public class HashCodeTestUtils {
         Assert.assertEquals(equals1, equals2);
         Assert.assertEquals(equals2, equals1);
         Assert.assertFalse(equals1.equals(different));
-        checkHashCode(equals1, equals2);
-    }
-
-    private static void checkHashCode(Object equals1,
-                                      Object equals2) {
         Assert.assertEquals(equals1.hashCode(), equals2.hashCode());
     }
+
 }

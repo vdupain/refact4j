@@ -43,7 +43,7 @@ public class EntityChangeSetTest extends AbstractChangeSetTest {
         }
 
         foo3 = entitySet.stream()
-                .filter(p -> p.getKey().equals(KeyBuilder.init(FooDesc.INSTANCE).set(FooDesc.ID, 3).getKey()))
+                .filter(p -> p.getKey().equals(KeyBuilder.init(FooDesc.INSTANCE).set(FooDesc.ID, 3).get()))
                 .findFirst().get();
 
         // update

@@ -79,7 +79,7 @@ public abstract class AbstractRelationField extends AbstractField implements Rel
         if (this.inverseRelationField != null) {
             key = KeyBuilder.init(FieldDesc.INSTANCE).set(FieldDesc.ENTITY_DESC,
                     this.targetEntityDescriptor.toEntity().getKey())
-                    .set(FieldDesc.NAME, inverseRelationField.getName()).getKey();
+                    .set(FieldDesc.NAME, inverseRelationField.getName()).get();
         }
         EntityObject entity = super.toEntity();
         entity.set(FieldDesc.TARGET, this.getTargetEntityDescriptor().toEntity()).set(FieldDesc.INVERSE_RELATION_FIELD,

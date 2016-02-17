@@ -79,7 +79,7 @@ public class String2ValueFieldConverter extends DefaultFieldVisitor {
             keyBuilder.set(field, this.getValue());
         }
 
-        value = keyBuilder.getKey();
+        value = keyBuilder.get();
     }
 
 

@@ -63,7 +63,7 @@ public class FieldDesc {
     public static Predicate<EntityObject> getAllFieldsForEntityDescriptor(final String entityDescName) {
         return arg -> {
             Key key = KeyBuilder.init(EntityDescriptorDesc.INSTANCE).set(EntityDescriptorDesc.NAME, entityDescName)
-                    .getKey();
+                    .get();
             return arg.getEntityDescriptor().equals(FieldDesc.INSTANCE)
                     && key.equals(arg.get(FieldDesc.ENTITY_DESC));
         };
@@ -73,7 +73,7 @@ public class FieldDesc {
         return arg -> {
 
             Key key = KeyBuilder.init(EntityDescriptorDesc.INSTANCE).set(EntityDescriptorDesc.NAME, entityDescName)
-                    .getKey();
+                    .get();
             return arg.getEntityDescriptor().equals(FieldDesc.INSTANCE)
                     && key.equals(arg.get(FieldDesc.ENTITY_DESC))
                     && !arg.get(FieldDesc.DATA_TYPE).equals(DataTypeType.MANY_TO_ONE_RELATION_DATA_TYPE.getKey())
@@ -84,7 +84,7 @@ public class FieldDesc {
     public static Predicate<EntityObject> getRelationFieldsForEntityDescriptor(final String entityDescName) {
         return arg -> {
             Key key = KeyBuilder.init(EntityDescriptorDesc.INSTANCE).set(EntityDescriptorDesc.NAME, entityDescName)
-                    .getKey();
+                    .get();
             return arg.getEntityDescriptor().equals(FieldDesc.INSTANCE)
                     && key.equals(arg.get(FieldDesc.ENTITY_DESC))
                     && (arg.get(FieldDesc.DATA_TYPE).equals(DataTypeType.MANY_TO_ONE_RELATION_DATA_TYPE.getKey()) || arg

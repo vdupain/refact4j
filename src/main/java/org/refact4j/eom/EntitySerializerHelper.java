@@ -151,7 +151,7 @@ public final class EntitySerializerHelper {
             for (Field field : fields) {
                 keyBuilder.set(field, objectInputStream.readObject());
             }
-            return keyBuilder.getKey();
+            return keyBuilder.get();
         } catch (Exception e) {
             throw new RuntimeException(e);
         }

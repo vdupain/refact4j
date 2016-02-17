@@ -14,12 +14,18 @@ public class KeyBuilderTest {
 
     @Test
     public void testEqualsAndHashCodeForFieldsKey() throws Exception {
-        Key key_1a = KeyBuilder.init(CompoundKeyFooDesc.INSTANCE).set(CompoundKeyFooDesc.ID, 1).set(
-                CompoundKeyFooDesc.NAME, "a").getKey();
-        Key key_a1 = KeyBuilder.init(CompoundKeyFooDesc.INSTANCE).set(CompoundKeyFooDesc.NAME, "a").set(
-                CompoundKeyFooDesc.ID, 1).getKey();
-        Key key_2b = KeyBuilder.init(CompoundKeyFooDesc.INSTANCE).set(CompoundKeyFooDesc.ID, 2).set(
-                CompoundKeyFooDesc.NAME, "b").getKey();
+        Key key_1a = KeyBuilder.init(CompoundKeyFooDesc.INSTANCE)
+                .set(CompoundKeyFooDesc.ID, 1)
+                .set( CompoundKeyFooDesc.NAME, "a")
+                .get();
+        Key key_a1 = KeyBuilder.init(CompoundKeyFooDesc.INSTANCE)
+                .set(CompoundKeyFooDesc.NAME, "a")
+                .set(CompoundKeyFooDesc.ID, 1)
+                .get();
+        Key key_2b = KeyBuilder.init(CompoundKeyFooDesc.INSTANCE)
+                .set(CompoundKeyFooDesc.ID, 2)
+                .set(CompoundKeyFooDesc.NAME, "b")
+                .get();
         HashCodeTestUtils.checkEqualsAndHashCode(key_1a, key_a1, key_2b);
         checkComparison(key_1a, key_2b, -1);
         checkComparison(key_1a, key_1a, 0);
@@ -37,8 +43,9 @@ public class KeyBuilderTest {
     @Test
     public void testKeyInvalidField() {
         try {
-            KeyBuilder.init(CompoundKeyFooDesc.INSTANCE).set(FooDesc.ID, 1).set(
-                    CompoundKeyFooDesc.NAME, "a").getKey();
+            KeyBuilder.init(CompoundKeyFooDesc.INSTANCE)
+                    .set(FooDesc.ID, 1).set(CompoundKeyFooDesc.NAME, "a")
+                    .get();
             fail("Expected Exception");
         } catch (Exception e) {
             assertEquals("Field Foo.id is not defined for type 'CompoundKeyFooDesc'", e.getMessage());

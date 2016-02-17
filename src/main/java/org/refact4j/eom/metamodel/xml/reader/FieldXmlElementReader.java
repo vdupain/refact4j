@@ -46,20 +46,20 @@ class FieldXmlElementReader extends DefaultXmlElementReader {
         String targetEntityDescriptorName = XmlHelper.getAttrValue(FieldDesc.TARGET.getName(), xmlAttrs, null);
         if (targetEntityDescriptorName != null) {
             Key targetEntityDescriptorKey = KeyBuilder.init(EntityDescriptorDesc.INSTANCE).set(
-                    EntityDescriptorDesc.NAME, targetEntityDescriptorName).getKey();
+                    EntityDescriptorDesc.NAME, targetEntityDescriptorName).get();
             field.set(FieldDesc.TARGET, targetEntityDescriptorKey);
             String inverseRelationFieldName = XmlHelper.getAttrValue(FieldDesc.INVERSE_RELATION_FIELD.getName(),
                     xmlAttrs, null);
             if (inverseRelationFieldName != null) {
                 Key keyField = KeyBuilder.init(FieldDesc.INSTANCE).set(FieldDesc.NAME, inverseRelationFieldName).set(
-                        FieldDesc.ENTITY_DESC, targetEntityDescriptorKey).getKey();
+                        FieldDesc.ENTITY_DESC, targetEntityDescriptorKey).get();
                 field.set(FieldDesc.INVERSE_RELATION_FIELD, keyField);
             }
         }
         String dataTypeName = XmlHelper.getAttrValue(FieldDesc.DATA_TYPE.getName(), xmlAttrs, null);
         if (dataTypeName != null) {
             field.set(FieldDesc.DATA_TYPE, KeyBuilder.init(DataTypeType.INSTANCE).set(DataTypeType.NAME, dataTypeName)
-                    .getKey());
+                    .get());
         }
         this.add(field);
     }

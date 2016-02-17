@@ -19,7 +19,7 @@ public class KeyBuilder {
         return this;
     }
 
-    public Key getKey() {
+    public Key get() {
         return this.key;
     }
 

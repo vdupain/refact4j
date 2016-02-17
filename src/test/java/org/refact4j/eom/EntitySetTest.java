@@ -247,7 +247,7 @@ public class EntitySetTest {
         Collection<EntityObject> entityObjects = entityObjectSet.stream()
                 .filter(e -> Objects.equals(e.get(FooDesc.NAME), "foo1"))
                 .collect(Collectors.toList());
-        Key key = KeyBuilder.init(FooDesc.INSTANCE).set(FooDesc.ID, 1).getKey();
+        Key key = KeyBuilder.init(FooDesc.INSTANCE).set(FooDesc.ID, 1).get();
         EntityObject entityObject = entityObjectSet.stream()
                 .filter(p -> p.getKey().equals(key))
                 .findFirst().get();

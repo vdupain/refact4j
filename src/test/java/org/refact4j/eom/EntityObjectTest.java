@@ -46,7 +46,7 @@ public class EntityObjectTest {
         assertSame(name, entityObject.get(FooDesc.NAME));
         assertSame(value, entityObject.get(FooDesc.VALUE));
         assertSame(flag, entityObject.get(FooDesc.FLAG));
-        Key key = KeyBuilder.init(BarDesc.INSTANCE).set(BarDesc.ID, id99).getKey();
+        Key key = KeyBuilder.init(BarDesc.INSTANCE).set(BarDesc.ID, id99).get();
         assertEquals(key, entityObject.get(FooDesc.BAR));
     }
 
