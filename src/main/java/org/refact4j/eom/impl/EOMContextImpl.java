@@ -17,7 +17,6 @@ public final class EOMContextImpl implements EOMContext {
 
     private EOMContextImpl(EntityDescriptorRepository entityDescriptorRepository) {
         this.entityDescriptorRepository = entityDescriptorRepository;
-        beanConverter.setEntityDescriptorRepository(entityDescriptorRepository);
         entityConverter.setEntityDescriptorRepository(entityDescriptorRepository);
     }
 

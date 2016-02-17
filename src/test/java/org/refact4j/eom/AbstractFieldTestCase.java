@@ -1,7 +1,6 @@
 package org.refact4j.eom;
 
 import org.refact4j.eom.model.*;
-import org.refact4j.eom.model.impl.EntityDescriptorImpl;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;

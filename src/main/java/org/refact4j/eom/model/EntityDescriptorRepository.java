@@ -10,7 +10,6 @@ import org.refact4j.visitor.Visitor;
 import org.refact4j.xml.ToXmlString;
 
 import java.util.HashMap;
-import java.util.Map;
 
 public class EntityDescriptorRepository extends HashMap<String, EntityDescriptor> implements Visitable, ToXmlString {
 

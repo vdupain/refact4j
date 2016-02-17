@@ -1,7 +1,6 @@
 package org.refact4j.util;
 
 import java.lang.reflect.Method;
-import java.util.stream.StreamSupport;
 
 final class BeanHelper {
     private static final String[] ACCESSOR_PREFIXES = new String[]{"is", "get", "has"};

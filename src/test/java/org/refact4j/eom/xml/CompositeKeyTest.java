@@ -17,39 +17,37 @@ import static org.junit.Assert.assertEquals;
 
 public class CompositeKeyTest {
 
-    private final String metaModelXml = "<dataset>"
-            + "<entityDescriptor name='foo'>"
-            + "        <field name='id1' isKey='true' dataType='integer'/>"
-            + "        <field name='id2' isKey='true' dataType='string'/>"
-            + "        <field name='field1' dataType='string' defaultValue='azerty'/>"
-            + "</entityDescriptor>"
-            + "<entityDescriptor name='bar'>"
-            + "        <field name='id' isKey='true' dataType='integer'/>"
-            + "        <field name='field1' dataType='string'/>"
-            + "        <field name='foo' dataType='manyToOne' target='foo' prettyName='ToOne Relation to Foo Object'/>"
-            + "</entityDescriptor>"
-            + "</dataset>";
-
-    private final String dataXml = "<dataset>"
-            + "    <foo id1='1' id2='1' field1='foo11' />"
-            + "    <foo id1='1' id2='2' field1='foo12' >"
-            + "        <bar id='1' field1='bar1' />"
-            + "        <bar id='2' field1='bar2' />"
-            + "    </foo>"
-            + "    <foo id1='1' id2='abc'/>"
-            + "    <bar id='3' field1='bar3' />"
-            + "    <bar id='4' field1='bar4' foo='foo[id1=1,id2=abc]' />"
-            + "</dataset>";
-
     private EntityDescriptorRepository repository;
 
     private EntitySet entityObjects;
 
     @Before
     public void setUp() throws Exception {
+        String metaModelXml = "<dataset>"
+                + "<entityDescriptor name='foo'>"
+                + "        <field name='id1' isKey='true' dataType='integer'/>"
+                + "        <field name='id2' isKey='true' dataType='string'/>"
+                + "        <field name='field1' dataType='string' defaultValue='azerty'/>"
+                + "</entityDescriptor>"
+                + "<entityDescriptor name='bar'>"
+                + "        <field name='id' isKey='true' dataType='integer'/>"
+                + "        <field name='field1' dataType='string'/>"
+                + "        <field name='foo' dataType='manyToOne' target='foo' prettyName='ToOne Relation to Foo Object'/>"
+                + "</entityDescriptor>"
+                + "</dataset>";
         repository = DefaultEntityDescriptorRepoFactory.init(
                 EOMMetaModelRepository.get(), metaModelXml, null)
                 .createEntityDescriptorRepository();
+        String dataXml = "<dataset>"
+                + "    <foo id1='1' id2='1' field1='foo11' />"
+                + "    <foo id1='1' id2='2' field1='foo12' >"
+                + "        <bar id='1' field1='bar1' />"
+                + "        <bar id='2' field1='bar2' />"
+                + "    </foo>"
+                + "    <foo id1='1' id2='abc'/>"
+                + "    <bar id='3' field1='bar3' />"
+                + "    <bar id='4' field1='bar4' foo='foo[id1=1,id2=abc]' />"
+                + "</dataset>";
         entityObjects = new EntitySet(EntityXmlReaderHelper.unmarshal(repository, dataXml));
     }
 

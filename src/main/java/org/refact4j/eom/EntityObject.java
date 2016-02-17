@@ -35,7 +35,8 @@ public interface EntityObject extends Cloneable, ToXML, ToXmlString, Serializabl
      */
     default Key getKey() {
         KeyBuilder keyBuilder = KeyBuilder.init(this.getEntityDescriptor());
-        this.getEntityDescriptor().getKeyFields().stream().forEach(field -> keyBuilder.set(field, get(field)));
+        this.getEntityDescriptor().getKeyFields().stream()
+                .forEach(field -> keyBuilder.set(field, get(field)));
         return keyBuilder.get();
     }
 

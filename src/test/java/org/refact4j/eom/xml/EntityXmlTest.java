@@ -27,10 +27,6 @@ public class EntityXmlTest {
     private static final String DUMMY_XML =
             "<Foo bar=\"99\" bar2=\"null\" beginDate=\"" + EntityUtils.formatDate(date)
                     + "\" endDate=\"null\" flag=\"false\" id=\"1\" name=\"dummy\" timestampDate=\"null\" value=\"1.23\"/>";
-    private final Integer id = 1;
-    private final Integer id99 = 99;
-    private final String name = "dummy";
-    private final Double value = 1.23;
     private EntityObject entity1;
     private EntityObject entity2;
 
@@ -40,8 +36,12 @@ public class EntityXmlTest {
 
     @Before
     public void setUp() throws Exception {
+        Integer id99 = 99;
+        String name = "dummy";
+        Double value = 1.23;
         entity2 = EntityObjectBuilder.init(BarDesc.INSTANCE).set(BarDesc.ID, id99)
                 .set(BarDesc.NAME, name).set(BarDesc.VALUE, value).get();
+        Integer id = 1;
         entity1 = EntityObjectBuilder.init(FooDesc.INSTANCE).set(FooDesc.ID, id).set(
                 FooDesc.NAME, name).set(FooDesc.VALUE, value).set(FooDesc.BEGIN_DATE, date)
                 .set(FooDesc.FLAG, false).set(FooDesc.BAR, entity2).get();
