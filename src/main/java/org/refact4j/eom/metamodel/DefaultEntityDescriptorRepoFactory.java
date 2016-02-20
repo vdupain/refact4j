@@ -180,16 +180,16 @@ public class DefaultEntityDescriptorRepoFactory implements EntityDescriptorRepos
             EntityUtils.applyEmptyDefaultValues(fieldEntity);
             FieldFactory fieldFactory = FieldFactory.init(builder, fieldEntity.get(FieldDesc.NAME));
             Field dummyField = fieldBuilder.getField(fieldEntity, fieldFactory);
-            fieldFactory.setPrettyName(fieldEntity.get(FieldDesc.PRETTY_NAME)).setNullable(
-                    fieldEntity.get(FieldDesc.NULLABLE)).setVisible(fieldEntity.get(FieldDesc.VISIBLE)).setEditable(
-                    fieldEntity.get(FieldDesc.EDITABLE)).setOrder(fieldEntity.get(FieldDesc.ORDER)).setDefaultValue(
-                    ConverterHelper.convertString2Value(fieldEntity.get(FieldDesc.DEFAULT_VALUE), dummyField))
-                    .setMinValue(
-                            (Number) ConverterHelper.convertString2Value(fieldEntity.get(FieldDesc.MIN_VALUE),
-                                    dummyField)).setMaxValue(
-                    (Number) ConverterHelper.convertString2Value(fieldEntity.get(FieldDesc.MAX_VALUE),
-                            dummyField)).setMinLength(fieldEntity.get(FieldDesc.MIN_LENGTH)).setMaxLength(
-                    fieldEntity.get(FieldDesc.MAX_LENGTH));
+            fieldFactory.setPrettyName(fieldEntity.get(FieldDesc.PRETTY_NAME))
+                    .setNullable(fieldEntity.get(FieldDesc.NULLABLE))
+                    .setVisible(fieldEntity.get(FieldDesc.VISIBLE))
+                    .setEditable(fieldEntity.get(FieldDesc.EDITABLE))
+                    .setOrder(fieldEntity.get(FieldDesc.ORDER))
+                    .setDefaultValue(ConverterHelper.convertString2Value(fieldEntity.get(FieldDesc.DEFAULT_VALUE), dummyField))
+                    .setMinValue((Number) ConverterHelper.convertString2Value(fieldEntity.get(FieldDesc.MIN_VALUE), dummyField))
+                    .setMaxValue((Number) ConverterHelper.convertString2Value(fieldEntity.get(FieldDesc.MAX_VALUE), dummyField))
+                    .setMinLength(fieldEntity.get(FieldDesc.MIN_LENGTH))
+                    .setMaxLength(fieldEntity.get(FieldDesc.MAX_LENGTH));
             Field field = fieldBuilder.getField(fieldEntity, fieldFactory);
             builder.addField(field);
             if (Boolean.TRUE.equals(fieldEntity.get(FieldDesc.IS_KEY))) {
