@@ -17,8 +17,7 @@ class ComparatorAggregateVisitor<T> extends AbstractAggregateVisitor<T> {
     }
 
     public void visitMaxValue(MaxValue<T> maxValue) {
-        Collection<? extends T> arg = maxValue.getArg();
-        setValue(Collections.max(arg, comparator));
+        setValue(Collections.max(maxValue.getArg(), comparator));
     }
 
 }

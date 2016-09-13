@@ -42,77 +42,62 @@ public class EntityAggregateFunctorsTest {
                 .createEntityDescriptorRepository();
         fooEntityDescriptor = repository.getEntityDescriptor("foo");
         barEntityDescriptor = repository.getEntityDescriptor("bar");
-        String dataXml = "<dataset>" + "<foo id='1' field1='b' value='9'/>"
-                + "<foo id='2' field1='c' value='8' >"
-                + "    <bar id='11' field1='bar11_1' field2='bar11_2'/>"
-                + "    <bar id='12' field1='x_bar12_1' field2='bar12_2'/>" + "</foo>"
-                + "<foo id='3' field1='a' value='7'/>"
-                + "<bar id='13' field1='a_bar13_1' field2='bar12_2'/>"
-                + "<bar id='14' field1='bar14_1' field2='bar14_2' foo='1'/>"
-                + "</dataset>";
+        String dataXml = "<dataset>" +
+                "<foo id='1' field1='b' value='9'/>" +
+                "<foo id='2' field1='c' value='8' >" +
+                "    <bar id='11' field1='bar11_1' field2='bar11_2'/>" +
+                "    <bar id='12' field1='x_bar12_1' field2='bar12_2'/>" +
+                "</foo>" +
+                "<foo id='3' field1='a' value='7'/>" +
+                "<bar id='13' field1='a_bar13_1' field2='bar12_2'/>" +
+                "<bar id='14' field1='bar14_1' field2='bar14_2' foo='1'/>" +
+                "</dataset>";
         entityObjects = new EntitySet(EntityXmlReaderHelper.unmarshal(repository, dataXml));
     }
 
     @Test
     public void testMin() {
-        KeyBuilder fooKeyBuilder = KeyBuilder.init(fooEntityDescriptor);
-        Field fooKeyfield = fooEntityDescriptor.getField("id");
-        Field fooField = fooKeyfield;
         EntityObject entityObject = EntityAggregateFunctor.applyMinAggregateFunctor(entityObjects,
-                fooField);
-        assertEquals(fooKeyBuilder.set(fooKeyfield, 1).get(), entityObject.getKey());
+                fooEntityDescriptor.getField("id"));
+        assertEquals("<foo field1=\"b\" id=\"1\" value=\"9.0\"/>", entityObject.toXmlString());
 
-        fooField = fooEntityDescriptor.getField("field1");
-        entityObject = EntityAggregateFunctor.applyMinAggregateFunctor(entityObjects, fooField);
-        assertEquals(fooKeyBuilder.set(fooKeyfield, 3).get(), entityObject.getKey());
+        entityObject = EntityAggregateFunctor.applyMinAggregateFunctor(entityObjects, fooEntityDescriptor.getField("field1"));
+        assertEquals("<foo field1=\"a\" id=\"3\" value=\"7.0\"/>", entityObject.toXmlString());
 
         entityObject = EntityAggregateFunctor.applyMinAggregateFunctor(entityObjects, fooEntityDescriptor,
                 "value");
-        assertEquals(fooKeyBuilder.set(fooKeyfield, 3).get(), entityObject.getKey());
+        assertEquals("<foo field1=\"a\" id=\"3\" value=\"7.0\"/>", entityObject.toXmlString());
 
-        KeyBuilder barKeyBuilder = KeyBuilder.init(barEntityDescriptor);
-        Field barKeyfield = barEntityDescriptor.getField("id");
-        Field barField = barKeyfield;
-        entityObject = EntityAggregateFunctor.applyMinAggregateFunctor(entityObjects, barField);
-        assertEquals(barKeyBuilder.set(barKeyfield, 11).get(), entityObject.getKey());
+        entityObject = EntityAggregateFunctor.applyMinAggregateFunctor(entityObjects, barEntityDescriptor.getField("id"));
+        assertEquals("<bar field1=\"bar11_1\" field2=\"bar11_2\" foo=\"2\" id=\"11\"/>", entityObject.toXmlString());
 
-        barField = barEntityDescriptor.getField("field1");
-        entityObject = EntityAggregateFunctor.applyMinAggregateFunctor(entityObjects, barField);
-        assertEquals(barKeyBuilder.set(barKeyfield, 13).get(), entityObject.getKey());
+        entityObject = EntityAggregateFunctor.applyMinAggregateFunctor(entityObjects, barEntityDescriptor.getField("field1"));
+        assertEquals("<bar field1=\"a_bar13_1\" field2=\"bar12_2\" foo=\"null\" id=\"13\"/>", entityObject.toXmlString());
 
         entityObject = EntityAggregateFunctor.applyMinAggregateFunctor(entityObjects, barEntityDescriptor,
                 "foo");
-        assertEquals(barKeyBuilder.set(barKeyfield, 13).get(), entityObject.getKey());
+        assertEquals("<bar field1=\"a_bar13_1\" field2=\"bar12_2\" foo=\"null\" id=\"13\"/>", entityObject.toXmlString());
 
     }
 
     @Test
     public void testMax() {
-        KeyBuilder fooKeyBuilder = KeyBuilder.init(fooEntityDescriptor);
-        Field fooKeyfield = fooEntityDescriptor.getField("id");
-        Field fooField = fooKeyfield;
         EntityObject entityObject = EntityAggregateFunctor.applyMaxAggregateFunctor(entityObjects,
-                fooField);
-        assertEquals(fooKeyBuilder.set(fooKeyfield, 3).get(), entityObject.getKey());
+                fooEntityDescriptor.getField("id"));
+        assertEquals("<foo field1=\"a\" id=\"3\" value=\"7.0\"/>", entityObject.toXmlString());
 
-        fooField = fooEntityDescriptor.getField("field1");
-        entityObject = EntityAggregateFunctor.applyMaxAggregateFunctor(entityObjects, fooField);
-        assertEquals(fooKeyBuilder.set(fooKeyfield, 2).get(), entityObject.getKey());
+        entityObject = EntityAggregateFunctor.applyMaxAggregateFunctor(entityObjects, fooEntityDescriptor.getField("field1"));
+        assertEquals("<foo field1=\"c\" id=\"2\" value=\"8.0\"/>", entityObject.toXmlString());
 
         entityObject = EntityAggregateFunctor.applyMaxAggregateFunctor(entityObjects, fooEntityDescriptor,
                 "value");
-        assertEquals(fooKeyBuilder.set(fooKeyfield, 1).get(), entityObject.getKey());
+        assertEquals("<foo field1=\"b\" id=\"1\" value=\"9.0\"/>", entityObject.toXmlString());
 
-        KeyBuilder barKeyBuilder = KeyBuilder.init(barEntityDescriptor);
-        Field barKeyfield = barEntityDescriptor.getField("id");
-        Field barField = barKeyfield;
-        entityObject = EntityAggregateFunctor.applyMaxAggregateFunctor(entityObjects, barField);
-        assertEquals(barKeyBuilder.set(barKeyfield, 14).get(), entityObject.getKey());
+        entityObject = EntityAggregateFunctor.applyMaxAggregateFunctor(entityObjects, barEntityDescriptor.getField("id"));
+        assertEquals("<bar field1=\"bar14_1\" field2=\"bar14_2\" foo=\"1\" id=\"14\"/>", entityObject.toXmlString());
 
-        barField = barEntityDescriptor.getField("field1");
-        entityObject = EntityAggregateFunctor.applyMaxAggregateFunctor(entityObjects, barField);
-        assertEquals(barKeyBuilder.set(barKeyfield, 12).get(), entityObject.getKey());
-
+        entityObject = EntityAggregateFunctor.applyMaxAggregateFunctor(entityObjects, barEntityDescriptor.getField("field1"));
+        assertEquals("<bar field1=\"x_bar12_1\" field2=\"bar12_2\" foo=\"2\" id=\"12\"/>", entityObject.toXmlString());
     }
 
 }
