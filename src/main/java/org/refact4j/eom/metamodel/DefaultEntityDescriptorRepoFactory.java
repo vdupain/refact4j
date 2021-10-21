@@ -182,9 +182,7 @@ public class DefaultEntityDescriptorRepoFactory implements EntityDescriptorRepos
             Field dummyField = fieldBuilder.getField(fieldEntity, fieldFactory);
             fieldFactory.setPrettyName(fieldEntity.get(FieldDesc.PRETTY_NAME))
                     .setNullable(fieldEntity.get(FieldDesc.NULLABLE))
-                    .setDefaultValue(ConverterHelper.convertString2Value(fieldEntity.get(FieldDesc.DEFAULT_VALUE), dummyField))
-                    .setMinValue((Number) ConverterHelper.convertString2Value(fieldEntity.get(FieldDesc.MIN_VALUE), dummyField))
-                    .setMaxValue((Number) ConverterHelper.convertString2Value(fieldEntity.get(FieldDesc.MAX_VALUE), dummyField));
+                    .setDefaultValue(ConverterHelper.convertString2Value(fieldEntity.get(FieldDesc.DEFAULT_VALUE), dummyField));
             Field field = fieldBuilder.getField(fieldEntity, fieldFactory);
             builder.addField(field);
             if (Boolean.TRUE.equals(fieldEntity.get(FieldDesc.IS_KEY))) {

@@ -18,10 +18,6 @@ public class FieldDesc {
 
     public static final StringField DEFAULT_VALUE = FieldFactory.init(BUILDER, "defaultValue").createStringField();
 
-    public static final StringField MIN_VALUE = FieldFactory.init(BUILDER, "minValue").createStringField();
-
-    public static final StringField MAX_VALUE = FieldFactory.init(BUILDER, "maxValue").createStringField();
-
     public static final StringField PRETTY_NAME = FieldFactory.init(BUILDER, "prettyName").createStringField();
 
     public static final ManyToOneRelationField ENTITY_DESC = FieldFactory.init(BUILDER, "entityDescriptor")

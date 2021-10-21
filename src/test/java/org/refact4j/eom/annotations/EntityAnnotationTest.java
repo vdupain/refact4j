@@ -52,7 +52,6 @@ public class EntityAnnotationTest {
         beanTransformer.setEntitySet(new EntitySet((entityObjects)));
 
         Foo actualFoo = (Foo) beanTransformer.convert(fooEntity);
-        System.err.println(actualFoo.toString());
         Assert.assertEquals(foo.getId(), actualFoo.getId());
         Assert.assertEquals(foo.getName(), actualFoo.getName());
         Assert.assertEquals(foo.getValue(), actualFoo.getValue());

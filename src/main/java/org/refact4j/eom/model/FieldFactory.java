@@ -13,8 +13,6 @@ public final class FieldFactory implements DataTypeVisitor {
     private boolean isTimestamp;
     private boolean nullable = true;
     private Object defaultValue;
-    private Number minValue;
-    private Number maxValue;
     private String prettyName;
     private Integer order;
     private Field field;
@@ -40,8 +38,6 @@ public final class FieldFactory implements DataTypeVisitor {
         org.refact4j.eom.model.impl.DoubleField field = new org.refact4j.eom.model.impl.DoubleField(fieldName, prettyName, entityDescriptorBuilder
                 .get(), (Double) defaultValue, nullable, order
         );
-        field.setMaxValue(maxValue);
-        field.setMinValue(minValue);
         entityDescriptorBuilder.addField(field);
         return field;
     }
@@ -50,8 +46,6 @@ public final class FieldFactory implements DataTypeVisitor {
         IntegerFieldImpl field = new IntegerFieldImpl(fieldName, prettyName, entityDescriptorBuilder
                 .get(), (Integer) defaultValue, nullable, order
         );
-        field.setMaxValue(maxValue);
-        field.setMinValue(minValue);
         entityDescriptorBuilder.addField(field);
         return field;
     }
@@ -96,16 +90,6 @@ public final class FieldFactory implements DataTypeVisitor {
 
     public FieldFactory setDefaultValue(Object defaultValue) {
         this.defaultValue = defaultValue;
-        return this;
-    }
-
-    public FieldFactory setMinValue(Number minValue) {
-        this.minValue = minValue;
-        return this;
-    }
-
-    public FieldFactory setMaxValue(Number maxValue) {
-        this.maxValue = maxValue;
         return this;
     }
 

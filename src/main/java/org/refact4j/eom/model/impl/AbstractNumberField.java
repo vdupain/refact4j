@@ -8,9 +8,6 @@ import org.refact4j.eom.model.NumericField;
 
 public abstract class AbstractNumberField extends AbstractField implements NumericField {
 
-    private Number minValue;
-    private Number maxValue;
-
     AbstractNumberField() {
     }
 
@@ -22,25 +19,7 @@ public abstract class AbstractNumberField extends AbstractField implements Numer
     @Override
     public EntityObject toEntity() {
         EntityObject entity = super.toEntity();
-        entity.set(FieldDesc.MIN_VALUE, ConverterHelper.convertValue2String(maxValue, this)).set(FieldDesc.MAX_VALUE,
-                ConverterHelper.convertValue2String(minValue, this));
         return entity;
-    }
-
-    public Number getMinValue() {
-        return this.minValue;
-    }
-
-    public void setMinValue(Number minValue) {
-        this.minValue = minValue;
-    }
-
-    public Number getMaxValue() {
-        return this.maxValue;
-    }
-
-    public void setMaxValue(Number maxValue) {
-        this.maxValue = maxValue;
     }
 
 }

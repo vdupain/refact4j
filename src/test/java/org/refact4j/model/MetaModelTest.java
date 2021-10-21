@@ -29,7 +29,7 @@ public class MetaModelTest {
                     + "    <field name='id' order='2' isKey='true' dataType='integer' defaultValue='-1'/>"
                     + "     <field name='timestampDate' dataType='date'/>"
                     + "    <field name='field1' prettyName='a field #1' dataType='string' defaultValue='azerty'/>"
-                    + "    <field name='field2' dataType='string' minLength='3' maxLength='5' />"
+                    + "    <field name='field2' dataType='string' />"
                     + "    <field name='bars' order='1' dataType='oneToMany' target='bar' inverseRelation='foo' prettyName='ToMany Relation to Bar Object'/>"
                     + "</entityDescriptor>"
                     + "<entityDescriptor name='bar'>"

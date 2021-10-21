@@ -27,8 +27,6 @@ class FieldXmlNodeWriter extends AbstractXmlElementWriter {
         xmlWriter.writeAttribute(FieldDesc.NAME.getName(), fieldEntity.get(FieldDesc.NAME));
         xmlWriter.writeAttribute(FieldDesc.PRETTY_NAME.getName(), fieldEntity.get(FieldDesc.PRETTY_NAME));
         xmlWriter.writeAttribute(FieldDesc.DEFAULT_VALUE.getName(), fieldEntity.get(FieldDesc.DEFAULT_VALUE));
-        xmlWriter.writeAttribute(FieldDesc.MIN_VALUE.getName(), fieldEntity.get(FieldDesc.MIN_VALUE));
-        xmlWriter.writeAttribute(FieldDesc.MAX_VALUE.getName(), fieldEntity.get(FieldDesc.MAX_VALUE));
         xmlWriter.writeAttribute(FieldDesc.IS_KEY.getName(), fieldEntity.get(FieldDesc.IS_KEY).toString());
         xmlWriter.writeAttribute(FieldDesc.DATA_TYPE.getName(), fieldEntity.get(FieldDesc.DATA_TYPE).getFieldValue(
                 DataTypeType.NAME).toString());
