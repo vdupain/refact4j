@@ -24,10 +24,6 @@ public class EntityObjectDecorator implements EntityObject {
         this.entityObject.accept(visitor);
     }
 
-    public void checkConstraint() {
-        this.entityObject.checkConstraint();
-    }
-
     public void checkValues() {
         this.entityObject.checkValues();
     }

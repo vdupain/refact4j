@@ -89,20 +89,6 @@ public class EntityObjectTest {
     }
 
     @Test
-    public void testCreateDummyEntityWithConstraint() {
-        id = 12;
-        name = "dummy";
-
-        try {
-            EntityObjectBuilder.init(FooDesc.INSTANCE).set(FooDesc.ID, id).set(FooDesc.NAME, name).set(FooDesc.VALUE,
-                    value).get().checkConstraint();
-            fail("Expected RuntimeException");
-        } catch (RuntimeException e) {
-            assertEquals("Constraint ((Foo.id BETWEEN 0 AND 10) AND (Foo.value>=0.0)) failed: id=12", e.getMessage());
-        }
-    }
-
-    @Test
     public void testFields() {
         FieldVisitor fieldVisitor = new FieldVisitor() {
 
@@ -206,7 +192,6 @@ public class EntityObjectTest {
         fooDecorated.set(FooDesc.ID, fooDecorated.get(FooDesc.ID));
         fooDecorated.set(FooDesc.NAME, fooDecorated.get(FooDesc.NAME));
         fooDecorated.set(FooDesc.BAR, fooDecorated.get(FooDesc.BAR));
-        fooDecorated.checkConstraint();
         fooDecorated.checkValues();
         assertEquals(fooDecorated.get(FooDesc.ID), foo.get(FooDesc.ID));
         assertEquals(fooDecorated.get(FooDesc.NAME), foo.get(FooDesc.NAME));

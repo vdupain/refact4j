@@ -6,10 +6,6 @@ package org.refact4j.eom.model;
 
 public interface StringField extends DataField, StringType {
 
-    Integer getMaxLength();
-
-    Integer getMinLength();
-
     interface StringFieldVisitor {
         void visitStringField(StringField stringField);
     }

@@ -3,7 +3,6 @@ package org.refact4j.eom.model;
 import org.refact4j.eom.EOMContext;
 import org.refact4j.eom.EntityStringifier;
 import org.refact4j.eom.ToEntity;
-import org.refact4j.expr.Expression;
 import org.refact4j.visitor.Visitable;
 import org.refact4j.visitor.Visitor;
 import org.refact4j.xml.ToXmlString;
@@ -47,13 +46,6 @@ public interface EntityDescriptor extends ToXmlString, ToEntity, Serializable, E
      * @return The named field.
      */
     Field getField(String fieldName);
-
-    /**
-     * Returns the constraint expression of the EntityDescriptor.
-     *
-     * @return The constraint expression.
-     */
-    Expression getConstraintExpression();
 
     /**
      * Returns a list containing all of the EntityDescriptor's fields that

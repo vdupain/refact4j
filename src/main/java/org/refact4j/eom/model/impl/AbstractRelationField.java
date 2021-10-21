@@ -6,7 +6,6 @@ import org.refact4j.eom.model.EntityDescriptor;
 import org.refact4j.eom.model.Key;
 import org.refact4j.eom.model.KeyBuilder;
 import org.refact4j.eom.model.RelationField;
-import org.refact4j.expr.Expression;
 
 import java.io.IOException;
 import java.io.ObjectInput;
@@ -24,10 +23,9 @@ public abstract class AbstractRelationField extends AbstractField implements Rel
 
     AbstractRelationField(String fieldName, String prettyName, EntityDescriptor entityDescriptor,
                           EntityDescriptor targetEntityDescriptor, RelationField inverseRelationField, Object defaultValue,
-                          boolean nullable, boolean visible, boolean editable, Integer order,
-                          Expression<?> constraint) {
-        super(fieldName, prettyName, entityDescriptor, defaultValue, nullable, visible, editable, order,
-                constraint);
+                          boolean nullable, boolean visible, boolean editable, Integer order) {
+        super(fieldName, prettyName, entityDescriptor, defaultValue, nullable, visible, editable, order
+        );
         this.targetEntityDescriptor = targetEntityDescriptor;
         this.inverseRelationField = inverseRelationField;
     }

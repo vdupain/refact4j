@@ -6,7 +6,6 @@ import org.refact4j.eom.metamodel.FieldDesc;
 import org.refact4j.eom.model.DataTypeVisitor;
 import org.refact4j.eom.model.EntityDescriptor;
 import org.refact4j.eom.model.FieldVisitor;
-import org.refact4j.expr.Expression;
 
 import java.util.Collection;
 
@@ -18,10 +17,9 @@ public class OneToManyRelationField extends AbstractRelationField implements org
 
     public OneToManyRelationField(String fieldName, String prettyName, EntityDescriptor entityDescriptor,
                                   EntityDescriptor targetEntityDescriptor, ManyToOneRelationField inverseRelationField,
-                                  Collection<EntityObject> defaultValue, boolean nullable, boolean visible, boolean editable, Integer order,
-                                  Expression<Collection<EntityObject>> constraint) {
+                                  Collection<EntityObject> defaultValue, boolean nullable, boolean visible, boolean editable, Integer order) {
         super(fieldName, prettyName, entityDescriptor, targetEntityDescriptor, inverseRelationField, defaultValue,
-                nullable, visible, editable, order, constraint);
+                nullable, visible, editable, order);
     }
 
     public void accept(DataTypeVisitor dataTypeVisitor) {

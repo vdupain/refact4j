@@ -1,6 +1,5 @@
 package org.refact4j.function.aggregate;
 
-import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 

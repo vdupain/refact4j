@@ -5,7 +5,6 @@ import org.refact4j.eom.EntityObject;
 import org.refact4j.eom.EntityObjectBuilder;
 import org.refact4j.eom.metamodel.FieldDesc;
 import org.refact4j.eom.model.*;
-import org.refact4j.expr.Expression;
 
 import java.io.IOException;
 import java.io.ObjectInput;
@@ -29,14 +28,11 @@ public abstract class AbstractField implements Field {
 
     private Integer order;
 
-    private Expression<?> constraint;
-
     AbstractField() {
     }
 
     AbstractField(String fieldName, String prettyName, EntityDescriptor entityDescriptor, Object defaultValue,
-                  boolean nullable, boolean visible, boolean editable, Integer order,
-                  Expression<?> constraint) {
+                  boolean nullable, boolean visible, boolean editable, Integer order) {
         this.fieldName = fieldName;
         this.prettyName = prettyName;
         this.entityDescriptor = entityDescriptor;
@@ -45,7 +41,6 @@ public abstract class AbstractField implements Field {
         this.visible = visible;
         this.editable = editable;
         this.order = order;
-        this.constraint = constraint;
     }
 
     public String getName() {
@@ -77,7 +72,6 @@ public abstract class AbstractField implements Field {
             throw new NullFieldValueNotAllowedException(this);
         }
         checkClassValue(value);
-        checkConstraint(constraint, value);
     }
 
     protected abstract Class<?> getDataTypeClass();
@@ -89,15 +83,6 @@ public abstract class AbstractField implements Field {
         if (this.getDataTypeClass() != null && !this.getDataTypeClass().isInstance(value)) {
             throw new InvalidFieldValueException(this, "Value must be instance of " + this.getDataTypeClass().getName()
                     + " but was " + value.getClass().getName());
-        }
-    }
-
-    void checkConstraint(Expression constraint, Object value) {
-        if (constraint == null) {
-            return;
-        }
-        if (!constraint.test(value)) {
-            throw new InvalidFieldValueException(this, constraint.toString());
         }
     }
 

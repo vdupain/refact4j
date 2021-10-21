@@ -7,7 +7,6 @@ import org.refact4j.eom.model.DataTypeVisitor;
 import org.refact4j.eom.model.EntityDescriptor;
 import org.refact4j.eom.model.FieldVisitor;
 import org.refact4j.eom.model.Key;
-import org.refact4j.expr.Expression;
 
 @SuppressWarnings("serial")
 public class OneToOneRelationField extends AbstractRelationField implements org.refact4j.eom.model.OneToOneRelationField {
@@ -17,10 +16,9 @@ public class OneToOneRelationField extends AbstractRelationField implements org.
 
     public OneToOneRelationField(String fieldName, String prettyName, EntityDescriptor entityDescriptor,
                                  EntityDescriptor targetEntityDesc, org.refact4j.eom.model.OneToOneRelationField inverseRelationField, Key defaultValue,
-                                 boolean nullable, boolean visible, boolean editable, Integer order,
-                                 Expression<Key> constraint) {
+                                 boolean nullable, boolean visible, boolean editable, Integer order) {
         super(fieldName, prettyName, entityDescriptor, targetEntityDesc, inverseRelationField, defaultValue, nullable,
-                visible, editable, order, constraint);
+                visible, editable, order);
     }
 
     public void accept(DataTypeVisitor dataTypeVisitor) {

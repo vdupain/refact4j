@@ -2,7 +2,6 @@ package org.refact4j.eom;
 
 import org.refact4j.eom.model.*;
 import org.refact4j.evt.Listenable;
-import org.refact4j.expr.Expression;
 import org.refact4j.xml.ToXML;
 import org.refact4j.xml.ToXmlString;
 
@@ -286,17 +285,6 @@ public interface EntityObject extends Cloneable, ToXML, ToXmlString, Serializabl
      * @return the current EntityObject instance.
      */
     EntityObject set(Field field, Object value);
-
-    /**
-     * Checks constraint on EntityObject.
-     */
-    default void checkConstraint() {
-        Expression constraint = this.getEntityDescriptor().getConstraintExpression();
-        if (constraint != null && !constraint.test(this)) {
-            throw new RuntimeException("Constraint " + constraint + " failed: " + constraint.getPropertyName() + "="
-                    + this.get(constraint.getPropertyName()));
-        }
-    }
 
     /**
      * Checks all values of the EntityObject (checks for nullable value, type of

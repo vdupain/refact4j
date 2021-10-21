@@ -6,7 +6,7 @@ import org.custommonkey.xmlunit.ElementNameAndAttributeQualifier;
 import org.custommonkey.xmlunit.XMLUnit;
 import org.refact4j.xml.ToXmlString;
 
-public class XmlAssert extends Assert {
+public class XmlAssert extends org.junit.Assert {
 
     static {
         XMLUnit.setIgnoreWhitespace(true);

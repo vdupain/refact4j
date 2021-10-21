@@ -9,7 +9,6 @@ import org.refact4j.eom.model.DataField;
 import org.refact4j.eom.model.EntityDescriptor;
 import org.refact4j.eom.model.Field;
 import org.refact4j.eom.model.RelationField;
-import org.refact4j.expr.Expression;
 import org.refact4j.visitor.Visitor;
 
 import java.io.IOException;
@@ -23,7 +22,6 @@ public class EntityDescriptorImpl implements EntityDescriptor {
     private String name;
     private Map<String, Field> fields = new TreeMap<>();
     private List<Field> keyFields = new ArrayList<>();
-    private Expression constraintExpression;
     private EntityStringifier entityStringifier;
 
     private Class<?> beanClass;
@@ -85,15 +83,6 @@ public class EntityDescriptorImpl implements EntityDescriptor {
 
     public boolean containsField(Field field) {
         return this.fields.containsValue(field);
-    }
-
-    public Expression getConstraintExpression() {
-        return this.constraintExpression;
-    }
-
-    public EntityDescriptorImpl setConstraintExpression(Expression constraintExpression) {
-        this.constraintExpression = constraintExpression;
-        return this;
     }
 
     public void accept(Visitor visitor) {

@@ -5,7 +5,6 @@ import org.refact4j.eom.model.impl.Stringifiers;
 import org.refact4j.xml.ToXmlString;
 
 import java.io.Externalizable;
-import java.io.Serializable;
 
 /**
  * The Field interface is an interface that embodies the notion of an object
@@ -14,7 +13,7 @@ import java.io.Serializable;
  * DataField (IntegerField, DoubleField, BooleanField, StringField, DateField)
  * and RelationField (ToOneRelationField, ToManyRelationField).
  */
-public interface Field extends DataType, ToEntity, ToXmlString, Serializable, Externalizable {
+public interface Field extends DataType, ToEntity, ToXmlString, Externalizable {
 
     /**
      * Returns the internal name of the field. The internal name must be unique

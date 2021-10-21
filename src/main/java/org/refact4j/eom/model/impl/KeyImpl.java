@@ -4,8 +4,6 @@ import org.refact4j.eom.ConverterHelper;
 import org.refact4j.eom.model.EntityDescriptor;
 import org.refact4j.eom.model.Field;
 import org.refact4j.eom.model.Key;
-import org.refact4j.expr.Expression;
-import org.refact4j.expr.ExpressionBuilder;
 import org.refact4j.util.ComparatorHelper;
 
 import java.io.IOException;
@@ -116,20 +114,6 @@ public class KeyImpl implements Key {
 
     public boolean isUnique() {
         return keys.size() == 1;
-    }
-
-    public Expression asExpression() {
-        ExpressionBuilder exprBuilder = null;
-        for (Field keyField : this.getEntityDescriptor().getKeyFields()) {
-            ExpressionBuilder tmpExp = ExpressionBuilder.init(keyField).equalTo(
-                    this.getFieldValue(keyField));
-            if (exprBuilder != null) {
-                exprBuilder.and(tmpExp);
-            } else {
-                exprBuilder = tmpExp;
-            }
-        }
-        return exprBuilder.get();
     }
 
     public void readExternal(ObjectInput in) throws IOException, ClassNotFoundException {

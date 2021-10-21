@@ -6,7 +6,6 @@ import org.refact4j.eom.metamodel.FieldDesc;
 import org.refact4j.eom.model.DataTypeVisitor;
 import org.refact4j.eom.model.EntityDescriptor;
 import org.refact4j.eom.model.FieldVisitor;
-import org.refact4j.expr.Expression;
 
 import java.io.IOException;
 import java.io.ObjectInput;
@@ -22,10 +21,9 @@ public class DateField extends AbstractField implements org.refact4j.eom.model.D
     }
 
     public DateField(String fieldName, String prettyName, EntityDescriptor entityDescriptor, boolean isTimestamp,
-                     Date defaultValue, boolean nullable, boolean visible, boolean editable, Integer order,
-                     Expression<? extends Date> constraint) {
-        super(fieldName, prettyName, entityDescriptor, defaultValue, nullable, visible, editable, order,
-                constraint);
+                     Date defaultValue, boolean nullable, boolean visible, boolean editable, Integer order) {
+        super(fieldName, prettyName, entityDescriptor, defaultValue, nullable, visible, editable, order
+        );
         this.isTimestamp = isTimestamp;
     }
 

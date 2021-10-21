@@ -6,7 +6,6 @@ import org.refact4j.eom.metamodel.FieldDesc;
 import org.refact4j.eom.model.DataTypeVisitor;
 import org.refact4j.eom.model.EntityDescriptor;
 import org.refact4j.eom.model.FieldVisitor;
-import org.refact4j.expr.Expression;
 
 @SuppressWarnings("serial")
 public class BooleanField extends AbstractField implements org.refact4j.eom.model.BooleanField {
@@ -15,10 +14,9 @@ public class BooleanField extends AbstractField implements org.refact4j.eom.mode
     }
 
     public BooleanField(String fieldName, String prettyName, EntityDescriptor entityDescriptor,
-                        Boolean defaultValue, boolean nullable, boolean visible, boolean editable, Integer order,
-                        Expression<Boolean> constraint) {
-        super(fieldName, prettyName, entityDescriptor, defaultValue, nullable, visible, editable, order,
-                constraint);
+                        Boolean defaultValue, boolean nullable, boolean visible, boolean editable, Integer order) {
+        super(fieldName, prettyName, entityDescriptor, defaultValue, nullable, visible, editable, order
+        );
     }
 
     public void accept(DataTypeVisitor dataTypeVisitor) {

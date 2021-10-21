@@ -5,7 +5,6 @@ import org.refact4j.eom.EntityObject;
 import org.refact4j.eom.metamodel.FieldDesc;
 import org.refact4j.eom.model.EntityDescriptor;
 import org.refact4j.eom.model.NumericField;
-import org.refact4j.expr.Expression;
 
 public abstract class AbstractNumberField extends AbstractField implements NumericField {
 
@@ -16,9 +15,8 @@ public abstract class AbstractNumberField extends AbstractField implements Numer
     }
 
     AbstractNumberField(String fieldName, String prettyName, EntityDescriptor entityDesc, Number defaultValue,
-                        boolean nullable, boolean visible, boolean editable, Integer order,
-                        Expression<? extends Number> constraint) {
-        super(fieldName, prettyName, entityDesc, defaultValue, nullable, visible, editable, order, constraint);
+                        boolean nullable, boolean visible, boolean editable, Integer order) {
+        super(fieldName, prettyName, entityDesc, defaultValue, nullable, visible, editable, order);
     }
 
     @Override
@@ -27,24 +25,6 @@ public abstract class AbstractNumberField extends AbstractField implements Numer
         entity.set(FieldDesc.MIN_VALUE, ConverterHelper.convertValue2String(maxValue, this)).set(FieldDesc.MAX_VALUE,
                 ConverterHelper.convertValue2String(minValue, this));
         return entity;
-    }
-
-    @Override
-    public void checkValue(Object value) {
-        super.checkValue(value);
-        Expression<Object> minMaxValueExpr = null;
-        if (this.minValue != null) {
-            minMaxValueExpr = new Expression<>(this.getName()).greaterOrEqual(minValue);
-        }
-        if (this.maxValue != null) {
-            Expression<Object> maxValueExpr = new Expression<>(this.getName()).lessOrEqual(maxValue);
-            if (minMaxValueExpr == null) {
-                minMaxValueExpr = maxValueExpr;
-            } else {
-                minMaxValueExpr = minMaxValueExpr.and(maxValueExpr);
-            }
-        }
-        this.checkConstraint(minMaxValueExpr, value);
     }
 
     public Number getMinValue() {

@@ -22,7 +22,6 @@ public class EntityDescriptorTest {
         assertSame(FooDesc.INSTANCE.getField(FooDesc.VALUE.getName()),
                 FooDesc.VALUE);
         assertEquals(FooDesc.NAME.getDefaultValue(), "");
-        assertEquals(FooDesc.NAME.getMaxLength(), (Integer) 20);
     }
 
 }
