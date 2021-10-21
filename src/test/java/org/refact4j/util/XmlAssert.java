@@ -5,6 +5,7 @@ import org.custommonkey.xmlunit.Diff;
 import org.custommonkey.xmlunit.ElementNameAndAttributeQualifier;
 import org.custommonkey.xmlunit.XMLUnit;
 import org.refact4j.xml.ToXmlString;
+import org.xmlunit.assertj3.CompareAssert;
 
 public class XmlAssert extends org.junit.Assert {
 
@@ -13,15 +14,9 @@ public class XmlAssert extends org.junit.Assert {
         XMLUnit.setNormalizeWhitespace(true);
     }
 
-    public static void assertXmlEquals(ToXmlString expected, ToXmlString actual) {
-        if (expected == null && actual == null)
-            return;
-        if (expected != null && expected.equals(actual))
-            return;
-        assertXmlEquals(expected.toXmlString(), actual.toXmlString());
-    }
-
     public static void assertXmlEquals(String expected, String actual) {
+        org.xmlunit.assertj3.XmlAssert.assertThat(actual).and(expected).ignoreWhitespace().areIdentical();
+        /*
         try {
             Diff diff = new Diff(expected, actual);
             if (!diff.identical()) {
@@ -30,6 +25,7 @@ public class XmlAssert extends org.junit.Assert {
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
+         */
     }
 
     public static void assertXmlEquivalent(String expected, String actual) {

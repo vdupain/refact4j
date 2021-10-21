@@ -10,21 +10,10 @@
   <name>refact4j</name>
   <url>http://maven.apache.org</url>
   <inceptionYear>2006</inceptionYear>
-  <description>
-        <![CDATA[Refact4J is a set of framework: functors library and meta-model programming. The main goal is to exploit functors and meta-model as a simple design and implementation based on concept of generic and functional programming.]]>
-  </description>
-
-  <developers>
-    <developer>
-      <id>vdupain</id>
-      <name>Vincent Dupain</name>
-      <email>vdupain at gmail dot com</email>
-    </developer>
-  </developers>
 
   <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <compileSource>1.8</compileSource>
+      <maven.compiler.source>16</maven.compiler.source>
+      <maven.compiler.target>16</maven.compiler.target>
   </properties>
 
   <dependencies>
@@ -44,51 +33,20 @@
       <version>4.9</version>
     </dependency>
     <dependency>
-      <groupId>xmlunit</groupId>
-      <artifactId>xmlunit</artifactId>
-      <version>1.6</version>
+      <groupId>org.xmlunit</groupId>
+      <artifactId>xmlunit-core</artifactId>
+      <version>2.8.3</version>
+    </dependency>
+    <dependency>
+      <groupId>org.xmlunit</groupId>
+      <artifactId>xmlunit-legacy</artifactId>
+      <version>2.8.3</version>
+    </dependency>
+    <dependency>
+      <groupId>org.xmlunit</groupId>
+      <artifactId>xmlunit-assertj3</artifactId>
+      <version>2.8.3</version>
     </dependency>
   </dependencies>
 
-  <build>
-    <plugins>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.1</version>
-        <configuration>
-          <source>${compileSource}</source>
-          <target>${compileSource}</target>
-        </configuration>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-jar-plugin</artifactId>
-        <version>2.4</version>
-        <executions>
-          <execution>
-            <goals>
-              <goal>jar</goal>
-              <goal>test-jar</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-source-plugin</artifactId>
-        <version>2.4</version>
-        <executions>
-          <execution>
-            <id>attach-sources</id>
-            <phase>verify</phase>
-            <goals>
-              <goal>jar</goal>
-              <goal>test-jar</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
-    </plugins>
-  </build>
 </project>

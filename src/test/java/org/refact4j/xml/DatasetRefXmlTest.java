@@ -41,7 +41,7 @@ public class DatasetRefXmlTest {
     private Set dataset;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         entityDescriptorRepository = DefaultEntityDescriptorRepoFactory.init(
                 EOMMetaModelRepository.get(), META_MODEL_XML, null)
                 .createEntityDescriptorRepository();
@@ -51,7 +51,7 @@ public class DatasetRefXmlTest {
     }
 
     @Test
-    public void testDatasetRef() throws Exception {
+    public void testDatasetRef() {
         dataset2XmlConverter.unmarshal(XML, dataset);
 
         String expectedXml = "<bar name='bar1' id='11'/>"
