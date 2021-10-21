@@ -43,15 +43,6 @@ class FieldXmlNodeWriter extends AbstractXmlElementWriter {
             }
         }
         xmlWriter.writeAttribute(FieldDesc.NULLABLE.getName(), fieldEntity.get(FieldDesc.NULLABLE).toString());
-        Integer value = fieldEntity.get(FieldDesc.MAX_LENGTH);
-        if (value != null) {
-            xmlWriter.writeAttribute(FieldDesc.MAX_LENGTH.getName(), value.toString());
-        }
-        value = fieldEntity.get(FieldDesc.MIN_LENGTH);
-        if (value != null) {
-            xmlWriter.writeAttribute(FieldDesc.MIN_LENGTH.getName(), value.toString());
-        }
-
         return new XmlElementHandler[0];
     }
 

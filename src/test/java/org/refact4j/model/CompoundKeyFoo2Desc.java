@@ -17,7 +17,7 @@ class CompoundKeyFoo2Desc {
             .createManyToOneRelationField(BarDesc.INSTANCE);
     private static final IntegerField ID = FieldFactory.init(builder, "id").setOrder(6).createIntegerField();
     private static final StringField NAME = FieldFactory.init(builder, "name").setOrder(2).setPrettyName("The Name")
-            .setNullable(false).setDefaultValue("").setMaxLength(20).createStringField();
+            .setNullable(false).setDefaultValue("").createStringField();
     private static final DoubleField VALUE = FieldFactory.init(builder, "value").setOrder(4).setNullable(true)
             .createDoubleField();
     private static final DateField BEGIN_DATE = FieldFactory.init(builder, "beginDate").setOrder(3).setDefaultValue(

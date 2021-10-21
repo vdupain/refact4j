@@ -13,7 +13,7 @@ public class CompoundKeyFooDesc {
             .createIntegerField();
 
     public static final StringField NAME = FieldFactory.init(builder, "name")
-            .setDefaultValue("").setMaxLength(20).createStringField();
+            .setDefaultValue("").createStringField();
 
     public static final DoubleField VALUE = FieldFactory.init(builder, "value")
             .createDoubleField();

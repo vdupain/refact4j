@@ -29,14 +29,6 @@ class FieldXmlElementReader extends DefaultXmlElementReader {
         field.set(FieldDesc.DEFAULT_VALUE, XmlHelper.getAttrValue(FieldDesc.DEFAULT_VALUE.getName(), xmlAttrs, null));
         field.set(FieldDesc.MIN_VALUE, XmlHelper.getAttrValue(FieldDesc.MIN_VALUE.getName(), xmlAttrs, null));
         field.set(FieldDesc.MAX_VALUE, XmlHelper.getAttrValue(FieldDesc.MAX_VALUE.getName(), xmlAttrs, null));
-        String attrValue = XmlHelper.getAttrValue(FieldDesc.MAX_LENGTH.getName(), xmlAttrs, null);
-        if (attrValue != null) {
-            field.set(FieldDesc.MAX_LENGTH, Integer.valueOf(attrValue));
-        }
-        attrValue = XmlHelper.getAttrValue(FieldDesc.MIN_LENGTH.getName(), xmlAttrs, null);
-        if (attrValue != null) {
-            field.set(FieldDesc.MIN_LENGTH, Integer.valueOf(attrValue));
-        }
         String targetEntityDescriptorName = XmlHelper.getAttrValue(FieldDesc.TARGET.getName(), xmlAttrs, null);
         if (targetEntityDescriptorName != null) {
             Key targetEntityDescriptorKey = KeyBuilder.init(EntityDescriptorDesc.INSTANCE).set(

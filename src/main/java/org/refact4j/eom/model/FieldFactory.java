@@ -10,12 +10,8 @@ public final class FieldFactory implements DataTypeVisitor {
 
     private final String fieldName;
     private final EntityDescriptorBuilder entityDescriptorBuilder;
-    private Integer maxLength;
-    private Integer minLength;
     private boolean isTimestamp;
     private boolean nullable = true;
-    private boolean visible;
-    private boolean editable;
     private Object defaultValue;
     private Number minValue;
     private Number maxValue;
@@ -36,8 +32,6 @@ public final class FieldFactory implements DataTypeVisitor {
         org.refact4j.eom.model.impl.StringField field = new org.refact4j.eom.model.impl.StringField(fieldName, prettyName, entityDescriptorBuilder
                 .get(), (String) defaultValue, nullable
         );
-        field.setMaxLength(maxLength);
-        field.setMinLength(minLength);
         entityDescriptorBuilder.addField(field);
         return field;
     }
@@ -100,16 +94,6 @@ public final class FieldFactory implements DataTypeVisitor {
         return field;
     }
 
-    public FieldFactory setMaxLength(Integer maxLength) {
-        this.maxLength = maxLength;
-        return this;
-    }
-
-    public FieldFactory setMinLength(Integer minLength) {
-        this.minLength = minLength;
-        return this;
-    }
-
     public FieldFactory setDefaultValue(Object defaultValue) {
         this.defaultValue = defaultValue;
         return this;
@@ -127,16 +111,6 @@ public final class FieldFactory implements DataTypeVisitor {
 
     public FieldFactory setNullable(boolean nullable) {
         this.nullable = nullable;
-        return this;
-    }
-
-    public FieldFactory setVisible(boolean visible) {
-        this.visible = visible;
-        return this;
-    }
-
-    public FieldFactory setEditable(boolean editable) {
-        this.editable = editable;
         return this;
     }
 

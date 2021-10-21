@@ -10,9 +10,6 @@ import org.refact4j.eom.model.FieldVisitor;
 @SuppressWarnings("serial")
 public class StringField extends AbstractField implements org.refact4j.eom.model.StringField {
 
-    private Integer maxLength;
-    private Integer minLength;
-
     public StringField() {
     }
 
@@ -30,14 +27,6 @@ public class StringField extends AbstractField implements org.refact4j.eom.model
         fieldVisitor.visitStringField(this);
     }
 
-    public void setMaxLength(Integer maxLength) {
-        this.maxLength = maxLength;
-    }
-
-    public void setMinLength(Integer minLength) {
-        this.minLength = minLength;
-    }
-
     protected Class<String> getDataTypeClass() {
         return String.class;
     }
@@ -45,8 +34,7 @@ public class StringField extends AbstractField implements org.refact4j.eom.model
     @Override
     public EntityObject toEntity() {
         EntityObject entity = super.toEntity();
-        entity.set(FieldDesc.DATA_TYPE, DataTypeType.STRING_DATA_TYPE).set(FieldDesc.MIN_LENGTH, minLength).set(
-                FieldDesc.MAX_LENGTH, maxLength);
+        entity.set(FieldDesc.DATA_TYPE, DataTypeType.STRING_DATA_TYPE);
         return entity;
     }
 

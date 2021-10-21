@@ -184,9 +184,7 @@ public class DefaultEntityDescriptorRepoFactory implements EntityDescriptorRepos
                     .setNullable(fieldEntity.get(FieldDesc.NULLABLE))
                     .setDefaultValue(ConverterHelper.convertString2Value(fieldEntity.get(FieldDesc.DEFAULT_VALUE), dummyField))
                     .setMinValue((Number) ConverterHelper.convertString2Value(fieldEntity.get(FieldDesc.MIN_VALUE), dummyField))
-                    .setMaxValue((Number) ConverterHelper.convertString2Value(fieldEntity.get(FieldDesc.MAX_VALUE), dummyField))
-                    .setMinLength(fieldEntity.get(FieldDesc.MIN_LENGTH))
-                    .setMaxLength(fieldEntity.get(FieldDesc.MAX_LENGTH));
+                    .setMaxValue((Number) ConverterHelper.convertString2Value(fieldEntity.get(FieldDesc.MAX_VALUE), dummyField));
             Field field = fieldBuilder.getField(fieldEntity, fieldFactory);
             builder.addField(field);
             if (Boolean.TRUE.equals(fieldEntity.get(FieldDesc.IS_KEY))) {
