@@ -21,7 +21,7 @@ public abstract class SerializableTestCase {
             ;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         this.serializable = createSerializableInstance();
         try {
             assertNotNull("createSerializableInstance() returned null",
