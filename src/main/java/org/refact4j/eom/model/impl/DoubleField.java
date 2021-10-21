@@ -14,7 +14,7 @@ public class DoubleField extends AbstractNumberField implements org.refact4j.eom
     }
 
     public DoubleField(String fieldName, String prettyName, EntityDescriptor entityDescriptor, Double defaultValue,
-                       boolean nullable, Integer order) {
+                       boolean nullable) {
         super(fieldName, prettyName, entityDescriptor, defaultValue, nullable
         );
     }

@@ -16,7 +16,7 @@ public class IntegerFieldImpl extends AbstractNumberField implements IntegerFiel
     }
 
     public IntegerFieldImpl(String fieldName, String prettyName, EntityDescriptor entityDescriptor,
-                            Integer defaultValue, boolean nullable, Integer order) {
+                            Integer defaultValue, boolean nullable) {
         super(fieldName, prettyName, entityDescriptor, defaultValue, nullable
         );
     }

@@ -14,7 +14,6 @@ public final class FieldFactory implements DataTypeVisitor {
     private boolean nullable = true;
     private Object defaultValue;
     private String prettyName;
-    private Integer order;
     private Field field;
 
     private FieldFactory(String fieldName, EntityDescriptorBuilder entityDescriptorBuilder) {
@@ -36,7 +35,7 @@ public final class FieldFactory implements DataTypeVisitor {
 
     public DoubleField createDoubleField() {
         org.refact4j.eom.model.impl.DoubleField field = new org.refact4j.eom.model.impl.DoubleField(fieldName, prettyName, entityDescriptorBuilder
-                .get(), (Double) defaultValue, nullable, order
+                .get(), (Double) defaultValue, nullable
         );
         entityDescriptorBuilder.addField(field);
         return field;
@@ -44,7 +43,7 @@ public final class FieldFactory implements DataTypeVisitor {
 
     public IntegerField createIntegerField() {
         IntegerFieldImpl field = new IntegerFieldImpl(fieldName, prettyName, entityDescriptorBuilder
-                .get(), (Integer) defaultValue, nullable, order
+                .get(), (Integer) defaultValue, nullable
         );
         entityDescriptorBuilder.addField(field);
         return field;
@@ -66,7 +65,7 @@ public final class FieldFactory implements DataTypeVisitor {
 
     public ManyToOneRelationField createManyToOneRelationField(EntityDescriptor entityDescriptor) {
         ManyToOneRelationField field = new org.refact4j.eom.model.impl.ManyToOneRelationField(fieldName, prettyName, entityDescriptorBuilder
-                .get(), entityDescriptor, null, (Key) defaultValue, nullable, order
+                .get(), entityDescriptor, null, (Key) defaultValue, nullable
         );
         entityDescriptorBuilder.addField(field);
         return field;
@@ -74,16 +73,16 @@ public final class FieldFactory implements DataTypeVisitor {
 
     public OneToManyRelationField createOneToManyRelationField(EntityDescriptor entityDescriptor) {
         OneToManyRelationField field = new org.refact4j.eom.model.impl.OneToManyRelationField(fieldName, prettyName, entityDescriptorBuilder
-                .get(), entityDescriptor, null, (Collection<EntityObject>) defaultValue, nullable,
-                order);
+                .get(), entityDescriptor, null, (Collection<EntityObject>) defaultValue, nullable
+        );
         entityDescriptorBuilder.addField(field);
         return field;
     }
 
     public OneToOneRelationField createOneToOneRelationField(EntityDescriptor entityDescriptor) {
         OneToOneRelationField field = new org.refact4j.eom.model.impl.OneToOneRelationField(fieldName, prettyName, entityDescriptorBuilder
-                .get(), entityDescriptor, null, (Key) defaultValue, nullable,
-                order);
+                .get(), entityDescriptor, null, (Key) defaultValue, nullable
+        );
         entityDescriptorBuilder.addField(field);
         return field;
     }
@@ -105,11 +104,6 @@ public final class FieldFactory implements DataTypeVisitor {
 
     public FieldFactory setPrettyName(String prettyName) {
         this.prettyName = prettyName;
-        return this;
-    }
-
-    public FieldFactory setOrder(Integer order) {
-        this.order = order;
         return this;
     }
 

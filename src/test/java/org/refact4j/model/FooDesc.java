@@ -13,35 +13,35 @@ public class FooDesc {
     public static final EntityDescriptor INSTANCE = builder.get();
 
     public static final IntegerField ID = FieldFactory.init(builder, "id")
-            .setOrder(6).createIntegerField();
+            .createIntegerField();
 
     public static final StringField NAME = FieldFactory.init(builder, "name")
-            .setOrder(2).setPrettyName("The Name").setNullable(false)
+            .setPrettyName("The Name").setNullable(false)
             .setDefaultValue("").createStringField();
 
     public static final DoubleField VALUE = FieldFactory.init(builder, "value")
-            .setOrder(4).setNullable(true).createDoubleField();
+            .setNullable(true).createDoubleField();
 
     public static final DateField BEGIN_DATE = FieldFactory.init(builder,
-            "beginDate").setOrder(3).setDefaultValue(new Date())
+            "beginDate").setDefaultValue(new Date())
             .createDateField();
 
     public static final DateField END_DATE = FieldFactory.init(builder,
-            "endDate").setOrder(7).createDateField();
+            "endDate").createDateField();
 
     public static final DateField TIMESTAMP = FieldFactory.init(builder,
-            "timestampDate").setOrder(8).isTimestamp(true).createDateField();
+            "timestampDate").isTimestamp(true).createDateField();
 
     public static final BooleanField FLAG = FieldFactory.init(builder, "flag")
-            .setOrder(1).createBooleanField();
+            .createBooleanField();
 
 
     public static final ManyToOneRelationField BAR = FieldFactory.init(
-            builder, "bar").setOrder(5).createManyToOneRelationField(
+            builder, "bar").createManyToOneRelationField(
             BarDesc.INSTANCE);
 
     public static final ManyToOneRelationField BAR_2 = FieldFactory.init(
-            builder, "bar2").setOrder(9)
+            builder, "bar2")
             .createManyToOneRelationField(BarDesc.INSTANCE);
 
 
