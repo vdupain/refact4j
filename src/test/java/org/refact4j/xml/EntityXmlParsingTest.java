@@ -73,7 +73,7 @@ public class EntityXmlParsingTest {
             this.dataset2xmlconverter.unmarshal((Reader) null, null);
             fail("RuntimeException Expected");
         } catch (RuntimeException e) {
-            assertEquals("java.net.MalformedURLException", e.getMessage());
+            assertEquals("java.net.MalformedURLException", e.getCause().getClass().getName());
         }
     }
 
