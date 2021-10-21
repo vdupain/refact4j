@@ -20,10 +20,6 @@ public abstract class AbstractField implements Field {
 
     private boolean nullable = true;
 
-    private boolean visible;
-
-    private boolean editable;
-
     private String prettyName;
 
     private Integer order;
@@ -32,14 +28,12 @@ public abstract class AbstractField implements Field {
     }
 
     AbstractField(String fieldName, String prettyName, EntityDescriptor entityDescriptor, Object defaultValue,
-                  boolean nullable, boolean visible, boolean editable, Integer order) {
+                  boolean nullable, Integer order) {
         this.fieldName = fieldName;
         this.prettyName = prettyName;
         this.entityDescriptor = entityDescriptor;
         this.defaultValue = defaultValue;
         this.nullable = nullable;
-        this.visible = visible;
-        this.editable = editable;
         this.order = order;
     }
 
@@ -94,14 +88,6 @@ public abstract class AbstractField implements Field {
         return this.nullable;
     }
 
-    public boolean isVisible() {
-        return this.visible;
-    }
-
-    public boolean isEditable() {
-        return this.editable;
-    }
-
     public String toString() {
         return Stringifiers.FIELD_PRETTY.stringify(this);
     }
@@ -134,8 +120,6 @@ public abstract class AbstractField implements Field {
                 .set(FieldDesc.PRETTY_NAME, this.prettyName)
                 .set(FieldDesc.IS_KEY, this.entityDescriptor.getKeyFields().contains(this))
                 .set(FieldDesc.NULLABLE, this.nullable)
-                .set(FieldDesc.VISIBLE, this.visible)
-                .set(FieldDesc.EDITABLE, this.editable)
                 .set(FieldDesc.ORDER, this.order)
                 .set(FieldDesc.DEFAULT_VALUE, ConverterHelper.convertValue2String(defaultValue, this))
                 .get();
@@ -151,8 +135,6 @@ public abstract class AbstractField implements Field {
         this.defaultValue = in.readObject();
         this.entityDescriptor = (EntityDescriptor) in.readObject();
         this.order = (Integer) in.readObject();
-        this.editable = in.readBoolean();
-        this.visible = in.readBoolean();
         this.nullable = in.readBoolean();
     }
 
@@ -162,8 +144,6 @@ public abstract class AbstractField implements Field {
         out.writeObject(this.defaultValue);
         out.writeObject(this.entityDescriptor);
         out.writeObject(this.order);
-        out.writeBoolean(this.editable);
-        out.writeBoolean(this.visible);
         out.writeBoolean(this.nullable);
     }
 }

@@ -16,9 +16,9 @@ public class OneToOneRelationField extends AbstractRelationField implements org.
 
     public OneToOneRelationField(String fieldName, String prettyName, EntityDescriptor entityDescriptor,
                                  EntityDescriptor targetEntityDesc, org.refact4j.eom.model.OneToOneRelationField inverseRelationField, Key defaultValue,
-                                 boolean nullable, boolean visible, boolean editable, Integer order) {
+                                 boolean nullable, Integer order) {
         super(fieldName, prettyName, entityDescriptor, targetEntityDesc, inverseRelationField, defaultValue, nullable,
-                visible, editable, order);
+                order);
     }
 
     public void accept(DataTypeVisitor dataTypeVisitor) {

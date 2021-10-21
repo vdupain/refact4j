@@ -16,12 +16,6 @@ public class FieldDesc {
     public static final BooleanField NULLABLE = FieldFactory.init(BUILDER, "nullable").setDefaultValue(true)
             .createBooleanField();
 
-    public static final BooleanField VISIBLE = FieldFactory.init(BUILDER, "visible").setDefaultValue(true)
-            .createBooleanField();
-
-    public static final BooleanField EDITABLE = FieldFactory.init(BUILDER, "editable").setDefaultValue(true)
-            .createBooleanField();
-
     public static final StringField DEFAULT_VALUE = FieldFactory.init(BUILDER, "defaultValue").createStringField();
 
     public static final StringField MIN_VALUE = FieldFactory.init(BUILDER, "minValue").createStringField();

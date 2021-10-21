@@ -16,9 +16,9 @@ public class ManyToOneRelationField extends AbstractRelationField implements org
 
     public ManyToOneRelationField(String fieldName, String prettyName, EntityDescriptor entityDescriptor,
                                   EntityDescriptor targetEntityDesc, OneToManyRelationField inverseRelationField, Key defaultValue,
-                                  boolean nullable, boolean visible, boolean editable, Integer order) {
+                                  boolean nullable, Integer order) {
         super(fieldName, prettyName, entityDescriptor, targetEntityDesc, inverseRelationField, defaultValue, nullable,
-                visible, editable, order);
+                order);
     }
 
     public void accept(DataTypeVisitor dataTypeVisitor) {

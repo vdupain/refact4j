@@ -75,20 +75,6 @@ public interface Field extends DataType, ToEntity, ToXmlString, Externalizable {
 
     Integer getOrder();
 
-    /**
-     * Returns true if the field is editable.
-     *
-     * @return true if the field is editable.
-     */
-    boolean isEditable();
-
-    /**
-     * Returns true if the field is visible.
-     *
-     * @return true if the field is visible.
-     */
-    boolean isVisible();
-
     default String toXmlString() {
         return Stringifiers.FIELD_XML.stringify(this);
     }

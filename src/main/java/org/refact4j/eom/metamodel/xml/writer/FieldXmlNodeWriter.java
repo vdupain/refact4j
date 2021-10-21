@@ -43,8 +43,6 @@ class FieldXmlNodeWriter extends AbstractXmlElementWriter {
             }
         }
         xmlWriter.writeAttribute(FieldDesc.NULLABLE.getName(), fieldEntity.get(FieldDesc.NULLABLE).toString());
-        xmlWriter.writeAttribute(FieldDesc.VISIBLE.getName(), fieldEntity.get(FieldDesc.VISIBLE).toString());
-        xmlWriter.writeAttribute(FieldDesc.EDITABLE.getName(), fieldEntity.get(FieldDesc.EDITABLE).toString());
         Integer order = fieldEntity.get(FieldDesc.ORDER);
         if (order != null) {
             xmlWriter.writeAttribute(FieldDesc.ORDER.getName(), order.toString());

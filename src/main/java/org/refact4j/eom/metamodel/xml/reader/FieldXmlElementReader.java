@@ -26,8 +26,6 @@ class FieldXmlElementReader extends DefaultXmlElementReader {
         field.set(FieldDesc.PRETTY_NAME, XmlHelper.getAttrValue(FieldDesc.PRETTY_NAME.getName(), xmlAttrs, null));
         field.set(FieldDesc.IS_KEY, XmlHelper.getBooleanAttrValue(FieldDesc.IS_KEY.getName(), xmlAttrs, false));
         field.set(FieldDesc.NULLABLE, XmlHelper.getBooleanAttrValue(FieldDesc.NULLABLE.getName(), xmlAttrs, true));
-        field.set(FieldDesc.VISIBLE, XmlHelper.getBooleanAttrValue(FieldDesc.VISIBLE.getName(), xmlAttrs, true));
-        field.set(FieldDesc.EDITABLE, XmlHelper.getBooleanAttrValue(FieldDesc.EDITABLE.getName(), xmlAttrs, true));
         field.set(FieldDesc.DEFAULT_VALUE, XmlHelper.getAttrValue(FieldDesc.DEFAULT_VALUE.getName(), xmlAttrs, null));
         field.set(FieldDesc.MIN_VALUE, XmlHelper.getAttrValue(FieldDesc.MIN_VALUE.getName(), xmlAttrs, null));
         field.set(FieldDesc.MAX_VALUE, XmlHelper.getAttrValue(FieldDesc.MAX_VALUE.getName(), xmlAttrs, null));

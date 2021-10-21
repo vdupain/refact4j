@@ -14,8 +14,8 @@ public class BooleanField extends AbstractField implements org.refact4j.eom.mode
     }
 
     public BooleanField(String fieldName, String prettyName, EntityDescriptor entityDescriptor,
-                        Boolean defaultValue, boolean nullable, boolean visible, boolean editable, Integer order) {
-        super(fieldName, prettyName, entityDescriptor, defaultValue, nullable, visible, editable, order
+                        Boolean defaultValue, boolean nullable, Integer order) {
+        super(fieldName, prettyName, entityDescriptor, defaultValue, nullable, order
         );
     }
 

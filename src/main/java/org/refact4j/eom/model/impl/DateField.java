@@ -21,8 +21,8 @@ public class DateField extends AbstractField implements org.refact4j.eom.model.D
     }
 
     public DateField(String fieldName, String prettyName, EntityDescriptor entityDescriptor, boolean isTimestamp,
-                     Date defaultValue, boolean nullable, boolean visible, boolean editable, Integer order) {
-        super(fieldName, prettyName, entityDescriptor, defaultValue, nullable, visible, editable, order
+                     Date defaultValue, boolean nullable, Integer order) {
+        super(fieldName, prettyName, entityDescriptor, defaultValue, nullable, order
         );
         this.isTimestamp = isTimestamp;
     }
