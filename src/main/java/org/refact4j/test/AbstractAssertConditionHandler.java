@@ -9,11 +9,6 @@ public abstract class AbstractAssertConditionHandler implements AssertConditionH
 
     }
 
-    public AbstractAssertConditionHandler(String message, Boolean condition) {
-        this.message = message;
-        this.condition = condition;
-    }
-
     protected abstract void assertion(Boolean condition);
 
     public boolean test(Boolean condition) {
@@ -22,11 +17,7 @@ public abstract class AbstractAssertConditionHandler implements AssertConditionH
     }
 
     public void assertion() {
-        this.apply(condition);
-    }
-
-    public Boolean getCondition() {
-        return condition;
+        this.test(condition);
     }
 
     public void setCondition(Boolean condition) {

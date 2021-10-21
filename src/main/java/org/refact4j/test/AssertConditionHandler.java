@@ -1,10 +1,8 @@
 package org.refact4j.test;
 
-import org.refact4j.function.UnaryPredicate;
+import java.util.function.Predicate;
 
-public interface AssertConditionHandler extends UnaryPredicate<Boolean>, AssertionHandler {
-
-    Boolean getCondition();
+public interface AssertConditionHandler extends Predicate<Boolean>, AssertionHandler {
 
     void setCondition(Boolean condition);
 

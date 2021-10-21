@@ -16,9 +16,5 @@ public final class Functions {
         return s -> function.apply(s, second);
     }
 
-    public static <T, R> Function<T, R> constant(R val) {
-        return t -> val;
-    }
-
 }
 

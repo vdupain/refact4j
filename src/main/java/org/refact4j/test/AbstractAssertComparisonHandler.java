@@ -10,12 +10,6 @@ public abstract class AbstractAssertComparisonHandler<T> implements AssertCompar
 
     }
 
-    public AbstractAssertComparisonHandler(String message, T expected, T actual) {
-        this.message = message;
-        this.expected = expected;
-        this.actual = actual;
-    }
-
     protected abstract void assertion(T expected, T actual);
 
     public boolean test(T expected, T actual) {
@@ -24,7 +18,7 @@ public abstract class AbstractAssertComparisonHandler<T> implements AssertCompar
     }
 
     public void assertion() {
-        this.apply(expected, actual);
+        this.test(expected, actual);
     }
 
     public Object getExpected() {

@@ -2,9 +2,10 @@ package org.refact4j.evt;
 
 import junit.framework.Assert;
 import junit.framework.ComparisonFailure;
-import org.refact4j.function.BinaryPredicate;
 import org.refact4j.util.StringHelper;
 import org.refact4j.util.XmlAssert;
+
+import java.util.function.BiPredicate;
 
 public class EventLogger {
 
@@ -27,23 +28,12 @@ public class EventLogger {
         });
     }
 
-    public void assertEquivalent(String expected) {
-        checkXml(expected, (expected1, actual) -> {
-            try {
-                XmlAssert.assertXmlEquivalent(expected1, actual);
-                return true;
-            } catch (Throwable ignored) {
-            }
-            return false;
-        });
-    }
-
-    private void checkXml(String expected, BinaryPredicate<String, String> predicate) {
+    private void checkXml(String expected, BiPredicate<String, String> predicate) {
         String actual = closeStream();
         if (expected.length() == 0) {
             fail(expected, actual);
         }
-        if (!predicate.apply(expected, actual)) {
+        if (!predicate.test(expected, actual)) {
             fail(expected, actual);
         }
         reset();
