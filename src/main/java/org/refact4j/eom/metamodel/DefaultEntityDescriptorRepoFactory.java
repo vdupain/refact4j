@@ -182,7 +182,6 @@ public class DefaultEntityDescriptorRepoFactory implements EntityDescriptorRepos
             Field dummyField = fieldBuilder.getField(fieldEntity, fieldFactory);
             fieldFactory.setPrettyName(fieldEntity.get(FieldDesc.PRETTY_NAME))
                     .setNullable(fieldEntity.get(FieldDesc.NULLABLE))
-                    .setOrder(fieldEntity.get(FieldDesc.ORDER))
                     .setDefaultValue(ConverterHelper.convertString2Value(fieldEntity.get(FieldDesc.DEFAULT_VALUE), dummyField))
                     .setMinValue((Number) ConverterHelper.convertString2Value(fieldEntity.get(FieldDesc.MIN_VALUE), dummyField))
                     .setMaxValue((Number) ConverterHelper.convertString2Value(fieldEntity.get(FieldDesc.MAX_VALUE), dummyField))

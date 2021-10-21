@@ -16,11 +16,11 @@ public class String2ValueFieldConverter extends DefaultFieldVisitor {
     }
 
     public void visitIntegerField(IntegerField integerField) {
-        value = convert(arg -> (!stringValue.equals("") ? new Integer(stringValue) : null));
+        value = convert(arg -> (!stringValue.equals("") ? Integer.valueOf(stringValue) : null));
     }
 
     public void visitDoubleField(DoubleField doubleField) {
-        value = convert(arg -> (!stringValue.equals("") ? new Double(stringValue) : null));
+        value = convert(arg -> (!stringValue.equals("") ? Double.valueOf(stringValue) : null));
     }
 
     public void visitStringField(StringField stringField) {

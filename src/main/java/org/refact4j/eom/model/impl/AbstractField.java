@@ -22,19 +22,16 @@ public abstract class AbstractField implements Field {
 
     private String prettyName;
 
-    private Integer order;
-
     AbstractField() {
     }
 
     AbstractField(String fieldName, String prettyName, EntityDescriptor entityDescriptor, Object defaultValue,
-                  boolean nullable, Integer order) {
+                  boolean nullable) {
         this.fieldName = fieldName;
         this.prettyName = prettyName;
         this.entityDescriptor = entityDescriptor;
         this.defaultValue = defaultValue;
         this.nullable = nullable;
-        this.order = order;
     }
 
     public String getName() {
@@ -80,10 +77,6 @@ public abstract class AbstractField implements Field {
         }
     }
 
-    public Integer getOrder() {
-        return this.order;
-    }
-
     public boolean isNullable() {
         return this.nullable;
     }
@@ -120,7 +113,6 @@ public abstract class AbstractField implements Field {
                 .set(FieldDesc.PRETTY_NAME, this.prettyName)
                 .set(FieldDesc.IS_KEY, this.entityDescriptor.getKeyFields().contains(this))
                 .set(FieldDesc.NULLABLE, this.nullable)
-                .set(FieldDesc.ORDER, this.order)
                 .set(FieldDesc.DEFAULT_VALUE, ConverterHelper.convertValue2String(defaultValue, this))
                 .get();
     }
@@ -134,7 +126,6 @@ public abstract class AbstractField implements Field {
         this.prettyName = (String) in.readObject();
         this.defaultValue = in.readObject();
         this.entityDescriptor = (EntityDescriptor) in.readObject();
-        this.order = (Integer) in.readObject();
         this.nullable = in.readBoolean();
     }
 
@@ -143,7 +134,6 @@ public abstract class AbstractField implements Field {
         out.writeObject(this.prettyName);
         out.writeObject(this.defaultValue);
         out.writeObject(this.entityDescriptor);
-        out.writeObject(this.order);
         out.writeBoolean(this.nullable);
     }
 }

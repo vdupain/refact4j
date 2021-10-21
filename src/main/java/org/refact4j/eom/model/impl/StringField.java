@@ -17,8 +17,8 @@ public class StringField extends AbstractField implements org.refact4j.eom.model
     }
 
     public StringField(String fieldName, String prettyName, EntityDescriptor entityDescriptor, String defaultValue,
-                       boolean nullable, Integer order) {
-        super(fieldName, prettyName, entityDescriptor, defaultValue, nullable, order
+                       boolean nullable) {
+        super(fieldName, prettyName, entityDescriptor, defaultValue, nullable
         );
     }
 

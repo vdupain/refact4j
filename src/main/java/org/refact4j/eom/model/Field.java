@@ -73,8 +73,6 @@ public interface Field extends DataType, ToEntity, ToXmlString, Externalizable {
 
     void checkValue(Object value);
 
-    Integer getOrder();
-
     default String toXmlString() {
         return Stringifiers.FIELD_XML.stringify(this);
     }

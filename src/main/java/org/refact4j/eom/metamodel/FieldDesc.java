@@ -24,8 +24,6 @@ public class FieldDesc {
 
     public static final StringField PRETTY_NAME = FieldFactory.init(BUILDER, "prettyName").createStringField();
 
-    public static final IntegerField ORDER = FieldFactory.init(BUILDER, "order").createIntegerField();
-
     public static final IntegerField MAX_LENGTH = FieldFactory.init(BUILDER, "maxLength").createIntegerField();
 
     public static final IntegerField MIN_LENGTH = FieldFactory.init(BUILDER, "minLength").createIntegerField();

@@ -29,11 +29,7 @@ class FieldXmlElementReader extends DefaultXmlElementReader {
         field.set(FieldDesc.DEFAULT_VALUE, XmlHelper.getAttrValue(FieldDesc.DEFAULT_VALUE.getName(), xmlAttrs, null));
         field.set(FieldDesc.MIN_VALUE, XmlHelper.getAttrValue(FieldDesc.MIN_VALUE.getName(), xmlAttrs, null));
         field.set(FieldDesc.MAX_VALUE, XmlHelper.getAttrValue(FieldDesc.MAX_VALUE.getName(), xmlAttrs, null));
-        String attrValue = XmlHelper.getAttrValue(FieldDesc.ORDER.getName(), xmlAttrs, null);
-        if (attrValue != null) {
-            field.set(FieldDesc.ORDER, Integer.valueOf(attrValue));
-        }
-        attrValue = XmlHelper.getAttrValue(FieldDesc.MAX_LENGTH.getName(), xmlAttrs, null);
+        String attrValue = XmlHelper.getAttrValue(FieldDesc.MAX_LENGTH.getName(), xmlAttrs, null);
         if (attrValue != null) {
             field.set(FieldDesc.MAX_LENGTH, Integer.valueOf(attrValue));
         }

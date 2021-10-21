@@ -34,7 +34,7 @@ public final class FieldFactory implements DataTypeVisitor {
 
     public StringField createStringField() {
         org.refact4j.eom.model.impl.StringField field = new org.refact4j.eom.model.impl.StringField(fieldName, prettyName, entityDescriptorBuilder
-                .get(), (String) defaultValue, nullable, order
+                .get(), (String) defaultValue, nullable
         );
         field.setMaxLength(maxLength);
         field.setMinLength(minLength);
@@ -64,14 +64,14 @@ public final class FieldFactory implements DataTypeVisitor {
 
     public DateField createDateField() {
         DateField field = new org.refact4j.eom.model.impl.DateField(fieldName, prettyName, entityDescriptorBuilder.get(),
-                isTimestamp, (Date) defaultValue, nullable, order);
+                isTimestamp, (Date) defaultValue, nullable);
         entityDescriptorBuilder.addField(field);
         return field;
     }
 
     public BooleanField createBooleanField() {
         BooleanField field = new org.refact4j.eom.model.impl.BooleanField(fieldName, prettyName, entityDescriptorBuilder.get(),
-                (Boolean) defaultValue, nullable, order);
+                (Boolean) defaultValue, nullable);
         entityDescriptorBuilder.addField(field);
         return field;
     }

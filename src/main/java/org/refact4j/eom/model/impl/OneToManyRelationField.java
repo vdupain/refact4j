@@ -19,7 +19,7 @@ public class OneToManyRelationField extends AbstractRelationField implements org
                                   EntityDescriptor targetEntityDescriptor, ManyToOneRelationField inverseRelationField,
                                   Collection<EntityObject> defaultValue, boolean nullable, Integer order) {
         super(fieldName, prettyName, entityDescriptor, targetEntityDescriptor, inverseRelationField, defaultValue,
-                nullable, order);
+                nullable);
     }
 
     public void accept(DataTypeVisitor dataTypeVisitor) {

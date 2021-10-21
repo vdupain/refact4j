@@ -23,8 +23,8 @@ public abstract class AbstractRelationField extends AbstractField implements Rel
 
     AbstractRelationField(String fieldName, String prettyName, EntityDescriptor entityDescriptor,
                           EntityDescriptor targetEntityDescriptor, RelationField inverseRelationField, Object defaultValue,
-                          boolean nullable, Integer order) {
-        super(fieldName, prettyName, entityDescriptor, defaultValue, nullable, order
+                          boolean nullable) {
+        super(fieldName, prettyName, entityDescriptor, defaultValue, nullable
         );
         this.targetEntityDescriptor = targetEntityDescriptor;
         this.inverseRelationField = inverseRelationField;
